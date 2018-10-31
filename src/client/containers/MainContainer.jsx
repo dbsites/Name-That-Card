@@ -6,22 +6,21 @@ import GameMenuContainer from './GameMenuContainer.jsx';
 import GameContainer from './GameContainer.jsx';
 import FooterContainer from './FooterContainer.jsx';
 
-// const mapStateToProps = store => ({
+const mapStateToProps = store => ({
+  appLocation: store.appLocation,
+});
 
-// });
+const mapDispatchToProps = dispatch => ({
 
-// const mapDispatchToProps = dispatch => ({
-
-// });
+});
 
 class MainContainer extends Component {
   render() {
-    let appLocation = 'gameMenu';
+    const { appLocation } = this.props;
   
     // conditional logic to render appropriate container
     let primaryContainer = <GameListContainer />;
 
-    //const { appLocation } = this.props;
     
     if (appLocation === 'home') {
       primaryContainer = <GameListContainer />
@@ -40,4 +39,4 @@ class MainContainer extends Component {
 }
 
 
-export default connect(/*mapStateToProps, mapDispatchToProps*/)(MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
