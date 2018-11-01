@@ -9,29 +9,28 @@ import Signup from './components/Signup.jsx';
 import FooterContainer from './containers/FooterContainer.jsx';
 
 const mapStateToProps = store => ({
-  appLocation: store.appLocation,
-  selectedGame: store.selectedGame
+  selectedGame: store.gameListReducer.selectedGame
 });
 
 const mapDispatchToProps = dispatch => ({
 
 });
 class App extends Component {
-
   render() {
-    const { appLocation, selectedGame } = this.props;
+    const { selectedGame } = this.props;
+    console.log('selectedGame ', selectedGame)
     
     return(
       <BrowserRouter>
         <div>
-          <Navigation appLocation={appLocation} selectedGame={selectedGame}/>
+          <Navigation selectedGame={selectedGame}/>
           <Switch>
             <Route path='/' component={MainContainer} exact/>
             <Route path='/gameMenu' component={GameMenuContainer} />
             <Route path='/login' component={Login}/>
             <Route path='/signup' component={Signup}/>
           </Switch>
-          <FooterContainer appLocation={appLocation}/>
+          <FooterContainer />
         </div>
       </BrowserRouter>
     );
