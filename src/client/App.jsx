@@ -7,34 +7,40 @@ import Navigation from './components/Navigation.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 import FooterContainer from './containers/FooterContainer.jsx';
+import PrivacyPolicy from './components/PrivacyPolicy.jsx';
+import ToS from './components/ToS.jsx';
+import About from './components/About.jsx';
+
+
 
 const mapStateToProps = store => ({
-  selectedGame: store.gameListReducer.selectedGame
+  selectedGame: store.gameListReducer.selectedGame,
 });
 
 const mapDispatchToProps = dispatch => ({
 
 });
-class App extends Component {
-  render() {
-    const { selectedGame } = this.props;
-    console.log('selectedGame ', selectedGame)
-    
-    return(
-      <BrowserRouter>
-        <div>
-          <Navigation selectedGame={selectedGame}/>
-          <Switch>
-            <Route path='/' component={MainContainer} exact/>
-            <Route path='/gameMenu' component={GameMenuContainer} />
-            <Route path='/login' component={Login}/>
-            <Route path='/signup' component={Signup}/>
-          </Switch>
-          <FooterContainer />
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+const App = (props) => {
+  const { selectedGame } = props;
+  console.log('selectedGame ', selectedGame);
+
+  return (
+    <BrowserRouter>
+      <div>
+        <Navigation selectedGame={selectedGame} />
+        <Switch>
+          <Route path='/' component={MainContainer} exact />
+          <Route path='/gameMenu' component={GameMenuContainer} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <Route path='/about' component={About} />
+          <Route path='/terms-of-service' component={ToS} />
+          <Route path='/privacy-policy' component={PrivacyPolicy} />
+        </Switch>
+        <FooterContainer />
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
