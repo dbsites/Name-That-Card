@@ -4,7 +4,7 @@ import HeaderContainer from './HeaderContainer.jsx';
 import GameListContainer from './GameListContainer.jsx';
 import GameMenuContainer from './GameMenuContainer.jsx';
 import GameContainer from './GameContainer.jsx';
-import FooterContainer from './FooterContainer.jsx';
+import FooterContainer from '../components/Footer.jsx';
 
 const mapStateToProps = store => ({
   appLocation: store.mainReducer.appLocation,
