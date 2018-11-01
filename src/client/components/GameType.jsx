@@ -5,7 +5,9 @@ class GameType extends Component {
   render() {
     const { game } = this.props;
     return(
-      <div>game</div>
+      <div>
+        {game}
+      </div>
     );
   }
 }
