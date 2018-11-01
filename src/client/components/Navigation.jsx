@@ -3,9 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 class Navigation extends Component {
   render() {
-    const { isLoggedIn, loggedInUser, appLocation, logoutUser, gameLogo, selectedGame } = this.props;
-
-    //let appLocation = 'signup';
+    const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame, location } = this.props;
+    console.log('Nav navigation pathname: ', window.location.pathname);
 
     let logInOutButton = isLoggedIn ?
       <div className=""><button className="" onClick={() => { logoutUser(); }}>Logout</button></div> :
@@ -27,29 +26,29 @@ class Navigation extends Component {
 
     let leaderBoard = '';
 
-    if (appLocation === 'home') {
+    if (window.location.pathname === '/') {
       leaderBoard = '';
       homeBtn = '';
       xBtn = '';
-    } else if (appLocation === 'gameMenu') {
+    } else if (window.location.pathname === '/gameMenu') {
       logo = <p>Game Logo</p>;
       leaderBoard = '<LeaderBoard selectedGame={selectedGame}/>';
       xBtn = '';
-    } else if (appLocation === 'game') {
+    } else if (window.location.pathname === '/game') {
       logo = <p>Game Logo</p>;
       logInOutButton = '';
       homeBtn = '';
       signUpButton = '';
-    } else if(appLocation === 'login') {
+    } else if(window.location.pathname === '/login') {
       leaderBoard = ''
       logInOutButton = '';
       xBtn = '';    
-    } else if (appLocation === 'signup') {
+    } else if (window.location.pathname === '/signup') {
       leaderBoard = '';
       signUpButton = '';
       xBtn = '';
     }            
-     return(
+    return(
       <div className="navigation">
         {logo}
         {homeBtn} 
@@ -66,5 +65,6 @@ class Navigation extends Component {
     );
   }
 }
+
 
 export default Navigation;
