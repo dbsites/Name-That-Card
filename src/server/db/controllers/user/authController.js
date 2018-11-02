@@ -19,10 +19,7 @@ module.exports = {
           .then(() => {
            res.send({msg: `${username} created`});
             console.log(`User ${username} created`) 
-          }
-            //res.locals.newUser = Object.assign({}, data);
-           
-          )
+          })
           .catch(err => console.error(err));
       },
 
