@@ -19,8 +19,9 @@ export const successfulSignUp = () => ({
   type: types.SUCCESSFUL_SIGNUP,
 });
 
-export const failedSignUp = () => ({
+export const failedSignUp = (message) => ({
   type: types.FAILED_SIGNUP,
+  payload: message,
 });
 
 export const submitSignUp = (signUpInfo) => {
@@ -37,7 +38,7 @@ export const submitSignUp = (signUpInfo) => {
       if(data.signUpSuccess) {
         dispatch(successfulSignUp());
       } else {
-        dispatch(failedSignUp());
+        dispatch(failedSignUp(data.errorMsg));
       }
     })
     .catch((err) => {
@@ -56,7 +57,34 @@ export const updateLoginPassword = event => ({
   payload: event,
 });
 
-export const submitLogin = event => ({
-  type: types.SUBMIT_LOGIN,
-  payload: event,
+export const successfulLogin = () => ({
+  type: types.SUCCESSFUL_LOGIN,
 });
+
+export const failedLogin = (message) => ({
+  type: types.FAILED_LOGIN,
+  payload: message,
+});
+
+export const submitLogin = (loginInfo) => {
+  return (dispatch) => {
+    return fetch('/login', {
+      method: 'POST',
+      headers: {"Content-Type": "application/json; charset=utf-8"},
+      body: loginInfo,
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      if(data.loginSuccess) {
+        dispatch(successfulLogin());
+      } else {
+        dispatch(failedLogin(data.errorMsg));
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
