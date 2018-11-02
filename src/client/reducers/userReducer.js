@@ -9,6 +9,9 @@ const initialState = {
   loginInputUsername: '',
   loginInputPassword: '',
   signUpError: false,
+  signUpErrorMsg: '',
+  loginError: false,
+  loginErrorMsg: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -49,7 +52,10 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
+      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputPassword = '';
       stateCopy.signUpError = true;
+      stateCopy.signUpErrorMsg = action.payload;
       return stateCopy;
     }
     case types.UPDATE_LOGIN_USERNAME: {
@@ -64,9 +70,27 @@ export default function (previousState = initialState, action) {
       console.log('login password ', stateCopy.loginInputPassword)
       return stateCopy;
     }
-    case types.SUBMIT_LOGIN: {
+    case types.SUCCESSFUL_LOGIN: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.isloggedIn = !stateCopy.isloggedIn;
+      stateCopy.loggedInUser = stateCopy.loginInputUsername;     
+      stateCopy.isloggedIn = true;
+      stateCopy.signUpInputUsername = '';
+      stateCopy.signUpInputPassword = '';
+      stateCopy.signUpInputEmail = '';
+      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputPassword = '';
+      stateCopy.loginError = false;
+      return stateCopy;
+    }
+    case types.FAILED_LOGIN: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.signUpInputUsername = '';
+      stateCopy.signUpInputPassword = '';
+      stateCopy.signUpInputEmail = '';
+      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputPassword = '';
+      stateCopy.loginError = true;
+      stateCopy.loginErrorMsg = action.payload;
       return stateCopy;
     }
 
