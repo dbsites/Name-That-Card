@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.submitSignUp(obj));
   },
   updateLoginEmail: (event) => {
-    dispatch(actions.updateLoginUsername(event));
+    dispatch(actions.updateLoginEmail(event));
   },
   updateLoginPassword: (event) => {
     dispatch(actions.updateLoginPassword(event));
@@ -55,7 +55,7 @@ const App = (props) => {
           <Route path='/' component={MainContainer} exact />
           <Route path='/gameMenu' component={GameMenuContainer} />
           <Route path='/login' render={(props) =>
-              <Login {...props} updateLoginUsername={updateLoginUsername} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} />} />
+              <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} />} />
           <Route path='/signup' 
             render={(props) => <Signup {...props} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
           />
