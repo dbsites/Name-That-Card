@@ -31,8 +31,8 @@ export default function (previousState = initialState, action) {
     }
     case types.UPDATE_SIGNUP_EMAIL: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.signUpEmail = action.payload.target.value;
-      console.log('register email ', stateCopy.signUpInputEmail)
+      stateCopy.signUpInputEmail = action.payload.target.value;
+      console.log('register email ', stateCopy.signUpInputEmail);
       return stateCopy;
     }
     case types.SUCCESSFUL_SIGNUP: {

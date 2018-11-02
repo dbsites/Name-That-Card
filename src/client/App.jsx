@@ -17,6 +17,9 @@ const mapStateToProps = store => ({
   selectedGame: store.gameListReducer.selectedGame,
   signUpError: store.userReducer.signUpError,
   signUpErrorMsg: store.userReducer.signUpErrorMsg,
+  signUpInputEmail: store.userReducer.signUpInputEmail,
+  signUpInputPassword: store.userReducer.signUpInputPassword,
+  signUpInputUsername: store.userReducer.signUpInputUsername,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -44,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail } = props;
   console.log('selectedGame ', selectedGame);
 
   return (
@@ -57,7 +60,7 @@ const App = (props) => {
           <Route path='/login' render={(props) =>
               <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} />} />
           <Route path='/signup' 
-            render={(props) => <Signup {...props} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
+            render={(props) => <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
           />
           <Route path='/about' component={About} />
           <Route path='/terms-of-service' component={ToS} />
