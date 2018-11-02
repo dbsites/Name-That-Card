@@ -2,11 +2,16 @@ import React, {Component} from 'react';
 
 const Signup = (props) =>  {
   const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail, signUpError, signUpErrorMsg } = props;
+  console.log('username ', signUpInputUsername)
+  console.log('email ', signUpInputEmail)
+  console.log('password ', signUpInputPassword)
+
   const signUpInfoObj = {
-    signUpInputUsername,
-    signUpInputEmail,
-    signUpInputPassword
-  }
+    username: signUpInputUsername,
+    email: signUpInputEmail,
+    password: signUpInputPassword,
+  };
+  console.log('signup obj in signup ', signUpInfoObj)
   let errorText = '';
   if (signUpError) {
     errorText = <span>{signUpErrorMsg}</span>
@@ -25,8 +30,8 @@ const Signup = (props) =>  {
       <button className="SignUpButton" onClick={() => submitSignUp(signUpInfoObj)}>Sign up</button>
       {errorText}
     </div>
-  )
-}
+  );
+};
 
 
 export default Signup;
