@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
   submitSignUp: (obj) => {
     dispatch(actions.submitSignUp(obj));
   },
-  updateLoginUsername: (event) => {
+  updateLoginEmail: (event) => {
     dispatch(actions.updateLoginUsername(event));
   },
   updateLoginPassword: (event) => {
@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginUsername, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg } = props;
   console.log('selectedGame ', selectedGame);
 
   return (
