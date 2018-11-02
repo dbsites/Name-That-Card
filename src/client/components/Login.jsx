@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Login = (props) => {
-  const { updateLoginUsername, updateLoginPassword, submitLogin, isLoggedIn, loginInputUsername, loginInputPassword } = props;
+  const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword } = props;
 
   const loginInfoObj = {
-    loginInputUsername,
+    loginInputEmail,
     loginInputPassword,
   }
 
@@ -18,8 +18,8 @@ const Login = (props) => {
   return(
     <div className="login">
       <h3>Login</h3>
-      <p className="loginText">Username: </p>
-      <input id="username" className="loginInput" type="text" onChange={updateLoginUsername}/>
+      <p className="loginText">Email: </p>
+      <input id="email" className="loginInput" type="text" onChange={updateLoginEmail}/>
       <p className="loginText">Password: </p>
       <input id="password" className="loginInput" type="password" onChange={updateLoginPassword} />
       <br/>
@@ -30,7 +30,5 @@ const Login = (props) => {
     </div>
   );
 }
-
-
 
 export default Login;

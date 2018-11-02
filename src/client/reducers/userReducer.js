@@ -6,7 +6,7 @@ const initialState = {
   signUpInputUsername: '',
   signUpInputPassword: '',
   signUpInputEmail: '',
-  loginInputUsername: '',
+  loginInputEmail: '',
   loginInputPassword: '',
   signUpError: false,
   signUpErrorMsg: '',
@@ -42,7 +42,7 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
-      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.signUpError = false;
       return stateCopy;
@@ -52,16 +52,16 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
-      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.signUpError = true;
       stateCopy.signUpErrorMsg = action.payload;
       return stateCopy;
     }
-    case types.UPDATE_LOGIN_USERNAME: {
+    case types.UPDATE_LOGIN_EMAIL: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.loginInputUsername = action.payload.target.value;
-      console.log('login username ', stateCopy.loginInputUsername)
+      stateCopy.loginInputEmail = action.payload.target.value;
+      console.log('login username ', stateCopy.loginInputEmail)
       return stateCopy;
     }
     case types.UPDATE_LOGIN_PASSWORD: {
@@ -77,7 +77,7 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
-      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
       return stateCopy;
@@ -87,7 +87,7 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
-      stateCopy.loginInputUsername = '';
+      stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = true;
       stateCopy.loginErrorMsg = action.payload;

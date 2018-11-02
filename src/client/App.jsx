@@ -32,8 +32,8 @@ const mapDispatchToProps = dispatch => ({
   submitSignUp: (obj) => {
     dispatch(actions.submitSignUp(obj));
   },
-  updateLoginUsername: (event) => {
-    dispatch(actions.updateLoginUsername(event));
+  updateLoginEmail: (event) => {
+    dispatch(actions.updateLoginEmail(event));
   },
   updateLoginPassword: (event) => {
     dispatch(actions.updateLoginPassword(event));
@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginUsername, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg } = props;
   console.log('selectedGame ', selectedGame);
 
   return (
@@ -55,7 +55,7 @@ const App = (props) => {
           <Route path='/' component={MainContainer} exact />
           <Route path='/gameMenu' component={GameMenuContainer} />
           <Route path='/login' render={(props) =>
-              <Login {...props} updateLoginUsername={updateLoginUsername} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} />} />
+              <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} />} />
           <Route path='/signup' 
             render={(props) => <Signup {...props} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
           />
