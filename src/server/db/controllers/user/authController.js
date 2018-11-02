@@ -10,14 +10,12 @@ module.exports = {
     const {
       username,
       password,
-      session,
-      session_duration,
       email,
     } = userInfo;
-    const userInputs = [username, password, session, session_duration, email];
+    const userInputs = [username, password, email];
 
     addNewUser = () => {
-        db.one('INSERT INTO "game.dbo".users("username", "password", "session", "session_duration", "email_address") VALUES($1, $2, $3, $4, $5)', userInputs)
+        db.one('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
           .then((data) => {
             const {
               username,
@@ -46,6 +44,8 @@ module.exports = {
         if (data[0]) {
           return res.send({
             msg: 'email already exists',
+            signUpSuccess: false
+
           });
         } else return next();
       })
@@ -59,6 +59,7 @@ module.exports = {
         if (data[0]) {
           return res.send({
             msg: 'username already exists',
+            signUpSuccess: false
           });
         } else return next();
       })

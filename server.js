@@ -2,10 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authController = require('./src/server/db/controllers/user/authController');
 
-const app = express();
-const bcrypt = require('bcrypt');
-// Generate a salt
-const salt = bcrypt.genSaltSync(8);
+const app = express(); 
 
 
 app.use(bodyParser.json());
@@ -29,7 +26,7 @@ app.post('/signup',
   authController.checkUsernameExists,
   authController.createUser,
   (req, res) => {
-    res.status(200).json(res.locals.newUser);
+    res.status(200).json({signUpSuccess: true });
   });
 
 app.listen(3000, () => console.log('server is listening on 3000'));
