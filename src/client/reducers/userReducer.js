@@ -58,10 +58,10 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpErrorMsg = action.payload;
       return stateCopy;
     }
-    case types.UPDATE_LOGIN_USERNAME: {
+    case types.UPDATE_LOGIN_EMAIL: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.loginInputEmail = action.payload.target.value;
-      console.log('login username ', stateCopy.loginInputUsername)
+      console.log('login username ', stateCopy.loginInputEmail)
       return stateCopy;
     }
     case types.UPDATE_LOGIN_PASSWORD: {
