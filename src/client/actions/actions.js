@@ -47,8 +47,8 @@ export const submitSignUp = (signUpInfo) => {
   }
 }
 
-export const updateLoginUsername = event => ({
-  type: types.UPDATE_LOGIN_USERNAME,
+export const updateLoginEmail = event => ({
+  type: types.UPDATE_LOGIN_EMAIL,
   payload: event,
 });
 
