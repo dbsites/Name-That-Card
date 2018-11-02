@@ -24,12 +24,13 @@ export const failedSignUp = (message) => ({
   payload: message,
 });
 
-export const submitSignUp = (signUpInfo) => {
+export const submitSignUp = (signUpInfoObj) => {
+  console.log('signup info in actions', signUpInfoObj)
   return (dispatch) => {
-    return fetch('/signup', {
+    return fetch('http://localhost:3000/signup', {
       method: 'POST',
       headers: {"Content-Type": "application/json; charset=utf-8"},
-      body: signUpInfo,
+      body: JSON.stringify(signUpInfoObj),
     })
     .then((res) => {
       return res.json();
@@ -38,7 +39,7 @@ export const submitSignUp = (signUpInfo) => {
       if(data.signUpSuccess) {
         dispatch(successfulSignUp());
       } else {
-        dispatch(failedSignUp(data.errorMsg));
+        dispatch(failedSignUp(data.msg));
       }
     })
     .catch((err) => {
