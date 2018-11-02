@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 
 const Signup = (props) =>  {
-  const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail } = props;
+  const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail, signUpError, signUpErrorMsg } = props;
   const signUpInfoObj = {
     signUpInputUsername,
     signUpInputEmail,
     signUpInputPassword
+  }
+  let errorText = '';
+  if (signUpError) {
+    errorText = <span>{signUpErrorMsg}</span>
   }
   return (
     <div className="SignUpContainer">
@@ -19,6 +23,7 @@ const Signup = (props) =>  {
       <br />
       <br />
       <button className="SignUpButton" onClick={() => submitSignUp(signUpInfoObj)}>Sign up</button>
+      {errorText}
     </div>
   )
 }
