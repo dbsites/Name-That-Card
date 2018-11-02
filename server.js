@@ -26,7 +26,7 @@ app.post('/signup',
   authController.checkUsernameExists,
   authController.createUser,
   (req, res) => {
-    res.status(200).json({signUpSuccess: true });
+    return res.status(200).json({signUpSuccess: true });
   });
 
 app.listen(3000, () => console.log('server is listening on 3000'));
