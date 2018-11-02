@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Login = (props) => {
-  const { updateLoginUsername, updateLoginPassword, submitLogin, isLoggedIn } = props;
+  const { updateLoginUsername, updateLoginPassword, submitLogin, isLoggedIn, loginInputUsername, loginInputPassword } = props;
+
+  const loginInfoObj = {
+    loginInputUsername,
+    loginInputPassword,
+  }
 
   if (isLoggedIn) {
     return <Redirect to="/" />;   // todo: recognize user identity
@@ -21,7 +26,7 @@ const Login = (props) => {
       {forgotPassword}
       <br />
       <br />
-      <button className="loginButton" type="button" onClick={submitLogin} >Login</button>
+      <button className="loginButton" onClick={() => submitLogin(loginInfoObj)} >Login</button>
     </div>
   );
 }
