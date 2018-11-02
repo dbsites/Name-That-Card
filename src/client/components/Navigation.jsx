@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 class Navigation extends Component {
   render() {
     const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame, location } = this.props;
-    console.log('Nav navigation pathname: ', window.location.pathname);
 
     let logInOutButton = isLoggedIn ?
       <div className=""><button className="" onClick={() => { logoutUser(); }}>Logout</button></div> :
@@ -20,12 +19,12 @@ class Navigation extends Component {
 
     let homeBtn = <div className=""><NavLink to="/">Home</NavLink></div>;
 
-    let xBtn = <div className="" ><NavLink to="/gameMenu">X</NavLink></div>;
+    let xBtn;
     
     let logo = <p>General Logo</p>;
-
+    
     let leaderBoard = '';
-
+    
     if (window.location.pathname === '/') {
       leaderBoard = '';
       homeBtn = '';
@@ -39,6 +38,7 @@ class Navigation extends Component {
       logInOutButton = '';
       homeBtn = '';
       signUpButton = '';
+      xBtn = <div className="" ><NavLink to="/gameMenu">X</NavLink></div> ;
     } else if(window.location.pathname === '/login') {
       leaderBoard = ''
       logInOutButton = '';
