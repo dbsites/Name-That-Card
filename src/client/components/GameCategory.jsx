@@ -4,7 +4,7 @@ class GameCategory extends Component {
 
   render() {
     return(
-
+      <div>Game Category</div>
     );
   }
 

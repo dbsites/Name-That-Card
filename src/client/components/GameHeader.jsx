@@ -4,7 +4,7 @@ class GameHeader extends Component {
 
   render() {
     return(
-      
+      <div>Game Header</div>
     );
   }
 
