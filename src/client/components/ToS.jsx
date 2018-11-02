@@ -4,7 +4,7 @@ class ToS extends Component {
 
   render() {
     return(
-
+      <div>ToS</div>
     );
   }
 

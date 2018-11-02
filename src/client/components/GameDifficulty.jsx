@@ -4,7 +4,7 @@ class GameDifficulty extends Component {
 
   render() {
     return(
-
+      <div>Game Difficulty</div>
     );
   }
 
