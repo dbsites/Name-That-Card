@@ -5,7 +5,7 @@ const initialState = {
   questionNumber: 1,
   cards: [],
   wrongAnswers: [],
-  
+  gameLogo: '',
 };
 
 export default function (previousState = initialState, action) {

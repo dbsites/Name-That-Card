@@ -1,19 +1,17 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  appLocation: 'home',
+
 };
 
 export default function (previousState = initialState, action) {
   let stateCopy;
 
   switch (action.type) {
-    case types._______: {
+    case types.CHANGE_APPLOCATION: {
       stateCopy = Object.assign({}, previousState);
-
       return stateCopy;
     }
-    
     default:
       return previousState;
   }

@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  gameList: [],
+  gameList: ['mtg', 'cars', 'sports'],
   selectedGame: '',
   
 };

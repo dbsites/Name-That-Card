@@ -4,7 +4,7 @@ class PrivacyPolicy extends Component {
 
   render() {
     return(
-
+      <div>Privacy Policy</div>
     );
   }
 

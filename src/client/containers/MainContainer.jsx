@@ -4,31 +4,28 @@ import HeaderContainer from './HeaderContainer.jsx';
 import GameListContainer from './GameListContainer.jsx';
 import GameMenuContainer from './GameMenuContainer.jsx';
 import GameContainer from './GameContainer.jsx';
-import FooterContainer from './FooterContainer.jsx';
+import FooterContainer from '../components/Footer.jsx';
 
-// const mapStateToProps = store => ({
+const mapStateToProps = store => ({
+  appLocation: store.mainReducer.appLocation,
+});
 
-// });
+const mapDispatchToProps = dispatch => ({
 
-// const mapDispatchToProps = dispatch => ({
-
-// });
+});
 
 class MainContainer extends Component {
   render() {
-    let appLocation = 'gameMenu';
-  
+    console.log('props ', this.props)    
+    //let appLocation = 'home'
     // conditional logic to render appropriate container
     let primaryContainer = <GameListContainer />;
 
-    //const { appLocation } = this.props;
-    
-    if (appLocation === 'home') {
+    if (window.location.pathname === '/') {
       primaryContainer = <GameListContainer />
-
-    } else if (appLocation === 'gameMenu') {
+    } else if (window.location.pathname === '/gameMenu') {
       primaryContainer = <GameMenuContainer />
-    } else if (appLocation = 'game') {
+    } else if (window.location.pathname = '/game') {
       primaryContainer = <GameContainer />
     }
     return (
@@ -40,4 +37,4 @@ class MainContainer extends Component {
 }
 
 
-export default connect(/*mapStateToProps, mapDispatchToProps*/)(MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
