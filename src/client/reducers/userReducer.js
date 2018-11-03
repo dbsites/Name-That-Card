@@ -95,6 +95,12 @@ export default function (previousState = initialState, action) {
       console.log('***** LOGIN FAIL *****');
       return stateCopy;
     }
+    case types.LOGOUT_USER: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.loggedInUser = '';
+      stateCopy.isLoggedIn = false;
+      return stateCopy;
+    }
 
     default:
       return previousState;

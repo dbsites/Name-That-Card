@@ -68,6 +68,10 @@ export const failedLogin = (message) => ({
   payload: message,
 });
 
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
+
 export const submitLogin = (loginInfoObj) => {
   console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {

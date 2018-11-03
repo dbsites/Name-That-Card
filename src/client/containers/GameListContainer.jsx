@@ -20,7 +20,10 @@ const mapDispatchToProps = dispatch => ({
   },
   getGameList: () => {
     dispatch(gameConfigActions.getGameList());
-  }  
+  },
+  resetGameSelection: () => {
+    dispatch(gameConfigActions.resetGameSelection());
+  },
 });
 
 class GameListContainer extends Component {
@@ -30,7 +33,7 @@ class GameListContainer extends Component {
   }
 
   render() {
-    const { gameList, setSelectedGame, submitGameSelection, ableToProceed, playClicked, selectedGame } = this.props;
+    const { gameList, setSelectedGame, submitGameSelection, ableToProceed, playClicked, selectedGame, resetGameSelection } = this.props;
  
     let games = gameList.map((gameObj, index) => {
       let game = gameObj.game_name;
@@ -41,7 +44,9 @@ class GameListContainer extends Component {
     })
 
     if (ableToProceed && playClicked) {
-      return <Redirect to='/gameMenu' />;
+      resetGameSelection();
+      let gameMenuAddress = `/gameMenu/${selectedGame}`;
+      return <Redirect to={gameMenuAddress} />;
     }
 
     return (
@@ -53,7 +58,5 @@ class GameListContainer extends Component {
     );
   }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameListContainer);

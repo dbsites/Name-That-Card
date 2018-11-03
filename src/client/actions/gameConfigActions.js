@@ -11,21 +11,25 @@ export const successPlay = () => ({
 
 export const submitGameSelection = (selectedGame) => {
   return (dispatch) => {
-    return fetch(`http://localhost:3000/gameMenu/${selectedGame}` , {
-      method: 'GET',
-      headers: {"Content-Type": "application/json; charset=utf-8"},
-    })
+    return fetch(`http://localhost:3000/gameMenu/${selectedGame}`)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
+      console.log('submit data ', data)
       dispatch(successPlay());
+      dispatch(displayGameMenu(data));
     })
     .catch((err) => {
       console.log(err);
     })
   };
 }
+
+export const displayGameMenu = (data) => ({
+  type: types.DISPLAY_GAME_MENU,
+  payload: data,
+})
 
 export const displayGameList = (data) => ({
   type: types.DISPLAY_GAME_LIST,
@@ -34,16 +38,21 @@ export const displayGameList = (data) => ({
 
 export const getGameList = () => {
   return (dispatch) => {
-    return fetch('/gameList')
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(' getGameList -> data', data);
-        dispatch(displayListing(data));
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    return fetch('http://localhost:3000/gameList')
+    .then((res) => {
+      console.log(' getGameList -> res', res);
+      return res.json();
+    })
+    .then((data) => {
+      console.log(' getGameList -> data', data);
+      dispatch(displayGameList(data));
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 }
+
+export const resetGameSelection = () => ({
+  type: types.RESET_GAME_SELECTION,
+})

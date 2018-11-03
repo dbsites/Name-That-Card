@@ -6,7 +6,7 @@ const Navigation = (props) => {
   const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame } = props;
 
   let logInOutButton = isLoggedIn ?
-    <div className=""><button className="" onClick={() => { logoutUser(); }}>Logout</button></div> :
+    <div className=""><button className="" onClick={() => logoutUser()}>Logout</button></div> :
     <div className=""><NavLink to="/login">Login</NavLink></div>;
 
   let navUsername = isLoggedIn ?

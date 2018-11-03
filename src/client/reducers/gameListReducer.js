@@ -27,7 +27,12 @@ export default function (previousState = initialState, action) {
       stateCopy.gameList = action.payload;
       return stateCopy;
     }
-
+    case types.RESET_GAME_SELECTION: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.ableToProceed = false;
+      stateCopy.playClicked = false;
+      return stateCopy;
+    }
     default:
       return previousState;
   }

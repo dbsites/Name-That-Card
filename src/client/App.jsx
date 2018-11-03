@@ -47,10 +47,13 @@ const mapDispatchToProps = dispatch => ({
   submitLogin: (obj) => {
     dispatch(userActions.submitLogin(obj));
   },
+  logoutUser: () => {
+    dispatch(userActions.logoutUser());
+  }
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser } = props;
   console.log(' isLoggedIn', isLoggedIn);
   console.table(props);
   console.log('selectedGame ', selectedGame);
@@ -58,10 +61,10 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div>
-        <Navigation isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
+        <Navigation logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
           <Route path='/' component={MainContainer} exact />
-          <Route path='/gameMenu' component={GameMenuContainer} />
+          <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/login' render={(props) =>
               <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />} />
           <Route path='/signup' 
