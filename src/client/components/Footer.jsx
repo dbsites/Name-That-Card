@@ -13,8 +13,6 @@ class Footer extends Component {
     let disclaimer = <span>DISCLAIMER</span>;
     let footerScore;
 
-    console.log('footer location ', window.location.pathname);
-
     if (window.location.pathname === '/game') {
       footerScore = <Score score={score} />;
       about = '';
