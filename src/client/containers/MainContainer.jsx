@@ -4,7 +4,6 @@ import HeaderContainer from './HeaderContainer.jsx';
 import GameListContainer from './GameListContainer.jsx';
 import GameMenuContainer from './GameMenuContainer.jsx';
 import GameContainer from './GameContainer.jsx';
-import FooterContainer from '../components/Footer.jsx';
 
 const mapStateToProps = store => ({
   appLocation: store.mainReducer.appLocation,
@@ -16,8 +15,6 @@ const mapDispatchToProps = dispatch => ({
 
 class MainContainer extends Component {
   render() {
-    console.log('props ', this.props)    
-    //let appLocation = 'home'
     // conditional logic to render appropriate container
     let primaryContainer = <GameListContainer />;
 
