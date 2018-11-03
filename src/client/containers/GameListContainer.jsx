@@ -46,7 +46,7 @@ class GameListContainer extends Component {
     if (ableToProceed && playClicked) {
       resetGameSelection();
       let gameMenuAddress = `/gameMenu/${selectedGame}`;
-      return <Redirect to={gameMenuAddress} />;
+      return <Redirect to={{pathname: gameMenuAddress}} />;
     }
 
     return (
