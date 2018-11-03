@@ -10,55 +10,63 @@ import Footer from './components/Footer.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
-import * as actions from './actions/actions';
+import * as userActions from './actions/userActions';
 
 const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
+  loggedInUser: store.userReducer.loggedInUser,
   selectedGame: store.gameListReducer.selectedGame,
   signUpError: store.userReducer.signUpError,
   signUpErrorMsg: store.userReducer.signUpErrorMsg,
   signUpInputEmail: store.userReducer.signUpInputEmail,
   signUpInputPassword: store.userReducer.signUpInputPassword,
   signUpInputUsername: store.userReducer.signUpInputUsername,
+  loginInputEmail: store.userReducer.loginInputEmail,
+  loginInputPassword: store.userReducer.loginInputPassword,
 });
 
 const mapDispatchToProps = dispatch => ({
   updateSignUpUsername: (event) => {
-    dispatch(actions.updateSignUpUsername(event));
+    dispatch(userActions.updateSignUpUsername(event));
   },
   updateSignUpPassword: (event) => {
-    dispatch(actions.updateSignUpPassword(event));
+    dispatch(userActions.updateSignUpPassword(event));
   },
   updateSignUpEmail: (event) => {
-    dispatch(actions.updateSignUpEmail(event));
+    dispatch(userActions.updateSignUpEmail(event));
   },
   submitSignUp: (obj) => {
-    dispatch(actions.submitSignUp(obj));
+    dispatch(userActions.submitSignUp(obj));
   },
   updateLoginEmail: (event) => {
-    dispatch(actions.updateLoginEmail(event));
+    dispatch(userActions.updateLoginEmail(event));
   },
   updateLoginPassword: (event) => {
-    dispatch(actions.updateLoginPassword(event));
+    dispatch(userActions.updateLoginPassword(event));
   },
   submitLogin: (obj) => {
-    dispatch(actions.submitLogin(obj));
+    dispatch(userActions.submitLogin(obj));
   },
+  logoutUser: () => {
+    dispatch(userActions.logoutUser());
+  }
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser } = props;
+  console.log(' isLoggedIn', isLoggedIn);
+  console.table(props);
   console.log('selectedGame ', selectedGame);
 
   return (
     <BrowserRouter>
       <div>
-        <Navigation selectedGame={selectedGame} />
+        <Navigation logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
           <Route path='/' component={MainContainer} exact />
-          <Route path='/gameMenu' component={GameMenuContainer} />
+          <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/login' render={(props) =>
-              <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} />} />
+              <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />} />
           <Route path='/signup' 
             render={(props) => <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
           />

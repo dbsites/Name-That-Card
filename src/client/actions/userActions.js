@@ -58,8 +58,9 @@ export const updateLoginPassword = event => ({
   payload: event,
 });
 
-export const successfulLogin = () => ({
+export const successfulLogin = (username) => ({
   type: types.SUCCESSFUL_LOGIN,
+  payload: username,
 });
 
 export const failedLogin = (message) => ({
@@ -67,21 +68,26 @@ export const failedLogin = (message) => ({
   payload: message,
 });
 
-export const submitLogin = (loginInfo) => {
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
+
+export const submitLogin = (loginInfoObj) => {
+  console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
-    return fetch('/login', {
+    return fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {"Content-Type": "application/json; charset=utf-8"},
-      body: loginInfo,
+      body: JSON.stringify(loginInfoObj),
     })
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       if(data.loginSuccess) {
-        dispatch(successfulLogin());
+        dispatch(successfulLogin(data.username));
       } else {
-        dispatch(failedLogin(data.errorMsg));
+        dispatch(failedLogin(data.msg));
       }
     })
     .catch((err) => {

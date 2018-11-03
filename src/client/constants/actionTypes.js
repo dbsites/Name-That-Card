@@ -1,3 +1,4 @@
+// user action types
 export const UPDATE_SIGNUP_USERNAME = 'UPDATE_SIGNUP_USERNAME';
 export const UPDATE_SIGNUP_PASSWORD = 'UPDATE_SIGNUP_PASSWORD';
 export const UPDATE_SIGNUP_EMAIL = 'UPDATE_SIGNUP_EMAIL';
@@ -9,3 +10,15 @@ export const UPDATE_LOGIN_PASSWORD = 'UPDATE_LOGIN_PASSWORD';
 export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN';
 export const FAILED_LOGIN = 'FAILED_LOGIN';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
+// game config action types
+export const GET_GAME_LIST = 'GET_GAME_LIST';
+export const DISPLAY_GAME_LIST = 'DISPLAY_GAME_LIST';
+export const DISPLAY_GAME_MENU = 'DISPLAY_GAME_MENU';
+export const SET_SELECTED_GAME = 'SET_SELECTED_GAME';
+export const SUBMIT_GAME_SELECTION = 'SUBMIT_GAME_SELECTION';
+export const SUCCESS_PLAY = 'SUCCESS_PLAY';
+export const RESET_GAME_SELECTION = 'RESET_GAME_SELECTION';
+
+// gameplay action types
