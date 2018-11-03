@@ -15,15 +15,10 @@ module.exports = {
     const userInputs = [username, password, email];
 
     addNewUser = () => {
-        db.one('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
-          .then((data) => {
-            const {
-              username,
-              email_address,
-            } = data;
-            res.locals.newUser = Object.assign({}, data);
-
-            return next();
+        db.none('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
+          .then(() => {
+           res.send({msg: `${username} created`});
+            console.log(`User ${username} created`) 
           })
           .catch(err => console.error(err));
       },
@@ -67,15 +62,13 @@ module.exports = {
   },
   verifyUser(req, res, next) {
     const { email, password } = req.body; 
-    console.log('email', email)
-    console.log('password', password)
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email])
       .then((data) => {
         console.log('data', data)
         const user = data[0];
         bcrypt.compare(password, user.password, (error, resolve) => {
           if (resolve) {
-            const { username,email } = user;
+            const { username, email } = user;
             res.locals.verifiedUser = Object.assign(user)
             return next();
           }
