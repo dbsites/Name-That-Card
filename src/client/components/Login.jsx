@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
   const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword } = props;
 
   const loginInfoObj = {
-    loginInputEmail,
-    loginInputPassword,
+    email: loginInputEmail,
+    password: loginInputPassword,
   }
 
   if (isLoggedIn) {
