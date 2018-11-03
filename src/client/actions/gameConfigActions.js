@@ -24,5 +24,26 @@ export const submitGameSelection = (selectedGame) => {
     .catch((err) => {
       console.log(err);
     })
+  };
+}
+
+export const displayGameList = (data) => ({
+  type: types.DISPLAY_GAME_LIST,
+  payload: data,
+})
+
+export const getGameList = () => {
+  return (dispatch) => {
+    return fetch('/gameList')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(' getGameList -> data', data);
+        dispatch(displayListing(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 }

@@ -12,6 +12,8 @@ export const FAILED_LOGIN = 'FAILED_LOGIN';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 
 // game config action types
+export const GET_GAME_LIST = 'GET_GAME_LIST';
+export const DISPLAY_GAME_LIST = 'DISPLAY_GAME_LIST';
 export const SET_SELECTED_GAME = 'SET_SELECTED_GAME';
 export const SUBMIT_GAME_SELECTION = 'SUBMIT_GAME_SELECTION';
 export const SUCCESS_PLAY = 'SUCCESS_PLAY';

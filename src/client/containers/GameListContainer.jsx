@@ -18,31 +18,40 @@ const mapDispatchToProps = dispatch => ({
   submitGameSelection: (obj) => {
     dispatch(gameConfigActions.submitGameSelection(obj));
   },
+  getGameList: () => {
+    dispatch(gameConfigActions.getGameList());
+  }  
 });
 
-const GameListContainer = (props) => {
-  const { gameList, setSelectedGame, submitGameSelection, ableToProceed, playClicked, selectedGame } = props;
-  const gameSelectedObj = {
-
-  };
-
-  let gameLists = gameList.map((game, index) => {
-    return(
-      <GameType key={index} game={game} setSelectedGame={setSelectedGame} />
-    )
-  })
-
-  if (ableToProceed && playClicked) {
-    return <Redirect to='/gameMenu' />;
+class GameListContainer extends Component {
+  componentDidMount() {
+    const { getGameList } = this.props;
+    getGameList();
   }
 
-  return (
-    <div className="GameListContainer" >
-      <h2>Game List Container</h2>
-      {gameLists}
-      <button onClick={() => submitGameSelection(selectedGame)} >PLAY</button>
-    </div>
-  );
+  render() {
+    const { gameList, setSelectedGame, submitGameSelection, ableToProceed, playClicked, selectedGame } = this.props;
+ 
+    let games = gameList.map((gameObj, index) => {
+      let game = gameObj.game_name;
+      console.log(' GameListContainer -> render -> game', game);
+      return(
+        <GameType key={index} game={game} setSelectedGame={setSelectedGame} />
+      )
+    })
+
+    if (ableToProceed && playClicked) {
+      return <Redirect to='/gameMenu' />;
+    }
+
+    return (
+      <div className="GameListContainer" >
+        <h2>Game List Container</h2>
+        {games}
+        <button onClick={() => submitGameSelection(selectedGame)} >PLAY</button>
+      </div>
+    );
+  }
 }
 
 

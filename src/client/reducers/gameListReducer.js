@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  gameList: ['mtg', 'sports', 'cars', 'ed'],
+  gameList: [],
   selectedGame: '',
   ableToProceed: false,
   playClicked: false,
@@ -20,6 +20,11 @@ export default function (previousState = initialState, action) {
     case types.SUCCESS_PLAY: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.playClicked = true;
+      return stateCopy;
+    }
+    case types.DISPLAY_GAME_LIST: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.gameList = action.payload;
       return stateCopy;
     }
 
