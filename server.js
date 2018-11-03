@@ -17,7 +17,7 @@ app.post('/login',
   // cookieController.setSSIDCookie,
   // set ssid
   (req, res) => {
-    res.status(200).json({msg: "login success"});
+    res.status(200).json({username: res.locals.verifiedUser.username, loginSuccess: true, msg: 'login success'});
   });
 
 
