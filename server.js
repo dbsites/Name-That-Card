@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authController = require('./src/server/db/controllers/user/authController');
+const gameController = require('./src/server/db/controllers/game/gameController');
 
 const app = express(); 
 
@@ -26,7 +27,15 @@ app.post('/signup',
   authController.checkUsernameExists,
   authController.createUser,
   (req, res) => {
-    res.status(200).json({signUpSuccess: true });
+    return res.status(200).json({signUpSuccess: true });
   });
+
+  /**
+   * request object with 
+   * game name and level of difficulty
+   */
+  app.get('/gameList', gameController.gameList);
+
+  app.get('/gameMenu/:game', gameController.gameMenu);
 
 app.listen(3000, () => console.log('server is listening on 3000'));
