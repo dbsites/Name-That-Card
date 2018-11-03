@@ -75,11 +75,12 @@ module.exports = {
         const user = data[0];
         bcrypt.compare(password, user.password, (error, resolve) => {
           if (resolve) {
-            const { username,email } = user;
+            const { username, email } = user;
             res.locals.verifiedUser = Object.assign(user)
             return next();
           }
           return res.status(400).send({
+            loginSuccess: false,
             msg: 'login failed',
           });
         });
