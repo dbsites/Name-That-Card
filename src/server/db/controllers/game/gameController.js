@@ -3,12 +3,12 @@ const db = require('../util/postgres');
 
 module.exports = {
   gameList(req, res, next) {
+    console.log('gameList query reached')
     db.query('SELECT game_name, background, font, game_icon FROM "game.dbo".game')
       .then((data) => {
-        return res.send(data)
-         next()
+        console.log(' gameList -> data', data);
+        return res.json(data)
       })
-     
       .catch(err => console.error(err));
   },
 

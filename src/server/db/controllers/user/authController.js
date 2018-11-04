@@ -73,6 +73,7 @@ module.exports = {
             return next();
           }
           return res.status(400).send({
+            loginSuccess: false,
             msg: 'login failed',
           });
         });

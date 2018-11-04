@@ -12,12 +12,12 @@ const initialState = {
 
 export default function (previousState = initialState, action) {
   let stateCopy;
+  console.log('menu reducer hit')
 
   switch (action.type) {
-    case types.START_GAME: {
-      console.log('clicked');
+    case types.DISPLAY_GAME_MENU: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.gameStarted = true;
+      stateCopy.categoryList = action.payload;
       return stateCopy;
     }
     default:

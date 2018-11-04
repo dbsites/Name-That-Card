@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  isloggedIn: false,
+  isLoggedIn: false,
   loggedInUser: '',
   signUpInputUsername: '',
   signUpInputPassword: '',
@@ -20,25 +20,25 @@ export default function (previousState = initialState, action) {
     case types.UPDATE_SIGNUP_USERNAME: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.signUpInputUsername = action.payload.target.value;
-      console.log('register username ', stateCopy.signUpInputUsername)
+      // console.log('register username ', stateCopy.signUpInputUsername)
       return stateCopy;
     }
     case types.UPDATE_SIGNUP_PASSWORD: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.signUpInputPassword = action.payload.target.value;
-      console.log('register password ', stateCopy.signUpInputPassword)
+      // console.log('register password ', stateCopy.signUpInputPassword)
       return stateCopy;
     }
     case types.UPDATE_SIGNUP_EMAIL: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.signUpInputEmail = action.payload.target.value;
-      console.log('register email ', stateCopy.signUpInputEmail);
+      // console.log('register email ', stateCopy.signUpInputEmail);
       return stateCopy;
     }
     case types.SUCCESSFUL_SIGNUP: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.loggedInUser = stateCopy.signUpInputUsername;     
-      stateCopy.isloggedIn = true;
+      stateCopy.isLoggedIn = true;
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
@@ -61,25 +61,26 @@ export default function (previousState = initialState, action) {
     case types.UPDATE_LOGIN_EMAIL: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.loginInputEmail = action.payload.target.value;
-      console.log('login username ', stateCopy.loginInputEmail)
+      // console.log('login username ', stateCopy.loginInputEmail)
       return stateCopy;
     }
     case types.UPDATE_LOGIN_PASSWORD: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.loginInputPassword = action.payload.target.value;
-      console.log('login password ', stateCopy.loginInputPassword)
+      // console.log('login password ', stateCopy.loginInputPassword)
       return stateCopy;
     }
     case types.SUCCESSFUL_LOGIN: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.loggedInUser = stateCopy.loginInputUsername;     
-      stateCopy.isloggedIn = true;
+      stateCopy.loggedInUser = action.payload;    
+      stateCopy.isLoggedIn = true;
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
       stateCopy.signUpInputEmail = '';
       stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
+      console.log('***** LOGIN SUCCESS *****');
       return stateCopy;
     }
     case types.FAILED_LOGIN: {
@@ -91,11 +92,17 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = true;
       stateCopy.loginErrorMsg = action.payload;
+      console.log('***** LOGIN FAIL *****');
+      return stateCopy;
+    }
+    case types.LOGOUT_USER: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.loggedInUser = '';
+      stateCopy.isLoggedIn = false;
       return stateCopy;
     }
 
     default:
-      console.log('default ran')
       return previousState;
   }
 }
