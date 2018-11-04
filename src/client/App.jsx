@@ -1,8 +1,9 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import MainContainer from './containers/MainContainer.jsx';
 import GameMenuContainer from './containers/GameMenuContainer.jsx';
+import GameContainer from './containers/GameContainer.jsx';
+import GameListContainer from './containers/GameListContainer.jsx';
 import Navigation from './components/Navigation.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
@@ -63,8 +64,9 @@ const App = (props) => {
       <div>
         <Navigation logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
-          <Route path='/' component={MainContainer} exact />
+          <Route path='/' component={GameListContainer} exact />
           <Route path='/gameMenu/:game' component={GameMenuContainer} />
+          <Route path='/game' component={GameContainer} />
           <Route path='/login' render={(props) =>
               <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />} />
           <Route path='/signup' 
