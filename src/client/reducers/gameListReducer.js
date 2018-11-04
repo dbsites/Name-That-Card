@@ -19,7 +19,9 @@ export default function (previousState = initialState, action) {
     }
     case types.SUCCESS_PLAY: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.playClicked = true;
+      if (stateCopy.selectedGame !== '') {
+        stateCopy.playClicked = true;
+      }
       return stateCopy;
     }
     case types.DISPLAY_GAME_LIST: {
