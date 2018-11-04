@@ -4,7 +4,7 @@ import * as gameConfigActions from '../actions/gameConfigActions';
 
 const mapStateToProps = store => ({
   selectedGame: store.gameListReducer.selectedGame,
-  selectedCategories: store.gameListReducer.selectedCategories,
+  selectedCategories: store.gameMenuReducer.selectedCategories,
 });
 
 const mapDispatchToProps = dispatch => ({
