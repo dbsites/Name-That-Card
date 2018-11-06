@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import gamePlayActions from '../actions/gamePlayActions';
+import * as gamePlayActions from '../actions/gamePlayActions';
 
 const mapStateToProps = store => ({
   score: store.gameReducer.score,
@@ -12,7 +12,7 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   sendResult: (gameResultInfo) => {
     dispatch(gamePlayActions.sendResult(gameResultInfo));
-  }
+  },
 });
 
 const Results = (props) => {
@@ -23,10 +23,10 @@ const Results = (props) => {
     score,
     selectedGame,
     selectedDifficulty,
-  }
+  };
 
   sendResult(gameResultInfo);
-  
+
   return (
     <div>
       <div>Results</div>

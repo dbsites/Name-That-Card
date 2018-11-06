@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
   },
   resetGameMenu: () => {
     dispatch(gameConfigActions.resetGameMenu());
-  }
+  },
 });
 
 class GameMenuContainer extends Component {
@@ -46,7 +46,6 @@ class GameMenuContainer extends Component {
     const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
-    console.log(urlSelectedGame);
     setSelectedGame(urlSelectedGame);
     resetGame();
     resetGameMenu();
@@ -116,7 +115,6 @@ class GameMenuContainer extends Component {
 
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
-      // let gameRoute = `/gameMenu/${selectedGame}`;
       return <Redirect to={{ pathname: '/game' }} />;
     }
 

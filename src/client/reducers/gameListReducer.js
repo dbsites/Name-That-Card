@@ -33,6 +33,7 @@ export default function (previousState = initialState, action) {
       stateCopy = Object.assign({}, previousState);
       stateCopy.ableToProceed = false;
       stateCopy.playClicked = false;
+      stateCopy.selectedGame = '';
       return stateCopy;
     }
 
