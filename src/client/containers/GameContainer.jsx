@@ -45,6 +45,8 @@ class GameContainer extends Component {
     getCardsInfo(cardParameters);
   }
 
+
+
   render() {
     const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults } = this.props;
     const cardInfo = cards[0];
@@ -63,12 +65,25 @@ class GameContainer extends Component {
       content = <Results />;
     }
 
-    console.log(' GameContainer -> render -> content', content);
+    const buttonStyle = {
+      display: 'flex',
+      width: '200px',
+      lineHeight: '1.8em !important',
+      margin: '20px',
+      border: '5px solid black',
+      justifyContent: 'center',
+      borderRadius: '15px',
+      color: 'white',
+      backgroundColor: 'pink',
+      userSelect: 'none',
+      textShadow: '0 0 45px #6fcbdc',
+    };
+
     return (
       <div className="GameContainer">
         <h4>{title}</h4>
         {content}
-        <button type="button" onClick={clickFunc}>{buttonText}</button>
+        <div style={buttonStyle} onClick={clickFunc}>{buttonText}</div>
       </div>
     );
   }
