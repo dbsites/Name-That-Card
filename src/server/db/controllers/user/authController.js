@@ -69,7 +69,7 @@ module.exports = {
         bcrypt.compare(password, user.password, (error, resolve) => {
           if (resolve) {
             const { username, email } = user;
-            res.locals.verifiedUser = Object.assign(user)
+            res.locals.verifiedUser = Object.assign(user);
             return next();
           }
           return res.status(400).send({
@@ -80,6 +80,4 @@ module.exports = {
       })
       .catch(err => console.error(err));
   },
-
-
 };

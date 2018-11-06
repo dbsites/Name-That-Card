@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as gameConfigActions from '../actions/gameConfigActions';
+import * as gamePlayActions from '../actions/gamePlayActions';
+
 
 const mapStateToProps = store => ({
   categoryList: store.gameMenuReducer.categoryList,
@@ -31,21 +33,25 @@ const mapDispatchToProps = dispatch => ({
   startGame: () => {
     dispatch(gameConfigActions.startGame());
   },
+  resetGame: () => {
+    dispatch(gamePlayActions.resetGame());
+  },
+  resetGameMenu: () => {
+    dispatch(gameConfigActions.resetGameMenu());
+  }
 });
 
 class GameMenuContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame } = this.props;
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
     console.log(urlSelectedGame);
     setSelectedGame(urlSelectedGame);
+    resetGame();
+    resetGameMenu();
   }
-  
+
   render() {
     const {
       categoryList,
@@ -111,14 +117,14 @@ class GameMenuContainer extends Component {
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       // let gameRoute = `/gameMenu/${selectedGame}`;
-      return <Redirect to={{pathname: '/game'}} />;
+      return <Redirect to={{ pathname: '/game' }} />;
     }
 
     return (
       <div className="GameMenuContainer">
         <h3>Game Menu Container</h3>
-          {categories}
-          <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
+        {categories}
+        <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
         <div style={difficultyBoxStyle}>
           <div style={difficultyStyle} onClick={() => setGameDifficulty('easy')}>EASY</div>
           <div style={difficultyStyle} onClick={() => setGameDifficulty('med')}>MED.</div>

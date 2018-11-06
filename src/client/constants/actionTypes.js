@@ -26,6 +26,12 @@ export const SET_GAME_DIFFICULTY = 'SET_GAME_DIFFICULTY';
 export const START_GAME = 'START_GAME';
 export const RESET_GAME_INITIATION = 'RESET_GAME_INITIATION';
 export const GET_CARDS_IFNO = 'GET_CARDS_IFNO';
-
+export const POPULATE_CARDS_ARRAY = 'POPULATE_CARDS_ARRAY';
+export const RESET_GAME_MENU = 'RESET_GAME_MENU';
 
 // gameplay action types
+export const SELECT_ANSWER = 'SELECT_ANSWER';
+export const GO_TO_NEXT = 'GO_TO_NEXT';
+export const FINISH_GAME = 'FINISH_GAME';
+export const SEND_RESULT = 'SEND_RESULT';
+export const RESET_GAME = 'RESET_GAME';

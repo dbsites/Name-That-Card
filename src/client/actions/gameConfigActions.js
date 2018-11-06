@@ -77,21 +77,33 @@ export const startGame = () => ({
   type: types.START_GAME,
 });
 
+export const populateCardsArray = cardsData => ({
+  type: types.POPULATE_CARDS_ARRAY,
+  payload: cardsData,
+});
+
 export const getCardsInfo = (cardInfoObj) => {
+  console.log('cards info actions', cardInfoObj);
   return (dispatch) => {
     return fetch('http://localhost:3000/loadGame', {
       method: 'POST',
-      headers: {"Content-Type": "application/json; charset=utf-8"},
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
       body: JSON.stringify(cardInfoObj),
     })
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        dispatch(populateCardsArray(data));
       })
       .catch((err) => {
         console.log(err);
       });
   };
 };
+
+export const resetGameMenu = () => ({
+  type: types.RESET_GAME_MENU,
+});

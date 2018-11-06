@@ -33,15 +33,23 @@ class GameListContainer extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   componentDidMount() {
     const { getGameList } = this.props;
     getGameList();
   }
 
   render() {
-    const { gameList, setSelectedGame, ableToProceed, playClicked, selectedGame, resetGameSelection, successPlay } = this.props;
- 
+    const {
+      gameList,
+      setSelectedGame,
+      ableToProceed,
+      playClicked,
+      selectedGame,
+      resetGameSelection,
+      successPlay
+    } = this.props;
+
     const games = gameList.map((gameObj, i) => {
       const game = gameObj.game_name;
       console.log(' GameListContainer -> render -> game', game);
@@ -52,8 +60,8 @@ class GameListContainer extends Component {
 
     if (ableToProceed && playClicked) {
       resetGameSelection();
-      let gameMenuRoute = `/gameMenu/${selectedGame}`;
-      return <Redirect to={{pathname: gameMenuRoute}} />;
+      const gameMenuRoute = `/gameMenu/${selectedGame}`;
+      return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
     return (
