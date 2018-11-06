@@ -35,6 +35,7 @@ export default function (previousState = initialState, action) {
       stateCopy.playClicked = false;
       return stateCopy;
     }
+
     default:
       return previousState;
   }

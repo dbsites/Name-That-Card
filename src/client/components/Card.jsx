@@ -23,7 +23,7 @@ const Card = (props) => {
   if (cardInfo) {
     answers.push(cardInfo.card_name);
     answers = shuffledAnswers(answers);
-    const imgSrc = cardInfo.image_link_location_temp;
+    const imgSrc = cardInfo.image_location_temp;
     const maskImgSrc = cardInfo.mask;
     picture = <img src={imgSrc} alt="MASK ON" />;
     mask = <img src={maskImgSrc} alt="MASK OFF MASK OFF" />;

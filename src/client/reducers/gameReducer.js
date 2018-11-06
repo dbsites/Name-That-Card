@@ -10,6 +10,7 @@ const initialState = {
   ableToNext: false,
   nextClicked: false,
   gameLogo: '',
+  displayResults: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -41,21 +42,43 @@ export default function (previousState = initialState, action) {
         newAnsweredQuestions.push(newCards.shift());
         stateCopy.answeredQuestions = newAnsweredQuestions;
         stateCopy.cards = newCards;
-        stateCopy.questionNumber += 1;
+        if (stateCopy.questionNumber === 20) {
+          stateCopy.questionNumber = 20;
+        } else {
+          stateCopy.questionNumber += 1;
+        }
         stateCopy.selectedAnswer = '';
       }
       stateCopy.ableToNext = false;
       return stateCopy;
     }
-    // case types.SET_NEXT_CLICKED: {
-    //   stateCopy = Object.assign({}, previousState);
-    //   if (stateCopy.selectedAnswer !== '') {
-    //     stateCopy.nextClicked = true;
-    //   } else {
-    //     stateCopy.nextClicked = false;
-    //   }
-    //   return stateCopy;
-    // }
+
+    case types.FINISH_GAME: {
+      stateCopy = Object.assign({}, previousState);
+      if (stateCopy.ableToNext === true) {
+        const newAnsweredQuestions = stateCopy.answeredQuestions.slice();
+        const newCards = stateCopy.cards.slice();
+        newAnsweredQuestions.push(newCards.shift());
+        stateCopy.answeredQuestions = newAnsweredQuestions;
+        stateCopy.cards = newCards;
+        stateCopy.displayResults = true;
+      }
+      return stateCopy;
+    }
+    case types.RESET_GAME: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.score = 0;
+      stateCopy.questionNumber = 1;
+      stateCopy.cards = [];
+      stateCopy.wrongAnswers = ['wrong1', 'wrong2', 'wrong3'];
+      stateCopy.answeredQuestions = [];
+      stateCopy.selectedAnswer = '';
+      stateCopy.ableToNext = false;
+      stateCopy.nextClicked = false;
+      stateCopy.gameLogo = '';
+      stateCopy.displayResults = false;
+      return stateCopy;
+    }
 
     default:
       return previousState;

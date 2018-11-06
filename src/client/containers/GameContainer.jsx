@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '../components/Card.jsx';
+import Results from '../components/Results.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 
@@ -10,6 +11,7 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   cards: store.gameReducer.cards,
   wrongAnswers: store.gameReducer.wrongAnswers,
+  displayResults: store.gameReducer.displayResults,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -22,10 +24,11 @@ const mapDispatchToProps = dispatch => ({
   goToNext: () => {
     dispatch(gamePlayActions.goToNext());
   },
+  finishGame: () => {
+    dispatch(gamePlayActions.finishGame());
+  },
 });
-
 class GameContainer extends Component {
-
   componentWillMount() {
     const {
       selectedGame,
@@ -42,16 +45,30 @@ class GameContainer extends Component {
     getCardsInfo(cardParameters);
   }
 
-
   render() {
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext } = this.props;
+    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults } = this.props;
     const cardInfo = cards[0];
+    let clickFunc = goToNext;
+    let title = 'GAME';
+    let buttonText = 'NEXT';
+    let content = <Card wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
+    if (cards.length === 1) {
+      clickFunc = finishGame;
+      buttonText = 'FINISH';
+    }
+    
+    if (displayResults) {
+      title = `YOUR MF'N RESULTS`;
+      content = <Results />;
+    }
+
+    console.log(' GameContainer -> render -> content', content);
     return (
       <div className="GameContainer">
-        <h4>{selectedGame}</h4>
-        <Card wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />
-        <button type="button" onClick={goToNext}>NEXT</button>
+        <h4>{title}</h4>
+        {content}
+        <button type="button" onClick={clickFunc}>{buttonText}</button>
       </div>
     );
   }

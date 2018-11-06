@@ -9,6 +9,31 @@ export const goToNext = () => ({
   type: types.GO_TO_NEXT,
 });
 
-// export const setNextClicked = () => ({
-//   type: types.SET_NEXT_CLICKED,
-// });
+export const finishGame = () => ({
+  type: types.FINISH_GAME,
+});
+
+export const resetGame = () => ({
+  type: types.RESET_GAME,
+});
+
+export const sendResult = (gameResultInfo) => {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/saveResult', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify(gameResultInfo),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        dispatch(resestGame());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

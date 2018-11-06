@@ -75,6 +75,17 @@ export default function (previousState = initialState, action) {
       stateCopy.startClicked = false;
       return stateCopy;
     }
+    case types.RESET_GAME_MENU: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.categoryList = [];
+      stateCopy.selectedDifficulty = '';
+      stateCopy.selectedCategories = [];
+      stateCopy.yearRange = [];
+      stateCopy.selectedYearRange = [];
+      stateCopy.ableToStartGame = false;
+      stateCopy.startClicked = false;
+      return stateCopy;
+    }
 
     default:
       return previousState;

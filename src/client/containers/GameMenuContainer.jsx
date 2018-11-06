@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as gameConfigActions from '../actions/gameConfigActions';
+import * as gamePlayActions from '../actions/gamePlayActions';
+
 
 const mapStateToProps = store => ({
   categoryList: store.gameMenuReducer.categoryList,
@@ -31,15 +33,23 @@ const mapDispatchToProps = dispatch => ({
   startGame: () => {
     dispatch(gameConfigActions.startGame());
   },
+  resetGame: () => {
+    dispatch(gamePlayActions.resetGame());
+  },
+  resetGameMenu: () => {
+    dispatch(gameConfigActions.resetGameMenu());
+  }
 });
 
 class GameMenuContainer extends Component {
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame } = this.props;
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
     console.log(urlSelectedGame);
     setSelectedGame(urlSelectedGame);
+    resetGame();
+    resetGameMenu();
   }
 
   render() {

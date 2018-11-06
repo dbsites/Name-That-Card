@@ -16,8 +16,8 @@ module.exports = {
               , l.standard
               , l.old_school
               , l.legacy
-              --, l.image_link_location_temp
-            FROM "game.dbo".cards c
+              , image_location_temp
+            FROM "game.dbo".cards_n c
             JOIN "game.dbo".mtg_cat_lookup l 
               ON c.category_c = l.smvlo
             JOIN "game.dbo".game g 
@@ -31,9 +31,8 @@ module.exports = {
             ORDER BY RANDOM()
             LIMIT 20;`, [game, vintage, modern, standard, legacy, old_school])
       .then((data) => {
-        console.log('data', data);
+        console.log('loaddata data', data);
         return res.send(data);
-        next();
       })
      
       .catch(err => console.error(err));
