@@ -19,34 +19,36 @@ export const successfulSignUp = () => ({
   type: types.SUCCESSFUL_SIGNUP,
 });
 
-export const failedSignUp = (message) => ({
+export const failedSignUp = message => ({
   type: types.FAILED_SIGNUP,
   payload: message,
 });
 
 export const submitSignUp = (signUpInfoObj) => {
-  console.log('signup info in actions', signUpInfoObj)
+  console.log('signup info in actions', signUpInfoObj);
   return (dispatch) => {
     return fetch('http://localhost:3000/signup', {
       method: 'POST',
-      headers: {"Content-Type": "application/json; charset=utf-8"},
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
       body: JSON.stringify(signUpInfoObj),
     })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      if(data.signUpSuccess) {
-        dispatch(successfulSignUp());
-      } else {
-        dispatch(failedSignUp(data.msg));
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-}
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.signUpSuccess) {
+          dispatch(successfulSignUp());
+        } else {
+          dispatch(failedSignUp(data.msg));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export const updateLoginEmail = event => ({
   type: types.UPDATE_LOGIN_EMAIL,
@@ -58,12 +60,12 @@ export const updateLoginPassword = event => ({
   payload: event,
 });
 
-export const successfulLogin = (username) => ({
+export const successfulLogin = username => ({
   type: types.SUCCESSFUL_LOGIN,
   payload: username,
 });
 
-export const failedLogin = (message) => ({
+export const failedLogin = message => ({
   type: types.FAILED_LOGIN,
   payload: message,
 });
@@ -77,21 +79,23 @@ export const submitLogin = (loginInfoObj) => {
   return (dispatch) => {
     return fetch('http://localhost:3000/login', {
       method: 'POST',
-      headers: {"Content-Type": "application/json; charset=utf-8"},
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
       body: JSON.stringify(loginInfoObj),
     })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      if(data.loginSuccess) {
-        dispatch(successfulLogin(data.username));
-      } else {
-        dispatch(failedLogin(data.msg));
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-}
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.loginSuccess) {
+          dispatch(successfulLogin(data.username));
+        } else {
+          dispatch(failedLogin(data.msg));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

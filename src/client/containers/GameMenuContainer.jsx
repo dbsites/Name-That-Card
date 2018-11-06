@@ -34,10 +34,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class GameMenuContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   componentDidMount() {
     const { getGameMenuContents, setSelectedGame } = this.props;
     getGameMenuContents(window.location.pathname);
@@ -45,7 +41,7 @@ class GameMenuContainer extends Component {
     console.log(urlSelectedGame);
     setSelectedGame(urlSelectedGame);
   }
-  
+
   render() {
     const {
       categoryList,
@@ -111,14 +107,14 @@ class GameMenuContainer extends Component {
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       // let gameRoute = `/gameMenu/${selectedGame}`;
-      return <Redirect to={{pathname: '/game'}} />;
+      return <Redirect to={{ pathname: '/game' }} />;
     }
 
     return (
       <div className="GameMenuContainer">
         <h3>Game Menu Container</h3>
-          {categories}
-          <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
+        {categories}
+        <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
         <div style={difficultyBoxStyle}>
           <div style={difficultyStyle} onClick={() => setGameDifficulty('easy')}>EASY</div>
           <div style={difficultyStyle} onClick={() => setGameDifficulty('med')}>MED.</div>

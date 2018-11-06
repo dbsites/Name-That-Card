@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const GameType = (props) => {
   const { game, setSelectedGame } = props;
@@ -17,11 +17,11 @@ const GameType = (props) => {
     textShadow: '0 0 45px #6fcbdc',
   };
 
-  return(
-    <div className="gameType" style={divStyle} onClick={() => setSelectedGame(game)} >
+  return (
+    <div className="gameType" style={divStyle} onClick={() => setSelectedGame(game)}>
       {game}
     </div>
   );
-}
+};
 
 export default GameType;

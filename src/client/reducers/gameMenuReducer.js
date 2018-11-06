@@ -12,6 +12,7 @@ const initialState = {
 
 export default function (previousState = initialState, action) {
   let stateCopy;
+  const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
 
   switch (action.type) {
     case types.DISPLAY_GAME_MENU: {
@@ -22,10 +23,10 @@ export default function (previousState = initialState, action) {
     case types.TOGGLE_GAME_CATEGORY: {
       stateCopy = Object.assign({}, previousState);
       const newSelectedCategories = stateCopy.selectedCategories.slice();
-      if (newSelectedCategories.includes(action.payload)) {
-        newSelectedCategories.splice(newSelectedCategories.indexOf(action.payload), 1);
+      if (newSelectedCategories.includes(underscore(action.payload))) {
+        newSelectedCategories.splice(newSelectedCategories.indexOf(underscore(action.payload)), 1);
       } else {
-        newSelectedCategories.push(action.payload);
+        newSelectedCategories.push(underscore(action.payload));
       }
       if (stateCopy.selectedDifficulty !== '' && stateCopy.selectedCategories.length !== 0) {
         stateCopy.ableToStartGame = true;
@@ -38,10 +39,7 @@ export default function (previousState = initialState, action) {
     case types.TOGGLE_ALL_GAME_CATEGORIES: {
       stateCopy = Object.assign({}, previousState);
       const numCategories = stateCopy.categoryList.length;
-      const allCategoriesSelected = [];
-      stateCopy.categoryList.forEach((category) => {
-        allCategoriesSelected.push(category.game_category);
-      });
+      const allCategoriesSelected = stateCopy.categoryList.map(category => underscore(category.game_category));
       let newSelectedCategories = [];
       if (stateCopy.selectedCategories.length !== numCategories) {
         newSelectedCategories = allCategoriesSelected;

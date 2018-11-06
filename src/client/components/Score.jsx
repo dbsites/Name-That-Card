@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Score extends Component {
-
-  render() {
-    return(
+const Score = (props) => {
+  const { score, questionNumber } = props;
+  return (
+    <div>
       <div>
-        <div>
-          0 / 20  
-        </div>
-        <br/>
-        <span>DISCLAIMER</span>
+         {questionNumber} / 20
       </div>
-    );
-  }
-
-}
+      <div>
+        {score} CORRECT MANG~
+      </div>
+      <br />
+      <span>DISCLAIMER</span>
+    </div>
+  );
+};
 
 export default Score;
