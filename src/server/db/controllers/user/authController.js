@@ -84,6 +84,4 @@ module.exports = {
       })
       .catch(err => console.error(err));
   },
-
-
 };

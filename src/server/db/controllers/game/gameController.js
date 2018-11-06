@@ -17,12 +17,11 @@ module.exports = {
     console.log('params', game);
     db.any('SELECT game_category FROM "game.dbo".game_categories where game_name =$1', [game])
       .then((data) => {
-        console.log('data', data)
-        return res.send(data)
-         next()
+        console.log('data', data);
+        return res.send(data);
+        next();
       })
-     
-      .catch(err => console.error(err));
 
+      .catch(err => console.error(err));
   },
 }

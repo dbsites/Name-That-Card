@@ -6,7 +6,7 @@ import GameMenuContainer from './GameMenuContainer.jsx';
 import GameContainer from './GameContainer.jsx';
 
 const mapStateToProps = store => ({
-  appLocation: store.mainReducer.appLocation,
+  
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,10 +20,10 @@ class MainContainer extends Component {
 
     if (window.location.pathname === '/') {
       primaryContainer = <GameListContainer />
-    } else if (window.location.pathname === '/gameMenu') {
-      primaryContainer = <GameMenuContainer />
-    } else if (window.location.pathname = '/game') {
-      primaryContainer = <GameContainer />
+    // } else if (window.location.pathname === '/gameMenu') {
+    //   primaryContainer = <GameMenuContainer />
+    // } else if (window.location.pathname = '/game') {
+    //   primaryContainer = <GameContainer />
     }
     return (
       <div className="MainContainer" >
