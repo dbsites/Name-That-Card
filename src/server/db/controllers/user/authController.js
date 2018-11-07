@@ -85,4 +85,26 @@ module.exports = {
       })
       .catch(err => console.error(err));
   },
+
+  verifyAdmin(req, res, next) {
+    const { email_address, password } = req.body;
+    db.any('SELECT * FROM "game.dbo".admin WHERE email_address=$1', [email_address])
+      .then((data) => {
+        console.log('data', data);
+        const user = data[0];
+        console.log('user****', admin, '******');
+        bcrypt.compare(password, admin.password, (error, resolve) => {
+          if (resolve) {
+            res.locals.verifiedAdmin = user;
+            console.log('************* verified admin', res.locals.verifiedAdmin);
+            return next();
+          }
+          return res.status(400).send({
+            loginSuccess: false,
+            msg: 'login failed',
+          });
+        });
+      })
+      .catch(err => console.error(err));
+  },
 };
