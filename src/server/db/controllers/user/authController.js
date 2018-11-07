@@ -14,20 +14,24 @@ module.exports = {
     } = userInfo;
     const userInputs = [username, password, email];
 
+    // eslint-disable-next-line no-unused-expressions
+    // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-unused-expressions
     addNewUser = () => {
-        db.none('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
-          .then(() => {
-           res.send({msg: `${username} created`});
-            console.log(`User ${username} created`) 
-          })
-          .catch(err => console.error(err));
-      },
+      db.none('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
+        .then(() => {
+          res.send({ msg: `${username} created` });
+          console.log(`User ${username} created`);
+        })
+        .catch(err => console.error(err));
+    },
 
-      bcrypt.genSalt(SALT_WORK_FACTOR)
+    bcrypt.genSalt(SALT_WORK_FACTOR)
       .then(salt => bcrypt.hash(password, salt))
       .then((hash) => {
         userInputs[1] = hash;
       })
+      // eslint-disable-next-line no-undef
       .then(() => addNewUser())
       .catch(err => console.error(err));
   },
@@ -39,10 +43,10 @@ module.exports = {
         if (data[0]) {
           return res.send({
             msg: 'email already exists',
-            signUpSuccess: false
+            signUpSuccess: false,
 
           });
-        } else return next();
+        } return next();
       })
       .catch(err => console.error(err));
   },
@@ -54,31 +58,30 @@ module.exports = {
         if (data[0]) {
           return res.send({
             msg: 'username already exists',
-            signUpSuccess: false
+            signUpSuccess: false,
           });
-        } else return next();
+        } return next();
       })
       .catch(err => console.error(err));
   },
   verifyUser(req, res, next) {
-    const { email, password } = req.body; 
+    const { email, password } = req.body;
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email])
       .then((data) => {
-        console.log('data', data)
+        console.log('data', data);
         const user = data[0];
         bcrypt.compare(password, user.password, (error, resolve) => {
           if (resolve) {
             const { username, email } = user;
-            res.locals.verifiedUser = Object.assign(user)
+            res.locals.verifiedUser = Object.assign(user);
             return next();
           }
           return res.status(400).send({
+            loginSuccess: false,
             msg: 'login failed',
           });
         });
       })
       .catch(err => console.error(err));
   },
-
-
 };
