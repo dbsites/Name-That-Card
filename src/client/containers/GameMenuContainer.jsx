@@ -63,66 +63,10 @@ class GameMenuContainer extends Component {
       resetGameInitiation,
     } = this.props;
 
-    const divStyle = {
-      display: 'flex',
-      width: '200px',
-      lineHeight: '1.8em !important',
-      margin: '20px',
-      border: '5px solid pink',
-      justifyContent: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'black',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const difficultyBoxStyle = {
-      display: 'flex',
-      width: '400px',
-      lineHeight: '1.8em !important',
-      margin: '20px',
-      border: '5px solid pink',
-      justifyContent: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'black',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const difficultyStyle = {
-      display: 'inline',
-      width: '200px',
-      lineHeight: '1.3em !important',
-      margin: '1px',
-      justifyContent: 'center',
-      textAlign: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'black',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const buttonStyle = {
-      display: 'flex',
-      width: '200px',
-      lineHeight: '1.8em !important',
-      margin: '20px',
-      border: '5px solid black',
-      justifyContent: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'pink',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const categories = categoryList.map((gameCatObj) => {
+    const categories = categoryList.map((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       return (
-        <div onClick={() => toggleGameCategory(category)} style={divStyle}>{category}</div>
+        <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
       );
     });
 
@@ -132,17 +76,19 @@ class GameMenuContainer extends Component {
     }
 
     return (
-      <div className="GameMenuContainer">
-        <h3>Game Menu Container</h3>
+      <div className="container">
         <span className=""><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
-        {categories}
-        <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
-        <div style={difficultyBoxStyle}>
-          <div style={difficultyStyle} onClick={() => setGameDifficulty('easy')}>EASY</div>
-          <div style={difficultyStyle} onClick={() => setGameDifficulty('med')}>MED.</div>
-          <div style={difficultyStyle} onClick={() => setGameDifficulty('hard')}>HARD</div>
+        <h3>Game Menu Container</h3>
+        <div className="listContainer">
+          {categories}
         </div>
-        <div style={buttonStyle} onClick={() => startGame()}>START</div>
+        <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
+        <div className="difficultyBoxStyle">
+          <div className="difficultyStyle" onClick={() => setGameDifficulty('easy')}>EASY</div>
+          <div className="difficultyStyle" onClick={() => setGameDifficulty('med')}>MED.</div>
+          <div className="difficultyStyle" onClick={() => setGameDifficulty('hard')}>HARD</div>
+        </div>
+        <div className="buttonStyle" onClick={() => startGame()}>START</div>
       </div>
     );
   }

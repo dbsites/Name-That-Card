@@ -18,7 +18,7 @@ module.exports = {
     db.any(`SELECT card_id, card_name, mask, image, ebay_link, l.vintage, l.modern, l.standard, l.old_school, l.legacy, image_location_temp
             FROM "game.dbo".cards_n c
               JOIN "game.dbo".mtg_cat_lookup l 
-                ON c.category_c = l.smvlo
+                ON c.card_category = l.smvlo
               JOIN "game.dbo".game g 
                 ON g.game_id = c.game_id
               WHERE g.game_name =$1

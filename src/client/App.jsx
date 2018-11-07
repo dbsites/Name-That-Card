@@ -60,7 +60,7 @@ const App = (props) => {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className="align">
         <Navigation logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
           <Route path='/' component={GameListContainer} exact />
