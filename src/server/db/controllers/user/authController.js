@@ -14,21 +14,26 @@ module.exports = {
     } = userInfo;
     const userInputs = [username, password, email];
 
+    // eslint-disable-next-line no-unused-expressions
+    // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-unused-expressions
     addNewUser = () => {
       db.none('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
         .then(() => {
           res.send({ msg: `${username} created` });
-          console.log(`User ${username} created`)
+          console.log(`User ${username} created`);
         })
         .catch(err => console.error(err));
     },
-      bcrypt.genSalt(SALT_WORK_FACTOR)
-        .then(salt => bcrypt.hash(password, salt))
-        .then((hash) => {
-          userInputs[1] = hash;
-        })
-        .then(() => addNewUser())
-        .catch(err => console.error(err));
+
+    bcrypt.genSalt(SALT_WORK_FACTOR)
+      .then(salt => bcrypt.hash(password, salt))
+      .then((hash) => {
+        userInputs[1] = hash;
+      })
+      // eslint-disable-next-line no-undef
+      .then(() => addNewUser())
+      .catch(err => console.error(err));
   },
 
   checkEmailExists: (req, res, next) => {
@@ -38,9 +43,10 @@ module.exports = {
         if (data[0]) {
           return res.send({
             msg: 'email already exists',
-            signUpSuccess: false
+            signUpSuccess: false,
+
           });
-        } else return next();
+        } return next();
       })
       .catch(err => console.error(err));
   },
@@ -52,9 +58,9 @@ module.exports = {
         if (data[0]) {
           return res.send({
             msg: 'username already exists',
-            signUpSuccess: false
+            signUpSuccess: false,
           });
-        } else return next();
+        } return next();
       })
       .catch(err => console.error(err));
   },
@@ -62,7 +68,7 @@ module.exports = {
     const { email_address, password } = req.body;
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
       .then((data) => {
-        console.log('data', data)
+        console.log('data', data);
         const user = data[0];
         console.log('user****', user, '******');
         bcrypt.compare(password, user.password, (error, resolve) => {

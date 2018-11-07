@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import * as gameConfigActions from '../actions/gameConfigActions';
+import * as gamePlayActions from '../actions/gamePlayActions';
+
 
 const mapStateToProps = store => ({
   categoryList: store.gameMenuReducer.categoryList,
@@ -31,21 +33,24 @@ const mapDispatchToProps = dispatch => ({
   startGame: () => {
     dispatch(gameConfigActions.startGame());
   },
+  resetGame: () => {
+    dispatch(gamePlayActions.resetGame());
+  },
+  resetGameMenu: () => {
+    dispatch(gameConfigActions.resetGameMenu());
+  },
 });
 
 class GameMenuContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame } = this.props;
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
-    console.log(urlSelectedGame);
     setSelectedGame(urlSelectedGame);
+    resetGame();
+    resetGameMenu();
   }
-  
+
   render() {
     const {
       categoryList,
@@ -57,74 +62,33 @@ class GameMenuContainer extends Component {
       startGame,
       resetGameInitiation,
     } = this.props;
-    // console.log(' GameMenuContainer -> render -> categoryList', categoryList);
 
-    const divStyle = {
-      display: 'flex',
-      width: '200px',
-      lineHeight: '1.8em !important',
-      margin: '20px',
-      border: '5px solid pink',
-      justifyContent: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'black',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const difficultyBoxStyle = {
-      display: 'flex',
-      width: '400px',
-      lineHeight: '1.8em !important',
-      margin: '20px',
-      border: '5px solid pink',
-      justifyContent: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'black',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const difficultyStyle = {
-      display: 'inline',
-      width: '200px',
-      lineHeight: '1.3em !important',
-      margin: '1px',
-      justifyContent: 'center',
-      textAlign: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'black',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
-    const categories = categoryList.map((gameCatObj) => {
+    const categories = categoryList.map((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       return (
-        <div onClick={() => toggleGameCategory(category)} style={divStyle}>{category}</div>
+        <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
       );
     });
 
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
-      // let gameRoute = `/gameMenu/${selectedGame}`;
-      return <Redirect to={{pathname: '/game'}} />;
+      return <Redirect to={{ pathname: '/game' }} />;
     }
 
     return (
-      <div className="GameMenuContainer">
+      <div className="container">
+        <span className=""><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
         <h3>Game Menu Container</h3>
+        <div className="listContainer">
           {categories}
-          <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
-        <div style={difficultyBoxStyle}>
-          <div style={difficultyStyle} onClick={() => setGameDifficulty('easy')}>EASY</div>
-          <div style={difficultyStyle} onClick={() => setGameDifficulty('med')}>MED.</div>
-          <div style={difficultyStyle} onClick={() => setGameDifficulty('hard')}>HARD</div>
         </div>
-        <button type="button" onClick={() => startGame()}>START</button>
+        <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
+        <div className="difficultyBoxStyle">
+          <div className="difficultyStyle" onClick={() => setGameDifficulty('easy')}>EASY</div>
+          <div className="difficultyStyle" onClick={() => setGameDifficulty('med')}>MED.</div>
+          <div className="difficultyStyle" onClick={() => setGameDifficulty('hard')}>HARD</div>
+        </div>
+        <div className="buttonStyle" onClick={() => startGame()}>START</div>
       </div>
     );
   }

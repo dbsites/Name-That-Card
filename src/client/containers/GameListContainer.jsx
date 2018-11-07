@@ -30,18 +30,23 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class GameListContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   componentDidMount() {
-    const { getGameList } = this.props;
+    const { getGameList, resetGameSelection } = this.props;
+    resetGameSelection();
     getGameList();
   }
 
   render() {
-    const { gameList, setSelectedGame, ableToProceed, playClicked, selectedGame, resetGameSelection, successPlay } = this.props;
- 
+    const {
+      gameList,
+      setSelectedGame,
+      ableToProceed,
+      playClicked,
+      selectedGame,
+      resetGameSelection,
+      successPlay
+    } = this.props;
+
     const games = gameList.map((gameObj, i) => {
       const game = gameObj.game_name;
       console.log(' GameListContainer -> render -> game', game);
@@ -52,15 +57,17 @@ class GameListContainer extends Component {
 
     if (ableToProceed && playClicked) {
       resetGameSelection();
-      let gameMenuRoute = `/gameMenu/${selectedGame}`;
-      return <Redirect to={{pathname: gameMenuRoute}} />;
+      const gameMenuRoute = `/gameMenu/${selectedGame}`;
+      return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
     return (
-      <div className="GameListContainer" >
-        <h2>Game List Container</h2>
-        {games}
-        <button onClick={() => successPlay(selectedGame)} >PLAY</button>
+      <div className="container">
+        <h1>CHOOSE YOUR GAME</h1>
+        <div className="listContainer">
+          {games}
+        </div>
+        <div className="buttonStyle" onClick={() => successPlay(selectedGame)}>PLAY</div>
       </div>
     );
   }

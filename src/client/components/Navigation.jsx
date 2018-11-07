@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 
 const Navigation = (props) => {
   const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame } = props;
 
   let logInOutButton = isLoggedIn
-    ? <div className=""><button className="" onClick={() => logoutUser()}>Logout</button></div>
+    ? <div className=""><NavLink onClick={() => logoutUser()} to="">Logout</NavLink></div>
     : <div className=""><NavLink to="/login">Login</NavLink></div>;
 
-  let navUsername = isLoggedIn
+  const navUsername = isLoggedIn
     ? <div className="nav-item nav-user-item"><span id="loginuser-text">Welcome, {loggedInUser}</span></div>
     : '';
 
@@ -38,23 +37,25 @@ const Navigation = (props) => {
     logInOutButton = '';
     homeBtn = '';
     signUpButton = '';
-    xBtn = <div className="" ><NavLink to="/gameMenu">X</NavLink></div> ;
+    const selectedGameRoute = `/gameMenu/${selectedGame}`
+    xBtn = <div className=""><NavLink to={selectedGameRoute}>X</NavLink></div>;
   } else if (window.location.pathname === '/login') {
     leaderBoard = '';
     logInOutButton = '';
-    xBtn = '';    
+    xBtn = '';
   } else if (window.location.pathname === '/signup') {
     leaderBoard = '';
     signUpButton = '';
     xBtn = '';
-  }            
-  return(
+  }
+
+  return (
     <div className="navigation">
       {logo}
-      {homeBtn} 
-      {xBtn}               
-      <div id="menu-container">
-        <div id="right-menu">
+      <div id="nav-container">
+        <div className="right-menu">
+          {homeBtn}
+          {xBtn}
           {navUsername}
           {logInOutButton}
           {signUpButton}
@@ -63,6 +64,6 @@ const Navigation = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default Navigation;
