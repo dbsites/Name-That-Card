@@ -50,4 +50,17 @@ app.post('/wrongAnswers', playController.wrongAnswers);
 
 app.post('/saveScore', playController.saveScore);
 
+/*======================= Admin ==========================*/
+app.get('/admin',
+  sessionController.checkAdminSession
+);
+
+app.post('/admin/login',
+  authController.verifyAdmin,
+  cookieController.setAdminCookie,
+  sessionController.createAdminSession,
+  (req, res) => {
+    res.status(200).json({ username: res.locals.verifiedAdmin.admin_username, loginSuccess: true, msg: 'login success' });
+  });
+
 app.listen(3000, () => console.log('server is listening on 3000'));
