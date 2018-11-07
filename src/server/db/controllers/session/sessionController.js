@@ -29,4 +29,31 @@ module.exports = {
         res.status(500).send();
       });
   },
+
+  checkAdminSession: (req, res, next) => {
+    if (req.cookies.admin) {
+      // If a matching session exists, set loginStatus to 'success'
+      db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions])
+        .then(session => {
+          console.log('*******', session);
+          res.json({ loggedIn: true });
+        })
+        .catch((err) => {
+          next();
+        })
+    } else {
+      next();
+    }
+  },
+
+  createAdminSession: (req, res, next) => {
+    // Send query to Postgres DB to add user to users
+    console.log('here in admin Session');
+    console.log('body:', req.body);
+    db.none('INSERT INTO "game.dbo".adminSessions(admin_id,ssid_sessions) VALUES ($1, $2)', [req.body.admin_id, req.body.ssid_sessions])
+      .then(result => next())
+      .catch((err) => {
+        res.status(500).send();
+      });
+  },
 };
