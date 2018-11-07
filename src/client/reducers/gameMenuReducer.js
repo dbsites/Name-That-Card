@@ -8,6 +8,7 @@ const initialState = {
   selectedYearRange: [],
   ableToStartGame: false,
   startClicked: false,
+  renderScoreFooter: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -66,6 +67,7 @@ export default function (previousState = initialState, action) {
       stateCopy = Object.assign({}, previousState);
       if (stateCopy.ableToStartGame) {
         stateCopy.startClicked = true;
+        stateCopy.renderScoreFooter = true;
       }
       return stateCopy;
     }
@@ -84,6 +86,7 @@ export default function (previousState = initialState, action) {
       stateCopy.selectedYearRange = [];
       stateCopy.ableToStartGame = false;
       stateCopy.startClicked = false;
+      stateCopy.renderScoreFooter = false;
       return stateCopy;
     }
 

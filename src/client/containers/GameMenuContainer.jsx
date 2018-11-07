@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 
@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
   },
   resetGameMenu: () => {
     dispatch(gameConfigActions.resetGameMenu());
-  }
+  },
 });
 
 class GameMenuContainer extends Component {
@@ -46,7 +46,6 @@ class GameMenuContainer extends Component {
     const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
-    console.log(urlSelectedGame);
     setSelectedGame(urlSelectedGame);
     resetGame();
     resetGameMenu();
@@ -63,7 +62,6 @@ class GameMenuContainer extends Component {
       startGame,
       resetGameInitiation,
     } = this.props;
-    // console.log(' GameMenuContainer -> render -> categoryList', categoryList);
 
     const divStyle = {
       display: 'flex',
@@ -107,6 +105,20 @@ class GameMenuContainer extends Component {
       textShadow: '0 0 45px #6fcbdc',
     };
 
+    const buttonStyle = {
+      display: 'flex',
+      width: '200px',
+      lineHeight: '1.8em !important',
+      margin: '20px',
+      border: '5px solid black',
+      justifyContent: 'center',
+      borderRadius: '15px',
+      color: 'white',
+      backgroundColor: 'pink',
+      userSelect: 'none',
+      textShadow: '0 0 45px #6fcbdc',
+    };
+
     const categories = categoryList.map((gameCatObj) => {
       const category = gameCatObj.game_category;
       return (
@@ -116,13 +128,13 @@ class GameMenuContainer extends Component {
 
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
-      // let gameRoute = `/gameMenu/${selectedGame}`;
       return <Redirect to={{ pathname: '/game' }} />;
     }
 
     return (
       <div className="GameMenuContainer">
         <h3>Game Menu Container</h3>
+        <span className=""><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
         {categories}
         <div onClick={toggleAllGameCategories} style={divStyle}>ALL</div>           
         <div style={difficultyBoxStyle}>
@@ -130,7 +142,7 @@ class GameMenuContainer extends Component {
           <div style={difficultyStyle} onClick={() => setGameDifficulty('med')}>MED.</div>
           <div style={difficultyStyle} onClick={() => setGameDifficulty('hard')}>HARD</div>
         </div>
-        <button type="button" onClick={() => startGame()}>START</button>
+        <div style={buttonStyle} onClick={() => startGame()}>START</div>
       </div>
     );
   }

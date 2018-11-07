@@ -104,6 +104,7 @@ export const getCardsInfo = (cardInfoObj) => {
   };
 };
 
+
 export const resetGameMenu = () => ({
   type: types.RESET_GAME_MENU,
 });

@@ -30,12 +30,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class GameListContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    const { getGameList } = this.props;
+    const { getGameList, resetGameSelection } = this.props;
+    resetGameSelection();
     getGameList();
   }
 
@@ -64,11 +61,25 @@ class GameListContainer extends Component {
       return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
+    const buttonStyle = {
+      display: 'flex',
+      width: '200px',
+      lineHeight: '1.8em !important',
+      margin: '20px',
+      border: '5px solid black',
+      justifyContent: 'center',
+      borderRadius: '15px',
+      color: 'white',
+      backgroundColor: 'pink',
+      userSelect: 'none',
+      textShadow: '0 0 45px #6fcbdc',
+    };
+
     return (
-      <div className="GameListContainer" >
+      <div className="GameListContainer">
         <h2>Game List Container</h2>
         {games}
-        <button onClick={() => successPlay(selectedGame)} >PLAY</button>
+        <div style={buttonStyle} onClick={() => successPlay(selectedGame)}>PLAY</div>
       </div>
     );
   }

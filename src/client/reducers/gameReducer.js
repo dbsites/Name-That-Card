@@ -11,13 +11,14 @@ const initialState = {
   nextClicked: false,
   gameLogo: '',
   displayResults: false,
+  gameStarted: false,
 };
 
 export default function (previousState = initialState, action) {
   let stateCopy;
 
   switch (action.type) {
-    case types.POPULATE_CARDS_ARRAY: {
+    case types.POPULATE_CARDS_ARRAY: { 
       stateCopy = Object.assign({}, previousState);
       stateCopy.cards = action.payload;
       console.log(' stateCopy.cards', stateCopy.cards);
@@ -77,6 +78,7 @@ export default function (previousState = initialState, action) {
       stateCopy.nextClicked = false;
       stateCopy.gameLogo = '';
       stateCopy.displayResults = false;
+      stateCopy.gameStarted = false;
       return stateCopy;
     }
 
