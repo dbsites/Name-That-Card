@@ -45,8 +45,6 @@ app.post('/signup',
 app.get('/gameList', gameController.gameList);
 app.get('/gameMenu/:game', gameController.gameMenu);
 app.post('/loadGame', playController.loadGame);
-  (req, res) => res.status(200).json({ signUpSuccess: true }));
-
 
 app.post('/wrongAnswers', playController.wrongAnswers);
 
