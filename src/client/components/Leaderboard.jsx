@@ -7,6 +7,7 @@ const Leaderboard = (props) => {
 
   return (
     <div>
+      <h1>{selectedGame}</h1>
       <div className=""><NavLink to={selectedGameRoute}>X</NavLink></div>
       <div>Leader Board</div>
     </div>
