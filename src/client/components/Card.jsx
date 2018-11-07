@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty } = props;
+  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, getWrongAnswers } = props;
   let answers = wrongAnswers.slice();
 
   const shuffledAnswers = (answersArr) => {
@@ -35,30 +35,22 @@ const Card = (props) => {
     getWrongAnswers(wrongAnswerInfo);
   }
 
-  const divStyle = {
-    display: 'flex',
-    width: '200px',
-    lineHeight: '1.8em !important',
-    margin: '20px',
-    border: '5px solid pink',
-    justifyContent: 'center',
-    borderRadius: '15px',
-    color: 'white',
-    backgroundColor: 'black',
-    userSelect: 'none',
-    textShadow: '0 0 45px #6fcbdc',
-  };
-
   return (
-    <div>
+    <div className="container">
       <div>CARD</div>
-      {picture}
+      <div className="card">
+        {picture}
+      </div>
       {mask}
-      <div>
-        <div onClick={() => selectAnswer(answers[0])} style={divStyle}>{answers[0]}</div>
-        <div onClick={() => selectAnswer(answers[1])} style={divStyle}>{answers[1]}</div>
-        <div onClick={() => selectAnswer(answers[2])} style={divStyle}>{answers[2]}</div>
-        <div onClick={() => selectAnswer(answers[3])} style={divStyle}>{answers[3]}</div>
+      <div className="answersBox">
+        <div>
+          <div id="answers" onClick={() => selectAnswer(answers[0])}>{answers[0]}</div>
+          <div id="answers" onClick={() => selectAnswer(answers[1])}>{answers[1]}</div>
+        </div>
+        <div>
+          <div id="answers" onClick={() => selectAnswer(answers[2])}>{answers[2]}</div>
+          <div id="answers" onClick={() => selectAnswer(answers[3])}>{answers[3]}</div>
+        </div>
       </div>
     </div>
   );

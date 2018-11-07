@@ -1,15 +1,23 @@
 /* config.css */
 
 :root {
-  --baseColor: #606468;
+  // --baseColor: #606468;
+  --baseColor: rgb(196, 196, 196);
 }
 
 /* helpers/align.css */
 
-.align {
-  align-items: left;
+// .align {
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
+
+.right-menu {
+  align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -129,7 +137,7 @@ input {
   transition: background-color 0.3s;
 }
 
-input[type='submit'] {
+input[type='button'] {
   cursor: pointer;
 }
 
@@ -139,7 +147,7 @@ input[type='submit'] {
 
 .form input[type='password'],
 .form input[type='text'],
-.form input[type='submit'] {
+.form input[type='button'] {
   width: 100%;
 }
 
@@ -175,7 +183,7 @@ input[type='submit'] {
 .login label,
 .login input[type='text'],
 .login input[type='password'],
-.login input[type='submit'] {
+.login input[type='button'] {
   border-radius: var(--loginBorderRadus);
   padding: 1rem;
 }
@@ -202,15 +210,15 @@ input[type='submit'] {
   background-color: var(--loginInputHoverBackgroundColor);
 }
 
-.login input[type='submit'] {
+.login input[type='button'] {
   background-color: var(--loginSubmitBackgroundColor);
   color: var(--loginSubmitColor);
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.login input[type='submit']:focus,
-.login input[type='submit']:hover {
+.login input[type='button']:focus,
+.login input[type='button']:hover {
   background-color: var(--loginSubmitHoverBackgroundColor);
 }
 

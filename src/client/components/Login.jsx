@@ -17,7 +17,7 @@ const Login = (props) => {
 
   return (
     <div className="grid">
-      <h3>Login</h3>
+      <h1>Login</h1>
       <form class="form login">
         <div class="form__field">
           <label for="login__email"><svg class="icon"></svg><span class="hidden">Email</span></label>
@@ -32,12 +32,11 @@ const Login = (props) => {
         <input id="email" className="loginInput" type="text" onChange={updateLoginEmail} /> */}
         {/* <p className="loginText">Password: </p>
         <input id="password" className="loginInput" type="password" onChange={updateLoginPassword} /> */}
-        <br />
         <div class="text--center">
           {forgotPassword}
         </div>
         <div class="form__field">
-          <input type="submit" onClick={() => submitLogin(loginInfoObj)} value="Login" />
+          <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
         </div>
       </form>
       <p class="text--center">Want to join the leaderboard? <a href="#">Sign up now</a> <svg class="icon"></svg></p>

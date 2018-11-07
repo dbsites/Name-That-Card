@@ -1,0 +1,141 @@
+// menu buttons
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttonStyle {
+  display: flex;
+  width: 200px;
+  line-height: 1.8em;
+  margin: 20px;
+  border: 5px solid pink;
+  justify-content: center;
+  border-radius: 50px;
+  color: black;
+  background-color: white;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+}
+
+.listButtonStyle {
+  display: flex;
+  width: 200px;
+  line-height: 1.8em;
+  margin: 20px;
+  border: 5px solid pink;
+  justify-content: center;
+  border-radius: 50px;
+  color: black;
+  background-color: white;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+};
+
+.difficultyBoxStyle {
+  display: flex;
+  width: 400px;
+  line-height: 1.8em;
+  margin: 20px;
+  border: 5px solid pink;
+  justify-content: center;
+  border-radius: 50px;
+  color: black;
+  background-color: white;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+}
+
+.difficultyStyle {
+  display: flex;
+  width: 200px;
+  line-height: 1.8em;
+  margin: 1px;
+  justify-content: center;
+  text-align: center;
+  // border-radius: 15px;
+  color: white;
+  background-color: black;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+}
+
+// game buttons
+
+.listContainer {
+  display: flex;
+  width: 50%;
+  line-height: 1.8em;
+  margin: 20px;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+  color: white;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answersBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  line-height: 1.8em;
+  margin: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: white;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+};
+
+#answers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  // flex-wrap: wrap;
+  background-color: white;
+  width: 200px;
+  font-size: 20px;
+  color: black;
+  border: 5px solid pink;
+  border-radius: 50px;
+  margin: 10px 10px 20px 10px;
+  padding: 10px 10px;
+}
+
+.gameButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  width: 10%;
+  line-height: 1.8em;
+  margin: 20px;
+  border: 5px solid pink;
+  justify-content: center;
+  border-radius: 50px;
+  color: black;
+  background-color: white;
+  user-select: none;
+  text-shadow: 0 0 45px #6fcbdc;
+}

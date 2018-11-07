@@ -130,7 +130,6 @@ export const getWrongAnswers = (info) => {
   };
 };
 
-
 export const resetGameMenu = () => ({
   type: types.RESET_GAME_MENU,
 });

@@ -31,7 +31,7 @@ const Signup = (props) =>  {
           <input id="signup_username" type="text" name="email" class="form__input" placeholder="Email" onChange={updateSignUpEmail} required />
         </div>
         <div class="form__field">
-          <input type="submit" onClick={() => submitSignUp(signUpInfoObj)} value="Sign Up" />
+          <input type="button" onClick={() => submitSignUp(signUpInfoObj)} value="Sign Up" />
         </div>
         <div>
           {errorText}

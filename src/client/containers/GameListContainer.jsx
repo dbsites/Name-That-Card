@@ -61,25 +61,13 @@ class GameListContainer extends Component {
       return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
-    const buttonStyle = {
-      display: 'flex',
-      width: '200px',
-      lineHeight: '1.8em !important',
-      margin: '20px',
-      border: '5px solid black',
-      justifyContent: 'center',
-      borderRadius: '15px',
-      color: 'white',
-      backgroundColor: 'pink',
-      userSelect: 'none',
-      textShadow: '0 0 45px #6fcbdc',
-    };
-
     return (
-      <div className="GameListContainer">
-        <h2>Game List Container</h2>
-        {games}
-        <div style={buttonStyle} onClick={() => successPlay(selectedGame)}>PLAY</div>
+      <div className="container">
+        <h1>CHOOSE YOUR GAME</h1>
+        <div className="listContainer">
+          {games}
+        </div>
+        <div className="buttonStyle" onClick={() => successPlay(selectedGame)}>PLAY</div>
       </div>
     );
   }
