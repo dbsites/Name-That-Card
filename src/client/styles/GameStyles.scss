@@ -16,56 +16,63 @@
 
 .buttonStyle {
   display: flex;
-  width: 200px;
+  width: 15%;
   line-height: 1.8em;
+  font-size: 150%;
+  font-weight: 700;
   margin: 20px;
-  border: 5px solid pink;
+  border: 5px solid #ea4c88;
   justify-content: center;
   border-radius: 50px;
-  color: black;
-  background-color: white;
+  color: white;
+  // background-color: white;
   user-select: none;
   text-shadow: 0 0 45px #6fcbdc;
 }
 
 .listButtonStyle {
   display: flex;
-  width: 200px;
+  width: 15%;
   line-height: 1.8em;
-  margin: 20px;
-  border: 5px solid pink;
+  font-size: 150%;
+  font-weight: 700;
+  margin: 40px;
+  border: 5px solid #ea4c88;
   justify-content: center;
   border-radius: 50px;
-  color: black;
-  background-color: white;
+  color: white;
+  // background-color: white;
   user-select: none;
   text-shadow: 0 0 45px #6fcbdc;
 };
 
 .difficultyBoxStyle {
   display: flex;
-  width: 400px;
+  width: 50%;
   line-height: 1.8em;
+  font-size: 150%;
   margin: 20px;
-  border: 5px solid pink;
+  border: 5px solid #ea4c88;
   justify-content: center;
   border-radius: 50px;
   color: black;
-  background-color: white;
+  // background-color: white;
   user-select: none;
   text-shadow: 0 0 45px #6fcbdc;
 }
 
 .difficultyStyle {
   display: flex;
-  width: 200px;
+  width: 100%;
   line-height: 1.8em;
+  font-size: 150%;
+  font-weight: 700;
   margin: 1px;
   justify-content: center;
   text-align: center;
   // border-radius: 15px;
   color: white;
-  background-color: black;
+  // background-color: black;
   user-select: none;
   text-shadow: 0 0 45px #6fcbdc;
 }
@@ -74,7 +81,7 @@
 
 .listContainer {
   display: flex;
-  width: 50%;
+  width: 100%;
   line-height: 1.8em;
   margin: 20px;
   justify-content: center;
@@ -112,11 +119,12 @@
   justify-content: center;
   justify-items: center;
   // flex-wrap: wrap;
-  background-color: white;
+  // background-color: white;
   width: 200px;
   font-size: 20px;
-  color: black;
-  border: 5px solid pink;
+  font-weight: 700;
+  color: white;
+  border: 5px solid #ea4c88;
   border-radius: 50px;
   margin: 10px 10px 20px 10px;
   padding: 10px 10px;
@@ -127,15 +135,17 @@
   align-items: center;
   justify-content: center;
   justify-items: center;
-  flex-wrap: wrap;
-  width: 10%;
+  // flex-wrap: wrap;
+  width: 15%;
   line-height: 1.8em;
+  font-size: 150%;
+  font-weight: 700;
   margin: 20px;
-  border: 5px solid pink;
+  border: 5px solid #ea4c88;
   justify-content: center;
   border-radius: 50px;
-  color: black;
-  background-color: white;
+  color: white;
+  // background-color: white;
   user-select: none;
   text-shadow: 0 0 45px #6fcbdc;
 }
