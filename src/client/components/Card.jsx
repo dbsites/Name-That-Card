@@ -1,9 +1,8 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { wrongAnswers, cardInfo, selectAnswer } = props;
+  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty } = props;
   let answers = wrongAnswers.slice();
-  console.log('cardInfo on card comp ', cardInfo);
 
   const shuffledAnswers = (answersArr) => {
     let counter = answersArr.length;
@@ -21,12 +20,19 @@ const Card = (props) => {
   let mask = '';
 
   if (cardInfo) {
+    console.log('cardInfo ', cardInfo);
     answers.push(cardInfo.card_name);
     answers = shuffledAnswers(answers);
     const imgSrc = cardInfo.image_location_temp;
     const maskImgSrc = cardInfo.mask;
     picture = <img src={imgSrc} alt="MASK ON" />;
     mask = <img src={maskImgSrc} alt="MASK OFF MASK OFF" />;
+    const wrongAnswerInfo = {
+      card_id: cardInfo.card_id,
+      game: selectedGame,
+      difficulty_level: selectedDifficulty,
+    }
+    getWrongAnswers(wrongAnswerInfo);
   }
 
   const divStyle = {

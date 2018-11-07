@@ -53,7 +53,7 @@ class GameContainer extends Component {
     let clickFunc = goToNext;
     let title = 'GAME';
     let buttonText = 'NEXT';
-    let content = <Card wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
+    let content = <Card selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
     if (cards.length === 1) {
       clickFunc = finishGame;

@@ -16,17 +16,32 @@ const Login = (props) => {
   const forgotPassword = <span className=""><NavLink to="/password">Forgot Password</NavLink></span>;
 
   return (
-    <div className="login">
+    <div className="grid">
       <h3>Login</h3>
-      <p className="loginText">Email: </p>
-      <input id="email" className="loginInput" type="text" onChange={updateLoginEmail} />
-      <p className="loginText">Password: </p>
-      <input id="password" className="loginInput" type="password" onChange={updateLoginPassword} />
-      <br />
-      {forgotPassword}
-      <br />
-      <br />
-      <button className="loginButton" onClick={() => submitLogin(loginInfoObj)} >Login</button>
+      <form class="form login">
+        <div class="form__field">
+          <label for="login__email"><svg class="icon"></svg><span class="hidden">Email</span></label>
+          <input id="login__email" type="text" name="email" class="form__input" placeholder="Email" onChange={updateLoginEmail} required />
+        </div>
+        <div class="form__field">
+          <label for="login__password"><svg class="icon"></svg><span class="hidden">Password</span></label>
+          <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" onChange={updateLoginPassword} required />
+        </div>
+
+        {/* <p className="loginText">Email: </p>
+        <input id="email" className="loginInput" type="text" onChange={updateLoginEmail} /> */}
+        {/* <p className="loginText">Password: </p>
+        <input id="password" className="loginInput" type="password" onChange={updateLoginPassword} /> */}
+        <br />
+        <div class="text--center">
+          {forgotPassword}
+        </div>
+        <div class="form__field">
+          <input type="submit" onClick={() => submitLogin(loginInfoObj)} value="Login" />
+        </div>
+      </form>
+      <p class="text--center">Want to join the leaderboard? <a href="#">Sign up now</a> <svg class="icon"></svg></p>
+      {/* <button className="loginButton" onClick={() => submitLogin(loginInfoObj)} >Login</button> */}
     </div>
   );
 };
