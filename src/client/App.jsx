@@ -11,6 +11,8 @@ import Footer from './components/Footer.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
+import LeaderBoard from './components/Leaderboard.jsx';
+import AdminContainer from './containers/AdminContainer.jsx';
 import * as userActions from './actions/userActions';
 
 const mapStateToProps = store => ({
@@ -58,18 +60,22 @@ const App = (props) => {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className="align">
         <Navigation logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
           <Route path='/' component={GameListContainer} exact />
           <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/game' component={GameContainer} />
+          <Route path='/leaderBoard' render={(props) =>
+          <LeaderBoard {...props} selectedGame={selectedGame} />}
+          />
           <Route path='/login' render={(props) =>
           <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
           />
           <Route path='/signup' render={(props) =>
           <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
           />
+          <Route path='/admin' component={AdminContainer} />
           <Route path='/about' component={About} />
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />

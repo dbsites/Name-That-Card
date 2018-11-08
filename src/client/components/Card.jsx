@@ -1,9 +1,8 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { wrongAnswers, cardInfo, selectAnswer } = props;
+  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, getWrongAnswers } = props;
   let answers = wrongAnswers.slice();
-  console.log('cardInfo on card comp ', cardInfo);
 
   const shuffledAnswers = (answersArr) => {
     let counter = answersArr.length;
@@ -21,38 +20,37 @@ const Card = (props) => {
   let mask = '';
 
   if (cardInfo) {
+    console.log('cardInfo ', cardInfo);
     answers.push(cardInfo.card_name);
     answers = shuffledAnswers(answers);
     const imgSrc = cardInfo.image_location_temp;
     const maskImgSrc = cardInfo.mask;
     picture = <img src={imgSrc} alt="MASK ON" />;
     mask = <img src={maskImgSrc} alt="MASK OFF MASK OFF" />;
+    const wrongAnswerInfo = {
+      card_id: cardInfo.card_id,
+      game: selectedGame,
+      difficulty_level: selectedDifficulty,
+    }
+    getWrongAnswers(wrongAnswerInfo);
   }
 
-  const divStyle = {
-    display: 'flex',
-    width: '200px',
-    lineHeight: '1.8em !important',
-    margin: '20px',
-    border: '5px solid pink',
-    justifyContent: 'center',
-    borderRadius: '15px',
-    color: 'white',
-    backgroundColor: 'black',
-    userSelect: 'none',
-    textShadow: '0 0 45px #6fcbdc',
-  };
-
   return (
-    <div>
+    <div className="container">
       <div>CARD</div>
-      {picture}
+      <div className="card">
+        {picture}
+      </div>
       {mask}
-      <div>
-        <div onClick={() => selectAnswer(answers[0])} style={divStyle}>{answers[0]}</div>
-        <div onClick={() => selectAnswer(answers[1])} style={divStyle}>{answers[1]}</div>
-        <div onClick={() => selectAnswer(answers[2])} style={divStyle}>{answers[2]}</div>
-        <div onClick={() => selectAnswer(answers[3])} style={divStyle}>{answers[3]}</div>
+      <div className="answersBox">
+        <div>
+          <li id="answers" onClick={() => selectAnswer(answers[0])}>{answers[0]}</li>
+          <li id="answers" onClick={() => selectAnswer(answers[1])}>{answers[1]}</li>
+        </div>
+        <div>
+          <li id="answers" onClick={() => selectAnswer(answers[2])}>{answers[2]}</li>
+          <li id="answers" onClick={() => selectAnswer(answers[3])}>{answers[3]}</li>
+        </div>
       </div>
     </div>
   );

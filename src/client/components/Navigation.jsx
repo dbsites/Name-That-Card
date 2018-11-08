@@ -5,7 +5,7 @@ const Navigation = (props) => {
   const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame } = props;
 
   let logInOutButton = isLoggedIn
-    ? <div className=""><button className="" type="button" onClick={() => logoutUser()}>Logout</button></div>
+    ? <div><NavLink onClick={() => logoutUser()} to="">Logout</NavLink></div>
     : <div className=""><NavLink to="/login">Login</NavLink></div>;
 
   const navUsername = isLoggedIn
@@ -16,7 +16,7 @@ const Navigation = (props) => {
     ? ''
     : <div className="nav-item nav-button-item"><NavLink to="/signup">Sign Up</NavLink></div>;
 
-  let homeBtn = <div className=""><NavLink to="/">Home</NavLink></div>;
+  let homeBtn = <div><NavLink to="/">Home</NavLink></div>;
 
   let xBtn;
 
@@ -38,7 +38,7 @@ const Navigation = (props) => {
     homeBtn = '';
     signUpButton = '';
     const selectedGameRoute = `/gameMenu/${selectedGame}`
-    xBtn = <div className=""><NavLink to={selectedGameRoute}>X</NavLink></div>;
+    xBtn = <div><NavLink to={selectedGameRoute}>X</NavLink></div>;
   } else if (window.location.pathname === '/login') {
     leaderBoard = '';
     logInOutButton = '';
@@ -47,20 +47,24 @@ const Navigation = (props) => {
     leaderBoard = '';
     signUpButton = '';
     xBtn = '';
+  } else if (window.location.pathname === '/admin') {
+    leaderBoard = '';
+    signUpButton = '';
+    xBtn = '';
+    logInOutButton = '';
+    logo = '';
   }
 
   return (
     <div className="navigation">
       {logo}
-      {homeBtn}
-      {xBtn}
-      <div id="menu-container">
-        <div id="right-menu">
-          {navUsername}
-          {logInOutButton}
-          {signUpButton}
-          {leaderBoard}
-        </div>
+      <div className="right-menu">
+        {homeBtn}
+        {xBtn}
+        {navUsername}
+        {logInOutButton}
+        {signUpButton}
+        {leaderBoard}
       </div>
     </div>
   );

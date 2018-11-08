@@ -13,7 +13,7 @@ function EasyAnswers(id) {
           WHERE c.card_id = $1
           ORDER BY RANDOM()
           LIMIT 3;
-          `, [id]) //.then(wrongAnswers => console.log('wrongAnswers', wrongAnswers))
+          `, [id]) 
 })
     .then(wrongAnswers => console.log('easy answers ****** '))
     .catch(err => console.error(err));

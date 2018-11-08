@@ -30,12 +30,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class GameListContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    const { getGameList } = this.props;
+    const { getGameList, resetGameSelection } = this.props;
+    resetGameSelection();
     getGameList();
   }
 
@@ -54,7 +51,7 @@ class GameListContainer extends Component {
       const game = gameObj.game_name;
       console.log(' GameListContainer -> render -> game', game);
       return (
-        <GameType key={i} setSelectedGame={setSelectedGame} game={game} />
+        <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} game={game} />
       );
     });
 
@@ -65,10 +62,16 @@ class GameListContainer extends Component {
     }
 
     return (
-      <div className="GameListContainer" >
-        <h2>Game List Container</h2>
-        {games}
-        <button onClick={() => successPlay(selectedGame)} >PLAY</button>
+      <div>
+        <h1 className="headers">CHOOSE YOUR GAME</h1>
+        <div className="list">
+          {/* <ul className="list"> */}
+            {games}
+          {/* </ul> */}
+        </div>
+        <div className="container">
+          <div className="buttonStyle" onClick={() => successPlay(selectedGame)}>PLAY</div>
+        </div>
       </div>
     );
   }

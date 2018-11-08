@@ -5,7 +5,7 @@ const Signup = (props) =>  {
 
   const signUpInfoObj = {
     username: signUpInputUsername,
-    email: signUpInputEmail,
+    email_address: signUpInputEmail,
     password: signUpInputPassword,
   };
 
@@ -15,18 +15,28 @@ const Signup = (props) =>  {
   }
 
   return (
-    <div className="SignUpContainer">
+    <div className="grid">
       <h1>Sign Up</h1>
-      <p className="SignUpText">Username: </p>
-      <input id="username" className="SignUpInput" type="text" onChange={updateSignUpUsername} />
-      <p className="SignUpText">Password: </p>
-      <input id="password" className="SignUpInput" type="password" onChange={updateSignUpPassword} />
-      <p className="SignUpText">Email: </p>
-      <input id="email" className="SignUpInput" onChange={updateSignUpEmail} />
-      <br />
-      <br />
-      <button className="SignUpButton" type="button" onClick={() => submitSignUp(signUpInfoObj)}>Sign up</button>
-      {errorText}
+      <form class="form login">
+        <div class="form__field">
+          <label for="signup_username"><svg class="icon"></svg><span class="hidden">Username</span></label>
+          <input id="signup_username" type="text" name="username" class="form__input" placeholder="Username" onChange={updateSignUpUsername} required />
+        </div>
+        <div class="form__field">
+          <label for="signup_password"><svg class="icon"></svg><span class="hidden">Password</span></label>
+          <input id="signup_username" type="password" name="password" class="form__input" placeholder="Password" onChange={updateSignUpPassword} required />
+        </div>
+        <div class="form__field">
+          <label for="signup_email"><svg class="icon"></svg><span class="hidden">Email</span></label>
+          <input id="signup_username" type="text" name="email" class="form__input" placeholder="Email" onChange={updateSignUpEmail} required />
+        </div>
+        <div class="form__field">
+          <input type="button" onClick={() => submitSignUp(signUpInfoObj)} value="Sign Up" />
+        </div>
+        <div>
+          {errorText}
+        </div>
+      </form>
     </div>
   );
 };
