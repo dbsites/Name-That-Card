@@ -24,6 +24,7 @@ module.exports = {
         res.locals.cards = cards;
         return res.send(cards);
       })
+      
       .catch(err => console.error(err));
   },
 

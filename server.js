@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const authController = require('./src/server/db/controllers/user/authController');
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
-const playing = require('./src/server/db/controllers/game/playing');
+const promises = require('./src/server/db/controllers/game/promises');
  
 const finalPlay = require('./src/server/db/controllers/game/finalPlayController');
 
@@ -45,5 +45,6 @@ app.post('/loadGame', finalPlay.loadGame);
 app.post('/easy', finalPlay.EasyAnswers); 
 app.post('/medium', finalPlay.MediumAnswers); 
 app.post('/hard', finalPlay.hardAnswers); 
+app.post('/promises', promises.loadGame)
 
 app.listen(3000, () => console.log('server is listening on 3000'));
