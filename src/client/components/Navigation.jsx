@@ -5,50 +5,43 @@ const Navigation = (props) => {
   const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame } = props;
 
   let logInOutButton = isLoggedIn
-    ? <div><NavLink onClick={() => logoutUser()} to="">Logout</NavLink></div>
-    : <div className=""><NavLink to="/login">Login</NavLink></div>;
+    ? <div className="menu-item"><NavLink onClick={() => logoutUser()} to="">Logout</NavLink></div>
+    : <div className="menu-item"><NavLink to="/login">Login</NavLink></div>;
 
   const navUsername = isLoggedIn
-    ? <div className="nav-item nav-user-item"><span id="loginuser-text">Welcome, {loggedInUser}</span></div>
+    ? <div className="menu-item"><span id="loginuser-text">Welcome, {loggedInUser}</span></div>
     : '';
 
   let signUpButton = isLoggedIn
     ? ''
-    : <div className="nav-item nav-button-item"><NavLink to="/signup">Sign Up</NavLink></div>;
+    : <div className="menu-item"><NavLink to="/signup">Sign Up</NavLink></div>;
 
-  let homeBtn = <div><NavLink to="/">Home</NavLink></div>;
+  let homeBtn = <div className="menu-item"><NavLink to="/">Home</NavLink></div>;
 
   let xBtn;
 
-  let logo = <p>General Logo</p>;
-
-  let leaderBoard = '';
+  let logo = <div className="logo">NTC</div>;
 
   if (window.location.pathname === '/') {
-    leaderBoard = '';
     homeBtn = '';
     xBtn = '';
   } else if (window.location.pathname === '/gameMenu') {
-    logo = <p>Game Logo</p>;
-    leaderBoard = '<LeaderBoard selectedGame={selectedGame}/>';
+    logo;
     xBtn = '';
   } else if (window.location.pathname === '/game') {
-    logo = <p>Game Logo</p>;
+    logo;
     logInOutButton = '';
     homeBtn = '';
     signUpButton = '';
     const selectedGameRoute = `/gameMenu/${selectedGame}`
-    xBtn = <div><NavLink to={selectedGameRoute}>X</NavLink></div>;
+    xBtn = <div className="menu-item"><NavLink to={selectedGameRoute}>X</NavLink></div>;
   } else if (window.location.pathname === '/login') {
-    leaderBoard = '';
     logInOutButton = '';
     xBtn = '';
   } else if (window.location.pathname === '/signup') {
-    leaderBoard = '';
     signUpButton = '';
     xBtn = '';
   } else if (window.location.pathname === '/admin') {
-    leaderBoard = '';
     signUpButton = '';
     xBtn = '';
     logInOutButton = '';
@@ -64,7 +57,6 @@ const Navigation = (props) => {
         {navUsername}
         {logInOutButton}
         {signUpButton}
-        {leaderBoard}
       </div>
     </div>
   );

@@ -44,12 +44,12 @@ const Card = (props) => {
       {mask}
       <div className="answersBox">
         <div>
-          <li id="answers" onClick={() => selectAnswer(answers[0])}>{answers[0]}</li>
-          <li id="answers" onClick={() => selectAnswer(answers[1])}>{answers[1]}</li>
+          <li id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</li>
+          <li id="answer2" onClick={() => selectAnswer(answers[1])}>{answers[1]}</li>
         </div>
         <div>
-          <li id="answers" onClick={() => selectAnswer(answers[2])}>{answers[2]}</li>
-          <li id="answers" onClick={() => selectAnswer(answers[3])}>{answers[3]}</li>
+          <li id="answer3" onClick={() => selectAnswer(answers[2])}>{answers[2]}</li>
+          <li id="answer4" onClick={() => selectAnswer(answers[3])}>{answers[3]}</li>
         </div>
       </div>
     </div>

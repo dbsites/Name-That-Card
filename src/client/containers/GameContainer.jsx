@@ -83,9 +83,9 @@ class GameContainer extends Component {
     }
 
     return (
-      <div>
-        <h4 className="headers">{title}</h4>
-        <div className="list">
+      <div className="MainContainer">
+        {/* <h4 className="headers">{title}</h4> */}
+        <div className="container">
           {content}
         </div>
         <div className="container">
