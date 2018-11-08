@@ -42,6 +42,8 @@ app.get('/gameMenu/:game', gameController.gameMenu);
 app.post('/wrongAnswers', playController.wrongAnswers);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', finalPlay.loadGame);
- 
+app.post('/easy', finalPlay.EasyAnswers); 
+app.post('/medium', finalPlay.MediumAnswers); 
+app.post('/hard', finalPlay.hardAnswers); 
 
 app.listen(3000, () => console.log('server is listening on 3000'));
