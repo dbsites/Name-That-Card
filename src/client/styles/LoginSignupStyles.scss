@@ -1,4 +1,7 @@
 /* config.css */
+button {
+  cursor: pointer;
+}
 
 :root {
   // --baseColor: #606468;
@@ -18,7 +21,8 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
+  margin: 10px;
 }
 
 /* helpers/grid.css */
@@ -147,6 +151,7 @@ input[type='button'] {
 
 .form input[type='password'],
 .form input[type='text'],
+.form input[type='email'],
 .form input[type='button'] {
   width: 100%;
 }
@@ -182,6 +187,7 @@ input[type='button'] {
 
 .login label,
 .login input[type='text'],
+.login input[type='email'],
 .login input[type='password'],
 .login input[type='button'] {
   border-radius: var(--loginBorderRadus);
@@ -197,7 +203,8 @@ input[type='button'] {
 }
 
 .login input[type='password'],
-.login input[type='text'] {
+.login input[type='text'],
+.login input[type='email'] {
   background-color: var(--loginInputBackgroundColor);
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -206,7 +213,9 @@ input[type='button'] {
 .login input[type='password']:focus,
 .login input[type='password']:hover,
 .login input[type='text']:focus,
-.login input[type='text']:hover {
+.login input[type='text']:hover,
+.login input[type='email']:focus,
+.login input[type='email']:hover {
   background-color: var(--loginInputHoverBackgroundColor);
 }
 

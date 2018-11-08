@@ -6,9 +6,9 @@ const GameType = (props) => {
 
 
   return (
-    <div className="listButtonStyle" onClick={() => setSelectedGame(game)}>
+    <li className="listButtonStyle" onClick={() => setSelectedGame(game)}>
       {game}
-    </div>
+    </li>
   );
 };
 

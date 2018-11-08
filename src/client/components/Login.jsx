@@ -21,7 +21,7 @@ const Login = (props) => {
       <form class="form login">
         <div class="form__field">
           <label for="login__email"><svg class="icon"></svg><span class="hidden">Email</span></label>
-          <input id="login__email" type="text" name="email" class="form__input" placeholder="Email" onChange={updateLoginEmail} required />
+          <input id="login__email" type="email" name="email" class="form__input" placeholder="Email" autocorrect="off" onChange={updateLoginEmail} required />
         </div>
         <div class="form__field">
           <label for="login__password"><svg class="icon"></svg><span class="hidden">Password</span></label>
