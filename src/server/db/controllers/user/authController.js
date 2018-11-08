@@ -10,45 +10,46 @@ module.exports = {
     const {
       username,
       password,
-      email,
+      email_address,
     } = userInfo;
-    const userInputs = [username, password, email];
+    const userInputs = [username, password, email_address];
 
     // eslint-disable-next-line no-unused-expressions
     // eslint-disable-next-line no-undef
     // eslint-disable-next-line no-unused-expressions
-    addNewUser = () => {
-      db.none('INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3)', userInputs)
-        .then(() => {
-          res.send({ msg: `${username} created` });
-          console.log(`User ${username} created`);
+    const addNewUser = () => {
+      db.one(`INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3);
+      SELECT * FROM "game.dbo".users where email_address=$3`, userInputs)
+        .then((result) => {
+          console.log('***result***', result);
+          res.locals.user = result;
+          next();
         })
-        .catch(err => console.error(err));
-    },
+        .catch(err => res.status(500).send(err));
+    }
 
-    bcrypt.genSalt(SALT_WORK_FACTOR)
-      .then(salt => bcrypt.hash(password, salt))
-      .then((hash) => {
-        userInputs[1] = hash;
-      })
-      // eslint-disable-next-line no-undef
-      .then(() => addNewUser())
-      .catch(err => console.error(err));
+      bcrypt.genSalt(SALT_WORK_FACTOR)
+        .then(salt => bcrypt.hash(password, salt))
+        .then((hash) => {
+          userInputs[1] = hash;
+        })
+        // eslint-disable-next-line no-undef
+        .then(() => addNewUser())
+        .catch(err => res.status(500).send(err));
   },
 
   checkEmailExists: (req, res, next) => {
-    const { email } = req.body;
-    db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email])
+    const { email_address } = req.body;
+    db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
       .then((data) => {
         if (data[0]) {
           return res.send({
             msg: 'email already exists',
             signUpSuccess: false,
-
           });
         } return next();
       })
-      .catch(err => console.error(err));
+      .catch(err => res.status(500).send(err));
   },
 
   checkUsernameExists: (req, res, next) => {
@@ -62,8 +63,9 @@ module.exports = {
           });
         } return next();
       })
-      .catch(err => console.error(err));
+      .catch(err => res.status(500).send(err));
   },
+
   verifyUser(req, res, next) {
     const { email_address, password } = req.body;
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
@@ -73,8 +75,8 @@ module.exports = {
         console.log('user****', user, '******');
         bcrypt.compare(password, user.password, (error, resolve) => {
           if (resolve) {
-            res.locals.verifiedUser = user;
-            console.log('************* verified user', res.locals.verifiedUser);
+            res.locals.user = user;
+            console.log('************* verified user', res.locals.user);
             return next();
           }
           return res.status(400).send({
@@ -91,12 +93,12 @@ module.exports = {
     db.any('SELECT * FROM "game.dbo".admin WHERE email_address=$1', [email_address])
       .then((data) => {
         console.log('data', data);
-        const user = data[0];
+        const admin = data[0];
         console.log('user****', admin, '******');
         bcrypt.compare(password, admin.password, (error, resolve) => {
           if (resolve) {
-            res.locals.verifiedAdmin = user;
-            console.log('************* verified admin', res.locals.verifiedAdmin);
+            res.locals.admin = admin;
+            console.log('************* verified admin', res.locals.admin);
             return next();
           }
           return res.status(400).send({
