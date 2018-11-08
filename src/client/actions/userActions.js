@@ -33,6 +33,7 @@ export const submitSignUp = (signUpInfoObj) => {
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify(signUpInfoObj),
+      credentials: 'include',
     })
       .then((res) => {
         return res.json();
@@ -83,6 +84,7 @@ export const submitLogin = (loginInfoObj) => {
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify(loginInfoObj),
+      credentials: 'include',
     })
       .then((res) => {
         return res.json();
