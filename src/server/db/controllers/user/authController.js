@@ -5,7 +5,7 @@ const db = require('../util/postgres');
 
 module.exports = {
 
-  createUser(req, res, next) {
+  createUser: (req, res, next) => {
     const userInfo = req.body;
     const {
       username,
@@ -36,7 +36,7 @@ module.exports = {
       .catch(err => console.error(err));
   },
 
-  checkEmailExists(req, res, next) {
+  checkEmailExists: (req, res, next) => {
     const { email } = req.body;
     db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email])
       .then((data) => {
@@ -51,7 +51,7 @@ module.exports = {
       .catch(err => console.error(err));
   },
 
-  checkUsernameExists(req, res, next) {
+  checkUsernameExists: (req, res, next) => {
     const { username } = req.body;
     db.any('SELECT * FROM "game.dbo".users where username=$1', [username])
       .then((data) => {
@@ -65,15 +65,38 @@ module.exports = {
       .catch(err => console.error(err));
   },
   verifyUser(req, res, next) {
-    const { email, password } = req.body;
-    db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email])
+    const { email_address, password } = req.body;
+    db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
       .then((data) => {
         console.log('data', data);
         const user = data[0];
+        console.log('user****', user, '******');
         bcrypt.compare(password, user.password, (error, resolve) => {
           if (resolve) {
-            const { username, email } = user;
-            res.locals.verifiedUser = Object.assign(user);
+            res.locals.verifiedUser = user;
+            console.log('************* verified user', res.locals.verifiedUser);
+            return next();
+          }
+          return res.status(400).send({
+            loginSuccess: false,
+            msg: 'login failed',
+          });
+        });
+      })
+      .catch(err => console.error(err));
+  },
+
+  verifyAdmin(req, res, next) {
+    const { email_address, password } = req.body;
+    db.any('SELECT * FROM "game.dbo".admin WHERE email_address=$1', [email_address])
+      .then((data) => {
+        console.log('data', data);
+        const user = data[0];
+        console.log('user****', admin, '******');
+        bcrypt.compare(password, admin.password, (error, resolve) => {
+          if (resolve) {
+            res.locals.verifiedAdmin = user;
+            console.log('************* verified admin', res.locals.verifiedAdmin);
             return next();
           }
           return res.status(400).send({
