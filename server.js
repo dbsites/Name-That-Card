@@ -10,9 +10,11 @@ const sessionController = require('./src/server/db/controllers/session/sessionCo
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
@@ -64,14 +66,14 @@ app.post('/admin/login',
     res.status(200).json({ username: res.locals.admin.admin_username, loginSuccess: true, msg: 'login success' });
   });
 
-app.use(sessionController.checkAdminSession);
+// app.use(sessionController.checkAdminSession);
 app.get('/admin',
   sessionController.checkAdminSession
 );
 
 /*======================= Backend CMS ==========================*/
 app.post('/admin/submitForm',
-  
+
 )
 
 app.listen(3000, () => console.log('server is listening on 3000'));
