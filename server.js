@@ -5,6 +5,10 @@ const authController = require('./src/server/db/controllers/user/authController'
 const cookieController = require('./src/server/db/controllers/cookie/cookieController');
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
+const promises = require('./src/server/db/controllers/game/promises');
+ 
+const finalPlay = require('./src/server/db/controllers/game/finalPlayController');
+
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
 const app = express();
@@ -46,11 +50,15 @@ app.post('/signup',
  */
 app.get('/gameList', gameController.gameList);
 app.get('/gameMenu/:game', gameController.gameMenu);
-app.post('/loadGame', playController.loadGame);
+// app.post('/loadGame', playController.loadGame);
 
 app.post('/wrongAnswers', playController.wrongAnswers);
-
 app.post('/saveScore', playController.saveScore);
+app.post('/loadGame', finalPlay.loadGame);
+app.post('/easy', finalPlay.EasyAnswers); 
+app.post('/medium', finalPlay.MediumAnswers); 
+app.post('/hard', finalPlay.hardAnswers); 
+app.post('/promises', promises.loadGame)
 
 /*======================= Admin ==========================*/
 
