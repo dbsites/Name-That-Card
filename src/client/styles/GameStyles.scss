@@ -62,6 +62,26 @@
   background: radial-gradient(black, white);
 }
 
+.activated {
+  display: flex;
+  width: 45vw;
+  line-height: 1.8em;
+  font-size: 1.3em !important;
+  font-weight: 700;
+  margin: 1vw;
+  padding: 0.3em 0 !important;
+  border: 0.08em solid #ea4c88;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+  background: radial-gradient(black, white);
+  user-select: none;
+}
+
 .difficultyBoxStyle {
   display: flex;
   max-width: 100%;
@@ -138,6 +158,24 @@
 
 .difficultyStyleH:hover {
   background: radial-gradient(black, white);
+}
+
+.difficultyActivated {
+  display: flex;
+  width: 50vw;
+  line-height: 1.8em;
+  font-size: 1.3em !important;
+  font-weight: 700;
+  padding: 0.3em 0 !important;
+  cursor: pointer;
+  justify-content: center;
+  text-align: center;
+  border-left: 0.08em solid #ea4c88;
+  border-top: 0.08em solid #ea4c88;
+  border-bottom: 0.08em solid #ea4c88;
+  color: white;
+  background: radial-gradient(black, white);
+  user-select: none;
 }
 
 // game buttons
