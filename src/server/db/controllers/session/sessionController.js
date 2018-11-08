@@ -12,10 +12,10 @@ module.exports = {
           res.json({ loggedIn: true });
         })
         .catch((err) => {
-          next();
+          res.json({ loggedIn: false });
         })
     } else {
-      next();
+      res.json({ loggedIn: false });
     }
   },
 
@@ -23,11 +23,21 @@ module.exports = {
     // Send query to Postgres DB to add user to users
     console.log('here in startSession');
     console.log('body:', req.body);
-    db.none('INSERT INTO "game.dbo".sessions(user_id,ssid) VALUES ($1, $2)', [req.body.user_id, req.body.ssid])
-      .then(result => next())
+    db.one('SELECT ssid FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
+      .then(result => {
+        res.locals.ssid = result.ssid;
+        next();
+      })
       .catch((err) => {
-        res.status(500).send();
-      });
+        res.locals.ssid = uuidv4();
+        db.none('INSERT INTO "game.dbo".sessions(user_id,ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
+          .then(result => {
+            next();
+          })
+          .catch((err) => {
+            res.status(500).send();
+          });
+      })
   },
 
   checkAdminSession: (req, res, next) => {
@@ -39,10 +49,10 @@ module.exports = {
           res.json({ loggedIn: true });
         })
         .catch((err) => {
-          next();
+          res.json({ loggedIn: false });
         })
     } else {
-      next();
+      res.json({ loggedIn: false });
     }
   },
 
@@ -50,10 +60,20 @@ module.exports = {
     // Send query to Postgres DB to add user to users
     console.log('here in admin Session');
     console.log('body:', req.body);
-    db.none('INSERT INTO "game.dbo".adminSessions(admin_id,ssid_sessions) VALUES ($1, $2)', [req.body.admin_id, req.body.ssid_sessions])
-      .then(result => next())
+    db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE admin_id = $1', [res.locals.admin.admin_id])
+      .then(result => {
+        res.locals.ssid_sessions = result.ssid_sessions;
+        next();
+      })
       .catch((err) => {
-        res.status(500).send();
-      });
-  },
+        res.locals.ssid_sessions = uuidv4();
+        db.none('INSERT INTO "game.dbo".adminSessions(admin_id,ssid_sessions) VALUES ($1, $2)', [res.locals.admin.admin_id, res.locals.ssid_sessions])
+          .then(result => {
+            next();
+          })
+          .catch((err) => {
+            res.status(500).send();
+          });
+      })
+  }
 };
