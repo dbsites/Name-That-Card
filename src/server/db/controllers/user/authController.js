@@ -28,14 +28,14 @@ module.exports = {
         .catch(err => res.status(500).send(err));
     }
 
-      bcrypt.genSalt(SALT_WORK_FACTOR)
-        .then(salt => bcrypt.hash(password, salt))
-        .then((hash) => {
-          userInputs[1] = hash;
-        })
-        // eslint-disable-next-line no-undef
-        .then(() => addNewUser())
-        .catch(err => res.status(500).send(err));
+    bcrypt.genSalt(SALT_WORK_FACTOR)
+      .then(salt => bcrypt.hash(password, salt))
+      .then((hash) => {
+        userInputs[1] = hash;
+      })
+      // eslint-disable-next-line no-undef
+      .then(() => addNewUser())
+      .catch(err => res.status(500).send(err));
   },
 
   checkEmailExists: (req, res, next) => {
@@ -68,6 +68,7 @@ module.exports = {
 
   verifyUser(req, res, next) {
     const { email_address, password } = req.body;
+    console.log('req.body', req.body);
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
       .then((data) => {
         console.log('data', data);
