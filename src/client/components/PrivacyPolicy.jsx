@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class PrivacyPolicy extends Component {
-
-  render() {
-    return(
-      <div>Privacy Policy</div>
-    );
-  }
-
+const PrivacyPolicy = () => {
+  return (
+    <div>
+      <h1> PRIVACY POLICY</h1>
+    </div>
+  );
 }
 
 export default PrivacyPolicy;

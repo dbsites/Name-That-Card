@@ -47,6 +47,12 @@ const Navigation = (props) => {
     leaderBoard = '';
     signUpButton = '';
     xBtn = '';
+  } else if (window.location.pathname === '/admin') {
+    leaderBoard = '';
+    signUpButton = '';
+    xBtn = '';
+    logInOutButton = '';
+    logo = '';
   }
 
   return (

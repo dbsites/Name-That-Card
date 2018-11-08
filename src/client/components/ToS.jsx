@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class ToS extends Component {
-
-  render() {
-    return(
-      <div>ToS</div>
-    );
-  }
-
+const ToS = () => {
+  return (
+    <div>
+      <h1>TERMS OF SERVICE</h1>
+    </div>
+  );
 }
 
 export default ToS;

@@ -9,6 +9,8 @@ const mapStateToProps = store => ({
   categoryList: store.gameMenuReducer.categoryList,
   ableToStartGame: store.gameMenuReducer.ableToStartGame,
   startClicked: store.gameMenuReducer.startClicked,
+  selectedCategories: store.gameMenuReducer.selectedCategories,
+  selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -61,18 +63,47 @@ class GameMenuContainer extends Component {
       startClicked,
       startGame,
       resetGameInitiation,
+      selectedCategories,
+      selectedDifficulty,
     } = this.props;
+  
+    const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
 
     const categories = categoryList.map((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
+      if (selectedCategories.includes(underscore(category))) {
+        return (
+          <div className="listButtonStyle active" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
+        );
+      }
       return (
         <li className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</li>
       );
     });
+   
 
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       return <Redirect to={{ pathname: '/game' }} />;
+    }
+    let allBtn = <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
+    if (selectedCategories.length === categoryList.length) {
+      allBtn = <div className="listButtonStyle active" onClick={toggleAllGameCategories}>ALL</div>
+    }
+
+    let easyBtn = <div className="difficultyStyle" onClick={() => setGameDifficulty('easy')}>EASY</div>;
+    if (selectedDifficulty === 'easy') {
+      easyBtn = <div className="difficultyStyle active" onClick={() => setGameDifficulty('easy')}>EASY</div>;
+    }
+
+    let medBtn = <div className="difficultyStyle" onClick={() => setGameDifficulty('med')}>MED.</div>;
+    if (selectedDifficulty === 'med') {
+      medBtn = <div className="difficultyStyle active" onClick={() => setGameDifficulty('med')}>MED.</div>;
+    }
+
+    let hardBtn = <div className="difficultyStyle" onClick={() => setGameDifficulty('hard')}>HARD</div>;
+    if (selectedDifficulty === 'hard') {
+      hardBtn = <div className="difficultyStyle active" onClick={() => setGameDifficulty('hard')}>HARD</div>;
     }
 
     return (

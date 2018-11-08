@@ -12,7 +12,7 @@ import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
 import LeaderBoard from './components/Leaderboard.jsx';
-
+import AdminContainer from './containers/AdminContainer.jsx';
 import * as userActions from './actions/userActions';
 
 const mapStateToProps = store => ({
@@ -75,6 +75,7 @@ const App = (props) => {
           <Route path='/signup' render={(props) =>
           <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp}/>}
           />
+          <Route path='/admin' component={AdminContainer} />
           <Route path='/about' component={About} />
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />

@@ -51,7 +51,7 @@ class GameListContainer extends Component {
       const game = gameObj.game_name;
       console.log(' GameListContainer -> render -> game', game);
       return (
-        <GameType key={i} setSelectedGame={setSelectedGame} game={game} />
+        <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} game={game} />
       );
     });
 
