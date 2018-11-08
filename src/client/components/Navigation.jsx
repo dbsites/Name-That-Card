@@ -28,7 +28,7 @@ const Navigation = (props) => {
     leaderBoard = '';
     homeBtn = '';
     xBtn = '';
-  } else if (window.location.pathname === '/gameMenu') {
+  } else if (window.location.pathname === '/gameMenu/:game') {
     logo = <p>Game Logo</p>;
     leaderBoard = '<LeaderBoard selectedGame={selectedGame}/>';
     xBtn = '';

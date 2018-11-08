@@ -42,3 +42,25 @@ export const submitAdminLogin = (adminInfo) => {
       });
   };
 };
+
+// admin form actions
+
+export const addMediumRuleCategory = category => ({
+  type: types.ADD_MEDIUM_RULE_CATEGORY,
+  payload: category,
+});
+
+export const addHardRuleCategory = category => ({
+  type: types.ADD_HARD_RULE_CATEGORY,
+  payload: category,
+});
+
+export const updateNewMediumRule = event => ({
+  type: types.UPDATE_NEW_MEDIUM_RULE,
+  payload: event,
+});
+
+export const updateNewHardRule = event => ({
+  type: types.UPDATE_NEW_HARD_RULE,
+  payload: event,
+});
