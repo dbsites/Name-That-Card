@@ -9,6 +9,8 @@ const mapStateToProps = store => ({
   categoryList: store.gameMenuReducer.categoryList,
   ableToStartGame: store.gameMenuReducer.ableToStartGame,
   startClicked: store.gameMenuReducer.startClicked,
+  selectedCategories: store.gameMenuReducer.selectedCategories,
+  selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -61,34 +63,69 @@ class GameMenuContainer extends Component {
       startClicked,
       startGame,
       resetGameInitiation,
+      selectedCategories,
+      selectedDifficulty,
     } = this.props;
+  
+    const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
 
     const categories = categoryList.map((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
+      if (selectedCategories.includes(underscore(category))) {
+        return (
+          <div className="listButtonStyle active" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
+        );
+      }
       return (
-        <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
+        <li className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</li>
       );
     });
+   
 
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       return <Redirect to={{ pathname: '/game' }} />;
     }
+    let allBtn = <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
+    if (selectedCategories.length === categoryList.length) {
+      allBtn = <div className="listButtonStyle active" onClick={toggleAllGameCategories}>ALL</div>
+    }
+
+    let easyBtn = <div className="difficultyStyle" onClick={() => setGameDifficulty('easy')}>EASY</div>;
+    if (selectedDifficulty === 'easy') {
+      easyBtn = <div className="difficultyStyle active" onClick={() => setGameDifficulty('easy')}>EASY</div>;
+    }
+
+    let medBtn = <div className="difficultyStyle" onClick={() => setGameDifficulty('med')}>MED.</div>;
+    if (selectedDifficulty === 'med') {
+      medBtn = <div className="difficultyStyle active" onClick={() => setGameDifficulty('med')}>MED.</div>;
+    }
+
+    let hardBtn = <div className="difficultyStyle" onClick={() => setGameDifficulty('hard')}>HARD</div>;
+    if (selectedDifficulty === 'hard') {
+      hardBtn = <div className="difficultyStyle active" onClick={() => setGameDifficulty('hard')}>HARD</div>;
+    }
 
     return (
-      <div className="container">
-        <span className=""><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
-        <h3>Game Menu Container</h3>
-        <div className="listContainer">
-          {categories}
+      <div>
+        <span className="right-menu"><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
+        <h3 className="headers">Game Menu Container</h3>
+        <div className="list">
+            {categories}
         </div>
-        <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
-        <div className="difficultyBoxStyle">
-          <div className="difficultyStyle" onClick={() => setGameDifficulty('easy')}>EASY</div>
-          <div className="difficultyStyle" onClick={() => setGameDifficulty('med')}>MED.</div>
-          <div className="difficultyStyle" onClick={() => setGameDifficulty('hard')}>HARD</div>
+        <div className="container">
+          <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
         </div>
-        <div className="buttonStyle" onClick={() => startGame()}>START</div>
+        <div className="container">
+          <div className="difficultyBoxStyle">
+            <div className="difficultyStyleE" onClick={() => setGameDifficulty('easy')}><span>EASY</span></div>
+            <div className="difficultyStyleM" onClick={() => setGameDifficulty('med')}><span>MED.</span></div>
+            <div className="difficultyStyleH" onClick={() => setGameDifficulty('hard')}><span>HARD</span></div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="buttonStyle" onClick={() => startGame()}>START</div>
+        </div>
       </div>
     );
   }

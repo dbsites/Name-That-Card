@@ -33,6 +33,13 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
+    } else if (window.location.pathname === '/admin') {
+      footerScore = '';
+      about = '';
+      privacyPolicy = '';
+      termsOfService = '';
+      contact = '';
+      disclaimer = '';
     } else {
       about = <span className=""><NavLink to="/about">About</NavLink></span>;
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;

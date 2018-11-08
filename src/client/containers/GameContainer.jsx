@@ -83,12 +83,14 @@ class GameContainer extends Component {
     }
 
     return (
-      <div className="container">
-        <h4>{title}</h4>
-        <div className="container">
+      <div>
+        <h4 className="headers">{title}</h4>
+        <div className="list">
           {content}
         </div>
-        <div className="gameButton" onClick={clickFunc}>{buttonText}</div>
+        <div className="container">
+          <div className="gameButton" onClick={clickFunc}>{buttonText}</div>
+        </div>
       </div>
     );
   }

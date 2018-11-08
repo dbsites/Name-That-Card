@@ -1,14 +1,18 @@
 import React from 'react';
 
 const GameType = (props) => {
-  const { game, setSelectedGame } = props;
-
-
-
+  const { game, selectedGame, setSelectedGame } = props;
+  if (selectedGame === game) {
+    return (
+      <div className="listButtonStyle active" onClick={() => setSelectedGame(game)}>
+        {game}
+      </div>
+    );
+  }
   return (
-    <div className="listButtonStyle" onClick={() => setSelectedGame(game)}>
+    <li className="listButtonStyle" onClick={() => setSelectedGame(game)}>
       {game}
-    </div>
+    </li>
   );
 };
 

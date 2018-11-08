@@ -47,20 +47,24 @@ const Navigation = (props) => {
     leaderBoard = '';
     signUpButton = '';
     xBtn = '';
+  } else if (window.location.pathname === '/admin') {
+    leaderBoard = '';
+    signUpButton = '';
+    xBtn = '';
+    logInOutButton = '';
+    logo = '';
   }
 
   return (
     <div className="navigation">
       {logo}
-      <div id="nav-container">
-        <div className="right-menu">
-          {homeBtn}
-          {xBtn}
-          {navUsername}
-          {logInOutButton}
-          {signUpButton}
-          {leaderBoard}
-        </div>
+      <div className="right-menu">
+        {homeBtn}
+        {xBtn}
+        {navUsername}
+        {logInOutButton}
+        {signUpButton}
+        {leaderBoard}
       </div>
     </div>
   );
