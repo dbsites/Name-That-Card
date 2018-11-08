@@ -10,7 +10,7 @@ module.exports = {
 
   setSSIDCookie: (req, res, next) => {
     // Cookie accessible via HTTP only and expires after 24 hours
-    res.cookie('ssid', uuidv4(), { httpOnly: true });
+    res.cookie('ssid', res.locals.ssid, { httpOnly: true });
     next();
   },
 
@@ -22,7 +22,7 @@ module.exports = {
 
   setAdminCookie: (req, res, next) => {
     // Cookie accessible via HTTP only and expires after 24 hours
-    res.cookie('admin', uuidv4(), { httpOnly: true });
+    res.cookie('admin', res.locals.admin, { httpOnly: true });
     next();
-  }
+  },
 };
