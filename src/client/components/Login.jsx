@@ -5,7 +5,7 @@ const Login = (props) => {
   const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword } = props;
 
   const loginInfoObj = {
-    email: loginInputEmail,
+    email_address: loginInputEmail,
     password: loginInputPassword,
   };
 
@@ -18,28 +18,28 @@ const Login = (props) => {
   return (
     <div className="grid">
       <h1>Login</h1>
-      <form class="form login">
-        <div class="form__field">
-          <label for="login__email"><svg class="icon"></svg><span class="hidden">Email</span></label>
-          <input id="login__email" type="email" name="email" class="form__input" placeholder="Email" autocorrect="off" onChange={updateLoginEmail} required />
+      <form className="form login">
+        <div className="form__field">
+          <label for="login__email"><svg className="icon"></svg><span className="hidden">Email</span></label>
+          <input id="login__email" type="email" name="email" className="form__input" placeholder="Email" autoCorrect="off" onChange={updateLoginEmail} required />
         </div>
-        <div class="form__field">
-          <label for="login__password"><svg class="icon"></svg><span class="hidden">Password</span></label>
-          <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" onChange={updateLoginPassword} required />
+        <div className="form__field">
+          <label for="login__password"><svg className="icon"></svg><span className="hidden">Password</span></label>
+          <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" onChange={updateLoginPassword} required />
         </div>
 
         {/* <p className="loginText">Email: </p>
         <input id="email" className="loginInput" type="text" onChange={updateLoginEmail} /> */}
         {/* <p className="loginText">Password: </p>
         <input id="password" className="loginInput" type="password" onChange={updateLoginPassword} /> */}
-        <div class="text--center">
+        <div className="text--center">
           {forgotPassword}
         </div>
-        <div class="form__field">
+        <div className="form__field">
           <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
         </div>
       </form>
-      <p class="text--center">Want to join the leaderboard? <a href="#">Sign up now</a> <svg class="icon"></svg></p>
+      <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a> <svg className="icon"></svg></p>
       {/* <button className="loginButton" onClick={() => submitLogin(loginInfoObj)} >Login</button> */}
     </div>
   );
