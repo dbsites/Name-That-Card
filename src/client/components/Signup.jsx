@@ -5,7 +5,7 @@ const Signup = (props) =>  {
 
   const signUpInfoObj = {
     username: signUpInputUsername,
-    email: signUpInputEmail,
+    email_address: signUpInputEmail,
     password: signUpInputPassword,
   };
 

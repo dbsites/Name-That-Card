@@ -5,7 +5,7 @@ const Login = (props) => {
   const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword } = props;
 
   const loginInfoObj = {
-    email: loginInputEmail,
+    email_address: loginInputEmail,
     password: loginInputPassword,
   };
 

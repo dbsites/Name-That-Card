@@ -37,8 +37,8 @@ module.exports = {
   },
 
   checkEmailExists: (req, res, next) => {
-    const { email } = req.body;
-    db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email])
+    const { email_address } = req.body;
+    db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
       .then((data) => {
         if (data[0]) {
           return res.send({
@@ -66,7 +66,7 @@ module.exports = {
   },
   verifyUser(req, res, next) {
     const { email_address, password } = req.body;
-    db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
+    db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_adress])
       .then((data) => {
         console.log('data', data);
         const user = data[0];
