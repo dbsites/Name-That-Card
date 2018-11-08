@@ -66,7 +66,7 @@ class GameMenuContainer extends Component {
     const categories = categoryList.map((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       return (
-        <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
+        <li className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</li>
       );
     });
 
@@ -76,19 +76,25 @@ class GameMenuContainer extends Component {
     }
 
     return (
-      <div className="container">
-        <span className=""><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
-        <h3>Game Menu Container</h3>
-        <div className="listContainer">
-          {categories}
+      <div>
+        <span className="right-menu"><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
+        <h3 className="headers">Game Menu Container</h3>
+        <div className="list">
+            {categories}
         </div>
-        <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
-        <div className="difficultyBoxStyle">
-          <div className="difficultyStyle" onClick={() => setGameDifficulty('easy')}>EASY</div>
-          <div className="difficultyStyle" onClick={() => setGameDifficulty('med')}>MED.</div>
-          <div className="difficultyStyle" onClick={() => setGameDifficulty('hard')}>HARD</div>
+        <div className="container">
+          <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
         </div>
-        <div className="buttonStyle" onClick={() => startGame()}>START</div>
+        <div className="container">
+          <div className="difficultyBoxStyle">
+            <div className="difficultyStyleE" onClick={() => setGameDifficulty('easy')}><span>EASY</span></div>
+            <div className="difficultyStyleM" onClick={() => setGameDifficulty('med')}><span>MED.</span></div>
+            <div className="difficultyStyleH" onClick={() => setGameDifficulty('hard')}><span>HARD</span></div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="buttonStyle" onClick={() => startGame()}>START</div>
+        </div>
       </div>
     );
   }

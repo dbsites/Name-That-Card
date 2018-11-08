@@ -52,15 +52,13 @@ const Navigation = (props) => {
   return (
     <div className="navigation">
       {logo}
-      <div id="nav-container">
-        <div className="right-menu">
-          {homeBtn}
-          {xBtn}
-          {navUsername}
-          {logInOutButton}
-          {signUpButton}
-          {leaderBoard}
-        </div>
+      <div className="right-menu">
+        {homeBtn}
+        {xBtn}
+        {navUsername}
+        {logInOutButton}
+        {signUpButton}
+        {leaderBoard}
       </div>
     </div>
   );

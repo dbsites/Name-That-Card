@@ -62,12 +62,16 @@ class GameListContainer extends Component {
     }
 
     return (
-      <div className="container">
-        <h1>CHOOSE YOUR GAME</h1>
-        <div className="listContainer">
-          {games}
+      <div>
+        <h1 className="headers">CHOOSE YOUR GAME</h1>
+        <div className="list">
+          {/* <ul className="list"> */}
+            {games}
+          {/* </ul> */}
         </div>
-        <div className="buttonStyle" onClick={() => successPlay(selectedGame)}>PLAY</div>
+        <div className="container">
+          <div className="buttonStyle" onClick={() => successPlay(selectedGame)}>PLAY</div>
+        </div>
       </div>
     );
   }
