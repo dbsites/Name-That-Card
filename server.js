@@ -10,9 +10,11 @@ const sessionController = require('./src/server/db/controllers/session/sessionCo
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
@@ -22,18 +24,18 @@ app.get('/rootpage',
 
 app.post('/login',
   authController.verifyUser,
-  cookieController.setSSIDCookie,
   sessionController.createSession,
+  cookieController.setSSIDCookie,
   (req, res) => {
-    res.status(200).json({ username: res.locals.verifiedUser.username, loginSuccess: true, msg: 'login success' });
+    res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
   });
 
 app.post('/signup',
   authController.checkEmailExists,
   authController.checkUsernameExists,
   authController.createUser,
-  cookieController.setSSIDCookie,
   sessionController.createSession,
+  cookieController.setSSIDCookie,
   (req, res) => {
     return res.status(200).json({ signUpSuccess: true });
   });
@@ -51,16 +53,27 @@ app.post('/wrongAnswers', playController.wrongAnswers);
 app.post('/saveScore', playController.saveScore);
 
 /*======================= Admin ==========================*/
-app.get('/admin',
+
+app.get('/admin/login',
   sessionController.checkAdminSession
 );
 
 app.post('/admin/login',
   authController.verifyAdmin,
-  cookieController.setAdminCookie,
   sessionController.createAdminSession,
+  cookieController.setAdminCookie,
   (req, res) => {
-    res.status(200).json({ username: res.locals.verifiedAdmin.admin_username, loginSuccess: true, msg: 'login success' });
+    res.status(200).json({ username: res.locals.admin.admin_username, loginSuccess: true, msg: 'login success' });
   });
+
+// app.use(sessionController.checkAdminSession);
+app.get('/admin',
+  sessionController.checkAdminSession
+);
+
+/*======================= Backend CMS ==========================*/
+app.post('/admin/submitForm',
+
+)
 
 app.listen(3000, () => console.log('server is listening on 3000'));
