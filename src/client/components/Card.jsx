@@ -2,7 +2,6 @@ import React from 'react';
 
 const Card = (props) => {
   const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, getWrongAnswers } = props;
-  let answers = wrongAnswers.slice();
 
   const shuffledAnswers = (answersArr) => {
     let counter = answersArr.length;
@@ -18,21 +17,20 @@ const Card = (props) => {
 
   let picture = '';
   let mask = '';
+  let answers =[];
 
   if (cardInfo) {
-    console.log('cardInfo ', cardInfo);
-    answers.push(cardInfo.card_name);
+    console.log('cardInfo ', cardInfo)
+    answers = cardInfo.wrongAnswers.map((card) => {
+      return card.card_name;
+    })
+    answers.push(cardInfo.card_name)
     answers = shuffledAnswers(answers);
     const imgSrc = cardInfo.image_location_temp;
     const maskImgSrc = cardInfo.mask;
+    const ebayLink = cardInfo.ebay_link
     picture = <img className="cardReveal" src={imgSrc} alt="MASK ON" />;
     mask = <img src={maskImgSrc} alt="MASK OFF MASK OFF" />;
-    const wrongAnswerInfo = {
-      card_id: cardInfo.card_id,
-      game: selectedGame,
-      difficulty_level: selectedDifficulty,
-    }
-    getWrongAnswers(wrongAnswerInfo);
   }
 
   return (
@@ -43,12 +41,12 @@ const Card = (props) => {
       {/* {mask} */}
       <div className="answersBox">
         <div className="answers">
-          <li id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</li>
-          <li id="answer2" onClick={() => selectAnswer(answers[1])}>{answers[1]}</li>
+          <div id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</div>
+          <div id="answer2" onClick={() => selectAnswer(answers[1])}>{answers[1]}</div>
         </div>
         <div>
-          <li id="answer3" onClick={() => selectAnswer(answers[2])}>{answers[2]}</li>
-          <li id="answer4" onClick={() => selectAnswer(answers[3])}>{answers[3]}</li>
+          <div id="answer3" onClick={() => selectAnswer(answers[2])}>{answers[2]}</div>
+          <div id="answer4" onClick={() => selectAnswer(answers[3])}>{answers[3]}</div>
         </div>
       </div>
     </div>

@@ -42,7 +42,6 @@ module.exports = {
       .catch(err => console.error(err));
   },
   saveScore(req, res, next) {
-    console.log('here');
     const { username, game, difficulty_level, score } = req.body;
     db.none('INSERT INTO "game.dbo".player_history("user", "game", "difficulty_level", "score") VALUES($1,$2,$3,$4)', [username, game, difficulty_level, score])
       .then(() => {

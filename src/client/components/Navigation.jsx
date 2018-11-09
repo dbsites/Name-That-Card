@@ -8,7 +8,7 @@ const Navigation = (props) => {
     ? <div className="menu-item"><NavLink onClick={() => logoutUser()} to="">Logout</NavLink></div>
     : <div className="menu-item"><NavLink to="/login">Login</NavLink></div>;
 
-  const navUsername = isLoggedIn
+  let navUsername = isLoggedIn
     ? <div className="menu-item"><span id="loginuser-text">Welcome, {loggedInUser}</span></div>
     : '';
 
@@ -33,6 +33,7 @@ const Navigation = (props) => {
     logInOutButton = '';
     homeBtn = '';
     signUpButton = '';
+    navUsername = '';
     const selectedGameRoute = `/gameMenu/${selectedGame}`
     console.log('selectedGameRoute', selectedGameRoute)
     xBtn = <div className="menu-item"><NavLink to={selectedGameRoute}>X</NavLink></div>;

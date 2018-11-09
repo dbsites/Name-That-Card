@@ -48,6 +48,11 @@ app.get('/gameList', gameController.gameList);
 app.get('/gameMenu/:game', gameController.gameMenu);
 // app.post('/loadGame', playController.loadGame);
 app.post('/saveScore', playController.saveScore);
+
+// app.post('/easy', finalPlay.EasyAnswers);
+// app.post('/medium', finalPlay.MediumAnswers);
+// app.post('/hard', finalPlay.hardAnswers);
+
 app.post('/loadGame', promises.loadGame);
 
 /*= ====================== Admin ========================== */
