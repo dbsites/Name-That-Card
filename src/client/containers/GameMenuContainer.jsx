@@ -48,6 +48,7 @@ class GameMenuContainer extends Component {
     const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
+    console.log('selectedGameRoute***********', urlSelectedGame);
     setSelectedGame(urlSelectedGame);
     resetGame();
     resetGameMenu();

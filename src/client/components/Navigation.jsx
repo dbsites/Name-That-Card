@@ -34,6 +34,7 @@ const Navigation = (props) => {
     homeBtn = '';
     signUpButton = '';
     const selectedGameRoute = `/gameMenu/${selectedGame}`
+    console.log('selectedGameRoute', selectedGameRoute)
     xBtn = <div className="menu-item"><NavLink to={selectedGameRoute}>X</NavLink></div>;
   } else if (window.location.pathname === '/login') {
     logInOutButton = '';

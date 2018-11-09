@@ -29,8 +29,8 @@ const Results = (props) => {
 
   return (
     <div>
-      <div>Results</div>
-      <div> you got {score} </div>
+      {/* <div>Results</div> */}
+      <h2>You got {score} points!</h2>
     </div>
   );
 };

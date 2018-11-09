@@ -66,7 +66,7 @@ class GameContainer extends Component {
     const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers } = this.props;
     const cardInfo = cards[0];
     let clickFunc = goToNext;
-    let title = 'GAME';
+    let title = '';
     let buttonText = 'NEXT';
     let content = <Card getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
@@ -76,15 +76,15 @@ class GameContainer extends Component {
     }
     
     if (displayResults) {
-      title = `YOUR MF'N RESULTS`;
+      title = `YOUR RESULTS`;
       content = <Results />;
-      clickFunc = 
+      // clickFunc = 
       buttonText = 'PLAY AGAIN';
     }
 
     return (
       <div className="MainContainer">
-        {/* <h4 className="headers">{title}</h4> */}
+        <h4 className="headers">{title}</h4>
         <div className="container">
           {content}
         </div>

@@ -259,6 +259,10 @@ p {
   margin: 1vw;
 }
 
+.center {
+  margin: auto;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -276,6 +280,10 @@ p {
   align-items: center;
   color: white;
   user-select: none;
+}
+
+.cardContainer {
+  width: 70vw;
 }
 
 .list {
