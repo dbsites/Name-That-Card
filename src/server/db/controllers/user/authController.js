@@ -87,27 +87,5 @@ module.exports = {
         });
       })
       .catch(err => console.error(err));
-  },
-
-  verifyAdmin(req, res, next) {
-    const { email_address, password } = req.body;
-    db.any('SELECT * FROM "game.dbo".admin WHERE email_address=$1', [email_address])
-      .then((data) => {
-        console.log('data', data);
-        const admin = data[0];
-        console.log('user****', admin, '******');
-        bcrypt.compare(password, admin.password, (error, resolve) => {
-          if (resolve) {
-            res.locals.admin = admin;
-            console.log('************* verified admin', res.locals.admin);
-            return next();
-          }
-          return res.status(400).send({
-            loginSuccess: false,
-            msg: 'login failed',
-          });
-        });
-      })
-      .catch(err => console.error(err));
-  },
+  }
 };

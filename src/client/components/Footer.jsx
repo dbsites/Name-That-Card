@@ -19,6 +19,7 @@ let termsOfService;// = <span className=""><NavLink to="/terms-of-service">Terms
 let contact;// = <span>Contact</span>;
 let disclaimer;// = <span>DISCLAIMER</span>;
 let footerScore;//= '';
+let gameDisclaimer;
 class Footer extends Component {
   componentDidMount() {
 
@@ -33,6 +34,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
+      gameDisclaimer = <span className="footer">DISCLAIMER</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';
@@ -40,6 +42,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
+      gameDisclaimer =' ';
     } else {
       about = <span className=""><NavLink to="/about">About</NavLink></span>;
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
@@ -47,24 +50,26 @@ class Footer extends Component {
       contact = <span>Contact</span>;
       disclaimer = <span>DISCLAIMER</span>;
       footerScore = '';
+      gameDisclaimer =' ';
     }
 
     return (
-      <div className="footer">
+      <div className="footerContainer">
         <br />
         <br />
-        <div>
-          <span>{disclaimer}</span>
+        <div className="headers">
+          <div>{disclaimer}</div>
         </div>
         <br />
-        <span>{about}</span>
-        <span>{privacyPolicy}</span>
-        <span>{termsOfService}</span>
-        <span>{contact}</span>
+        <div className="footer">
+          {about}
+          {privacyPolicy}
+          {termsOfService}
+          {contact}
+          {footerScore}
+        </div>
         <div>
-          <div>
-            {footerScore}
-          </div>
+          {gameDisclaimer}
         </div>
       </div>
     );
