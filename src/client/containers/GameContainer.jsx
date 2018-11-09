@@ -70,6 +70,14 @@ class GameContainer extends Component {
     let clickFunc = goToNext;
     let title = '';
     let buttonText = 'NEXT';
+    let ebayLink; 
+    let buyBtn;
+    if (cardInfo) {
+      if(cardInfo.ebay_link) {
+        ebayLink = cardInfo.ebay_link;
+        buyBtn = <div className="gameButton"><a href={ebayLink} target="_blank">BUY NOW</a></div>
+      }
+    }
     let content = <Card getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
     if (cards.length === 1) {
@@ -80,7 +88,6 @@ class GameContainer extends Component {
     if (displayResults) {
       title = `YOUR RESULTS`;
       content = <Results />;
-      // clickFunc = 
       buttonText = 'PLAY AGAIN';
     }
 
@@ -91,6 +98,7 @@ class GameContainer extends Component {
           {content}
         </div>
         <div className="container">
+          {buyBtn}
           <div className="gameButton" onClick={clickFunc}>{buttonText}</div>
         </div>
       </div>
