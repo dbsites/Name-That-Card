@@ -48,6 +48,7 @@ class GameMenuContainer extends Component {
     const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     getGameMenuContents(window.location.pathname);
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
+    console.log('selectedGameRoute***********', urlSelectedGame);
     setSelectedGame(urlSelectedGame);
     resetGame();
     resetGameMenu();
@@ -107,15 +108,20 @@ class GameMenuContainer extends Component {
     }
 
     return (
-      <div>
-        <span className="right-menu"><NavLink to="/leaderBoard">Leaderboard</NavLink></span>
-        <h3 className="headers">Game Menu Container</h3>
+      <div className="MainContainer">
+        <div className="right-menu">
+          <div className="menu-item">
+            <NavLink to="/leaderBoard">Leaderboard</NavLink>
+          </div>
+        </div>
+        <h3 className="headers">-- CHOOSE CATEGORIES --</h3>
         <div className="list">
             {categories}
         </div>
         <div className="container">
             {allBtn}
         </div>
+        <h3 className="headers">-- CHOOSE DIFFICULTY --</h3>
         <div className="container">
           <div className="difficultyBoxStyle">
             {easyBtn}

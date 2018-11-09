@@ -6,10 +6,12 @@ const Leaderboard = (props) => {
   const selectedGameRoute = `/gameMenu/${selectedGame}`
 
   return (
-    <div>
-      <h1>{selectedGame}</h1>
+    <div className="leaderboard">
+      <h1 className="headers">{selectedGame}</h1>
       <div className=""><NavLink to={selectedGameRoute}>X</NavLink></div>
-      <div>Leader Board</div>
+      <div>
+        Leader Board
+      </div>
     </div>
   );
 }
