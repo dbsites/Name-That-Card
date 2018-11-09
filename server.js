@@ -8,8 +8,6 @@ const gameController = require('./src/server/db/controllers/game/gameController'
 const playController = require('./src/server/db/controllers/game/playController');
 const promises = require('./src/server/db/controllers/game/promises');
 
-const finalPlay = require('./src/server/db/controllers/game/finalPlayController');
-
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
 const app = express();
@@ -24,8 +22,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/rootpage',
-  sessionController.checkSSIDSession
-);
+  sessionController.checkSSIDSession,);
 
 app.post('/login',
   authController.verifyUser,
@@ -41,31 +38,29 @@ app.post('/signup',
   authController.createUser,
   sessionController.createSession,
   cookieController.setSSIDCookie,
-  (req, res) => {
-    return res.status(200).json({ signUpSuccess: true });
-  });
+  (req, res) => res.status(200).json({ signUpSuccess: true }));
 
 /**
- * request object with 
+ * request object with
  * game name and level of difficulty
  */
 app.get('/gameList', gameController.gameList);
 app.get('/gameMenu/:game', gameController.gameMenu);
 // app.post('/loadGame', playController.loadGame);
-
-app.post('/wrongAnswers', playController.wrongAnswers);
 app.post('/saveScore', playController.saveScore);
-app.post('/loadGame', finalPlay.loadGame);
+
+//app.post('/loadGame', finalPlay.loadGame);
 // app.post('/easy', finalPlay.EasyAnswers);
 // app.post('/medium', finalPlay.MediumAnswers);
 // app.post('/hard', finalPlay.hardAnswers);
-app.post('/promises', promises.loadGame)
+//app.post('/promises', promises.loadGame)
 
-/*======================= Admin ==========================*/
+app.post('/loadGame', promises.loadGame);
+
+/*= ====================== Admin ========================== */
 
 app.get('/admin/login',
-  sessionController.checkAdminSession
-);
+  sessionController.checkAdminSession,);
 
 app.post('/admin/login',
   adminController.verifyAdmin,
@@ -77,12 +72,9 @@ app.post('/admin/login',
 
 // app.use(sessionController.checkAdminSession);
 app.get('/admin',
-  sessionController.checkAdminSession
-);
+  sessionController.checkAdminSession,);
 
-/*======================= Backend CMS ==========================*/
-app.post('/admin/submitForm',
-
-)
+/*= ====================== Backend CMS ========================== */
+app.post('/admin/submitForm');
 
 app.listen(3000, () => console.log('server is listening on 3000'));
