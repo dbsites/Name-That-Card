@@ -94,19 +94,19 @@ class GameMenuContainer extends Component {
       allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>
     }
 
-    let easyBtn = <div className="difficultyStyleE" onClick={() => setGameDifficulty('easy')}>EASY</div>;
+    let easyBtn = <div className="difficultyStyleE" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
     if (selectedDifficulty === 'easy') {
-      easyBtn = <div className="difficultyStyleE difficultyActivated" onClick={() => setGameDifficulty('easy')}>EASY</div>;
+      easyBtn = <div className="difficultyStyleE difficultyActivated" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
     }
 
-    let medBtn = <div className="difficultyStyleM" onClick={() => setGameDifficulty('med')}>MED.</div>;
+    let medBtn = <div className="difficultyStyleM" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
     if (selectedDifficulty === 'med') {
-      medBtn = <div className="difficultyStyleM difficultyActivated" onClick={() => setGameDifficulty('med')}>MED.</div>;
+      medBtn = <div className="difficultyStyleM difficultyActivated" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
     }
 
-    let hardBtn = <div className="difficultyStyleH" onClick={() => setGameDifficulty('hard')}>HARD</div>;
+    let hardBtn = <div className="difficultyStyleH" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     if (selectedDifficulty === 'hard') {
-      hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('hard')}>HARD</div>;
+      hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     }
 
     return (

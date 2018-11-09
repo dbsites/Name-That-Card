@@ -17,10 +17,13 @@ const Card = (props) => {
 
   let picture = '';
   let mask = '';
-  let answers = [];
+  let answers =[];
 
   if (cardInfo) {
-    answers = cardInfo.wrongAnswers.slice();
+    console.log('cardInfo ', cardInfo)
+    answers = cardInfo.wrongAnswers.map((card) => {
+      return card.card_name;
+    })
     answers.push(cardInfo.card_name)
     answers = shuffledAnswers(answers);
     const imgSrc = cardInfo.image_location_temp;
@@ -28,7 +31,6 @@ const Card = (props) => {
     const ebayLink = cardInfo.ebay_link
     picture = <img className="cardReveal" src={imgSrc} alt="MASK ON" />;
     mask = <img src={maskImgSrc} alt="MASK OFF MASK OFF" />;
- 
   }
 
   return (
@@ -39,12 +41,12 @@ const Card = (props) => {
       {/* {mask} */}
       <div className="answersBox">
         <div className="answers">
-          <li id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</li>
-          <li id="answer2" onClick={() => selectAnswer(answers[1])}>{answers[1]}</li>
+          <div id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</div>
+          <div id="answer2" onClick={() => selectAnswer(answers[1])}>{answers[1]}</div>
         </div>
         <div>
-          <li id="answer3" onClick={() => selectAnswer(answers[2])}>{answers[2]}</li>
-          <li id="answer4" onClick={() => selectAnswer(answers[3])}>{answers[3]}</li>
+          <div id="answer3" onClick={() => selectAnswer(answers[2])}>{answers[2]}</div>
+          <div id="answer4" onClick={() => selectAnswer(answers[3])}>{answers[3]}</div>
         </div>
       </div>
     </div>

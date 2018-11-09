@@ -38,6 +38,7 @@ class GameContainer extends Component {
       selectedGame,
       selectedCategories,
       getCardsInfo,
+      selectedDifficulty,
     } = this.props;
     
     function getQueryString(arr) {
@@ -56,9 +57,9 @@ class GameContainer extends Component {
 
     const cardParameters = {
       game: selectedGame,
-      query: queryString 
+      query: queryString,
+      level: selectedDifficulty,
     };
- 
     getCardsInfo(cardParameters);
   }
 
