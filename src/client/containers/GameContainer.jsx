@@ -65,6 +65,7 @@ class GameContainer extends Component {
   render() {
     const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers } = this.props;
     const cardInfo = cards[0];
+    console.log('gamecontainer card ', cardInfo)
     let clickFunc = goToNext;
     let title = '';
     let buttonText = 'NEXT';

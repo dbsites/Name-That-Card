@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  adminIsLoggedIn: true,
+  adminIsLoggedIn: false,
   adminUsername: '',
   adminPassword: '',
   mediumRules: [],
@@ -75,6 +75,11 @@ export default function (previousState = initialState, action) {
       const newHardRules = stateCopy.hardRules.slice();
       newHardRules.splice(newHardRules.indexOf(action.payload), 1);
       stateCopy.hardRules = newHardRules;
+      return stateCopy;
+    }
+    case types.SUBMIT_ADMIN_LOGIN: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.adminIsLoggedIn = true;
       return stateCopy;
     }
     default:

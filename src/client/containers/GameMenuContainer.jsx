@@ -11,6 +11,7 @@ const mapStateToProps = store => ({
   startClicked: store.gameMenuReducer.startClicked,
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
+  selectedGame: store.gameListReducer.selectedGame,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -66,6 +67,7 @@ class GameMenuContainer extends Component {
       resetGameInitiation,
       selectedCategories,
       selectedDifficulty,
+      selectedGame,
     } = this.props;
   
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
@@ -114,7 +116,7 @@ class GameMenuContainer extends Component {
             <NavLink to="/leaderBoard">Leaderboard</NavLink>
           </div>
         </div>
-        <h3 className="headers">-- CHOOSE CATEGORIES --</h3>
+        <h3 className="headers"> {selectedGame} -- CHOOSE CATEGORIES </h3>
         <div className="list">
             {categories}
         </div>

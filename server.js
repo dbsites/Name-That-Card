@@ -56,9 +56,9 @@ app.get('/gameMenu/:game', gameController.gameMenu);
 app.post('/wrongAnswers', playController.wrongAnswers);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', finalPlay.loadGame);
-app.post('/easy', finalPlay.EasyAnswers);
-app.post('/medium', finalPlay.MediumAnswers);
-app.post('/hard', finalPlay.hardAnswers);
+// app.post('/easy', finalPlay.EasyAnswers);
+// app.post('/medium', finalPlay.MediumAnswers);
+// app.post('/hard', finalPlay.hardAnswers);
 app.post('/promises', promises.loadGame)
 
 /*======================= Admin ==========================*/
