@@ -1,23 +1,4 @@
-// menu buttons
-.navigation {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.headers {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+// game menu buttons
 
 .buttonStyle {
   display: flex;
@@ -36,7 +17,7 @@
 }
 
 .buttonStyle:hover {
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
 }
 
 .listButtonStyle {
@@ -59,7 +40,7 @@
 }
 
 .listButtonStyle:hover {
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
 }
 
 .activated {
@@ -78,14 +59,14 @@
   text-align: center;
   border-radius: 15px;
   color: white;
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
   user-select: none;
 }
 
 .difficultyBoxStyle {
   display: flex;
   max-width: 100%;
-  margin: 20px;
+  margin: 2vw;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -114,7 +95,7 @@
 }
 
 .difficultyStyleE:hover {
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
 }
 
 .difficultyStyleM {
@@ -133,7 +114,7 @@
 }
 
 .difficultyStyleM:hover {
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
 }
 
 .difficultyStyleH {
@@ -157,7 +138,7 @@
 }
 
 .difficultyStyleH:hover {
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
 }
 
 .difficultyActivated {
@@ -174,33 +155,11 @@
   border-top: 0.08em solid #ea4c88;
   border-bottom: 0.08em solid #ea4c88;
   color: white;
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
   user-select: none;
 }
 
 // game buttons
-
-.listContainer {
-  display: flex;
-  width: 100%;
-  line-height: 1.8em;
-  margin: 20px;
-  justify-content: center;
-  // flex-flow: row wrap;
-  align-items: center;
-  color: white;
-  user-select: none;
-  text-shadow: 0 0 45px #6fcbdc;
-}
-
-.list {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 
 .card {
   display: flex;
@@ -208,50 +167,134 @@
   justify-content: center;
 }
 
+.cardReveal {
+  max-width: 50vw;
+  max-height: 50vh;
+}
+
 .answersBox {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  line-height: 1.8em;
-  margin: 20px;
+  // flex-wrap: wrap;
+  // width: auto;
+  // line-height: 1.8em;
+  margin: 2vw;
   justify-content: center;
-  color: white;
-  user-select: none;
-};
-
-#answers {
-  display: flex;
-  flex-basis: 100%;
-  width: 25vw;
-  line-height: 1.8em;
-  font-size: 1.3em !important;
-  font-weight: 700;
-  margin: 1vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid #ea4c88;
-  cursor: pointer;
-  justify-content: center;
-  border-radius: 15px;
   color: white;
   user-select: none;
 }
 
-#answers:hover {
-  background: radial-gradient(black, white);
+.answers {
+  width: 100%;
+}
+
+#answer1 {
+  display: flex;
+  // flex-basis: 100%;
+  // width: 25vw;
+  height: 10vw;
+  width: 30vw;
+  line-height: 5vw;
+  font-size: 3vw !important;
+  margin: 1vw;
+  padding: 1vw 0 !important;
+  border-right: 0.5vw solid #ea4c88;
+  border-bottom: 0.5vw solid #ea4c88;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: white;
+  user-select: none;
+}
+
+#answer1:hover {
+  background: radial-gradient(#ea4c88, black);
+}
+
+#answer2 {
+  display: flex;
+  // flex-basis: 100%;
+  // width: 25vw;
+  height: 10vw;
+  width: 30vw;
+  line-height: 5vw;
+  font-size: 3vw !important;
+  margin: 1vw;
+  padding: 1vw 0 !important;
+  border-right: 0.5vw solid #ea4c88;
+  border-top: 0.5vw solid #ea4c88;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: white;
+  user-select: none;
+}
+
+#answer2:hover {
+  background: radial-gradient(#ea4c88, black);
+}
+
+#answer3 {
+  display: flex;
+  // flex-basis: 100%;
+  // width: 25vw;
+  height: 10vw;
+  width: 30vw;
+  line-height: 5vw;
+  font-size: 3vw !important;
+  margin: 1vw;
+  padding: 1vw 0 !important;
+  border-left: 0.5vw solid #ea4c88;
+  border-bottom: 0.5vw solid #ea4c88;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: white;
+  user-select: none;
+}
+
+#answer3:hover {
+  background: radial-gradient(#ea4c88, black);
+}
+
+#answer4 {
+  display: flex;
+  // flex-basis: 100%;
+  // width: 25vw;
+  height: 10vw;
+  width: 30vw;
+  line-height: 5vw;
+  font-size: 3vw !important;
+  margin: 1vw;
+  padding: 1vw 0 !important;
+  border-left: 0.5vw solid #ea4c88;
+  border-top: 0.5vw solid #ea4c88;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: white;
+  user-select: none;
+}
+
+#answer4:hover {
+  background: radial-gradient(#ea4c88, black);
 }
 
 .gameButton {
   display: flex;
-  width: 25vw;
-  line-height: 1.8em;
-  font-size: 1.3em !important;
+  width: 30vw;
+  line-height: 5vw;
+  font-size: 3vw !important;
   font-weight: 700;
   margin: 1vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid #ea4c88;
+  padding: 1vw 0 !important;
+  border: 1vw solid #ea4c88;
   cursor: pointer;
   justify-content: center;
   border-radius: 15px;
@@ -260,5 +303,5 @@
 }
 
 .gameButton:hover {
-  background: radial-gradient(black, white);
+  background: radial-gradient(#ea4c88, black);
 }

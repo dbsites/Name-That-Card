@@ -1,7 +1,4 @@
 /* config.css */
-button {
-  cursor: pointer;
-}
 
 :root {
   // --baseColor: #606468;
@@ -10,19 +7,16 @@ button {
 
 /* helpers/align.css */
 
-// .align {
-//   align-items: center;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-// }
+#app {
+  height: 100%;
+}
 
-.right-menu {
-  align-items: center;
+.MainContainer {
+  height: 70vh;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
 /* helpers/grid.css */
@@ -245,4 +239,125 @@ p {
 
 .text--center {
   text-align: center;
+}
+
+// menu
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1vw;
+}
+
+.center {
+  margin: auto;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listContainer {
+  display: flex;
+  width: 100%;
+  line-height: 1.8em;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  user-select: none;
+}
+
+.cardContainer {
+  width: 70vw;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  height: auto;
+  width: 10vw;
+  line-height: 1.8em;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2vw;
+  padding: 0.5em 0.8em !important;
+  border: 0.08em solid #ea4c88;
+  align-items: center;
+  align-content: center;
+  border-radius: 15px;
+}
+
+.right-menu {
+  // align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0vw 1vw;
+}
+
+.leaderboard a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 1vw;
+}
+
+.menu-item {
+  margin: 1vw;
+  display: flex;
+  height: auto;
+  width: auto;
+  line-height: 1.8em;
+  font-size: 1em !important;
+  font-weight: 400;
+  margin: 1vw;
+  padding: 0.5em 0.8em !important;
+  border: 0.08em solid #ea4c88;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 15px;
+  color: white;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+// .footerContainer {
+//   position: relative;
+//   bottom: 0;
+//   height: 0vh;
+// }
+
+.scoreFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
