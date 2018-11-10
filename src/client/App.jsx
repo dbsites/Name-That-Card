@@ -26,6 +26,7 @@ const mapStateToProps = store => ({
   signUpInputUsername: store.userReducer.signUpInputUsername,
   loginInputEmail: store.userReducer.loginInputEmail,
   loginInputPassword: store.userReducer.loginInputPassword,
+  questionNumber: store.gameReducer.questionNumber,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -56,12 +57,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser, score } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser, questionNumber } = props;
 
   return (
     <BrowserRouter>
       <div className="align">
-        <Navigation logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
+        <Navigation questionNumber={questionNumber} logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
           <Route path='/' component={GameListContainer} exact />
           <Route path='/gameMenu/:game' component={GameMenuContainer} />

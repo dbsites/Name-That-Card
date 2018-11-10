@@ -4,28 +4,31 @@ import * as gamePlayActions from '../actions/gamePlayActions';
 
 const mapStateToProps = store => ({
   score: store.gameReducer.score,
+  isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
   selectedGame: store.gameListReducer.selectedGame,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
 });
 
 const mapDispatchToProps = dispatch => ({
-  sendResult: (gameResultInfo) => {
-    dispatch(gamePlayActions.sendResult(gameResultInfo));
+  sendResult: (gameInfo) => {
+    dispatch(gamePlayActions.sendResult(gameInfo));
   },
 });
 
 const Results = (props) => {
-  const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty } = props;
+  const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn } = props;
 
   const gameResultInfo = {
-    loggedInUser,
-    score,
-    selectedGame,
-    selectedDifficulty,
+    username: loggedInUser,
+    game: selectedGame,
+    difficulty_level: selectedDifficulty,
+    score: score,
   };
 
-  sendResult(gameResultInfo);
+  if (isLoggedIn) {
+    sendResult(gameResultInfo);
+  }
 
   return (
     <div>
