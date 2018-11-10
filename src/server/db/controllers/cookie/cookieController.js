@@ -1,6 +1,3 @@
-const uuidv4 = require('uuid/v4');
-const db = require('../util/postgres');
-
 module.exports = {
   // Clear Cookie - Removes Authorization
   deleteSSIDCookie: (req, res, next) => {

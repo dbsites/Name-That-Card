@@ -1,4 +1,5 @@
 const db = require('../util/postgres');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   verifyAdmin(req, res, next) {
