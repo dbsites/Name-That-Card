@@ -87,7 +87,8 @@ module.exports = {
           if (level === 'HARD' && years) return yearHardAnswers(card.card_id, card.card_name);
           if (level === 'HARD') return hardAnswers(card.card_id, card.card_name);
         }));
-      }).then((result) => {
+      })
+      .then((result) => {
         console.log(result);
         result.forEach((set, i) => {
           res.locals.cards[i].wrongAnswers = set;
@@ -98,7 +99,6 @@ module.exports = {
   },
 
   saveScore(req, res) {
-    console.log('here');
     const {
       username, game, level, score,
     } = req.body;
@@ -109,14 +109,14 @@ module.exports = {
       .catch(err => console.error(err));
   },
 
-  playerHistory(req, res) {
-    const { user } = req.body;
+  leaderBoard(req, res) {
+    const { game } = req.body;
 
-    db.query(`SELECT "user", game, coalesce(difficulty_level, 'all') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
+    db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
-              WHERE "user" = $1
+              WHERE "game" = $1
               GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));						 
-              `, [user])
+              `, [game])
       .then((data) => {
         console.log('', data);
         return res.json(data);
