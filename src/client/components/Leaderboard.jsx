@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Leaderboard = (props) => {
-  const { selectedGame } = props;
+  const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, sortCategory } = props;
   const selectedGameRoute = `/gameMenu/${selectedGame}`
 
   return (
@@ -10,8 +10,10 @@ const Leaderboard = (props) => {
       <h1 className="headers">{selectedGame}</h1>
       <div className=""><NavLink to={selectedGameRoute}>X</NavLink></div>
       <div>
-        Leader Board
+        Leaderboard
       </div>
+      <span onClick={() => changeLeaderboardDifficulty('ALL')}>All</span> <span onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span> <span onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span> <span onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>
+      <LeaderboardEntry />
     </div>
   );
 }

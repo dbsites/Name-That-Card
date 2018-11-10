@@ -14,6 +14,7 @@ import About from './components/About.jsx';
 import LeaderBoard from './components/Leaderboard.jsx';
 import AdminContainer from './containers/AdminContainer.jsx';
 import * as userActions from './actions/userActions';
+import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
 
 const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
@@ -68,7 +69,7 @@ const App = (props) => {
           <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/game' component={GameContainer} />
           <Route path='/leaderBoard' render={(props) =>
-          <LeaderBoard {...props} selectedGame={selectedGame} />}
+          <LeaderboardContainer {...props} selectedGame={selectedGame} />}
           />
           <Route path='/login' render={(props) =>
           <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}

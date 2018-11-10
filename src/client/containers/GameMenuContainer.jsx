@@ -12,6 +12,7 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   selectedGame: store.gameListReducer.selectedGame,
+  years: store.gameMenuReducer.years,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -68,6 +69,7 @@ class GameMenuContainer extends Component {
       selectedCategories,
       selectedDifficulty,
       selectedGame,
+      years,
     } = this.props;
   
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');

@@ -1,28 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as leaderBoardActions from '../actions/leaderBoardActions';
 import Leaderboard from '../components/Leaderboard.jsx';
+import * as leaderboardActions from '../actions/leaderboardActions';
 
 const mapStateToProps = store => ({
-  leaderBoardDifficulty: store.leaderboardReducer.leaderBoardDifficulty,
+  leaderboardDifficulty: store.leaderboardReducer.leaderboardDifficulty,
   sortCategory: store.leaderboardReducer.sortCategory,
+  selectedGame: store.gameListReducer.selectedGame,
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeLeaderboardDifficulty: (event) => {
-    dispatch(leaderBoardActions.changeLeaderboardDifficulty(event));
+  changeLeaderboardDifficulty: (difficulty) => {
+    dispatch(leaderboardActions.changeLeaderboardDifficulty(difficulty));
   },
 });
 
-const LeaderBoardContainer = (props) => {
+const LeaderboardContainer = (props) => {
 
-  const { leaderBoardDifficulty, sortCategory } = props;
+  const { leaderboardDifficulty, sortCategory, selectedGame, changeLeaderboardDifficulty } = props;
 
   return (
     <div>
-      <Leaderboard leaderBoardDifficulty={leaderBoardDifficulty} sortCategory={sortCategory}/>
+      <Leaderboard changeLeaderboardDifficulty={changeLeaderboardDifficulty} leaderboardDifficulty={leaderboardDifficulty} sortCategory={sortCategory} selectedGame={selectedGame} />
     </div>
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LeaderboardContainer);

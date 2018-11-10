@@ -6,6 +6,7 @@ import headerReducer from '../reducers/headerReducer';
 import gameListReducer from '../reducers/gameListReducer';
 import gameMenuReducer from '../reducers/gameMenuReducer';
 import gameReducer from '../reducers/gameReducer';
+import userReducer from '../reducers/userReducer';
 
 const reducers = combineReducers({
   leaderboardReducer,
@@ -15,6 +16,7 @@ const reducers = combineReducers({
   gameListReducer,
   gameMenuReducer,
   gameReducer,
+  userReducer,
 });
 
 export default reducers;
