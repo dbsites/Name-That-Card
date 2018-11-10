@@ -18,27 +18,54 @@ export const failedAdminLogin = () => ({
   type: types.FAILED_ADMIN_LOGIN,
 });
 
-export const submitAdminLogin = (adminInfo) => {
-  return (dispatch) => {
-    return fetch('http://localhost:3000/adminLogin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: JSON.stringify(adminInfo),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        if (data.loginSuccess) {
-          dispatch(successfulAdminLogin());
-        } else {
-          dispatch(failedAdminLogin());
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
+// export const submitAdminLogin = (adminInfo) => {
+//   return (dispatch) => {
+//     return fetch('http://localhost:3000/adminLogin', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json; charset=utf-8',
+//       },
+//       body: JSON.stringify(adminInfo),
+//     })
+//       .then((res) => {
+//         return res.json();
+//       })
+//       .then((data) => {
+//         if (data.loginSuccess) {
+//           dispatch(successfulAdminLogin());
+//         } else {
+//           dispatch(failedAdminLogin());
+//         }
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   };
+// };
+
+export const submitAdminLogin = () => ({
+  type: types.SUBMIT_ADMIN_LOGIN,
+});
+
+
+// admin form actions
+
+export const addMediumRuleCategory = category => ({
+  type: types.ADD_MEDIUM_RULE_CATEGORY,
+  payload: category,
+});
+
+export const addHardRuleCategory = category => ({
+  type: types.ADD_HARD_RULE_CATEGORY,
+  payload: category,
+});
+
+export const updateNewMediumRule = event => ({
+  type: types.UPDATE_NEW_MEDIUM_RULE,
+  payload: event,
+});
+
+export const updateNewHardRule = event => ({
+  type: types.UPDATE_NEW_HARD_RULE,
+  payload: event,
+});

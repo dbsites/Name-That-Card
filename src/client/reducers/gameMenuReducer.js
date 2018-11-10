@@ -29,7 +29,7 @@ export default function (previousState = initialState, action) {
       } else {
         newSelectedCategories.push(underscore(action.payload));
       }
-      if (stateCopy.selectedDifficulty !== '' && stateCopy.selectedCategories.length !== 0) {
+      if (stateCopy.selectedDifficulty !== '' && newSelectedCategories.length !== 0) {
         stateCopy.ableToStartGame = true;
       } else {
         stateCopy.ableToStartGame = false;

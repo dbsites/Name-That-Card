@@ -36,7 +36,7 @@ export default function (previousState = initialState, action) {
       stateCopy.selectedGame = '';
       return stateCopy;
     }
-
+    
     default:
       return previousState;
   }

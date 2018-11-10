@@ -4,6 +4,8 @@ const initialState = {
   adminIsLoggedIn: false,
   adminUsername: '',
   adminPassword: '',
+  mediumRules: [],
+  hardRules: [],
 };
 
 export default function (previousState = initialState, action) {
@@ -34,6 +36,50 @@ export default function (previousState = initialState, action) {
       stateCopy.adminIsLoggedIn = false;
       stateCopy.adminUsername = '';
       stateCopy.adminPassword = '';
+      return stateCopy;
+    }
+    case types.UPDATE_NEW_MEDIUM_RULE: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.newMediumRule = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.UPDATE_NEW_HARD_RULE: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.newHardRule = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.ADD_MEDIUM_RULE_CATEGORY: {
+      stateCopy = Object.assign({}, previousState);
+      const newMediumRules = stateCopy.mediumRules.slice();
+      newMediumRules.push(action.payload);
+      console.log('med ', action.payload)
+      stateCopy.mediumRules = newMediumRules;
+      return stateCopy;
+    }
+    case types.ADD_HARD_RULE_CATEGORY: {
+      stateCopy = Object.assign({}, previousState);
+      const newHardRules = stateCopy.hardRules.slice();
+      newHardRules.push(action.payload);
+      stateCopy.hardRules = newHardRules;
+      return stateCopy;
+    }
+    case types.REMOVE_MEDIUM_RULE_CATEGORY: {
+      stateCopy = Object.assign({}, previousState);
+      const newMediumRules = stateCopy.mediumRules.slice();
+      newMediumRules.splice(newMediumRules.indexOf(action.payload), 1);
+      stateCopy.mediumRules = newMediumRules;
+      return stateCopy;
+    }
+    case types.REMOVE_HARD_RULE_CATEGORY: {
+      stateCopy = Object.assign({}, previousState);
+      const newHardRules = stateCopy.hardRules.slice();
+      newHardRules.splice(newHardRules.indexOf(action.payload), 1);
+      stateCopy.hardRules = newHardRules;
+      return stateCopy;
+    }
+    case types.SUBMIT_ADMIN_LOGIN: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.adminIsLoggedIn = true;
       return stateCopy;
     }
     default:
