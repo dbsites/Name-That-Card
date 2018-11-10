@@ -48,7 +48,7 @@ app.get('/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', playController.loadGame);
 
-app.post('/playerHistory', playController.playerHistory);
+app.post('/leaderBoard', playController.leaderBoard);
 /*= ====================== Admin ========================== */
 
 app.get('/admin/login',
