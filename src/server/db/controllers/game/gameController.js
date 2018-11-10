@@ -19,7 +19,7 @@ module.exports = {
       .then((data) => {
         console.log('data', data);
         return res.send(data);
-      })
+      }) 
 
       .catch(err => console.error(err));
   },

@@ -25,7 +25,6 @@ export const failedSignUp = message => ({
 });
 
 export const submitSignUp = (signUpInfoObj) => {
-  console.log('signup info in actions', signUpInfoObj);
   return (dispatch) => {
     return fetch('http://localhost:3000/signup', {
       method: 'POST',

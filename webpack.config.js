@@ -34,6 +34,11 @@ module.exports = {
       filename: "./index.html",
     }),
   ],
+  [
+    new webpack.ProvidePlugin({
+      noUiSlider: 'nouislider'
+    })
+  ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,

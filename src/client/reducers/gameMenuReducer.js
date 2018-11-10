@@ -9,7 +9,6 @@ const initialState = {
   ableToStartGame: false,
   startClicked: false,
   renderScoreFooter: false,
-  years: false,
 };
 
 export default function (previousState = initialState, action) {

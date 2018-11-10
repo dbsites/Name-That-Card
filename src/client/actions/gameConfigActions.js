@@ -9,11 +9,9 @@ export const getGameList = () => {
   return (dispatch) => {
     return fetch('http://localhost:3000/gameList')
       .then((res) => {
-        console.log(' getGameList -> res', res);
         return res.json();
       })
       .then((data) => {
-        console.log(' getGameList -> data', data);
         dispatch(displayGameList(data));
       })
       .catch((err) => {
@@ -83,7 +81,6 @@ export const populateCardsArray = cardsData => ({
 });
 
 export const getCardsInfo = (cardInfoObj) => {
-  console.log('cards info actions', cardInfoObj);
   return (dispatch) => {
     return fetch('http://localhost:3000/loadGame', {
       method: 'POST',

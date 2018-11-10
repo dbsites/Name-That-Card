@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
+import noUiSlider from 'nouislider';
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 
@@ -69,7 +70,6 @@ class GameMenuContainer extends Component {
       selectedCategories,
       selectedDifficulty,
       selectedGame,
-      years,
     } = this.props;
   
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
@@ -111,6 +111,17 @@ class GameMenuContainer extends Component {
       hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     }
 
+    // const yearSlider = <div id="slider-handles"></div>
+
+    // let handlesSlider = document.querySelector('slider-handles');
+    // noUiSlider.create(handlesSlider, {
+    //   start: [1900, 2017],
+    //   range: {
+    //     'min': 1900,
+    //     'max': 2017,
+    //   }
+    // });
+
     return (
       <div className="MainContainer">
         <div className="right-menu">
@@ -124,6 +135,10 @@ class GameMenuContainer extends Component {
         </div>
         <div className="container">
             {allBtn}
+        </div>
+        <div>
+          {/* {handlesSlider} */}
+          {/* {yearSlider} */}
         </div>
         <h3 className="headers">-- CHOOSE DIFFICULTY --</h3>
         <div className="container">
