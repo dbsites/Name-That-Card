@@ -11,7 +11,7 @@
   border: 0.08em solid #ea4c88;
   cursor: pointer;
   justify-content: center;
-  border-radius: 15px;
+  border-radius: 0.25rem;
   color: white;
   user-select: none;
 }
@@ -34,7 +34,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 0.25rem;
   color: white;
   user-select: none;
 }
@@ -57,7 +57,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 15px;
+  border-radius: 0.25rem;
   color: white;
   background: radial-gradient(#ea4c88, black);
   user-select: none;
@@ -88,8 +88,8 @@
   border-left: 0.08em solid #ea4c88;
   border-top: 0.08em solid #ea4c88;
   border-bottom: 0.08em solid #ea4c88;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
   color: white;
   user-select: none;
 }
@@ -131,8 +131,8 @@
   border-right: 0.08em solid #ea4c88;
   border-top: 0.08em solid #ea4c88;
   border-bottom: 0.08em solid #ea4c88;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
   color: white;
   user-select: none;
 }
@@ -151,9 +151,9 @@
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-left: 0.08em solid #ea4c88;
-  border-top: 0.08em solid #ea4c88;
-  border-bottom: 0.08em solid #ea4c88;
+  border-left: 0.0.08em solid #ea4c88;
+  border-top: 0.0.08em solid #ea4c88;
+  border-bottom: 0.0.08em solid #ea4c88;
   color: white;
   background: radial-gradient(#ea4c88, black);
   user-select: none;
@@ -165,11 +165,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-content: center;
+  height: 50vh;
+  width: 50vw;
 }
 
 .cardReveal {
   max-width: 50vw;
   max-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .answersBox {
@@ -200,8 +207,8 @@
   font-size: 3vw !important;
   margin: 1vw;
   padding: 1vw 0 !important;
-  border-right: 0.5vw solid #ea4c88;
-  border-bottom: 0.5vw solid #ea4c88;
+  border-right: 0.08em solid #ea4c88;
+  border-bottom: 0.08em solid #ea4c88;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -210,9 +217,9 @@
   user-select: none;
 }
 
-#answer1:hover {
-  background: radial-gradient(#ea4c88, black);
-}
+// #answer1:hover {
+//   background: radial-gradient(#ea4c88, black);
+// }
 
 #answer2 {
   display: flex;
@@ -224,8 +231,8 @@
   font-size: 3vw !important;
   margin: 1vw;
   padding: 1vw 0 !important;
-  border-right: 0.5vw solid #ea4c88;
-  border-top: 0.5vw solid #ea4c88;
+  border-right: 0.08em solid #ea4c88;
+  border-top: 0.08em solid #ea4c88;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -234,9 +241,9 @@
   user-select: none;
 }
 
-#answer2:hover {
-  background: radial-gradient(#ea4c88, black);
-}
+// #answer2:hover {
+//   background: radial-gradient(#ea4c88, black);
+// }
 
 #answer3 {
   display: flex;
@@ -248,8 +255,8 @@
   font-size: 3vw !important;
   margin: 1vw;
   padding: 1vw 0 !important;
-  border-left: 0.5vw solid #ea4c88;
-  border-bottom: 0.5vw solid #ea4c88;
+  border-left: 0.08em solid #ea4c88;
+  border-bottom: 0.08em solid #ea4c88;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -258,9 +265,9 @@
   user-select: none;
 }
 
-#answer3:hover {
-  background: radial-gradient(#ea4c88, black);
-}
+// #answer3:hover {
+//   background: radial-gradient(#ea4c88, black);
+// }
 
 #answer4 {
   display: flex;
@@ -272,8 +279,8 @@
   font-size: 3vw !important;
   margin: 1vw;
   padding: 1vw 0 !important;
-  border-left: 0.5vw solid #ea4c88;
-  border-top: 0.5vw solid #ea4c88;
+  border-left: 0.08em solid #ea4c88;
+  border-top: 0.08em solid #ea4c88;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -282,9 +289,9 @@
   user-select: none;
 }
 
-#answer4:hover {
-  background: radial-gradient(#ea4c88, black);
-}
+// #answer4:hover {
+//   background: radial-gradient(#ea4c88, black);
+// }
 
 .gameButton {
   display: flex;
@@ -294,10 +301,10 @@
   font-weight: 700;
   margin: 1vw;
   padding: 1vw 0 !important;
-  border: 1vw solid #ea4c88;
+  border: 0.08em solid #ea4c88;
   cursor: pointer;
   justify-content: center;
-  border-radius: 15px;
+  border-radius: 0.25rem;
   color: white;
   user-select: none;
 }
