@@ -4,7 +4,7 @@ const initialState = {
   score: 0,
   questionNumber: 1,
   cards: [],
-  wrongAnswers: ['wrong1', 'wrong2', 'wrong3'],
+  wrongAnswers: [],
   answeredQuestions: [],
   selectedAnswer: '',
   ableToNext: false,
@@ -53,7 +53,6 @@ export default function (previousState = initialState, action) {
       stateCopy.ableToNext = false;
       return stateCopy;
     }
-
     case types.FINISH_GAME: {
       stateCopy = Object.assign({}, previousState);
       if (stateCopy.ableToNext === true) {
@@ -71,7 +70,7 @@ export default function (previousState = initialState, action) {
       stateCopy.score = 0;
       stateCopy.questionNumber = 1;
       stateCopy.cards = [];
-      stateCopy.wrongAnswers = ['wrong1', 'wrong2', 'wrong3'];
+      stateCopy.wrongAnswers = [];
       stateCopy.answeredQuestions = [];
       stateCopy.selectedAnswer = '';
       stateCopy.ableToNext = false;
@@ -81,7 +80,6 @@ export default function (previousState = initialState, action) {
       stateCopy.gameStarted = false;
       return stateCopy;
     }
-
     default:
       return previousState;
   }
