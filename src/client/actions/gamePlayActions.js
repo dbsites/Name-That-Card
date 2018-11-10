@@ -18,7 +18,7 @@ export const resetGame = () => ({
 });
 
 export const sendResult = (gameResultInfo) => {
-  return (dispatch) => {
+  return () => {
     return fetch('http://localhost:3000/saveScore', {
       method: 'POST',
       headers: {
@@ -30,7 +30,7 @@ export const sendResult = (gameResultInfo) => {
         return res.json();
       })
       .then((data) => {
-        dispatch(resestGame());
+        console.log(data);
       })
       .catch((err) => {
         console.log(err);

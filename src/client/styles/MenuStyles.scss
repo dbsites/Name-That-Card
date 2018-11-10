@@ -284,6 +284,11 @@ p {
 
 .cardContainer {
   width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .list {
@@ -307,7 +312,7 @@ p {
   border: 0.08em solid #ea4c88;
   align-items: center;
   align-content: center;
-  border-radius: 15px;
+  border-radius: 0.25rem;
 }
 
 .right-menu {
@@ -340,7 +345,7 @@ p {
   justify-content: center;
   align-items: center;
   align-content: center;
-  border-radius: 15px;
+  border-radius: 0.25rem;
   color: white;
 }
 
