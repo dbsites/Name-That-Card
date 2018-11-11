@@ -1,5 +1,5 @@
-import {combineReducers} from 'redux';
-import userReducer from '../reducers/userReducer';
+import { combineReducers } from 'redux';
+import userReducer from './userReducer';
 import adminReducer from '../reducers/adminReducer';
 import mainReducer from '../reducers/mainReducer';
 import headerReducer from '../reducers/headerReducer';

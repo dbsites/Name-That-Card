@@ -6,7 +6,6 @@ const authController = require('./src/server/db/controllers/user/authController'
 const cookieController = require('./src/server/db/controllers/cookie/cookieController');
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
-const promises = require('./src/server/db/controllers/game/promises');
 
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
@@ -22,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/rootpage',
-  sessionController.checkSSIDSession,);
+  sessionController.checkSSIDSession);
 
 app.post('/login',
   authController.verifyUser,
@@ -46,19 +45,14 @@ app.post('/signup',
  */
 app.get('/gameList', gameController.gameList);
 app.get('/gameMenu/:game', gameController.gameMenu);
-// app.post('/loadGame', playController.loadGame);
 app.post('/saveScore', playController.saveScore);
+app.post('/loadGame', playController.loadGame);
 
-// app.post('/easy', finalPlay.EasyAnswers);
-// app.post('/medium', finalPlay.MediumAnswers);
-// app.post('/hard', finalPlay.hardAnswers);
-
-app.post('/loadGame', promises.loadGame);
-
+app.post('/leaderBoard', playController.leaderBoard);
 /*= ====================== Admin ========================== */
 
 app.get('/admin/login',
-  sessionController.checkAdminSession,);
+  sessionController.checkAdminSession);
 
 app.post('/admin/login',
   adminController.verifyAdmin,
@@ -70,7 +64,7 @@ app.post('/admin/login',
 
 // app.use(sessionController.checkAdminSession);
 app.get('/admin',
-  sessionController.checkAdminSession,);
+  sessionController.checkAdminSession);
 
 /*= ====================== Backend CMS ========================== */
 app.post('/admin/submitForm');

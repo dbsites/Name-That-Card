@@ -26,7 +26,7 @@ module.exports = {
           next();
         })
         .catch(err => res.status(500).send(err));
-    }
+    };
 
     bcrypt.genSalt(SALT_WORK_FACTOR)
       .then(salt => bcrypt.hash(password, salt))
@@ -87,5 +87,5 @@ module.exports = {
         });
       })
       .catch(err => console.error(err));
-  }
+  },
 };
