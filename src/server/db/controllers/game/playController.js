@@ -53,7 +53,7 @@ function yearHardAnswers(id, name) {
                   JOIN "game.dbo".cards_n c1
                     ON c.card_category = c1.card_category 
                       AND c.category_a = c1.category_a 
-                      AND cast(c1.category_b as bigint) between  cast(c1.category_b as bigint)-3 and cast(c1.category_b as bigint)+3
+                      AND cast(c1.category_b as bigint) between cast(c1.category_b as bigint)-3 and cast(c1.category_b as bigint)+3
                       AND c1.card_id <> $1
                       AND c1.card_name <> $2
                   WHERE c.card_id = $1
@@ -82,6 +82,7 @@ module.exports = {
       .then((cards) => {
         res.locals.cards = cards;
         return Promise.all(res.locals.cards.map((card) => {
+          console.log('years ', years)
           if (level === 'EASY') return easyAnswers(card.card_id, card.card_name);
           if (level === 'MEDIUM') return mediumAnswers(card.card_id, card.card_name);
           if (level === 'HARD' && years) return yearHardAnswers(card.card_id, card.card_name);
@@ -115,7 +116,7 @@ module.exports = {
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
               WHERE "game" = $1
-              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));						 
+              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));			 
               `, [game])
       .then((data) => {
         console.log('', data);

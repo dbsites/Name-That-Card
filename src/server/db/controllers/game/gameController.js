@@ -35,6 +35,7 @@ module.exports = {
           gameMenu,
         } = res.locals;
         gameMenu.push({ yearsRange: years });
+        console.log(gameMenu);
         return res.send(gameMenu);
       })
       .catch(err => console.error(err));

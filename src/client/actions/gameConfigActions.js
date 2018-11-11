@@ -41,6 +41,7 @@ export const getGameMenuContents = (url) => {
         return res.json();
       })
       .then((data) => {
+        console.log('gameconfig ', data)
         dispatch(displayGameMenu(data));
       })
       .catch((err) => {
@@ -100,32 +101,6 @@ export const getCardsInfo = (cardInfoObj) => {
       });
   };
 };
-
-// export const populateWrongAnswers = wrongAnswers => ({
-//   type: types.POPULATE_WRONG_ANSWERS,
-//   payload: wrongAnswers,
-// });
-
-// export const getWrongAnswers = (info) => {
-//   return (dispatch) => {
-//     return fetch('http://localhost:3000/wrongAnswers', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json; charset=utf-8',
-//       },
-//       body: JSON.stringify(info),
-//     })
-//       .then((res) => {
-//         return res.json();
-//       })
-//       .then((data) => {
-//         dispatch(populateWrongAnswers(data));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
 
 export const resetGameMenu = () => ({
   type: types.RESET_GAME_MENU,
