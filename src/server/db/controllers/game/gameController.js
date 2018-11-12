@@ -9,6 +9,15 @@ function minMax(game) {
   where game_name = $1;`, [game]);
 }
 
+
+function checkYears(game) {
+  console.log('years check')
+  return db.any(`
+        SELECT years
+        FROM "game.dbo".game g
+        WHERE game_name = $1;`, [game]);
+}
+
 module.exports = {
   gameList(req, res) {
     console.log('gameList query reached');
@@ -22,19 +31,26 @@ module.exports = {
 
   gameMenu(req, res) {
     const {
-      game
+      game,
     } = req.params;
-    console.log('params', game);
+    console.log('game', game);
     db.any('SELECT game_category FROM "game.dbo".game_categories where game_name =$1', [game])
-      .then(async (data) => { console.log('data');
+      .then(async (data) => {
         res.locals.gameMenu = data;
         // eslint-disable-next-line no-return-await
-        return await minMax(game);
-      }).then((years) => {
+        return await checkYears(game);
+      })
+      .then(async (years) => { console.log('years', years);
+        // eslint-disable-next-line no-return-await
+        if (years[0].years === true) {
+          // eslint-disable-next-line no-return-await
+          return await minMax(game);
+        }
+      }).then((range) => {
         const {
           gameMenu,
         } = res.locals;
-        gameMenu.push({ yearsRange: years });
+        gameMenu.push({ yearsRange: range });
         return res.send(gameMenu);
       })
       .catch(err => console.error(err));

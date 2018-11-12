@@ -19,46 +19,49 @@ function easyAnswers(id, name) {
 }
 
 function mediumAnswers(id, name) {
-  return db.many(`SELECT c1.card_id, c1.card_name, 'MEDIUM' as answer
-                      FROM "game.dbo".cards_n c
-                      JOIN "game.dbo".cards_n c1
-                        ON c.card_category = c1.card_category 
-                        AND c.category_a = c1.category_a 
-                        AND c1.card_id <> $1
-                        AND c1.card_name <> $2
-                      WHERE c.card_id = $1
-                      ORDER BY RANDOM()
-                      LIMIT 3;`, [id, name])
+  return db.many(`
+          SELECT c1.card_id, c1.card_name, 'MEDIUM' as answer
+          FROM "game.dbo".cards_n c
+          JOIN "game.dbo".cards_n c1
+            ON c.card_category = c1.card_category 
+            AND c.category_a = c1.category_a 
+            AND c1.card_id <> $1
+            AND c1.card_name <> $2
+          WHERE c.card_id = $1
+          ORDER BY RANDOM()
+          LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
 
 function hardAnswers(id, name) {
-  return db.many(`SELECT c1.card_id, c1.card_name, 'HARD' as answer
-                  FROM "game.dbo".cards_n c
-                  JOIN "game.dbo".cards_n c1
-                    ON c.card_category = c1.card_category 
-                      AND c.category_a = c1.category_a 
-                      AND c.category_b = c1.category_b
-                      AND c1.card_id <> $1
-                      AND c1.card_name <> $2
-                  WHERE c.card_id = $1
-                  ORDER BY RANDOM()
-                  LIMIT 3;`, [id, name])
+  return db.many(`
+          SELECT c1.card_id, c1.card_name, 'HARD' as answer
+          FROM "game.dbo".cards_n c
+          JOIN "game.dbo".cards_n c1
+            ON c.card_category = c1.card_category 
+              AND c.category_a = c1.category_a 
+              AND c.category_b = c1.category_b
+              AND c1.card_id <> $1
+              AND c1.card_name <> $2
+          WHERE c.card_id = $1
+          ORDER BY RANDOM()
+          LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
 
 function yearHardAnswers(id, name) {
-  return db.many(`SELECT c1.card_id, c1.card_name, 'HARD' as answer
-                  FROM "game.dbo".cards_n c
-                  JOIN "game.dbo".cards_n c1
-                    ON c.card_category = c1.card_category 
-                      AND c.category_a = c1.category_a 
-                      AND cast(c1.category_b as bigint) between  cast(c1.category_b as bigint)-3 and cast(c1.category_b as bigint)+3
-                      AND c1.card_id <> $1
-                      AND c1.card_name <> $2
-                  WHERE c.card_id = $1
-                  ORDER BY RANDOM()
-                  LIMIT 3;`, [id, name])
+  return db.many(`
+          SELECT c1.card_id, c1.card_name, 'HARD' as answer
+          FROM "game.dbo".cards_n c
+          JOIN "game.dbo".cards_n c1
+            ON c.card_category = c1.card_category 
+              AND c.category_a = c1.category_a 
+              AND cast(c1.category_b as bigint) between  cast(c.category_b as bigint)-3 and cast(c.category_b as bigint)+3
+              AND c1.card_id <> $1
+              AND c1.card_name <> $2
+          WHERE c.card_id = $1 AND c.game_id = 1
+          ORDER BY RANDOM()
+          LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
 module.exports = {
@@ -73,12 +76,12 @@ module.exports = {
     } = req.body;
     db.many(`
           SELECT c.*
-            FROM "game.dbo".cards_n c
-              JOIN "game.dbo".game g 
-                ON g.game_id = c.game_id
-              WHERE g.game_name = $1 AND ($2:raw)  
-              ORDER BY RANDOM()
-              LIMIT 20;`, [game, query])
+          FROM "game.dbo".cards_n c
+            JOIN "game.dbo".game g 
+              ON g.game_id = c.game_id
+          WHERE g.game_name = $1 AND ($2:raw)  
+          ORDER BY RANDOM()
+          LIMIT 20;`, [game, query])
       .then((cards) => {
         res.locals.cards = cards;
         return Promise.all(res.locals.cards.map((card) => {
@@ -115,8 +118,8 @@ module.exports = {
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
               WHERE "game" = $1
-              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));						 
-              `, [game])
+              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));`,
+    [game])
       .then((data) => {
         console.log('', data);
         return res.json(data);
