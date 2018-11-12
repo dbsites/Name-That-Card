@@ -19,12 +19,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const LeaderboardContainer = (props) => {
-  
   const { leaderboardDifficulty, sortCategory, selectedGame, changeLeaderboardDifficulty, getGameHistory } = props;
+  
   const gameObj = {
     game: selectedGame
   }
-  console.log('game obj ', gameObj)
   getGameHistory(gameObj);
   return (
     <div>

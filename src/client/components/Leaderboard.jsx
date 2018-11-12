@@ -6,22 +6,44 @@ import * as leaderboardActions from '../actions/leaderboardActions';
 
 const mapStateToProps = store => ({
   results: store.leaderboardReducer.results,
+  sortDirection: store.leaderboardReducer.sortDirection,
+
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  changeLeaderboardSortCategory: (category) => {
+    dispatch(leaderboardActions.changeLeaderboardSortCategory(category));
+  },
+  toggleSortDirection: () => {
+    dispatch(leaderboardActions.toggleSortDirection());
+  },
 });
 
 const Leaderboard = (props) => {
-  const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, results, sortCategory } = props;
+  const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, results, sortCategory, changeLeaderboardSortCategory, sortDirection } = props;
   const selectedGameRoute = `/gameMenu/${selectedGame}`;
-  
-  const leaderboardEntries = [];
+  const difficultyFilteredResults = [];
+
   results.forEach((resultsObj, i) => {
     if(resultsObj.difficulty_level === leaderboardDifficulty) {
-      leaderboardEntries.push(<LeaderboardEntry key={i} entryContents={resultsObj} />);
+      difficultyFilteredResults.push(resultsObj)
     }
   });
+
+  function sortResults(arr) {
+    if(sortDirection) {
+      console.log('true ran')
+      return arr.sort((a, b) => Number(b[sortCategory]) - Number(a[sortCategory]));
+    }
+    console.log('false ran')
+    return arr.sort((a, b) => Number(a[sortCategory]) - Number(b[sortCategory]));
+  }
+
+  sortResults(difficultyFilteredResults);
+
+  const leaderboardEntries = difficultyFilteredResults.map((resultObj, i) => {
+    return <LeaderboardEntry key={i} entryContents={resultObj} />;
+  })
 
   return (
     <div className="leaderboard">
@@ -35,9 +57,9 @@ const Leaderboard = (props) => {
         <tbody>
           <tr>
             <th>PLAYER</th>
-            <th>TOTAL POINTS</th>
-            <th>AVERAGE SCORE</th>
-            <th>TOTAL GAMES PLAYED</th>
+            <th onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
+            <th onClick={() => changeLeaderboardSortCategory('avg')}>AVERAGE SCORE</th>
+            <th onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
           </tr>
           {leaderboardEntries}
         </tbody>
