@@ -30,18 +30,24 @@ const Leaderboard = (props) => {
       <div>
         Leaderboard
       </div>
-      <span onClick={() => changeLeaderboardDifficulty('ALL')}>All</span> <span onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span> <span onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span> <span onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>
-      <table>
-        <tbody>
-          <tr>
-            <th>PLAYER</th>
-            <th>TOTAL POINTS</th>
-            <th>AVERAGE SCORE</th>
-            <th>TOTAL GAMES PLAYED</th>
-          </tr>
-          {leaderboardEntries}
-        </tbody>
-      </table>
+      <div>
+        <div className="right-menu">
+          <span onClick={() => changeLeaderboardDifficulty('ALL')}>All</span> <span onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span> <span onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span> <span onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>
+        </div>
+        <div className="leaderboardContainer">
+          <table>
+            <tbody>
+              <tr>
+                <th>PLAYER</th>
+                <th>TOTAL POINTS</th>
+                <th>AVERAGE SCORE</th>
+                <th>TOTAL GAMES PLAYED</th>
+              </tr>
+              {leaderboardEntries}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

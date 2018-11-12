@@ -25,6 +25,7 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pg-promise": "^8.5.1",
+    "rc-slider": "^8.6.3",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
