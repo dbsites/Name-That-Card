@@ -9,21 +9,19 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getGameHistory: () => {
-    dispatch(leaderboardActions.getGameHistory());
-  },
+
 });
 
 const Leaderboard = (props) => {
-  const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, results, getGameHistory, sortCategory } = props;
+  const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, results, sortCategory } = props;
   const selectedGameRoute = `/gameMenu/${selectedGame}`;
+  
   const leaderboardEntries = [];
   results.forEach((resultsObj, i) => {
     if(resultsObj.difficulty_level === leaderboardDifficulty) {
-      leaderboardEntries.push(<LeaderboardEntry key={i} entryContents={resultObj} />);
+      leaderboardEntries.push(<LeaderboardEntry key={i} entryContents={resultsObj} />);
     }
   });
-  getGameHistory();
 
   return (
     <div className="leaderboard">

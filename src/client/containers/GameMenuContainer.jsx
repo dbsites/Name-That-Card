@@ -51,11 +51,6 @@ class GameMenuContainer extends Component {
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
     console.log('selectedGameRoute***********', urlSelectedGame);
     setSelectedGame(urlSelectedGame);
-    // let yearsString = '/false';
-    // if(years) {
-    //   yearsString = '/true';
-    // }
-    // console.log(window.location.pathname + yearsString)
     getGameMenuContents(window.location.pathname);
     resetGame();
     resetGameMenu();

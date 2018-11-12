@@ -41,7 +41,7 @@ export const getGameMenuContents = (url) => {
         return res.json();
       })
       .then((data) => {
-        console.log('gameconfig ', data)
+        console.log('gameconfig ', data);
         dispatch(displayGameMenu(data));
       })
       .catch((err) => {

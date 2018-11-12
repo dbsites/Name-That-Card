@@ -111,15 +111,18 @@ module.exports = {
   },
 
   leaderBoard(req, res) {
+    
     const { game } = req.body;
+    console.log('req bod ', req.body)
+    console.log('game in leaderboard control ', game)
 
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
               WHERE "game" = $1
-              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));			 
+              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));		 
               `, [game])
       .then((data) => {
-        console.log('', data);
+        console.log('leaderboard data', data);
         return res.json(data);
       })
       .catch(err => console.error(err));

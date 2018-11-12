@@ -10,9 +10,14 @@ export const populateResultsArray = array => ({
   payload: array,
 });
 
-export const getGameHistory = () => {
+export const getGameHistory = (obj) => {
+  console.log('gameObj in actions ', obj);
   return (dispatch) => {
-    return fetch('http://localhost:3000/leaderboard')
+    return fetch('http://localhost:3000/leaderboard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify(obj),
+    })
       .then((res) => {
         return res.json();
       })
