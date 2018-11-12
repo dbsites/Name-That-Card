@@ -122,13 +122,8 @@ module.exports = {
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
               WHERE "game" = $1
-<<<<<<< HEAD
-              GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));		 
-              `, [game])
-=======
               GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));`,
     [game])
->>>>>>> master
       .then((data) => {
         console.log('leaderboard data', data);
         return res.json(data);
