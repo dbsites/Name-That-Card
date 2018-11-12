@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
+import RangeSlider from '../components/RangeSlider.jsx';
+
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 
@@ -118,29 +120,26 @@ class GameMenuContainer extends Component {
             <NavLink to="/leaderBoard">Leaderboard</NavLink>
           </div>
         </div>
-        <h3 className="headers"> {selectedGame} -- CHOOSE CATEGORIES </h3>
-        <div className="list">
-            {categories}
+        <div className="categoryContainer">
+          <h3 className="headers"> {selectedGame} -- CHOOSE CATEGORIES </h3>
+          <div className="list">
+              {categories}
+          </div>
+          <div className="container">
+              {allBtn}
+          </div>
+          <div>
+            <RangeSlider />
+          </div>
         </div>
-        <div className="container">
-            {allBtn}
-        </div>
-        {/* <div>
-          <form className="sliderForm">
-            <div data-role="rangeslider">
-                <label htmlFor="range-1a">Rangeslider:</label>
-                <input type="range" name="range-1a" id="range-1a" min="1900" max="2017" value="1900" data-popup-enabled="true" data-show-value="true" />
-                <label htmlFor="range-1b">Rangeslider:</label>
-                <input type="range" name="range-1b" id="range-1b" min="1900" max="2017" value="2017" data-popup-enabled="true" data-show-value="true" />
+        <div className="bottomMenuContainer">
+          <h3 className="headers">-- CHOOSE DIFFICULTY --</h3>
+          <div className="container">
+            <div className="difficultyBoxStyle">
+              {easyBtn}
+              {medBtn}
+              {hardBtn}
             </div>
-          </form>
-        </div> */}
-        <h3 className="headers">-- CHOOSE DIFFICULTY --</h3>
-        <div className="container">
-          <div className="difficultyBoxStyle">
-            {easyBtn}
-            {medBtn}
-            {hardBtn}
           </div>
         </div>
         <div className="container">
