@@ -69,4 +69,14 @@ app.get('/admin',
 /*= ====================== Backend CMS ========================== */
 app.post('/admin/submitForm');
 
+app.post('/admin/signup',
+  adminController.checkEmailExists,
+  adminController.checkAdminUsernameExists,
+  adminController.createAdmin,
+  sessionController.createAdminSession,
+  cookieController.setAdminCookie,
+  (req, res) => res.status(200).json({ signUpSuccess: true }));
+
 app.listen(3000, () => console.log('server is listening on 3000'));
+
+// TODO: check the routes of login page for admin
