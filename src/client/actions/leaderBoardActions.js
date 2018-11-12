@@ -5,9 +5,18 @@ export const changeLeaderboardDifficulty = difficulty => ({
   payload: difficulty,
 });
 
+export const changeLeaderboardSortCategory = category => ({
+  type: types.CHANGE_LEADERBOARD_SORT_CATEGORY,
+  payload: category,
+});
+
 export const populateResultsArray = array => ({
   type: types.POPULATE_RESULTS_ARRAY,
   payload: array,
+});
+
+export const toggleSortDirection = () => ({
+  type: types.TOGGLE_SORT_DIRECTION,
 });
 
 export const getGameHistory = (obj) => {
