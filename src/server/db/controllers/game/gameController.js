@@ -1,7 +1,6 @@
 const db = require('../util/postgres');
 
 function minMax(game) {
-  console.log('minMax');
   return db.any(`SELECT min(cast(category_b as bigint)) as minYear, max(cast(category_b as bigint)) maxYear 
   FROM "game.dbo".cards_n c
   JOIN "game.dbo".game g
@@ -20,10 +19,8 @@ function checkYears(game) {
 
 module.exports = {
   gameList(req, res) {
-    console.log('gameList query reached');
     db.query('SELECT game_name, background, font, game_icon, years FROM "game.dbo".game')
       .then((data) => {
-        console.log(' gameList -> data', data);
         return res.json(data);
       })
       .catch(err => console.error(err));

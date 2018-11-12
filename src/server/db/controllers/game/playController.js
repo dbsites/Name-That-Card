@@ -85,6 +85,7 @@ module.exports = {
       .then((cards) => {
         res.locals.cards = cards;
         return Promise.all(res.locals.cards.map((card) => {
+          console.log('years ', years)
           if (level === 'EASY') return easyAnswers(card.card_id, card.card_name);
           if (level === 'MEDIUM') return mediumAnswers(card.card_id, card.card_name);
           if (level === 'HARD' && years) return yearHardAnswers(card.card_id, card.card_name);
@@ -113,7 +114,10 @@ module.exports = {
   },
 
   leaderBoard(req, res) {
+    
     const { game } = req.body;
+    console.log('req bod ', req.body)
+    console.log('game in leaderboard control ', game)
 
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
@@ -121,7 +125,7 @@ module.exports = {
               GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));`,
     [game])
       .then((data) => {
-        console.log('', data);
+        console.log('leaderboard data', data);
         return res.json(data);
       })
       .catch(err => console.error(err));

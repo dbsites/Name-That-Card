@@ -9,11 +9,9 @@ export const getGameList = () => {
   return (dispatch) => {
     return fetch('http://localhost:3000/gameList')
       .then((res) => {
-        console.log(' getGameList -> res', res);
         return res.json();
       })
       .then((data) => {
-        console.log(' getGameList -> data', data);
         dispatch(displayGameList(data));
       })
       .catch((err) => {
@@ -43,6 +41,7 @@ export const getGameMenuContents = (url) => {
         return res.json();
       })
       .then((data) => {
+        console.log('gameconfig ', data);
         dispatch(displayGameMenu(data));
       })
       .catch((err) => {
@@ -83,7 +82,6 @@ export const populateCardsArray = cardsData => ({
 });
 
 export const getCardsInfo = (cardInfoObj) => {
-  console.log('cards info actions', cardInfoObj);
   return (dispatch) => {
     return fetch('http://localhost:3000/loadGame', {
       method: 'POST',
@@ -103,32 +101,6 @@ export const getCardsInfo = (cardInfoObj) => {
       });
   };
 };
-
-// export const populateWrongAnswers = wrongAnswers => ({
-//   type: types.POPULATE_WRONG_ANSWERS,
-//   payload: wrongAnswers,
-// });
-
-// export const getWrongAnswers = (info) => {
-//   return (dispatch) => {
-//     return fetch('http://localhost:3000/wrongAnswers', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json; charset=utf-8',
-//       },
-//       body: JSON.stringify(info),
-//     })
-//       .then((res) => {
-//         return res.json();
-//       })
-//       .then((data) => {
-//         dispatch(populateWrongAnswers(data));
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
 
 export const resetGameMenu = () => ({
   type: types.RESET_GAME_MENU,

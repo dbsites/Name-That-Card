@@ -22,7 +22,7 @@ const Results = (props) => {
   const gameResultInfo = {
     username: loggedInUser,
     game: selectedGame,
-    difficulty_level: selectedDifficulty,
+    level: selectedDifficulty,
     score: score,
   };
 
