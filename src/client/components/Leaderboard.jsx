@@ -31,11 +31,15 @@ const Leaderboard = (props) => {
   });
 
   function sortResults(arr) {
-    if(sortDirection) {
-      console.log('true ran')
+    if (sortCategory === 'user') {
+      if (sortDirection) {
+        return arr.sort((a, b) => b.user.toLowerCase() > a.user.toLowerCase());
+      }
+      return arr.sort((a, b) => b.user.toLowerCase() > a.user.toLowerCase());
+    }
+    if (sortDirection) {
       return arr.sort((a, b) => Number(b[sortCategory]) - Number(a[sortCategory]));
     }
-    console.log('false ran')
     return arr.sort((a, b) => Number(a[sortCategory]) - Number(b[sortCategory]));
   }
 
@@ -56,7 +60,7 @@ const Leaderboard = (props) => {
       <table>
         <tbody>
           <tr>
-            <th>PLAYER</th>
+            <th onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
             <th onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
             <th onClick={() => changeLeaderboardSortCategory('avg')}>AVERAGE SCORE</th>
             <th onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
