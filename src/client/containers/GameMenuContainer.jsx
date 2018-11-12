@@ -80,7 +80,7 @@ class GameMenuContainer extends Component {
         );
       }
       return (
-        <li className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</li>
+        <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
       );
     });
    
