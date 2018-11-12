@@ -5,7 +5,6 @@ import * as leaderboardActions from '../actions/leaderboardActions';
 
 const mapStateToProps = store => ({
   leaderboardDifficulty: store.leaderboardReducer.leaderboardDifficulty,
-  sortCategory: store.leaderboardReducer.sortCategory,
   selectedGame: store.gameListReducer.selectedGame,
 });
 
@@ -19,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const LeaderboardContainer = (props) => {
-  const { leaderboardDifficulty, sortCategory, selectedGame, changeLeaderboardDifficulty, getGameHistory } = props;
+  const { leaderboardDifficulty, selectedGame, changeLeaderboardDifficulty, getGameHistory } = props;
   
   const gameObj = {
     game: selectedGame
@@ -27,7 +26,7 @@ const LeaderboardContainer = (props) => {
   getGameHistory(gameObj);
   return (
     <div>
-      <Leaderboard changeLeaderboardDifficulty={changeLeaderboardDifficulty} leaderboardDifficulty={leaderboardDifficulty} sortCategory={sortCategory} selectedGame={selectedGame} />
+      <Leaderboard changeLeaderboardDifficulty={changeLeaderboardDifficulty} leaderboardDifficulty={leaderboardDifficulty} selectedGame={selectedGame} />
     </div>
   );
 }
