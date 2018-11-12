@@ -29,11 +29,9 @@ module.exports = {
     // Send query to Postgres DB to add user to users
     console.log('here in startSession');
     console.log('body:', req.body);
-    db.one('SELECT ssid FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
-      .then((result) => {
-        res.locals.ssid = result.ssid;
-        next();
-      })
+    // limit 1 added temp
+    // delete current session then create a new session
+    db.none('DELETE FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
       .then(() => {
         res.locals.ssid = uuidv4();
         db.none('INSERT INTO "game.dbo".sessions(user_id,ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
