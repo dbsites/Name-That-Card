@@ -40,7 +40,12 @@ export default function (previousState = initialState, action) {
     case types.TOGGLE_ALL_GAME_CATEGORIES: {
       stateCopy = Object.assign({}, previousState);
       const numCategories = stateCopy.categoryList.length;
-      const allCategoriesSelected = stateCopy.categoryList.map(category => underscore(category.game_category));
+      const allCategoriesSelected = stateCopy.categoryList.map((category) => {
+        if (category.game_category) {
+          return underscore(category.game_category)
+        }
+        return;
+      });
       let newSelectedCategories = [];
       if (stateCopy.selectedCategories.length !== numCategories) {
         newSelectedCategories = allCategoriesSelected;

@@ -12,6 +12,7 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   selectedGame: store.gameListReducer.selectedGame,
+  years: store.gameMenuReducer.years,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -46,11 +47,11 @@ const mapDispatchToProps = dispatch => ({
 
 class GameMenuContainer extends Component {
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
-    getGameMenuContents(window.location.pathname);
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu, years } = this.props;
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
     console.log('selectedGameRoute***********', urlSelectedGame);
     setSelectedGame(urlSelectedGame);
+    getGameMenuContents(window.location.pathname);
     resetGame();
     resetGameMenu();
   }
@@ -73,18 +74,19 @@ class GameMenuContainer extends Component {
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
 
     const categories = categoryList.map((gameCatObj, ind) => {
-      const category = gameCatObj.game_category;
-      if (selectedCategories.includes(underscore(category))) {
+      if (gameCatObj.game_category) {
+        const category = gameCatObj.game_category;
+        if (selectedCategories.includes(underscore(category))) {
+          return (
+            <div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
+            );
+        } 
         return (
-          <div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
+          <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
         );
       }
-      return (
-        <li className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</li>
-      );
     });
    
-
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       return <Redirect to={{ pathname: '/game' }} />;
@@ -95,17 +97,17 @@ class GameMenuContainer extends Component {
     }
 
     let easyBtn = <div className="difficultyStyleE" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
-    if (selectedDifficulty === 'easy') {
+    if (selectedDifficulty === 'EASY') {
       easyBtn = <div className="difficultyStyleE difficultyActivated" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
     }
 
     let medBtn = <div className="difficultyStyleM" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
-    if (selectedDifficulty === 'med') {
+    if (selectedDifficulty === 'MEDIUM') {
       medBtn = <div className="difficultyStyleM difficultyActivated" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
     }
 
     let hardBtn = <div className="difficultyStyleH" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
-    if (selectedDifficulty === 'hard') {
+    if (selectedDifficulty === 'HARD') {
       hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     }
 
@@ -123,6 +125,16 @@ class GameMenuContainer extends Component {
         <div className="container">
             {allBtn}
         </div>
+        {/* <div>
+          <form className="sliderForm">
+            <div data-role="rangeslider">
+                <label htmlFor="range-1a">Rangeslider:</label>
+                <input type="range" name="range-1a" id="range-1a" min="1900" max="2017" value="1900" data-popup-enabled="true" data-show-value="true" />
+                <label htmlFor="range-1b">Rangeslider:</label>
+                <input type="range" name="range-1b" id="range-1b" min="1900" max="2017" value="2017" data-popup-enabled="true" data-show-value="true" />
+            </div>
+          </form>
+        </div> */}
         <h3 className="headers">-- CHOOSE DIFFICULTY --</h3>
         <div className="container">
           <div className="difficultyBoxStyle">

@@ -5,6 +5,7 @@ const initialState = {
   selectedGame: '',
   ableToProceed: false,
   playClicked: false,
+  years: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -14,6 +15,14 @@ export default function (previousState = initialState, action) {
     case types.SET_SELECTED_GAME: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.selectedGame = action.payload;
+      for (let i = 0; i < stateCopy.gameList.length; i += 1) {
+        if (stateCopy.gameList[i].game_name === action.payload && stateCopy.gameList[i].years) {
+          stateCopy.years = true;
+          break;
+        } else {
+          stateCopy.years = false;
+        }
+      }
       stateCopy.ableToProceed = true;
       return stateCopy;
     }
@@ -34,9 +43,10 @@ export default function (previousState = initialState, action) {
       stateCopy.ableToProceed = false;
       stateCopy.playClicked = false;
       stateCopy.selectedGame = '';
+      stateCopy.years = false;
       return stateCopy;
     }
-    
+
     default:
       return previousState;
   }
