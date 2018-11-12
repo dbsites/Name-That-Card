@@ -22,19 +22,23 @@ module.exports = {
 
   gameMenu(req, res) {
     const {
-      game
-    } = req.params;
-    console.log('params', game);
+      game,
+      years,
+    } = req.body;
+    console.log('game', game);
     db.any('SELECT game_category FROM "game.dbo".game_categories where game_name =$1', [game])
-      .then(async (data) => { console.log('data');
+      .then(async (data) => {
         res.locals.gameMenu = data;
         // eslint-disable-next-line no-return-await
-        return await minMax(game);
-      }).then((years) => {
+        if (years === true) {
+          // eslint-disable-next-line no-return-await
+          return await minMax(game);
+        }
+      }).then((range) => {
         const {
           gameMenu,
         } = res.locals;
-        gameMenu.push({ yearsRange: years });
+        gameMenu.push({ yearsRange: range });
         return res.send(gameMenu);
       })
       .catch(err => console.error(err));
