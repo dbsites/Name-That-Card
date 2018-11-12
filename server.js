@@ -44,7 +44,7 @@ app.post('/signup',
  * game name and level of difficulty
  */
 app.get('/gameList', gameController.gameList);
-app.post('/gameMenu', gameController.gameMenu);
+app.get('/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', playController.loadGame);
 
