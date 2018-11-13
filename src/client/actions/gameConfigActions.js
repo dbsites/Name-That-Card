@@ -109,3 +109,8 @@ export const resetGameMenu = () => ({
 export const setYearsBool = () => ({
   type: types.SET_YEARS_BOOL,
 });
+
+export const updateMinMaxYears = event => ({
+  type: types.UPDATE_MIN_MAX_YEARS,
+  payload: event,
+});

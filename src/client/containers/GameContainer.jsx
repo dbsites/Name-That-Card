@@ -69,6 +69,7 @@ class GameContainer extends Component {
       startDate: minYear,
       endDate: maxYear,
     };
+    console.log('cardparams ', cardParameters)
     getCardsInfo(cardParameters);
   }
 

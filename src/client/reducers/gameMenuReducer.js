@@ -114,6 +114,13 @@ export default function (previousState = initialState, action) {
       }
       return stateCopy;
     }
+    case types.UPDATE_MIN_MAX_YEARS: {
+      stateCopy = Object.assign({}, previousState);
+      const [min, max] = action.payload;
+      stateCopy.minYear = min;
+      stateCopy.maxYear = max;
+      return stateCopy;
+    }
 
     default:
       return previousState;

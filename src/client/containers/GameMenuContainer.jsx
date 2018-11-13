@@ -50,6 +50,9 @@ const mapDispatchToProps = dispatch => ({
   setYearsBool: () => {
     dispatch(gameConfigActions.setYearsBool());
   },
+  updateMinMaxYears: (event) => {
+    dispatch(gameConfigActions.updateMinMaxYears(event));
+  },
 });
 
 class GameMenuContainer extends Component {
@@ -81,6 +84,7 @@ class GameMenuContainer extends Component {
       setYearsBool,
       minYear,
       maxYear,
+      updateMinMaxYears,
     } = this.props;
   
     setYearsBool();
@@ -127,7 +131,7 @@ class GameMenuContainer extends Component {
 
     let slider = '';
     if (years) {
-      slider = <RangeSlider maxYear={maxYear} minYear={minYear} />;
+      slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
     }
 
     return (
