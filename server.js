@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const adminController = require('./src/server/db/controllers/admin/adminController');
 const authController = require('./src/server/db/controllers/user/authController');
 const cookieController = require('./src/server/db/controllers/cookie/cookieController');
@@ -20,16 +21,26 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/rootpage',
-  sessionController.checkSSIDSession);
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: [/**secre keys */]
+// }))
+
+app.use('/', sessionController.checkSSIDSession);
+// app.get('/', sessionController.checkSSIDSession);
+
+// app.get('/rootpage',
+//   sessionController.checkSSIDSession);
 
 app.post('/login',
   authController.verifyUser,
+  sessionController.checkSSIDSession,
   sessionController.createSession,
   cookieController.setSSIDCookie,
-  (req, res) => {
-    res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
-  });
+  // (req, res) => {
+  //   res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
+  // }
+);
 
 app.post('/signup',
   authController.checkEmailExists,
@@ -37,14 +48,17 @@ app.post('/signup',
   authController.createUser,
   sessionController.createSession,
   cookieController.setSSIDCookie,
-  (req, res) => res.status(200).json({ signUpSuccess: true }));
+  // sessionController.checkSSIDSession
+  (req, res) => res.status(200).json({ signUpSuccess: true })
+);
 
 /**
  * request object with
  * game name and level of difficulty
  */
 app.get('/gameList', gameController.gameList);
-app.get('/gameMenu/:game', gameController.gameMenu);
+app.get('/gameMenu/:game', gameController.gameMenu,
+);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', playController.loadGame);
 
