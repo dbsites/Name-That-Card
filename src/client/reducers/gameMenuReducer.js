@@ -58,12 +58,12 @@ export default function (previousState = initialState, action) {
       if (stateCopy.selectedCategories.length !== numCategories) {
         newSelectedCategories = allCategoriesSelected;
       }
+      stateCopy.selectedCategories = newSelectedCategories;
       if (stateCopy.selectedDifficulty !== '' && stateCopy.selectedCategories.length !== 0) {
         stateCopy.ableToStartGame = true;
       } else {
         stateCopy.ableToStartGame = false;
       }
-      stateCopy.selectedCategories = newSelectedCategories;
       return stateCopy;
     }
     case types.SET_GAME_DIFFICULTY: {
@@ -110,6 +110,12 @@ export default function (previousState = initialState, action) {
           stateCopy.years = true;
           stateCopy.minYear = stateCopy.categoryList[i].yearsRange[0].minyear;
           stateCopy.maxYear = stateCopy.categoryList[i].yearsRange[0].maxyear;
+          if (stateCopy.selectedMinYear === '') {
+            stateCopy.selectedMinYear = stateCopy.minYear;
+          }
+          if (stateCopy.selectedMaxYear === '') {
+            stateCopy.selectedMaxYear = stateCopy.maxYear;
+          }
           break;
         } else {
           stateCopy.years = false;
@@ -120,9 +126,6 @@ export default function (previousState = initialState, action) {
     case types.UPDATE_MIN_MAX_YEARS: {
       stateCopy = Object.assign({}, previousState);
       const [min, max] = action.payload;
-      console.log('min ', min)
-      console.log('max ', max)
-
       stateCopy.selectedMinYear = min;
       stateCopy.selectedMaxYear = max;
       return stateCopy;

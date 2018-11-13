@@ -114,8 +114,14 @@ class GameMenuContainer extends Component {
       return <Redirect to={{ pathname: '/game' }} />;
     }
     let allBtn = <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
-    if (selectedCategories.length === categoryList.length) {
-      allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>
+    if (years) {
+      if (selectedCategories.length === categoryList.length -1) {
+        allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
+      }
+    } else {
+      if (selectedCategories.length === categoryList.length) {
+        allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
+      }
     }
 
     let easyBtn = <div className="difficultyStyleE" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
