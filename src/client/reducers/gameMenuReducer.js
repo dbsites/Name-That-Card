@@ -12,6 +12,8 @@ const initialState = {
   years: false,
   minYear: '',
   maxYear: '',
+  selectedMinYear: '',
+  selectedMaxYear: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -42,12 +44,15 @@ export default function (previousState = initialState, action) {
     }
     case types.TOGGLE_ALL_GAME_CATEGORIES: {
       stateCopy = Object.assign({}, previousState);
-      const numCategories = stateCopy.categoryList.length;
-      const allCategoriesSelected = stateCopy.categoryList.map((category) => {
+      let numCategories = stateCopy.categoryList.length;
+      if (stateCopy.years) {
+        numCategories -= 1;
+      }
+      const allCategoriesSelected = [];
+      stateCopy.categoryList.forEach((category) => {
         if (category.game_category) {
-          return underscore(category.game_category)
+          allCategoriesSelected.push(category.game_category);
         }
-        return;
       });
       let newSelectedCategories = [];
       if (stateCopy.selectedCategories.length !== numCategories) {
@@ -96,8 +101,6 @@ export default function (previousState = initialState, action) {
       stateCopy.startClicked = false;
       stateCopy.renderScoreFooter = false;
       stateCopy.years = false;
-      stateCopy.minYear = '';
-      stateCopy.maxYear = '';
       return stateCopy;
     }
     case types.SET_YEARS_BOOL: {
@@ -117,11 +120,13 @@ export default function (previousState = initialState, action) {
     case types.UPDATE_MIN_MAX_YEARS: {
       stateCopy = Object.assign({}, previousState);
       const [min, max] = action.payload;
-      stateCopy.minYear = min;
-      stateCopy.maxYear = max;
+      console.log('min ', min)
+      console.log('max ', max)
+
+      stateCopy.selectedMinYear = min;
+      stateCopy.selectedMaxYear = max;
       return stateCopy;
     }
-
     default:
       return previousState;
   }

@@ -90,20 +90,24 @@ class GameMenuContainer extends Component {
     setYearsBool();
 
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
+    const categories = [];
+    let modCategoryList = categoryList.slice();
+    for(let i = 0; i < modCategoryList.length; i += 1) {
+      if(!modCategoryList[i].game_category) {
+        modCategoryList.pop();
+      }
+    }
+    console.log('mod cats ', modCategoryList)
 
-    const categories = categoryList.map((gameCatObj, ind) => {
-      if (gameCatObj.game_category) {
-        const category = gameCatObj.game_category;
-        if (selectedCategories.includes(underscore(category))) {
-          return (
-            <div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
-            );
-        } 
-        return (
-          <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
-        );
+    modCategoryList.forEach((gameCatObj, ind) => {
+      const category = gameCatObj.game_category;
+      if (selectedCategories.includes(underscore(category))) {
+        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
+      } else {
+        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
       }
     });
+  
    
     if (ableToStartGame && startClicked) {
       resetGameInitiation();

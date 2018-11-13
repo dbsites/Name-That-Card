@@ -17,8 +17,8 @@ const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
   years: store.gameMenuReducer.years,
-  minYear: store.gameMenuReducer.minYear,
-  maxYear: store.gameMenuReducer.maxYear,
+  selectedMinYear: store.gameMenuReducer.selectedMinYear,
+  selectedMaxYear: store.gameMenuReducer.selectedMaxYear,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -43,8 +43,8 @@ class GameContainer extends Component {
       getCardsInfo,
       selectedDifficulty,
       years,
-      minYear,
-      maxYear,
+      selectedMinYear,
+      selectedMaxYear,
     } = this.props;
     
     function getQueryString(arr) {
@@ -66,8 +66,8 @@ class GameContainer extends Component {
       query: queryString,
       level: selectedDifficulty,
       years: years,
-      startDate: minYear,
-      endDate: maxYear,
+      startDate: selectedMinYear,
+      endDate: selectedMaxYear,
     };
     console.log('cardparams ', cardParameters)
     getCardsInfo(cardParameters);
