@@ -9,6 +9,9 @@ const initialState = {
   ableToStartGame: false,
   startClicked: false,
   renderScoreFooter: false,
+  years: false,
+  minYear: '',
+  maxYear: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -92,6 +95,23 @@ export default function (previousState = initialState, action) {
       stateCopy.ableToStartGame = false;
       stateCopy.startClicked = false;
       stateCopy.renderScoreFooter = false;
+      stateCopy.years = false;
+      stateCopy.minYear = '';
+      stateCopy.maxYear = '';
+      return stateCopy;
+    }
+    case types.SET_YEARS_BOOL: {
+      stateCopy = Object.assign({}, previousState);
+      for (let i = 0; i < stateCopy.categoryList.length; i += 1) {
+        if (stateCopy.categoryList[i].hasOwnProperty('yearsRange')) {
+          stateCopy.years = true;
+          stateCopy.minYear = stateCopy.categoryList[i].yearsRange[0].minyear;
+          stateCopy.maxYear = stateCopy.categoryList[i].yearsRange[0].maxyear;
+          break;
+        } else {
+          stateCopy.years = false;
+        }
+      }
       return stateCopy;
     }
 

@@ -105,3 +105,7 @@ export const getCardsInfo = (cardInfoObj) => {
 export const resetGameMenu = () => ({
   type: types.RESET_GAME_MENU,
 });
+
+export const setYearsBool = () => ({
+  type: types.SET_YEARS_BOOL,
+});

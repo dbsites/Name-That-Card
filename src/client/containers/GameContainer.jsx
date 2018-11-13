@@ -16,7 +16,7 @@ const mapStateToProps = store => ({
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
-  years: store.gameListReducer.years,
+  years: store.gameMenuReducer.years,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,6 +41,7 @@ class GameContainer extends Component {
       getCardsInfo,
       selectedDifficulty,
       years,
+      yearsRange,
     } = this.props;
     
     function getQueryString(arr) {
@@ -62,6 +63,7 @@ class GameContainer extends Component {
       query: queryString,
       level: selectedDifficulty,
       years: years,
+      yearsRange: yearsRange,
     };
     getCardsInfo(cardParameters);
   }

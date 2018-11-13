@@ -15,6 +15,8 @@ const mapStateToProps = store => ({
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   selectedGame: store.gameListReducer.selectedGame,
   years: store.gameMenuReducer.years,
+  minYear: store.gameMenuReducer.minYear,
+  maxYear: store.gameMenuReducer.maxYear,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -45,20 +47,24 @@ const mapDispatchToProps = dispatch => ({
   resetGameMenu: () => {
     dispatch(gameConfigActions.resetGameMenu());
   },
+  setYearsBool: () => {
+    dispatch(gameConfigActions.setYearsBool());
+  },
 });
 
 class GameMenuContainer extends Component {
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu, years } = this.props;
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
-    console.log('selectedGameRoute***********', urlSelectedGame);
     setSelectedGame(urlSelectedGame);
     getGameMenuContents(window.location.pathname);
     resetGame();
     resetGameMenu();
   }
 
+
   render() {
+
     const {
       categoryList,
       toggleGameCategory,
@@ -71,8 +77,14 @@ class GameMenuContainer extends Component {
       selectedCategories,
       selectedDifficulty,
       selectedGame,
+      years,
+      setYearsBool,
+      minYear,
+      maxYear,
     } = this.props;
   
+    setYearsBool();
+
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
 
     const categories = categoryList.map((gameCatObj, ind) => {
@@ -113,6 +125,11 @@ class GameMenuContainer extends Component {
       hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     }
 
+    let slider = '';
+    if (years) {
+      slider = <RangeSlider maxYear={maxYear} minYear={minYear} />;
+    }
+
     return (
       <div className="MainContainer">
         <div className="right-menu">
@@ -129,7 +146,7 @@ class GameMenuContainer extends Component {
               {allBtn}
           </div>
           <div>
-            <RangeSlider />
+            {slider}
           </div>
         </div>
         <div className="bottomMenuContainer">
