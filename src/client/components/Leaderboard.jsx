@@ -71,7 +71,7 @@ const Leaderboard = (props) => {
   console.log('difficultyFilteredResults ', difficultyFilteredResults);
 
   const leaderboardEntries = difficultyFilteredResults.map((resultObj, i) => {
-    return <LeaderboardEntry key={i} entryContents={resultObj} />;
+    return <LeaderboardEntry key={i} entryContents={resultObj} rank={i} />;
   })
 
   return (
@@ -85,6 +85,7 @@ const Leaderboard = (props) => {
       <table>
         <tbody>
           <tr>
+            <th>RANK</th>
             <th onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
             <th onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
             <th onClick={() => changeLeaderboardSortCategory('avg')}>AVERAGE SCORE</th>
