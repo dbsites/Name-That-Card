@@ -13,11 +13,11 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-let about;// = <span className=""><NavLink to="/about">About</NavLink></span>;
-let privacyPolicy;// = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
-let termsOfService;// = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
-let contact;// = <span>Contact</span>;
-let disclaimer;// = <span>DISCLAIMER</span>;
+let about;
+let privacyPolicy;
+let termsOfService;
+let contact;
+let disclaimer;
 let footerScore;//= '';
 let gameDisclaimer;
 class Footer extends Component {
