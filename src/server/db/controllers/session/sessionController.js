@@ -1,6 +1,6 @@
 const db = require('../util/postgres');
 const uuidv4 = require('uuid/v4');
- 
+
 module.exports = {
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res) => {

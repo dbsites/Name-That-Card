@@ -10,7 +10,7 @@ function minMax(game) {
 
 
 function checkYears(game) {
-  console.log('years check')
+  console.log('years check');
   return db.any(`
         SELECT years
         FROM "game.dbo".game g
