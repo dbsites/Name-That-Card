@@ -1,35 +1,45 @@
 const db = require('../util/postgres');
 const uuidv4 = require('uuid/v4');
- 
+
 module.exports = {
   // Check if cookie for SSID is available in the req
-  checkSSIDSession: (req, res) => {
+  checkSSIDSession: (req, res, next) => {
+    console.log('checking')
+    console.log(req.cookies)
     if (req.cookies.ssid) {
+      console.log('cookie exists')
       // If a matching session exists, set loginStatus to 'success'
       db.one('SELECT ssid FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid])
         .then((session) => {
-          console.log('*******', session);
-          res.json({
-            loggedIn: true,
-          });
+          console.log('***session****', session);
+          if (req.cookies.ssid === session.ssid) {
+            console.log('session exists!')
+            res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
+          }
         })
         .catch(() => {
-          res.json({
-            loggedIn: false,
-          });
+          // res.json({
+          //   loggedIn: false,
+          // });
+          next();
         });
     } else {
-      res.json({
-        loggedIn: false,
-      });
+      // res.json({
+      //   loggedIn: false,
+      // });
+      console.log('nocookie')
+      next();
     }
   },
+
+  // (req, res) => {
+  //   res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
+  // }
 
   createSession: (req, res, next) => {
     // Send query to Postgres DB to add user to users
     console.log('here in startSession');
     console.log('body:', req.body);
-    // limit 1 added temp
     // delete current session then create a new session
     db.none('DELETE FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
       .then(() => {
