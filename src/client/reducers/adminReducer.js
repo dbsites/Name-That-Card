@@ -13,13 +13,11 @@ export default function (previousState = initialState, action) {
 
   switch (action.type) {
     case types.UPDATE_ADMIN_LOGIN_USERNAME: {
-      console.log('updated username')
       stateCopy = Object.assign({}, previousState);
       stateCopy.adminUsername = action.payload.target.value;
       return stateCopy;
     }
     case types.UPDATE_ADMIN_LOGIN_PASSWORD: {
-      console.log('updated password')
       stateCopy = Object.assign({}, previousState);
       stateCopy.adminPassword = action.payload.target.value;
       return stateCopy;
@@ -52,7 +50,6 @@ export default function (previousState = initialState, action) {
       stateCopy = Object.assign({}, previousState);
       const newMediumRules = stateCopy.mediumRules.slice();
       newMediumRules.push(action.payload);
-      console.log('med ', action.payload)
       stateCopy.mediumRules = newMediumRules;
       return stateCopy;
     }
@@ -83,7 +80,6 @@ export default function (previousState = initialState, action) {
       return stateCopy;
     }
     default:
-      console.log('reducer ran')
       return previousState;
   }
 }
