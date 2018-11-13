@@ -97,7 +97,6 @@ class GameMenuContainer extends Component {
         modCategoryList.pop();
       }
     }
-    console.log('mod cats ', modCategoryList)
 
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
@@ -107,19 +106,19 @@ class GameMenuContainer extends Component {
         categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
       }
     });
-  
    
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       return <Redirect to={{ pathname: '/game' }} />;
     }
+
     let allBtn = <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
     if (years) {
       if (selectedCategories.length === categoryList.length -1) {
         allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
       }
     } else {
-      if (selectedCategories.length === categoryList.length) {
+      if (selectedCategories.length === categoryList.length-1) {
         allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
       }
     }

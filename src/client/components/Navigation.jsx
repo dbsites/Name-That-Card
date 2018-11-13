@@ -35,9 +35,7 @@ const Navigation = (props) => {
     signUpButton = '';
     navUsername = '';
     const selectedGameRoute = `/gameMenu/${selectedGame}`
-    console.log('selectedGameRoute', selectedGameRoute)
     xBtn = <div className="menu-item"><NavLink to={selectedGameRoute}>X</NavLink></div>;
-    console.log('question num ', questionNumber)
     if(questionNumber === 20) {
       xBtn = <div className="menu-item"><NavLink to='/'>X</NavLink></div>;
     }

@@ -44,10 +44,7 @@ export default function (previousState = initialState, action) {
     }
     case types.TOGGLE_ALL_GAME_CATEGORIES: {
       stateCopy = Object.assign({}, previousState);
-      let numCategories = stateCopy.categoryList.length;
-      if (stateCopy.years) {
-        numCategories -= 1;
-      }
+      let numCategories = stateCopy.categoryList.length-1;
       const allCategoriesSelected = [];
       stateCopy.categoryList.forEach((category) => {
         if (category.game_category) {
@@ -101,6 +98,10 @@ export default function (previousState = initialState, action) {
       stateCopy.startClicked = false;
       stateCopy.renderScoreFooter = false;
       stateCopy.years = false;
+      stateCopy.minYear = '';
+      stateCopy.maxYear = '';
+      stateCopy.selectedMinYear = '';
+      stateCopy.selectedMaxYear = '';
       return stateCopy;
     }
     case types.SET_YEARS_BOOL: {
