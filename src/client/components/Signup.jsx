@@ -23,20 +23,20 @@ const Signup = (props) =>  {
     <div className="MainContainer">
       <div className="grid">
         <h1>Sign Up</h1>
-        <form class="form login">
-          <div class="form__field">
-            <label htmlFor="signup_username"><svg class="icon"></svg><span class="hidden">Username</span></label>
-            <input id="signup_username" type="text" name="username" class="form__input" placeholder="Username" onChange={updateSignUpUsername} required />
+        <form className="form login">
+          <div className="form__field">
+            <label htmlFor="signup_username"><svg className="icon"></svg><span className="hidden">Username</span></label>
+            <input id="signup_username" type="text" name="username" className="form__input" placeholder="Username" onChange={updateSignUpUsername} required />
           </div>
-          <div class="form__field">
-            <label htmlFor="signup_password"><svg class="icon"></svg><span class="hidden">Password</span></label>
-            <input id="signup_username" type="password" name="password" class="form__input" placeholder="Password" onChange={updateSignUpPassword} required />
+          <div className="form__field">
+            <label htmlFor="signup_password"><svg className="icon"></svg><span className="hidden">Password</span></label>
+            <input id="signup_username" type="password" name="password" className="form__input" placeholder="Password" onChange={updateSignUpPassword} required />
           </div>
-          <div class="form__field">
-            <label htmlFor="signup_email"><svg class="icon"></svg><span class="hidden">Email</span></label>
-            <input id="signup_username" type="text" name="email" class="form__input" placeholder="Email" onChange={updateSignUpEmail} required />
+          <div className="form__field">
+            <label htmlFor="signup_email"><svg className="icon"></svg><span className="hidden">Email</span></label>
+            <input id="signup_username" type="text" name="email" className="form__input" placeholder="Email" onChange={updateSignUpEmail} required />
           </div>
-          <div class="form__field">
+          <div className="form__field">
             <input type="button" onClick={() => submitSignUp(signUpInfoObj)} value="Sign Up" />
           </div>
           <div>
