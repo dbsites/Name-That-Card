@@ -33,7 +33,7 @@ const RangeSlider = (props) => {
     <div className="container">
       <div className="sliderContainer">
         <p id="sliderTitle">Select Year Range</p>
-        <Range min={minYear} max={maxYear} defaultValue={[1900, 2017]} allowCross={false} tipFormatter={value => `${value}`} />
+        <Range min={minYear} max={maxYear} defaultValue={[minYear, maxYear]} allowCross={false} tipFormatter={value => `${value}`} />
       </div>
     </div>
   )
