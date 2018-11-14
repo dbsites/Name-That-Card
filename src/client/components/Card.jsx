@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, getWrongAnswers } = props;
+  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, selectedAnswer } = props;
 
   const shuffledAnswers = (answersArr) => {
     let counter = answersArr.length;
@@ -16,7 +16,7 @@ const Card = (props) => {
   };
 
   let picture = '';
-  let mask = '';
+  let coverImg = '';
   let answers =[];
 
   if (cardInfo) {
@@ -26,11 +26,20 @@ const Card = (props) => {
     })
     answers.push(cardInfo.card_name)
     answers = shuffledAnswers(answers);
-    const imgSrc = cardInfo.image_location_temp;
-    const maskImgSrc = cardInfo.mask;
-    const ebayLink = cardInfo.ebay_link
-    picture = <img className="cardReveal" src={imgSrc} alt="MASK ON" />;
-    mask = <img src={maskImgSrc} alt="MASK OFF MASK OFF" />;
+    const imgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/CARDS/' + cardInfo.image;
+    let coverImgSrc;
+    if (cardInfo.mask) {
+      coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.mask + '.png';
+    } else {
+      coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.imagename;
+    }
+    
+    picture = <img className="card" src={imgSrc} alt="MASK ON" />;
+    coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK OFF MASK OFF" />;
+  }
+
+  if(selectedAnswer !== ''){
+    coverImg = '';
   }
 
   return (
@@ -38,7 +47,7 @@ const Card = (props) => {
       <div className="card">
         {picture}
       </div>
-      {/* {mask} */}
+      {coverImg}
       <div className="answersBox">
         <div className="answers">
           <div id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</div>

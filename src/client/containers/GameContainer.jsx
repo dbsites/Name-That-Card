@@ -12,6 +12,7 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   cards: store.gameReducer.cards,
+  selectedAnswer: store.gameReducer.selectedAnswer,
   wrongAnswers: store.gameReducer.wrongAnswers,
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
@@ -74,7 +75,7 @@ class GameContainer extends Component {
   }
 
   render() {
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers } = this.props;
+    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers, selectedAnswer } = this.props;
     const cardInfo = cards[0];
     let clickFunc = goToNext;
     let title = '';
@@ -88,7 +89,7 @@ class GameContainer extends Component {
       }
     }
 
-    let content = <Card getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
+    let content = <Card selectedAnswer={selectedAnswer} getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
     if (cards.length === 1) {
       clickFunc = finishGame;

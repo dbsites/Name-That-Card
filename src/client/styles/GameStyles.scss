@@ -204,6 +204,8 @@
   align-content: center;
   height: 50vh;
   width: 50vw;
+  position: absolute;
+  
 }
 
 .cardReveal {
@@ -213,6 +215,7 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+  position: relative;
 }
 
 .answersBox {
