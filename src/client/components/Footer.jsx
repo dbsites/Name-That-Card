@@ -68,7 +68,7 @@ class Footer extends Component {
           {contact}
           {footerScore}
         </div>
-        <div>
+        <div className="footer">
           {gameDisclaimer}
         </div>
       </div>

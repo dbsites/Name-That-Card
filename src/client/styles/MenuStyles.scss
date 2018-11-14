@@ -1,3 +1,16 @@
+// @media screen and (min-width: 600px) {
+//   .MainContainer {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-content: center;
+//     height: 31rem;
+//     max-width: 50rem;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
+
 /* config.css */
 
 :root {
@@ -220,11 +233,6 @@ input[type='button'] {
 
 /* modules/text.css */
 
-:root {
-  --paragraphMarginBottom: 1.5rem;
-  --paragraphMarginTop: 1.5rem;
-}
-
 p {
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
@@ -262,12 +270,42 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 7rem;
+  max-width: 25rem;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left-menu {
+  display: flex;
   height: auto;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.homeLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: auto;
+  width: auto;
+  line-height: 1rem;
+  margin: auto;
+}
+
+.homeImgLogo {
+  width: 6rem;
+  height: 6rem;
 }
 
 .gameLogo {
   width: 10rem;
   height: 5rem;
+  // margin: auto;
+  // margin-left: auto;
+  // margin-right: auto;
 }
 
 .logo {
@@ -275,10 +313,10 @@ p {
   height: auto;
   width: auto;
   line-height: 1rem;
-  margin: 1rem;
-  padding: 0.5rem 0.8rem !important;
+  // margin: 1rem;
+  // padding: 0.5rem 0.8rem !important;
   cursor: pointer;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   align-content: center;
   border-radius: 0.25rem;
@@ -297,20 +335,41 @@ p {
   display: flex;
   height: auto;
   width: auto;
-  line-height: 1rem;
-  font-size: 0.95rem !important;
-  font-weight: 400;
+  // line-height: 0.875rem;
+  font-size: 1em !important;
+  font-weight: 700;
   // margin-top: 1.5rem;
   // margin-bottom: 1.5rem;
-  margin: 1rem;
-  padding: 0.5rem 0.8rem !important;
-  border: 0.08em solid white;
+  margin: 0.9rem;
+  // padding: 0.5rem 0.8rem !important;
+  // border: 0.08em solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   // align-content: center;
   border-radius: 0.25rem;
-  background-color: black;
+  // background-color: black;
+  color: white;
+}
+
+.xButton {
+  display: flex;
+  height: auto;
+  width: auto;
+  // line-height: 0.875rem;
+  font-size: 2em !important;
+  font-weight: 900;
+  // margin-top: 1.5rem;
+  // margin-bottom: 1.5rem;
+  margin: 0.9rem;
+  // padding: 0.5rem 0.8rem !important;
+  // border: 0.08em solid white;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  // align-content: center;
+  border-radius: 0.25rem;
+  // background-color: black;
   color: white;
 }
 
@@ -416,27 +475,28 @@ p {
 //   // border: 0.08em solid purple;
 // }
 
-// .cardContainer {
-//   width: 70vw;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-content: center;
-//   align-items: center;
-//   position: relative;
-//   // border: 0.08em solid yellow;
+.cardContainer {
+  display: flex;
+  // height: 10rem;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // align-content: center;
+  align-items: center;
+  // text-align: center;
+  // position: relative;
+  // margin: 1rem;
+}
+
+// .card {
+//   height: 50%;
+//   width: 50%;
 // }
 
-// .cardContainer {
-//   width: 70vw;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-content: center;
-//   align-items: center;
-//   // border: 0.08em solid yellow;
+// .cardReveal {
+//   height: 50%;
+//   width: 50%;
 // }
-
 
 // .categoryContainer {
 //   display: flex;
@@ -544,4 +604,145 @@ p {
   margin-bottom: 0.5rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .MainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 31rem;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 7rem;
+    max-width: 25rem;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .MainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 31rem;
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 7rem;
+    max-width: 25rem;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .MainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 31rem;
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 7rem;
+    max-width: 25rem;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .MainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 56rem;
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 10rem;
+    max-width: 90rem;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

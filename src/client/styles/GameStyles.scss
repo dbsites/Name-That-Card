@@ -225,24 +225,37 @@
 
 // game buttons
 
+.cards {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // margin: auto;
+  position: relative;
+}
+
 .card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   align-content: center;
-  height: 50vh;
-  width: 50vw;
-  position: absolute;
+  height: 40vh;
+  // width: 50%;
+  // position: absolute;
 }
 
 .cardReveal {
-  max-width: 50vw;
-  max-height: 50vh;
+  // max-width: 10vh;
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  // opacity: 0.5;
 }
 
 .answersBox {
@@ -253,7 +266,7 @@
   // flex-wrap: wrap;
   // width: auto;
   // line-height: 1.8em;
-  margin: 2vw;
+  margin: 1rem;
   justify-content: center;
   color: white;
   user-select: none;

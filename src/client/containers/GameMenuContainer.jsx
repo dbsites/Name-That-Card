@@ -151,7 +151,7 @@ class GameMenuContainer extends Component {
             <NavLink to="/leaderBoard">Leaderboard</NavLink>
           </div>
         </div>
-        <h3 className="text--center"> {selectedGame} -- CHOOSE CATEGORIES </h3>
+        <h3 className="text--center">CHOOSE CATEGORIES</h3>
         <div className="categoryContainer">
           <div className="list">
             {categories}
@@ -161,7 +161,7 @@ class GameMenuContainer extends Component {
         <div>
           {slider}
         </div>
-        <h3 className="text--center">-- CHOOSE DIFFICULTY --</h3>
+        <h3 className="text--center">CHOOSE DIFFICULTY</h3>
         <div className="difficultyBoxStyle">
           {easyBtn}
           {medBtn}
