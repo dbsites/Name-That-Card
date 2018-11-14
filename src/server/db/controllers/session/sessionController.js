@@ -3,30 +3,40 @@ const uuidv4 = require('uuid/v4');
 
 module.exports = {
 
-/* ============================================ User ============================================ */
+  /* ============================================ User ============================================ */
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res, next) => {
     console.log('=============================================');
     console.log('You are in sessionController checkSSIDSession');
     console.log('*** req.cookies ***', req.cookies);
+
+    res.locals.user = {};
     
     if (req.cookies.ssid) {
+      // start the response object
       console.log('cookie exists for user');
 
       // If a matching session exists, set loginStatus to 'success'
-      db.one('SELECT ssid FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid])
+      db.one('SELECT user_id, ssid FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid])
         .then((session) => {
           console.log('*** session ***', session);
           if (req.cookies.ssid === session.ssid) {
-            console.log('session exists!')
-            res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
+            res.locals.user.id = session.user_id;
+            console.log('session exists!');
+            // res.status(200).json({ username: res.locals.user.user_id, loginSuccess: true, msg: 'login success' });
+            res.locals.user.loginSuccess = true;
+            console.log('res.locals ==>', res.locals);
+            next();
           }
         })
-        .catch(() => {
-          next();
+        .catch((error) => {
+          console.log('ERROR at check ssid session in sessioncontroller.js', error)
+          res.status(500).send('SERVER ERROR');
         });
     } else {
       console.log('There is no cookie for user')
+      res.locals.user.id = null
+      res.locals.user.loginSuccess = false
       next();
     }
   },
@@ -47,7 +57,7 @@ module.exports = {
         res.locals.ssid = uuidv4();
         db.none('INSERT INTO "game.dbo".sessions(user_id, ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
           .then(() => {
-            console.log('*** res.locals ***',res.locals)
+            console.log('*** res.locals ***', res.locals)
             next();
           })
           .catch(() => {
@@ -56,7 +66,7 @@ module.exports = {
       });
   },
 
-/* ============================================ Admin ============================================ */
+  /* ============================================ Admin ============================================ */
   checkAdminSession: (req, res) => {
     console.log('==============================================');
     console.log('You are in sessionController checkAdminSession');
