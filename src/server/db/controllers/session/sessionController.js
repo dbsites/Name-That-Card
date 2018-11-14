@@ -2,32 +2,31 @@ const db = require('../util/postgres');
 const uuidv4 = require('uuid/v4');
 
 module.exports = {
+
+/* ============================================ User ============================================ */
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res, next) => {
-    console.log('checking')
-    console.log(req.cookies)
+    console.log('=============================================');
+    console.log('You are in sessionController checkSSIDSession');
+    console.log('*** req.cookies ***', req.cookies);
+    
     if (req.cookies.ssid) {
-      console.log('cookie exists')
+      console.log('cookie exists for user');
+
       // If a matching session exists, set loginStatus to 'success'
       db.one('SELECT ssid FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid])
         .then((session) => {
-          console.log('***session****', session);
+          console.log('*** session ***', session);
           if (req.cookies.ssid === session.ssid) {
             console.log('session exists!')
             res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
           }
         })
         .catch(() => {
-          // res.json({
-          //   loggedIn: false,
-          // });
           next();
         });
     } else {
-      // res.json({
-      //   loggedIn: false,
-      // });
-      console.log('nocookie')
+      console.log('There is no cookie for user')
       next();
     }
   },
@@ -37,15 +36,18 @@ module.exports = {
   // }
 
   createSession: (req, res, next) => {
+    console.log('==========================================');
+    console.log('You are in sessionController createSession');
+    console.log('*** req.body ***', req.body);
+
     // Send query to Postgres DB to add user to users
-    console.log('here in startSession');
-    console.log('body:', req.body);
     // delete current session then create a new session
     db.none('DELETE FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
       .then(() => {
         res.locals.ssid = uuidv4();
-        db.none('INSERT INTO "game.dbo".sessions(user_id,ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
+        db.none('INSERT INTO "game.dbo".sessions(user_id, ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
           .then(() => {
+            console.log('*** res.locals ***',res.locals)
             next();
           })
           .catch(() => {
@@ -54,12 +56,19 @@ module.exports = {
       });
   },
 
+/* ============================================ Admin ============================================ */
   checkAdminSession: (req, res) => {
+    console.log('==============================================');
+    console.log('You are in sessionController checkAdminSession');
+    console.log('*** req.cookies ***', req.cookies);
+
     if (req.cookies.admin) {
+      console.log('cookie exists for admin');
+
       // If a matching session exists, set loginStatus to 'success'
       db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions])
         .then((session) => {
-          console.log('*******', session);
+          console.log('*** session ***', session);
           res.json({
             loggedIn: true,
           });
@@ -77,11 +86,14 @@ module.exports = {
   },
 
   createAdminSession: (req, res, next) => {
+    console.log('===============================================');
+    console.log('You are in sessionController createAdminSession');
+    console.log('*** req.body ***', req.body);
+
     // Send query to Postgres DB to add user to users
-    console.log('here in admin Session');
-    console.log('body:', req.body);
     db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE admin_id = $1', [res.locals.admin.admin_id])
       .then((result) => {
+        console.log('*** result ***', result);
         res.locals.ssid_sessions = result.ssid_sessions;
         next();
       })
