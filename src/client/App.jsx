@@ -11,10 +11,10 @@ import Footer from './components/Footer.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
-import LeaderBoard from './components/Leaderboard.jsx';
 import AdminContainer from './containers/AdminContainer.jsx';
 import * as userActions from './actions/userActions';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
+import Auth from './components/Auth.jsx';
 
 const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
@@ -55,11 +55,17 @@ const mapDispatchToProps = dispatch => ({
   logoutUser: () => {
     dispatch(userActions.logoutUser());
   },
+  checkAuth: () => {
+    dispatch(userActions.checkAuth());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser, questionNumber } = props;
-
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser, questionNumber, checkAuth } = props;
+  console.log('app ran')
+  if (!isLoggedIn) {
+    checkAuth();
+  }
   return (
     <BrowserRouter>
       <div>
@@ -69,13 +75,13 @@ const App = (props) => {
           <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/game' component={GameContainer} />
           <Route path='/leaderBoard' render={(props) =>
-          <LeaderboardContainer {...props} selectedGame={selectedGame} />}
+            <LeaderboardContainer {...props} selectedGame={selectedGame} />}
           />
           <Route path='/login' render={(props) =>
-          <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
+            <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
           />
           <Route path='/signup' render={(props) =>
-          <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
+            <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
           />
           <Route path='/admin' component={AdminContainer} />
           <Route path='/about' component={About} />

@@ -100,3 +100,28 @@ export const submitLogin = (loginInfoObj) => {
       });
   };
 };
+
+export const successfulAuthVerification = data => ({
+  type: types.SUCCESSFUL_AUTH_VERIFICATION,
+  payload: data,
+});
+
+export const checkAuth = () => {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/rootPage')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data) {
+          dispatch(successfulAuthVerification(data));
+        } else {
+          dispatch(failedAuthVerification(data));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+

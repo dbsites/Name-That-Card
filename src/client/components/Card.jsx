@@ -33,7 +33,6 @@ const Card = (props) => {
     } else {
       coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.imagename;
     }
-    
     picture = <img className="card" src={imgSrc} alt="MASK ON" />;
     coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK OFF MASK OFF" />;
   }
