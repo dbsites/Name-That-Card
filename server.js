@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
 const adminController = require('./src/server/db/controllers/admin/adminController');
 const authController = require('./src/server/db/controllers/user/authController');
 const cookieController = require('./src/server/db/controllers/cookie/cookieController');
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
-
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
 const app = express();
@@ -20,16 +20,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/rootpage',
-  sessionController.checkSSIDSession);
+/* ============================================ User ============================================== */
 
-app.post('/login',
-  authController.verifyUser,
-  sessionController.createSession,
-  cookieController.setSSIDCookie,
-  (req, res) => {
-    res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
-  });
+app.use('/rootPage', sessionController.checkSSIDSession, (req, res) => {
+  res.json({ loggedIn: false })
+});
 
 app.post('/signup',
   authController.checkEmailExists,
@@ -37,19 +32,18 @@ app.post('/signup',
   authController.createUser,
   sessionController.createSession,
   cookieController.setSSIDCookie,
-  (req, res) => res.status(200).json({ signUpSuccess: true }));
+  (req, res) => res.status(200).json({ signupSuccess: true, loginSuccess: true })
+);
 
-/**
- * request object with
- * game name and level of difficulty
- */
-app.get('/gameList', gameController.gameList);
-app.get('/gameMenu/:game', gameController.gameMenu);
-app.post('/saveScore', playController.saveScore);
-app.post('/loadGame', playController.loadGame);
-
-app.post('/leaderBoard', playController.leaderBoard);
-/*= ====================== Admin ========================== */
+app.post('/login',
+  authController.verifyUser,
+  sessionController.createSession,
+  cookieController.setSSIDCookie,
+  (req, res) => {
+    res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
+  }
+);
+/* ============================================ Admin ============================================== */
 
 app.get('/admin/login',
   sessionController.checkAdminSession);
@@ -66,7 +60,7 @@ app.post('/admin/login',
 app.get('/admin',
   sessionController.checkAdminSession);
 
-/*= ====================== Backend CMS ========================== */
+/* ============================================ Backend CMS ============================================== */
 app.post('/admin/submitForm');
 
 app.post('/admin/signup',
@@ -75,8 +69,15 @@ app.post('/admin/signup',
   adminController.createAdmin,
   sessionController.createAdminSession,
   cookieController.setAdminCookie,
-  (req, res) => res.status(200).json({ signUpSuccess: true }));
+  (req, res) => res.status(200).json({ signupSuccess: true }));
+
+/* ============================================ Game ============================================== */
+// request object with game name and level of difficulty
+
+app.get('/gameList', gameController.gameList);
+app.get('/gameMenu/:game', gameController.gameMenu);
+app.post('/saveScore', playController.saveScore);
+app.post('/loadGame', playController.loadGame);
+app.post('/leaderBoard', playController.leaderBoard);
 
 app.listen(3000, () => console.log('server is listening on 3000'));
-
-// TODO: check the routes of login page for admin
