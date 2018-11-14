@@ -146,8 +146,8 @@ class GameMenuContainer extends Component {
 
     return (
       <div className="MainContainer">
-        <div className="right-menu">
-          <div className="menu-item">
+        <div className="leaderboard-menu">
+          <div className="leaderboardButton">
             <NavLink to="/leaderBoard">Leaderboard</NavLink>
           </div>
         </div>
@@ -174,7 +174,7 @@ class GameMenuContainer extends Component {
           </div>
         </div>
         <div className="container">
-          <div className="buttonStyle" onClick={() => startGame()}>START</div>
+          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
         </div>
       </div>
     );

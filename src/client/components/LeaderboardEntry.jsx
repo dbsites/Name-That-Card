@@ -9,11 +9,11 @@ const LeaderboardEntry = (props) => {
   }
   return (
     <tr>
-      <td>{rankIncrement}</td>
-      <td>{entryContents.user}</td>
-      <td>{entryContents.sum}</td>
-      <td>{average}</td>
-      <td>{entryContents.gamecount}</td>
+      <td className="leaderboardEntry">{rankIncrement}</td>
+      <td className="leaderboardEntry">{entryContents.user}</td>
+      <td className="leaderboardEntry">{entryContents.sum}</td>
+      <td className="leaderboardEntry">{average}</td>
+      <td className="leaderboardEntry">{entryContents.gamecount}</td>
     </tr>
   )
 }
