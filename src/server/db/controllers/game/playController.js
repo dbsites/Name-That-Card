@@ -139,23 +139,13 @@ module.exports = {
     let prom;
     /** for games with years, generate 20 random cards with loadGameWithYears function vice-versa */
 
-<<<<<<< HEAD
-    if (years === true) prom = loadGameWithYears(game, query, startDate, endDate);
-    
-=======
     if (years === true) {
       prom = loadGameWithYears(game, query, startDate, endDate);
     } else if (years === false) {
       prom = loadGameNoYears(game, query);
     }
->>>>>>> master
 
     prom.then((cards) => {
-<<<<<<< HEAD
-      //console.log('cards ', cards)
-      console.log('years ', years);
-=======
->>>>>>> master
       res.locals.cards = cards;
 
       /** runs appropriate function based on selected level for each of the randomly selected cards */
