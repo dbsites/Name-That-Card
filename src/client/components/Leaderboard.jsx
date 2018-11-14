@@ -71,7 +71,7 @@ const Leaderboard = (props) => {
   console.log('difficultyFilteredResults ', difficultyFilteredResults);
 
   const leaderboardEntries = difficultyFilteredResults.map((resultObj, i) => {
-    return <LeaderboardEntry key={i} entryContents={resultObj} rank={i} />;
+    return <LeaderboardEntry numEntries={difficultyFilteredResults.length} key={i} entryContents={resultObj} rank={i} sortDirection={sortDirection}/>;
   })
 
   return (
