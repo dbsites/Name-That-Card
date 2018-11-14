@@ -5,11 +5,11 @@ const LeaderboardEntry = (props) => {
   const average = Number(entryContents.avg).toFixed(1);
   return (
     <tr>
-      <td>{rank + 1}</td>
-      <td>{entryContents.user}</td>
-      <td>{entryContents.sum}</td>
-      <td>{average}</td>
-      <td>{entryContents.gamecount}</td>
+      <td className="leaderboardEntry">{rank + 1}</td>
+      <td className="leaderboardEntry">{entryContents.user}</td>
+      <td className="leaderboardEntry">{entryContents.sum}</td>
+      <td className="leaderboardEntry">{average}</td>
+      <td className="leaderboardEntry">{entryContents.gamecount}</td>
     </tr>
   )
 }
