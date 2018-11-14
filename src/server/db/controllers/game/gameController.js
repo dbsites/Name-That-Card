@@ -1,5 +1,9 @@
 const db = require('../util/postgres');
-
+/**
+ *
+ * @param {string} game selected game
+ * @returns promise with minyear and maxYear of selected game
+ */
 function minMax(game) {
   return db.any(`SELECT min(cast(category_b as bigint)) as minYear, max(cast(category_b as bigint)) maxYear 
   FROM "game.dbo".cards_n c
@@ -8,7 +12,11 @@ function minMax(game) {
   where game_name = $1;`, [game]);
 }
 
-
+/**
+ * checks if a game has a years property
+ * @param {string} game
+ * @returns years boolean
+ */
 function checkYears(game) {
   console.log('years check');
   return db.any(`
@@ -38,7 +46,7 @@ module.exports = {
         return await checkYears(game);
       })
       .then(async (years) => { console.log('years', years);
-        // eslint-disable-next-line no-return-await
+        // can do away with async wait.... later
         if (years[0].years === true) {
           // eslint-disable-next-line no-return-await
           return await minMax(game);
