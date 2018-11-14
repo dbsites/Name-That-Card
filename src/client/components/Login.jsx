@@ -13,7 +13,7 @@ const Login = (props) => {
     return <Redirect to="/" />; // todo: recognize user identity
   }
 
-  const forgotPassword = <span className=""><NavLink to="/password">Forgot Password</NavLink></span>;
+  const forgotPassword = <span className=""><NavLink to="/password">Forgot Password?</NavLink></span>;
 
   return (
     <div className="MainContainer">
@@ -21,11 +21,11 @@ const Login = (props) => {
         <h1>Login</h1>
         <form className="form login">
           <div className="form__field">
-            <label htmlFor="login__email"><svg className="icon"></svg><span className="hidden">Email</span></label>
+            <span className="hidden">Email</span>
             <input id="login__email" type="email" name="email" className="form__input" placeholder="Email" autoCorrect="off" onChange={updateLoginEmail} required />
           </div>
           <div className="form__field">
-            <label htmlFor="login__password"><svg className="icon"></svg><span className="hidden">Password</span></label>
+            <span className="hidden">Password</span>
             <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" onChange={updateLoginPassword} required />
           </div>
 
@@ -40,7 +40,7 @@ const Login = (props) => {
             <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
           </div>
         </form>
-        <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a> <svg className="icon"></svg></p>
+        <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a></p>
         {/* <button className="loginButton" onClick={() => submitLogin(loginInfoObj)} >Login</button> */}
       </div>
     </div>

@@ -26,6 +26,30 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png | svg | jpe?g | gif)$/,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              disable: true,
+            }
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

@@ -2,8 +2,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div>
-      <h1>ABOUT</h1>
+    <div className="footerLinks">
+      <h1 className="footerCenter">ABOUT</h1>
       <br />
       <div>
         <ol>

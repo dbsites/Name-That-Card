@@ -12,11 +12,14 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   cards: store.gameReducer.cards,
+  selectedAnswer: store.gameReducer.selectedAnswer,
   wrongAnswers: store.gameReducer.wrongAnswers,
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
-  years: store.gameListReducer.years,
+  years: store.gameMenuReducer.years,
+  selectedMinYear: store.gameMenuReducer.selectedMinYear,
+  selectedMaxYear: store.gameMenuReducer.selectedMaxYear,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,6 +44,8 @@ class GameContainer extends Component {
       getCardsInfo,
       selectedDifficulty,
       years,
+      selectedMinYear,
+      selectedMaxYear,
     } = this.props;
     
     function getQueryString(arr) {
@@ -62,12 +67,15 @@ class GameContainer extends Component {
       query: queryString,
       level: selectedDifficulty,
       years: years,
+      startDate: selectedMinYear,
+      endDate: selectedMaxYear,
     };
+    console.log('cardparams ', cardParameters)
     getCardsInfo(cardParameters);
   }
 
   render() {
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers } = this.props;
+    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers, selectedAnswer } = this.props;
     const cardInfo = cards[0];
     let clickFunc = goToNext;
     let title = '';
@@ -81,7 +89,7 @@ class GameContainer extends Component {
       }
     }
 
-    let content = <Card getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
+    let content = <Card selectedAnswer={selectedAnswer} getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
     if (cards.length === 1) {
       clickFunc = finishGame;
