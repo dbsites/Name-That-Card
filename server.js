@@ -22,8 +22,11 @@ app.use((req, res, next) => {
 
 /* ============================================ User ============================================== */
 
-app.use('/rootPage', sessionController.checkSSIDSession, (req, res) => {
-  res.json({ loggedIn: false })
+app.get('/rootPage', 
+  sessionController.checkSSIDSession,
+  authController.getUserInfo,
+  (req, res) => {
+  res.status(200).send(res.locals.data);
 });
 
 app.post('/signup',
