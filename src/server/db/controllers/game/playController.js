@@ -1,7 +1,10 @@
 const db = require('../util/postgres');
 
 /**
- * but for other games like sports, a card will only appear once in its category
+ *
+ * @param {string} game selected game
+ * @param {string} query selected game categories, in a wild card search
+ * @returns a promise with 20 cards for games with no years property
  */
 function loadGameNoYears(game, query) {
   return db.many(`
@@ -15,8 +18,15 @@ function loadGameNoYears(game, query) {
     .catch(err => console.error(err));
 }
 
+/**
+ *
+ * @param {string} game selected game
+ * @param {string} query selected categories, in a wild card search
+ * @param {number} startDate game startdate, selected using slider
+ * @param {number} endDate game endDate, selected using slidder
+ * @returns a promise with 20 cards for a game with a years property
+ */
 function loadGameWithYears(game, query, startDate, endDate) {
-  console.log('query ', query);
   return db.many(`
                 SELECT c.*
                 FROM "game.dbo".cards_n c
@@ -29,7 +39,13 @@ function loadGameWithYears(game, query, startDate, endDate) {
     .catch(err => console.error(err));
 }
 
-
+/**
+ * returns a promise for each card that is returned from loadGameWithYears/loadGameNoYears
+ * @param {number} id card_id from cards table
+ * @param {string} name cardname from cards table
+ * @returns 3 easy answers for the selected card id. Matching is only done on the same card_category
+ *  Excludes selected card_id and card_name
+ */
 function easyAnswers(id, name) {
   return db.many(`        
           SELECT c1.card_id, c1.card_name, 'EASY' as answer
@@ -44,7 +60,12 @@ function easyAnswers(id, name) {
           `, [id, name])
     .catch(err => console.error(err));
 }
-
+/**
+ * generates 3 medium answers for selected card
+ * @param {number} id card_id from cards table
+ * @param {string} name card_name from cards table
+ * Excludes selected card_id and card name
+ */
 function mediumAnswers(id, name) {
   return db.many(`
           SELECT c1.card_id, c1.card_name, 'MEDIUM' as answer
@@ -59,7 +80,12 @@ function mediumAnswers(id, name) {
           LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
-
+/**
+ * generates 3 wrong answers for selected card
+ * @param {number} id card_id from cards table
+ * @param {string} name card_name from cards table
+ * Excludes selected card_id and card name
+ */
 function hardAnswers(id, name) {
   return db.many(`
           SELECT c1.card_id, c1.card_name, 'HARD' as answer
@@ -75,7 +101,12 @@ function hardAnswers(id, name) {
           LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
-
+/**
+ * generates 3 wrong answers for selected card with a year property
+ * @param {number} id card_id from cards table
+ * @param {string} name card_name from cards table
+ * Excludes selected card_id and card_name
+ */
 function yearHardAnswers(id, name) {
   return db.many(`
           SELECT c1.card_id, c1.card_name, 'HARD' as answer
@@ -106,18 +137,28 @@ module.exports = {
     } = req.body;
 
     let prom;
+    /** for games with years, generate 20 random cards with loadGameWithYears function vice-versa */
 
+<<<<<<< HEAD
     if (years === true) prom = loadGameWithYears(game, query, startDate, endDate);
     
+=======
+    if (years === true) {
+      prom = loadGameWithYears(game, query, startDate, endDate);
+    } else if (years === false) {
+      prom = loadGameNoYears(game, query);
+    }
+>>>>>>> master
 
-    if (years === false) prom = loadGameNoYears(game, query);
-    // // eslint-disable-next-line no-return-await
-    // return loadGameNoYears(game, query)
     prom.then((cards) => {
+<<<<<<< HEAD
       //console.log('cards ', cards)
       console.log('years ', years);
+=======
+>>>>>>> master
       res.locals.cards = cards;
-      // eslint-disable-next-line array-callback-return
+
+      /** runs appropriate function based on selected level for each of the randomly selected cards */
       return Promise.all(res.locals.cards.map((card) => {
         if (level === 'EASY') return easyAnswers(card.card_id, card.card_name);
         if (level === 'MEDIUM') return mediumAnswers(card.card_id, card.card_name);
@@ -143,6 +184,7 @@ module.exports = {
       level,
       score,
     } = req.body;
+    // save game score
     db.none('INSERT INTO "game.dbo".player_history("user", "game", "difficulty_level", "score") VALUES($1,$2,$3,$4)', [username, game, level, score])
       .then(() => {
         res.send('score recorded');
@@ -157,6 +199,7 @@ module.exports = {
     console.log('req bod ', req.body);
     console.log('game in leaderboard control ', game);
 
+    /** Aggregated scores by (user,game), (user, game, difficulty_level) */
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
               FROM "game.dbo".player_history 
               WHERE "game" = $1
