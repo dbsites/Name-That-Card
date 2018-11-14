@@ -158,19 +158,17 @@ class GameMenuContainer extends Component {
             {allBtn}
           </div>
         </div>
-        <div>{slider}</div>
-        <div className="bottomMenuContainer">
-          <h3 className="text--center">-- CHOOSE DIFFICULTY --</h3>
-          <div className="container">
-            <div className="difficultyBoxStyle">
-              {easyBtn}
-              {medBtn}
-              {hardBtn}
-            </div>
-          </div>
+        <div>
+          {slider}
         </div>
-        <div className="container">
-          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
+        <h3 className="text--center">-- CHOOSE DIFFICULTY --</h3>
+        <div className="difficultyBoxStyle">
+          {easyBtn}
+          {medBtn}
+          {hardBtn}
+        </div>
+        <div className="center">
+          <div className="allButtonStyle" onClick={() => startGame()}>START</div>
         </div>
       </div>
     );

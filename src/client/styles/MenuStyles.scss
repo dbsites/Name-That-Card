@@ -81,8 +81,8 @@ body {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
-  background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/SPORTSBackground.jpg");
-  background-repeat: no-repeat;
+  background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg");
+  // background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   color: white;
@@ -232,6 +232,10 @@ p {
 
 .text--center {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
 }
 
 // *********************************************************
@@ -247,12 +251,10 @@ p {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height: 35rem;
+  height: 31rem;
   max-width: 25rem;
   margin-left: auto;
   margin-right: auto;
-  // padding: auto;
-  // border: 0.08em solid goldenrod;
 }
 
 .navigation {
@@ -261,7 +263,11 @@ p {
   align-items: center;
   justify-content: space-between;
   height: auto;
-  // border: 0.08em solid white;
+}
+
+.gameLogo {
+  width: 10rem;
+  height: 5rem;
 }
 
 .logo {
@@ -269,19 +275,14 @@ p {
   height: auto;
   width: auto;
   line-height: 1rem;
-  font-size: 1rem !important;
-  font-weight: 400;
-  // margin-top: 1.5rem;
-  // margin-bottom: 1.5rem;
   margin: 1rem;
   padding: 0.5rem 0.8rem !important;
-  border: 0.08em solid white;
   cursor: pointer;
   justify-content: center;
-  // align-items: center;
-  // align-content: center;
+  align-items: center;
+  align-content: center;
   border-radius: 0.25rem;
-  background-color: black;
+  // background-color: black;
   color: white;
 }
 
@@ -290,7 +291,6 @@ p {
   height: auto;
   flex-direction: row;
   justify-content: flex-end;
-  // margin-right: 2vw;
 }
 
 .menu-item {
@@ -298,7 +298,7 @@ p {
   height: auto;
   width: auto;
   line-height: 1rem;
-  font-size: 1rem !important;
+  font-size: 0.95rem !important;
   font-weight: 400;
   // margin-top: 1.5rem;
   // margin-bottom: 1.5rem;
@@ -307,7 +307,7 @@ p {
   border: 0.08em solid white;
   cursor: pointer;
   justify-content: center;
-  // align-items: center;
+  align-items: center;
   // align-content: center;
   border-radius: 0.25rem;
   background-color: black;
@@ -321,7 +321,7 @@ p {
   text-align: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 1rem;
+  // margin-top: 0.5rem;
 }
 
 .container {
@@ -392,15 +392,17 @@ p {
   color: white;
 }
 
-// .headers {
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 1vw;
-//   // border: 0.08em solid red;
-// }
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 15rem;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 // .listContainer {
 //   display: flex;
@@ -435,16 +437,6 @@ p {
 //   // border: 0.08em solid yellow;
 // }
 
-.sliderContainer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  width: 20rem;
-  // border: 0.08em solid green;
-}
 
 // .categoryContainer {
 //   display: flex;
@@ -547,3 +539,9 @@ p {
 //   // border: 0.08em solid goldenrod;
 // }
 
+.center {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}

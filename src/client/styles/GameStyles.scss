@@ -4,12 +4,12 @@
   display: flex;
   // width: 35vw;
   flex-basis: 40%;
-  line-height: 2rem;
+  line-height: 1.8rem;
   font-size: 1.3rem !important;
   font-weight: 700;
   margin: 0.5rem 1rem;
   padding: 0.5rem 0.8rem !important;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
   cursor: pointer;
   flex-direction: row;
   justify-content: center;
@@ -25,12 +25,12 @@
   display: flex;
   width: 10rem;
   // flex-basis: 10%;
-  line-height: 2rem;
+  line-height: 1.8rem;
   font-size: 1.3rem !important;
   font-weight: 700;
   margin: 0.5rem 1rem;
   padding: 0.5rem 0.8rem !important;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
   cursor: pointer;
   flex-direction: row;
   justify-content: center;
@@ -50,11 +50,11 @@
   display: flex;
   width: 8rem;
   height: 8rem;
-  line-height: 2rem;
+  line-height: 1.8rem;
   font-size: 1.3rem !important;
   font-weight: 700;
   padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -67,7 +67,7 @@
 .buttonStyle {
   display: flex;
   width: 25vw;
-  line-height: 1.3em;
+  line-height: 1.8rem;
   font-size: 1.1em !important;
   font-weight: 700;
   margin: 2vw;
@@ -88,12 +88,12 @@
 .activated {
   display: flex;
   flex-basis: 40%;
-  line-height: 1.3em;
-  font-size: 1.1em !important;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  margin: 1vh 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08rem solid white;
   cursor: pointer;
   flex-direction: row;
   justify-content: center;
@@ -107,29 +107,32 @@
 
 .difficultyBoxStyle {
   display: flex;
-  max-width: 100%;
-  margin: 2vw;
+  width: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: black;
   user-select: none;
 }
 
 .difficultyStyleE {
   display: flex;
-  width: 50vw;
-  margin-left: 5vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  flex: 2;
+  width: 10rem;
+  margin-left: auto;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-left: 0.08em solid white;
-  border-top: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  border-left: 0.08rem solid white;
+  border-top: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   color: white;
@@ -142,11 +145,12 @@
 
 .difficultyStyleM {
   display: flex;
-  width: 50vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  flex: 2;
+  width: 10rem;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
@@ -161,18 +165,19 @@
 
 .difficultyStyleH {
   display: flex;
-  width: 50vw;
-  margin-right: 5vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  flex: 2;
+  width: 10rem;
+  margin-right: auto;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-right: 0.08em solid white;
-  border-top: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  border-right: 0.08rem solid white;
+  border-top: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   color: white;
@@ -185,17 +190,17 @@
 
 .difficultyActivated {
   display: flex;
-  width: 50vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  width: 10rem;
+  line-height: 1.8rem;
+  font-size: 1.3em !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-left: 0.0.08em solid white;
-  border-top: 0.0.08em solid white;
-  border-bottom: 0.0.08em solid white;
+  border-left: 0.08rem solid white;
+  border-top: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   color: white;
   background: radial-gradient(black, white);
   user-select: none;
@@ -228,7 +233,6 @@
   height: 50vh;
   width: 50vw;
   position: absolute;
-  
 }
 
 .cardReveal {
