@@ -1,19 +1,65 @@
 // game menu buttons
+
+.listButtonStyle {
+  display: flex;
+  // width: 35vw;
+  flex-basis: 40%;
+  line-height: 2rem;
+  font-size: 1.3rem !important;
+  font-weight: 700;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08em solid white;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  user-select: none;
+}
+
+.allButtonStyle {
+  display: flex;
+  width: 10rem;
+  // flex-basis: 10%;
+  line-height: 2rem;
+  font-size: 1.3rem !important;
+  font-weight: 700;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08em solid white;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  user-select: none;
+}
+
+.listButtonStyle:hover {
+  background: radial-gradient(black, white);
+}
+
 .enterButtonStyle {
   display: flex;
-  width: 8em;
-  height: 8em;
-  line-height: 1.8em;
-  font-size: 1.3em !important;
+  width: 8rem;
+  height: 8rem;
+  line-height: 2rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  // margin: 1vw;
   padding: 0.3em 0 !important;
   border: 0.08em solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  // background-color: #ea4c88;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -36,29 +82,6 @@
 }
 
 // .buttonStyle:hover {
-//   background: radial-gradient(black, white);
-// }
-
-.listButtonStyle {
-  display: flex;
-  flex-basis: 40%;
-  line-height: 1.3em;
-  font-size: 1.1em !important;
-  font-weight: 700;
-  margin: 1vh 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
-  cursor: pointer;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 0.25rem;
-  color: white;
-  user-select: none;
-}
-
-// .listButtonStyle:hover {
 //   background: radial-gradient(black, white);
 // }
 

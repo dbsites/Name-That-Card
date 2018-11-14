@@ -34,7 +34,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
-      gameDisclaimer = <span className="footer">DISCLAIMER</span>;
+      gameDisclaimer = <span>DISCLAIMER</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';
@@ -57,8 +57,8 @@ class Footer extends Component {
       <div className="footerContainer">
         <br />
         <br />
-        <div className="headers">
-          <div>{disclaimer}</div>
+        <div className="text--center">
+          {disclaimer}
         </div>
         <br />
         <div className="footer">
