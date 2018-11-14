@@ -16,7 +16,7 @@ function loadGameNoYears(game, query) {
 }
 
 function loadGameWithYears(game, query, startDate, endDate) {
-  console.log('in here man');
+  console.log('query ', query);
   return db.many(`
                 SELECT c.*
                 FROM "game.dbo".cards_n c
@@ -108,11 +108,13 @@ module.exports = {
     let prom;
 
     if (years === true) prom = loadGameWithYears(game, query, startDate, endDate);
+    
 
     if (years === false) prom = loadGameNoYears(game, query);
     // // eslint-disable-next-line no-return-await
     // return loadGameNoYears(game, query)
     prom.then((cards) => {
+      //console.log('cards ', cards)
       console.log('years ', years);
       res.locals.cards = cards;
       // eslint-disable-next-line array-callback-return

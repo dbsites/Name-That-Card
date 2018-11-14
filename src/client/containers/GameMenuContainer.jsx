@@ -64,10 +64,10 @@ class GameMenuContainer extends Component {
     resetGame();
     resetGameMenu();
   }
-
-
+  
+  
   render() {
-
+    
     const {
       categoryList,
       toggleGameCategory,
@@ -81,12 +81,13 @@ class GameMenuContainer extends Component {
       selectedDifficulty,
       selectedGame,
       years,
-      setYearsBool,
+      //setYearsBool,
       minYear,
       maxYear,
       updateMinMaxYears,
+      setYearsBool,
     } = this.props;
-  
+    
     setYearsBool();
 
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
