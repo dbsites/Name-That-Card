@@ -28,6 +28,9 @@ export const RESET_GAME_INITIATION = 'RESET_GAME_INITIATION';
 export const GET_CARDS_IFNO = 'GET_CARDS_IFNO';
 export const POPULATE_CARDS_ARRAY = 'POPULATE_CARDS_ARRAY';
 export const RESET_GAME_MENU = 'RESET_GAME_MENU';
+export const SET_YEARS_BOOL = 'SET_YEARS_BOOL';
+export const UPDATE_MIN_MAX_YEARS = 'UPDATE_MIN_MAX_YEARS';
+
 
 // gameplay action types
 export const SELECT_ANSWER = 'SELECT_ANSWER';

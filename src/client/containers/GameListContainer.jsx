@@ -27,13 +27,17 @@ const mapDispatchToProps = dispatch => ({
   successPlay: () => {
     dispatch(gameConfigActions.successPlay());
   },
+  resetGameMenu: () => {
+    dispatch(gameConfigActions.resetGameMenu());
+  },
 });
 
 class GameListContainer extends Component {
   componentDidMount() {
-    const { getGameList, resetGameSelection } = this.props;
+    const { getGameList, resetGameSelection, resetGameMenu } = this.props;
     resetGameSelection();
     getGameList();
+    resetGameMenu();
   }
 
   render() {

@@ -15,6 +15,8 @@ const mapStateToProps = store => ({
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   selectedGame: store.gameListReducer.selectedGame,
   years: store.gameMenuReducer.years,
+  minYear: store.gameMenuReducer.minYear,
+  maxYear: store.gameMenuReducer.maxYear,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -45,20 +47,27 @@ const mapDispatchToProps = dispatch => ({
   resetGameMenu: () => {
     dispatch(gameConfigActions.resetGameMenu());
   },
+  setYearsBool: () => {
+    dispatch(gameConfigActions.setYearsBool());
+  },
+  updateMinMaxYears: (event) => {
+    dispatch(gameConfigActions.updateMinMaxYears(event));
+  },
 });
 
 class GameMenuContainer extends Component {
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu, years } = this.props;
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
-    console.log('selectedGameRoute***********', urlSelectedGame);
     setSelectedGame(urlSelectedGame);
     getGameMenuContents(window.location.pathname);
     resetGame();
     resetGameMenu();
   }
-
+  
+  
   render() {
+    
     const {
       categoryList,
       toggleGameCategory,
@@ -71,21 +80,31 @@ class GameMenuContainer extends Component {
       selectedCategories,
       selectedDifficulty,
       selectedGame,
+      years,
+      //setYearsBool,
+      minYear,
+      maxYear,
+      updateMinMaxYears,
+      setYearsBool,
     } = this.props;
-  
-    const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
+    
+    setYearsBool();
 
-    const categories = categoryList.map((gameCatObj, ind) => {
-      if (gameCatObj.game_category) {
-        const category = gameCatObj.game_category;
-        if (selectedCategories.includes(underscore(category))) {
-          return (
-            <div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
-            );
-        } 
-        return (
-          <div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>
-        );
+    const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
+    const categories = [];
+    let modCategoryList = categoryList.slice();
+    for(let i = 0; i < modCategoryList.length; i += 1) {
+      if(!modCategoryList[i].game_category) {
+        modCategoryList.pop();
+      }
+    }
+
+    modCategoryList.forEach((gameCatObj, ind) => {
+      const category = gameCatObj.game_category;
+      if (selectedCategories.includes(underscore(category))) {
+        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
+      } else {
+        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
       }
     });
    
@@ -93,9 +112,16 @@ class GameMenuContainer extends Component {
       resetGameInitiation();
       return <Redirect to={{ pathname: '/game' }} />;
     }
+
     let allBtn = <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
-    if (selectedCategories.length === categoryList.length) {
-      allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>
+    if (years) {
+      if (selectedCategories.length === categoryList.length -1) {
+        allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
+      }
+    } else {
+      if (selectedCategories.length === categoryList.length-1) {
+        allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
+      }
     }
 
     let easyBtn = <div className="difficultyStyleE" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
@@ -111,6 +137,11 @@ class GameMenuContainer extends Component {
     let hardBtn = <div className="difficultyStyleH" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     if (selectedDifficulty === 'HARD') {
       hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
+    }
+
+    let slider = '';
+    if (years) {
+      slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
     }
 
     return (
@@ -129,7 +160,7 @@ class GameMenuContainer extends Component {
               {allBtn}
           </div>
           <div>
-            <RangeSlider />
+            {slider}
           </div>
         </div>
         <div className="bottomMenuContainer">
