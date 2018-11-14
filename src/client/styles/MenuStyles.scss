@@ -91,7 +91,7 @@ html {
 }
 
 body {
-  background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/SPORTSBackground.jpg");
+  background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -312,6 +312,11 @@ p {
   // border: 0.08em solid yellow;
 }
 
+.gameLogo {
+  width: 10vw;
+  height: 10vh;
+}
+
 .sliderContainer {
   display: flex;
   align-items: center;
@@ -350,11 +355,14 @@ p {
   justify-content: center;
   margin: 2vw;
   padding: 0.5em 0.8em !important;
-  border: 0.08em solid white;
   align-items: center;
   align-content: center;
   border-radius: 0.25rem;
+  background-color: gray;
+  color: white;
+  opacity: .5;
 }
+
 
 .right-menu {
   display: flex;
