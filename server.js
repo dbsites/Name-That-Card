@@ -8,7 +8,7 @@ const cookieController = require('./src/server/db/controllers/cookie/cookieContr
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
 const s3 = require('./src/server/db/controllers/admin/aws/s3_upload');
-const cvs = require('./src/server/db/controllers/admin/cvsUpload');
+const csv = require('./src/server/db/controllers/admin/csvUpload');
 
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
@@ -92,7 +92,7 @@ app.post('/admin/signup',
 
 app.put('/admin/upload',
   s3.uploadToS3,
-  cvs.writeToCardsTable);
+  csv.writeToCardsTable);
 
 
 // eslint-disable-next-line max-len
