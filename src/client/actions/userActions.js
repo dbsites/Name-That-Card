@@ -70,6 +70,14 @@ export const failedLogin = message => ({
   payload: message,
 });
 
+export const resetLoginInfo = () => ({
+  type: types.RESET_LOGIN_INFO,
+});
+
+export const resetSignUpInfo = () => ({
+  type: types.RESET_SIGNUP_INFO,
+});
+
 export const logoutUser = () => ({
   type: types.LOGOUT_USER,
 });
@@ -89,6 +97,7 @@ export const submitLogin = (loginInfoObj) => {
         return res.json();
       })
       .then((data) => {
+        console.log('data***** ', data)
         if (data.loginSuccess) {
           dispatch(successfulLogin(data.username));
         } else {

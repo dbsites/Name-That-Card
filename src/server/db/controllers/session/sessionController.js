@@ -6,9 +6,9 @@ module.exports = {
   /* ============================================ User ============================================ */
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res, next) => {
-    console.log('=============================================');
-    console.log('You are in sessionController checkSSIDSession');
-    console.log('*** req.cookies ***', req.cookies);
+    // console.log('=============================================');
+    // console.log('You are in sessionController checkSSIDSession');
+    // console.log('*** req.cookies ***', req.cookies);
 
     res.locals.user = {};
     
@@ -46,9 +46,9 @@ module.exports = {
   // }
 
   createSession: (req, res, next) => {
-    console.log('==========================================');
-    console.log('You are in sessionController createSession');
-    console.log('*** req.body ***', req.body);
+    // console.log('==========================================');
+    // console.log('You are in sessionController createSession');
+    // console.log('*** req.body ***', req.body);
 
     // Send query to Postgres DB to add user to users
     // delete current session then create a new session
@@ -68,9 +68,9 @@ module.exports = {
 
   /* ============================================ Admin ============================================ */
   checkAdminSession: (req, res) => {
-    console.log('==============================================');
-    console.log('You are in sessionController checkAdminSession');
-    console.log('*** req.cookies ***', req.cookies);
+    // console.log('==============================================');
+    // console.log('You are in sessionController checkAdminSession');
+    // console.log('*** req.cookies ***', req.cookies);
 
     if (req.cookies.admin) {
       console.log('cookie exists for admin');
@@ -96,9 +96,9 @@ module.exports = {
   },
 
   createAdminSession: (req, res, next) => {
-    console.log('===============================================');
-    console.log('You are in sessionController createAdminSession');
-    console.log('*** req.body ***', req.body);
+    // console.log('===============================================');
+    // console.log('You are in sessionController createAdminSession');
+    // console.log('*** req.body ***', req.body);
 
     // Send query to Postgres DB to add user to users
     db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE admin_id = $1', [res.locals.admin.admin_id])
