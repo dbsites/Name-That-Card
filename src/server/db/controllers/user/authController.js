@@ -83,7 +83,7 @@ module.exports = {
     console.log('=============================================');
     console.log('You are in authController getUserInfo');
     console.log('*** req.body ***', req.body);
-    
+
     const { id } = res.locals.user;
     const integer = Number(id);
 
@@ -92,12 +92,12 @@ module.exports = {
     JOIN "game.dbo".users as users
     ON users.user_id = session.user_id
     WHERE session.user_id = ${integer}`)
-    .then((data) => {
-      console.log('******* res.locals.user.id *****',res.locals.user.id);
-      res.locals.data = data;
-      next();
-    })
-    .catch(err => console.log(err));
+      .then((data) => {
+        console.log('******* res.locals.user.id *****', res.locals.user.id);
+        res.locals.data = data;
+        next();
+      })
+      .catch(err => console.log(err));
   },
 
   verifyUser(req, res, next) {

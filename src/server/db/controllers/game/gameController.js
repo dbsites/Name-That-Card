@@ -27,6 +27,7 @@ function checkYears(game) {
 
 module.exports = {
   gameList(req, res) {
+    console.log('req.cookies --->', req.cookies);
     db.query('SELECT game_name, background, font, game_icon, years FROM "game.dbo".game')
       .then((data) => {
         return res.json(data);

@@ -22,12 +22,12 @@ app.use((req, res, next) => {
 
 /* ============================================ User ============================================== */
 
-app.get('/rootPage', 
+app.get('/rootPage',
   sessionController.checkSSIDSession,
   authController.getUserInfo,
   (req, res) => {
-  res.status(200).send(res.locals.data);
-});
+    res.status(200).send(res.locals.data);
+  });
 
 app.post('/signup',
   authController.checkEmailExists,
@@ -44,6 +44,14 @@ app.post('/login',
   cookieController.setSSIDCookie,
   (req, res) => {
     res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
+  }
+);
+
+app.delete('/logout',
+  cookieController.deleteSSIDCookie,
+  sessionController.deleteSession,
+  (req, res) => {
+    res.status(200).json({ loginSuccess: false })
   }
 );
 /* ============================================ Admin ============================================== */
