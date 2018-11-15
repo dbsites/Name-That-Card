@@ -2,7 +2,7 @@ const path = require('path');
 const AWS = require('aws-sdk');
 const fs = require('fs');
 
-AWS.config.loadFromPath('./config.json');
+AWS.config.loadFromPath(path.join(__dirname, './config.json'));
 // Set the region
 AWS.config.update({
   region: 'REGION',
@@ -17,7 +17,7 @@ const s3 = new AWS.S3({
 const uploadParams = {
   Bucket: 'namethatcard',
   Key: 'AKIAI2LULRQZGXWUVSRA',
-  Body: Text.txt,
+  Body: '',
 };
 
 module.exports = {

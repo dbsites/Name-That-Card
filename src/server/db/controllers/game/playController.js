@@ -3,13 +3,13 @@ const db = require('../util/postgres');
 /**
  *
  * @param {string} game selected game
- * @param {string} query selected game categories, in a wild card search
+ * @param {string} query selected game categories, in a wildcard search
  * @returns a promise with 20 cards for games with no years property
  */
 function loadGameNoYears(game, query) {
   return db.many(`
                 SELECT c.*
-                FROM "game.dbo".cards_n c
+                FROM "game.dbo".cards c
                   JOIN "game.dbo".game g 
                     ON g.game_id = c.game_id
                 WHERE g.game_name = $1 AND ($2:raw)  
@@ -21,7 +21,7 @@ function loadGameNoYears(game, query) {
 /**
  *
  * @param {string} game selected game
- * @param {string} query selected categories, in a wild card search
+ * @param {string} query selected categories, in a wildcard search
  * @param {number} startDate game startdate, selected using slider
  * @param {number} endDate game endDate, selected using slidder
  * @returns a promise with 20 cards for a game with a years property
@@ -29,11 +29,11 @@ function loadGameNoYears(game, query) {
 function loadGameWithYears(game, query, startDate, endDate) {
   return db.many(`
                 SELECT c.*
-                FROM "game.dbo".cards_n c
+                FROM "game.dbo".cards c
                   JOIN "game.dbo".game g 
                     ON g.game_id = c.game_id
                 WHERE g.game_name = $1 AND ($2:raw)  
-                AND (CAST(category_b as bigint) between $3 and $4)
+                AND year between $3 and $4
                 ORDER BY RANDOM()
                 LIMIT 20;`, [game, query, startDate, endDate])
     .catch(err => console.error(err));
@@ -49,8 +49,8 @@ function loadGameWithYears(game, query, startDate, endDate) {
 function easyAnswers(id, name) {
   return db.many(`        
           SELECT c1.card_id, c1.card_name, 'EASY' as answer
-          FROM "game.dbo".cards_n c
-            JOIN "game.dbo".cards_n c1
+          FROM "game.dbo".cards c
+            JOIN "game.dbo".cards c1
               ON c.card_category = c1.card_category 
               AND c1.card_id <> $1
               AND c1.card_name <> $2
@@ -69,8 +69,8 @@ function easyAnswers(id, name) {
 function mediumAnswers(id, name) {
   return db.many(`
           SELECT c1.card_id, c1.card_name, 'MEDIUM' as answer
-          FROM "game.dbo".cards_n c
-          JOIN "game.dbo".cards_n c1
+          FROM "game.dbo".cards c
+          JOIN "game.dbo".cards c1
             ON c.card_category = c1.card_category 
             AND c.category_a = c1.category_a 
             AND c1.card_id <> $1
@@ -89,8 +89,8 @@ function mediumAnswers(id, name) {
 function hardAnswers(id, name) {
   return db.many(`
           SELECT c1.card_id, c1.card_name, 'HARD' as answer
-          FROM "game.dbo".cards_n c
-          JOIN "game.dbo".cards_n c1
+          FROM "game.dbo".cards c
+          JOIN "game.dbo".cards c1
             ON c.card_category = c1.card_category 
               AND c.category_a = c1.category_a 
               AND c.category_b = c1.category_b
@@ -110,11 +110,11 @@ function hardAnswers(id, name) {
 function yearHardAnswers(id, name) {
   return db.many(`
           SELECT c1.card_id, c1.card_name, 'HARD' as answer
-          FROM "game.dbo".cards_n c
-          JOIN "game.dbo".cards_n c1
+          FROM "game.dbo".cards c
+          JOIN "game.dbo".cards c1
             ON c.card_category = c1.card_category 
               AND c.category_a = c1.category_a 
-              AND cast(c1.category_b as bigint) between  cast(c.category_b as bigint)-3 and cast(c.category_b as bigint)+3
+              AND c1.year between  c.year - 3 and c.year +3
               AND c1.card_id <> $1
               AND c1.card_name <> $2
           WHERE c.card_id = $1 AND c.game_id = 1

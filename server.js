@@ -25,12 +25,12 @@ app.use((req, res, next) => {
 
 /* ============================================ User ============================================== */
 
-app.get('/rootPage', 
+app.get('/rootPage',
   sessionController.checkSSIDSession,
   authController.getUserInfo,
   (req, res) => {
-  res.status(200).send(res.locals.data);
-});
+    res.status(200).send(res.locals.data);
+  });
 
 app.post('/signup',
   authController.checkEmailExists,
@@ -38,17 +38,23 @@ app.post('/signup',
   authController.createUser,
   sessionController.createSession,
   cookieController.setSSIDCookie,
-  (req, res) => res.status(200).json({ signupSuccess: true, loginSuccess: true })
-);
+  (req, res) => res.status(200).json({
+    signupSuccess: true,
+    loginSuccess: true,
+  }));
 
 app.post('/login',
   authController.verifyUser,
   sessionController.createSession,
   cookieController.setSSIDCookie,
   (req, res) => {
-    res.status(200).json({ username: res.locals.user.username, loginSuccess: true, msg: 'login success' });
-  }
-);
+    res.status(200).json({
+      username: res.locals.user.username,
+      loginSuccess: true,
+      msg: 'login success',
+    });
+  });
+// eslint-disable-next-line max-len
 /* ============================================ Admin ============================================== */
 
 app.get('/admin/login',
@@ -59,13 +65,18 @@ app.post('/admin/login',
   sessionController.createAdminSession,
   cookieController.setAdminCookie,
   (req, res) => {
-    res.status(200).json({ username: res.locals.admin.admin_username, loginSuccess: true, msg: 'login success' });
+    res.status(200).json({
+      username: res.locals.admin.admin_username,
+      loginSuccess: true,
+      msg: 'login success',
+    });
   });
 
 // app.use(sessionController.checkAdminSession);
 app.get('/admin',
   sessionController.checkAdminSession);
 
+// eslint-disable-next-line max-len
 /* ============================================ Backend CMS ============================================== */
 app.post('/admin/submitForm');
 
@@ -75,13 +86,23 @@ app.post('/admin/signup',
   adminController.createAdmin,
   sessionController.createAdminSession,
   cookieController.setAdminCookie,
-  (req, res) => res.status(200).json({ signupSuccess: true }));
+  (req, res) => res.status(200).json({
+    signupSuccess: true,
+  }));
 
 app.put('/admin/upload',
   s3.uploadToS3,
   cvs.writeToCardsTable);
 
 
-app.listen(3000, () => console.log('server is listening on 3000'));
+// eslint-disable-next-line max-len
+/* ============================================ Game ============================================== */
+// request object with game name and level of difficulty
 
-// TODO: check the routes of login page for admin
+app.get('/gameList', gameController.gameList);
+app.get('/gameMenu/:game', gameController.gameMenu);
+app.post('/saveScore', playController.saveScore);
+app.post('/loadGame', playController.loadGame);
+app.post('/leaderBoard', playController.leaderBoard);
+
+app.listen(3000, () => console.log('server is listening on 3000'));

@@ -40,7 +40,7 @@ module.exports = {
       })
       .on('end', () => {
         console.log('done');
-        res.send('upload complete');
+        res.send('cvs upload complete');
       });
   },
 };
