@@ -27,13 +27,17 @@ const mapDispatchToProps = dispatch => ({
   successPlay: () => {
     dispatch(gameConfigActions.successPlay());
   },
+  resetGameMenu: () => {
+    dispatch(gameConfigActions.resetGameMenu());
+  },
 });
 
 class GameListContainer extends Component {
   componentDidMount() {
-    const { getGameList, resetGameSelection } = this.props;
+    const { getGameList, resetGameSelection, resetGameMenu } = this.props;
     resetGameSelection();
     getGameList();
+    resetGameMenu();
   }
 
   render() {
@@ -62,12 +66,12 @@ class GameListContainer extends Component {
 
     return (
       <div className="MainContainer">
-        <h3 className="headers">-- CHOOSE YOUR GAME --</h3>
+        <h3 className="headers">-- PICK A DECK --</h3>
         <div className="list">
           {games}
         </div>
         <div className="container">
-          <div className="buttonStyle" onClick={() => successPlay(selectedGame)}>PLAY</div>
+          <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
         </div>
       </div>
     );

@@ -25,15 +25,15 @@ const Signup = (props) =>  {
         <h1>Sign Up</h1>
         <form className="form login">
           <div className="form__field">
-            <label htmlFor="signup_username"><svg className="icon"></svg><span className="hidden">Username</span></label>
+            <span className="hidden">Username</span>
             <input id="signup_username" type="text" name="username" className="form__input" placeholder="Username" onChange={updateSignUpUsername} required />
           </div>
           <div className="form__field">
-            <label htmlFor="signup_password"><svg className="icon"></svg><span className="hidden">Password</span></label>
+            <span className="hidden">Password</span>
             <input id="signup_username" type="password" name="password" className="form__input" placeholder="Password" onChange={updateSignUpPassword} required />
           </div>
           <div className="form__field">
-            <label htmlFor="signup_email"><svg className="icon"></svg><span className="hidden">Email</span></label>
+            <span className="hidden">Email</span>
             <input id="signup_username" type="text" name="email" className="form__input" placeholder="Email" onChange={updateSignUpEmail} required />
           </div>
           <div className="form__field">

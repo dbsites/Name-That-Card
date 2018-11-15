@@ -71,29 +71,38 @@ const Leaderboard = (props) => {
   console.log('difficultyFilteredResults ', difficultyFilteredResults);
 
   const leaderboardEntries = difficultyFilteredResults.map((resultObj, i) => {
-    return <LeaderboardEntry key={i} entryContents={resultObj} rank={i} />;
+    return <LeaderboardEntry numEntries={difficultyFilteredResults.length} key={i} entryContents={resultObj} rank={i} sortDirection={sortDirection}/>;
   })
 
   return (
-    <div className="leaderboard">
+    <div className="leaderboardContainer">
       <h1 className="headers">{selectedGame}</h1>
-      <div className=""><NavLink to={selectedGameRoute}>X</NavLink></div>
+      <div className="right-menu"><NavLink to={selectedGameRoute}>X</NavLink></div>
       <div>
         Leaderboard
       </div>
-      <span onClick={() => changeLeaderboardDifficulty('ALL')}>All</span> <span onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span> <span onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span> <span onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>
-      <table>
-        <tbody>
-          <tr>
-            <th>RANK</th>
-            <th onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
-            <th onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
-            <th onClick={() => changeLeaderboardSortCategory('avg')}>AVERAGE SCORE</th>
-            <th onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
-          </tr>
-          {leaderboardEntries}
-        </tbody>
-      </table>
+      <div>
+        <div className="right-menu">
+          <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>
+          <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>
+          <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>
+          <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>
+        </div>
+      </div>
+      <div>
+        <table className="leaderboard">
+          <tbody>
+            <tr className="leaderboardRow">
+              <th>RANK</th>
+              <th onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
+              <th onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
+              <th onClick={() => changeLeaderboardSortCategory('avg')}>AVERAGE SCORE</th>
+              <th onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
+            </tr>
+            {leaderboardEntries}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
