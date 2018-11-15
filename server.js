@@ -47,11 +47,13 @@ app.post('/login',
   authController.verifyUser,
   sessionController.createSession,
   cookieController.setSSIDCookie,
-  res.status(200).json({
-    username: res.locals.user.username,
-    loginSuccess: true,
-    msg: 'login success',
-  })
+  (req, res) => {
+    res.status(200).json({
+      username: res.locals.user.username,
+      loginSuccess: true,
+      msg: 'login success',
+    })
+  }
 );
 
 app.delete('/logout',
