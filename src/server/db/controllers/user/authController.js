@@ -46,13 +46,13 @@ module.exports = {
     const { email_address } = req.body;
     db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
       .then((data) => {
-        console.log('*** data ***',data)
+        console.log('*** data ***', data)
         if (data[0]) {
           return res.send({
             msg: 'email already exists',
             signupSuccess: false,
           });
-        } 
+        }
         // Only returns next if email_address is not in DB
         return next();
       })
@@ -77,6 +77,27 @@ module.exports = {
         return next();
       })
       .catch(err => res.status(500).send(err));
+  },
+
+  getUserInfo: (req, res, next) => {
+    console.log('=============================================');
+    console.log('You are in authController getUserInfo');
+    console.log('*** req.body ***', req.body);
+    
+    const { id } = res.locals.user;
+    const integer = Number(id);
+
+    db.one(`SELECT session.user_id, users.username, session.ssid
+    FROM "game.dbo".sessions as session
+    JOIN "game.dbo".users as users
+    ON users.user_id = session.user_id
+    WHERE session.user_id = ${integer}`)
+    .then((data) => {
+      console.log('******* res.locals.user.id *****',res.locals.user.id);
+      res.locals.data = data;
+      next();
+    })
+    .catch(err => console.log(err));
   },
 
   verifyUser(req, res, next) {

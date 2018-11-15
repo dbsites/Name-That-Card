@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.355.0",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -19,6 +20,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "fast-csv": "^2.4.1",
     "nodemon": "^1.18.5",
     "nouislider": "^12.1.0",
     "npm": "^6.4.1",
