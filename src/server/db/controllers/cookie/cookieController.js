@@ -1,11 +1,12 @@
 module.exports = {
 
-/* ============================================ User ============================================ */
+  /* ============================================ User ============================================ */
 
   deleteSSIDCookie: (req, res, next) => {
     // console.log('============================================');
     // console.log('You are in cookieController deleteSSIDCookie');
     // console.log('*** res.locals ***', res.locals);
+
 
     // Clear Cookie - Removes Authorization for User
     res.clearCookie('ssid');
@@ -16,18 +17,17 @@ module.exports = {
     // console.log('=========================================');
     // console.log('You are in cookieController setSSIDCookie');
     // console.log('*** res.locals ***', res.locals);
-
     // Cookie accessible via HTTP only
     res.cookie('ssid', res.locals.ssid, { httpOnly: true });
     next();
   },
 
-/* ============================================ Admin ============================================ */
+  /* ============================================ Admin ============================================ */
 
   deleteAdminCookie: (req, res, next) => {
+
     // console.log('=============================================');
     // console.log('You are in cookieController deleteAdminCookie');
-    
     // Clear Cookie - Removes Authorization for Admin
     res.clearCookie('admin');
     next();

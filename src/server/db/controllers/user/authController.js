@@ -83,7 +83,7 @@ module.exports = {
     // console.log('=============================================');
     // console.log('You are in authController getUserInfo');
     // console.log('*** req.body ***', req.body);
-    
+
     const { id } = res.locals.user;
     const integer = Number(id);
 
@@ -92,12 +92,12 @@ module.exports = {
     JOIN "game.dbo".users as users
     ON users.user_id = session.user_id
     WHERE session.user_id = ${integer}`)
-    .then((data) => {
-      console.log('******* res.locals.user.id *****',res.locals.user.id);
-      res.locals.data = data;
-      next();
-    })
-    .catch(err => console.log(err));
+      .then((data) => {
+        console.log('******* res.locals.user.id *****', res.locals.user.id);
+        res.locals.data = data;
+        next();
+      })
+      .catch(err => console.log(err));
   },
 
   verifyUser(req, res, next) {
@@ -111,17 +111,24 @@ module.exports = {
         console.log('*** data ***', data);
         const user = data[0];
         console.log('*** user ***', user);
-        bcrypt.compare(password, user.password, (error, resolve) => {
-          if (resolve) {
-            res.locals.user = user;
-            console.log('*** verified user ***', res.locals.user);
-            return next();
-          }
-          return res.status(400).send({
+        if (!data[0]){
+          return res.status(200).send({
             loginSuccess: false,
-            msg: 'login failed, send a message to user to check email & password or signup',
+            msg: 'Incorrect email account or password',
+          })
+        } else {
+          bcrypt.compare(password, user.password, (error, resolve) => {
+            if (resolve) {
+              res.locals.user = user;
+              console.log('*** verified user ***', res.locals.user);
+              return next();
+            }
+            return res.status(200).send({
+              loginSuccess: true,
+              msg: 'successful logged in',
+            });
           });
-        });
+        }
       })
       .catch(err => console.error(err));
   },
