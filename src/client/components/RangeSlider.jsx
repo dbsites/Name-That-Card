@@ -14,11 +14,9 @@ const RangeSlider = (props) => {
   maxYear = Number(maxYear);
   minYear = Number(minYear);
   return (
-    <div className="container">
-      <div className="sliderContainer">
-        <p id="sliderTitle">Select Year Range</p>
-        <Range onChange={updateMinMaxYears} min={minYear} max={maxYear} defaultValue={[minYear, maxYear]} allowCross={false} tipFormatter={value => `${value}`} />
-      </div>
+    <div className="sliderContainer">
+      <span id="text--center">Select Year Range</span>
+      <Range onChange={updateMinMaxYears} min={minYear} max={maxYear} defaultValue={[minYear, maxYear]} allowCross={false} tipFormatter={value => `${value}`} />
     </div>
   )
 };

@@ -4,11 +4,11 @@ const Score = (props) => {
   const { score, questionNumber } = props;
   return (
     <div className="scoreFooter">
-      <div className="center">
+      <div className="gameScore">
          {questionNumber} / 20
       </div>
-      <div className="center">
-        ~ {score} CORRECT MANG ~
+      <div className="totalScore">
+        {score} CORRECT
       </div>
     </div>
   );
