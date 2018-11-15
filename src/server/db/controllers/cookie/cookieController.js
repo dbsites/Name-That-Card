@@ -1,11 +1,11 @@
 module.exports = {
 
-/* ============================================ User ============================================ */
+  /* ============================================ User ============================================ */
 
   deleteSSIDCookie: (req, res, next) => {
     console.log('============================================');
     console.log('You are in cookieController deleteSSIDCookie');
-    console.log('*** res.locals ***', res.locals);
+    console.log('*** req.cookies ***', req.cookies);
 
     // Clear Cookie - Removes Authorization for User
     res.clearCookie('ssid');
@@ -22,12 +22,12 @@ module.exports = {
     next();
   },
 
-/* ============================================ Admin ============================================ */
+  /* ============================================ Admin ============================================ */
 
   deleteAdminCookie: (req, res, next) => {
     console.log('=============================================');
     console.log('You are in cookieController deleteAdminCookie');
-    
+
     // Clear Cookie - Removes Authorization for Admin
     res.clearCookie('admin');
     next();

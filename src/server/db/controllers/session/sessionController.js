@@ -66,6 +66,15 @@ module.exports = {
       });
   },
 
+  deleteSession: (req, res, next) => {
+    console.log('==========================================');
+    console.log('You are in sessionController createSession');
+    console.log('*** req.cookies ***', req.cookies);
+
+    db.none('DELETE FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid]);
+    next();
+  },
+
   /* ============================================ Admin ============================================ */
   checkAdminSession: (req, res) => {
     console.log('==============================================');
