@@ -100,7 +100,13 @@ export default function (previousState = initialState, action) {
       stateCopy.isLoggedIn = true;
       return stateCopy;
     }
-
+    case types.FAILED_AUTH_VERIFICATION: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.loggedInUser = '';
+      stateCopy.isLoggedIn = false;
+      return stateCopy;
+    }
+    
     default:
       return previousState;
   }

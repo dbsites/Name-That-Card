@@ -106,6 +106,11 @@ export const successfulAuthVerification = data => ({
   payload: data,
 });
 
+export const failedAuthVerification = data => ({
+  type: types.FAILED_AUTH_VERIFICATION,
+  payload: data,
+});
+
 export const checkAuth = () => {
   return (dispatch) => {
     return fetch('http://localhost:3000/rootPage')
@@ -113,10 +118,10 @@ export const checkAuth = () => {
         return res.json();
       })
       .then((data) => {
-        if (data) {
+        if (data.loginSuccess) {
           dispatch(successfulAuthVerification(data));
         } else {
-          dispatch(failedAuthVerification(data));
+          dispatch(failedAuthVerification());
         }
       })
       .catch((err) => {
