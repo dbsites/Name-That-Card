@@ -13,45 +13,47 @@ const Navigation = (props) => {
   
   let signUpButton = isLoggedIn
   ? ''
-  : <div className="menu-item"><NavLink to="/signup">Sign Up</NavLink></div>;
+  : <div className="menu-item"><NavLink to="/signup">Signup</NavLink></div>;
   
   let homeBtn = <div className="menu-item"><NavLink to="/">Home</NavLink></div>;
   
   let xBtn;
   
-  let logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIcon.png';
+  let logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/' + selectedGame + 'LogoWhite.png';
   
-  let logo;  
+  let logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
+  let homeLogo = <div className="homeLogo"> <img className="homeImgLogo" src='https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIconWhite.png'></img> </div>; 
 
   if (window.location.pathname === '/') {
     homeBtn = '';
     xBtn = '';
-    logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIconWhite.png';
+    logo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg')";
   } else if (window.location.pathname === '/gameMenu/' + selectedGame) {
     xBtn = '';
-    logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/' + selectedGame + 'Logo.png';
+    homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
   } else if (window.location.pathname === '/game') {
     logInOutButton = '';
     homeBtn = '';
     signUpButton = '';
     navUsername = '';
-    logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/' + selectedGame + 'Logo.png';
+    homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
-    xBtn = <div className="menu-item"><NavLink to={selectedGameRoute}>X</NavLink></div>;
+    xBtn = <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>;
     if(questionNumber === 20) {
-      xBtn = <div className="menu-item"><NavLink to='/'>X</NavLink></div>;
+      xBtn = <div className="xButton"><NavLink to='/'>x</NavLink></div>;
     }
   } else if (window.location.pathname === '/login') {
     logInOutButton = '';
     xBtn = '';
-    logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIconWhite.png';
+    logo = '';
+
   } else if (window.location.pathname === '/signup') {
     signUpButton = '';
     xBtn = '';
-    logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIconWhite.png';
+    logo = '';
   } else if (window.location.pathname === '/admin') {
     signUpButton = '';
     xBtn = '';
@@ -59,11 +61,14 @@ const Navigation = (props) => {
     logo = '';
   }
   
-  logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>; 
+  // logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>; 
 
   return (
     <div className="navigation">
-      {logo}
+      <div className="left-menu">
+        {homeLogo}
+        {logo}
+      </div>
       <div className="right-menu">
         {homeBtn}
         {xBtn}

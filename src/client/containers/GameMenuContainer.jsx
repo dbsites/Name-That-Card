@@ -113,14 +113,14 @@ class GameMenuContainer extends Component {
       return <Redirect to={{ pathname: '/game' }} />;
     }
 
-    let allBtn = <div className="listButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
+    let allBtn = <div className="allButtonStyle" onClick={toggleAllGameCategories}>ALL</div>
     if (years) {
-      if (selectedCategories.length === categoryList.length -1) {
-        allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
+      if (selectedCategories.length === categoryList.length - 1) {
+        allBtn = <div className="allButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
       }
     } else {
-      if (selectedCategories.length === categoryList.length-1) {
-        allBtn = <div className="listButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
+      if (selectedCategories.length === categoryList.length - 1) {
+        allBtn = <div className="allButtonStyle activated" onClick={toggleAllGameCategories}>ALL</div>;
       }
     }
 
@@ -151,29 +151,23 @@ class GameMenuContainer extends Component {
             <NavLink to="/leaderBoard">Leaderboard</NavLink>
           </div>
         </div>
+        <h3 className="text--center">CHOOSE CATEGORIES</h3>
         <div className="categoryContainer">
-          <h3 className="headers"> {selectedGame} -- CHOOSE CATEGORIES </h3>
           <div className="list">
-              {categories}
-          </div>
-          <div className="container">
-              {allBtn}
-          </div>
-          <div>
-            {slider}
+            {categories}
+            {allBtn}
           </div>
         </div>
-        <div className="bottomMenuContainer">
-          <h3 className="headers">-- CHOOSE DIFFICULTY --</h3>
-          <div className="container">
-            <div className="difficultyBoxStyle">
-              {easyBtn}
-              {medBtn}
-              {hardBtn}
-            </div>
-          </div>
+        <div>
+          {slider}
         </div>
-        <div className="container">
+        <h3 className="text--center">CHOOSE DIFFICULTY</h3>
+        <div className="difficultyBoxStyle">
+          {easyBtn}
+          {medBtn}
+          {hardBtn}
+        </div>
+        <div className="center">
           <div className="startButtonStyle" onClick={() => startGame()}>START</div>
         </div>
       </div>

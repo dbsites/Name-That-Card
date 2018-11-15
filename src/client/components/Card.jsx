@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, selectedAnswer } = props;
+  const { cardInfo, selectAnswer, selectedDifficulty, selectedAnswer } = props;
 
   const shuffledAnswers = (answersArr) => {
     let counter = answersArr.length;
@@ -33,8 +33,10 @@ const Card = (props) => {
     } else {
       coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.imagename;
     }
-    picture = <img className="card" src={imgSrc} alt="MASK ON" />;
-    coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK OFF MASK OFF" />;
+
+    
+    picture = <img className="card" src={imgSrc} alt="MASK OFF" />;
+    coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK ON" />;
   }
 
   if(selectedAnswer !== ''){
@@ -43,10 +45,10 @@ const Card = (props) => {
 
   return (
     <div className="cardContainer">
-      <div className="card">
+      <div className="cards">
         {picture}
+        {coverImg}
       </div>
-      {coverImg}
       <div className="answersBox">
         <div className="answers">
           <div id="answer1" onClick={() => selectAnswer(answers[0])}>{answers[0]}</div>
