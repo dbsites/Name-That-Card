@@ -12,7 +12,6 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   cards: store.gameReducer.cards,
-  selectedAnswer: store.gameReducer.selectedAnswer,
   wrongAnswers: store.gameReducer.wrongAnswers,
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
@@ -75,21 +74,42 @@ class GameContainer extends Component {
   }
 
   render() {
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty, getWrongAnswers, selectedAnswer } = this.props;
+    console.log('game container rendered')
+    const shuffledAnswers = (answersArr) => {
+      let counter = answersArr.length;
+      while (counter > 0) {
+        const index = Math.floor(Math.random() * counter);
+        counter -= 1;
+        const temp = answersArr[counter];
+        answersArr[counter] = answersArr[index];
+        answersArr[index] = temp;
+      }
+      return answersArr;
+    };
+
+    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty } = this.props;
     const cardInfo = cards[0];
+    const answers = [];
+    
+
     let clickFunc = goToNext;
     let title = '';
     let buttonText = 'NEXT';
     let ebayLink; 
     let buyBtn;
     if (cardInfo) {
+      cardInfo.wrongAnswers.forEach((answer) => {
+        answers.push(answer.card_name);
+      })
+      answers.push(cardInfo.card_name);
+      cardInfo.allAnswers = shuffledAnswers(answers);
       if(cardInfo.ebay_link) {
         ebayLink = cardInfo.ebay_link;
         buyBtn = <div className="gameButton"><a href={ebayLink} target="_blank">BUY NOW</a></div>
       }
     }
 
-    let content = <Card selectedAnswer={selectedAnswer} getWrongAnswers={getWrongAnswers} selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} wrongAnswers={wrongAnswers} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
+    let content = <Card selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
     if (cards.length === 1) {
       clickFunc = finishGame;
@@ -107,9 +127,9 @@ class GameContainer extends Component {
     }
 
     return (
-      <div className="MainContainer">
-        <h4 className="headers">{title}</h4>
-        <div className="container">
+      <div className="GameContainer">
+        <h4 className="text--center">{title}</h4>
+        <div className="list">
           {content}
         </div>
         <div className="container">

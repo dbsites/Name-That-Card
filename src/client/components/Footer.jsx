@@ -34,7 +34,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
-      gameDisclaimer = <span className="footer">DISCLAIMER</span>;
+      gameDisclaimer = <span className="disclaimer">"NAME THAT CARD: " IS UNOFFICIAL FAN CONTENT PERMITTED UNDER THE FAN CONTENT POLICY. NOT APPROVED/ENDORSED BY WIZARDS/PORTIONS OF THE MATERIALS USED ARE PROPERTY OF WIZARDS OF THE COAST. WIZARDS OF THE COAST LLC.</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';
@@ -48,19 +48,16 @@ class Footer extends Component {
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
       termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
       contact = <span>Contact</span>;
-      disclaimer = <span>DISCLAIMER</span>;
+      disclaimer = <span>"NAME THAT CARD: " IS UNOFFICIAL FAN CONTENT PERMITTED UNDER THE FAN CONTENT POLICY. NOT APPROVED/ENDORSED BY WIZARDS/PORTIONS OF THE MATERIALS USED ARE PROPERTY OF WIZARDS OF THE COAST. WIZARDS OF THE COAST LLC.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     }
 
     return (
       <div className="footerContainer">
-        <br />
-        <br />
-        <div className="headers">
-          <div>{disclaimer}</div>
+        <div className="disclaimer">
+          {disclaimer}
         </div>
-        <br />
         <div className="footer">
           {about}
           {privacyPolicy}
@@ -68,7 +65,8 @@ class Footer extends Component {
           {contact}
           {footerScore}
         </div>
-        <div>
+        <br/>
+        <div className="disclaimerFooter">
           {gameDisclaimer}
         </div>
       </div>

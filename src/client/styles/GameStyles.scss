@@ -1,19 +1,65 @@
 // game menu buttons
+
+.listButtonStyle {
+  display: flex;
+  // width: 35vw;
+  flex-basis: 40%;
+  line-height: 1.8rem;
+  font-size: 1.5rem !important;
+  font-weight: 700;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08rem solid white;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  user-select: none;
+}
+
+.allButtonStyle {
+  display: flex;
+  width: 10rem;
+  // flex-basis: 10%;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
+  font-weight: 700;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08rem solid white;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  border-radius: 0.25rem;
+  background-color: black;
+  color: white;
+  user-select: none;
+}
+
+.listButtonStyle:hover {
+  background: radial-gradient(black, white);
+}
+
 .enterButtonStyle {
   display: flex;
-  width: 8em;
-  height: 8em;
-  line-height: 1.8em;
-  font-size: 1.3em !important;
+  width: 8rem;
+  height: 8rem;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  // margin: 1vw;
   padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  // background-color: #ea4c88;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -21,7 +67,7 @@
 .buttonStyle {
   display: flex;
   width: 25vw;
-  line-height: 1.3em;
+  line-height: 1.8rem;
   font-size: 1.1em !important;
   font-weight: 700;
   margin: 2vw;
@@ -39,38 +85,15 @@
 //   background: radial-gradient(black, white);
 // }
 
-.listButtonStyle {
-  display: flex;
-  flex-basis: 40%;
-  line-height: 1.3em;
-  font-size: 1.1em !important;
-  font-weight: 700;
-  margin: 1vh 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
-  cursor: pointer;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 0.25rem;
-  color: white;
-  user-select: none;
-}
-
-// .listButtonStyle:hover {
-//   background: radial-gradient(black, white);
-// }
-
 .activated {
   display: flex;
   flex-basis: 40%;
-  line-height: 1.3em;
-  font-size: 1.1em !important;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  margin: 1vh 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08rem solid white;
   cursor: pointer;
   flex-direction: row;
   justify-content: center;
@@ -84,31 +107,35 @@
 
 .difficultyBoxStyle {
   display: flex;
-  max-width: 100%;
-  margin: 2vw;
+  width: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: black;
   user-select: none;
 }
 
 .difficultyStyleE {
   display: flex;
-  width: 50vw;
-  margin-left: 5vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  flex: 2;
+  width: 10rem;
+  margin-left: auto;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-left: 0.08em solid white;
-  border-top: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  border-left: 0.08rem solid white;
+  border-top: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -119,15 +146,17 @@
 
 .difficultyStyleM {
   display: flex;
-  width: 50vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  flex: 2;
+  width: 10rem;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -138,20 +167,22 @@
 
 .difficultyStyleH {
   display: flex;
-  width: 50vw;
-  margin-right: 5vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  flex: 2;
+  width: 10rem;
+  margin-right: auto;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-right: 0.08em solid white;
-  border-top: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  border-right: 0.08rem solid white;
+  border-top: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -162,17 +193,17 @@
 
 .difficultyActivated {
   display: flex;
-  width: 50vw;
-  line-height: 1.5em;
-  font-size: 1.1em !important;
+  width: 10rem;
+  line-height: 1.8rem;
+  font-size: 1.3em !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
+  padding: 0.5rem 0.8rem !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-left: 0.0.08em solid white;
-  border-top: 0.0.08em solid white;
-  border-bottom: 0.0.08em solid white;
+  border-left: 0.08rem solid white;
+  border-top: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   color: white;
   background: radial-gradient(black, white);
   user-select: none;
@@ -180,42 +211,54 @@
 
 .startButtonStyle {
   display: flex;
-  width: 30vw;
-  line-height: 1.3em;
-  font-size: 1.1em !important;
+  width: 10rem;
+  // flex-basis: 10%;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  margin: 3vh 2vw 0vh 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08rem solid white;
   cursor: pointer;
+  flex-direction: row;
   justify-content: center;
+  // align-items: center;
+  // text-align: center;
   border-radius: 0.25rem;
-  // background-color: #ea4c88;
+  background-color: black;
   color: white;
   user-select: none;
 }
 
 // game buttons
 
+.cards {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
+}
+
 .card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   align-content: center;
-  height: 50vh;
-  width: 50vw;
-  position: absolute;
-  
+  height: 20rem;
 }
 
 .cardReveal {
-  max-width: 50vw;
-  max-height: 50vh;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
 }
 
 .answersBox {
@@ -223,10 +266,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  // flex-wrap: wrap;
-  // width: auto;
-  // line-height: 1.8em;
-  margin: 2vw;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: center;
   color: white;
   user-select: none;
@@ -236,18 +278,16 @@
   width: 100%;
 }
 
-#answer1 {
+.answer1 {
   display: flex;
-  // flex-basis: 100%;
-  // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-right: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-right: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -260,18 +300,18 @@
 //   background: radial-gradient(white, black);
 // }
 
-#answer2 {
+.answer2 {
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-right: 0.08em solid white;
-  border-top: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-right: 0.08rem solid white;
+  border-top: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -284,18 +324,18 @@
 //   background: radial-gradient(white, black);
 // }
 
-#answer3 {
+.answer3 {
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-left: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-left: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -308,24 +348,32 @@
 //   background: radial-gradient(white, black);
 // }
 
-#answer4 {
+.answer4 {
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-left: 0.08em solid white;
-  border-top: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-left: 0.08rem solid white;
+  border-top: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   align-content: center;
   color: white;
   user-select: none;
+}
+
+#correctAnswer {
+  color: green;
+}
+
+#wrongAnswer {
+  color: red;
 }
 
 // #answer4:hover {
@@ -340,7 +388,7 @@
   font-weight: 700;
   margin: 1vw;
   padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   text-align: center;

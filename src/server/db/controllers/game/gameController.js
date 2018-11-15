@@ -5,8 +5,8 @@ const db = require('../util/postgres');
  * @returns promise with minyear and maxYear of selected game
  */
 function minMax(game) {
-  return db.any(`SELECT min(cast(category_b as bigint)) as minYear, max(cast(category_b as bigint)) maxYear 
-  FROM "game.dbo".cards_n c
+  return db.any(`SELECT min(c.year) as minYear, max(c.year) maxYear 
+  FROM "game.dbo".cards c
   JOIN "game.dbo".game g
     ON c.game_id = g.game_id
   where game_name = $1;`, [game]);
