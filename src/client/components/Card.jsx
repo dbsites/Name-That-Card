@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = store => ({
   ableToNext: store.gameReducer.ableToNext,
+  selectedAnswer: store.gameReducer.selectedAnswer,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -12,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 class Card extends Component {
   render() {
     console.log('card rendered')
-    const { cardInfo, selectAnswer, selectedDifficulty, ableToNext } = this.props;
+    const { cardInfo, selectAnswer, selectedDifficulty, ableToNext, selectedAnswer } = this.props;
 
     let picture = '';
     let coverImg = '';
@@ -32,8 +33,34 @@ class Card extends Component {
       coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK ON" />;
     }
 
-    if(ableToNext){
+    let answer1 = <div className="answer1" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
+    let answer2 = <div className="answer2" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>;
+    let answer3 = <div className="answer3" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
+    let answer4 = <div className="answer4" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>;
+
+    if(ableToNext) {
       coverImg = '';
+      if(cardInfo.card_name === cardAnswers[0]) {
+        answer1 = <div className="answer1" id="correctAnswer" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
+        answer2 = <div className="answer2" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>;
+        answer3 = <div className="answer3" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
+        answer4 = <div className="answer4" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>;
+      } else if (cardInfo.card_name === cardAnswers[1]) {
+        answer1 = <div className="answer1" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
+        answer2 = <div className="answer2" id="correctAnswer" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>;
+        answer3 = <div className="answer3" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
+        answer4 = <div className="answer4" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>;
+      } else if (cardInfo.card_name === cardAnswers[2]) {
+        answer1 = <div className="answer1" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
+        answer2 = <div className="answer2" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>;
+        answer3 = <div className="answer3" id="correctAnswer" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
+        answer4 = <div className="answer4" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>;
+      } else if (cardInfo.card_name === cardAnswers[3]) {
+        answer1 = <div className="answer1" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
+        answer2 = <div className="answer2" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>;
+        answer3 = <div className="answer3" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
+        answer4 = <div className="answer4" id="correctAnswer" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>;
+      }
     }
 
     return (
@@ -44,12 +71,12 @@ class Card extends Component {
         </div>
         <div className="answersBox">
           <div className="answers">
-            <div id="answer1" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>
-            <div id="answer2" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>
+            {answer1}
+            {answer2}
           </div>
           <div>
-            <div id="answer3" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>
-            <div id="answer4" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>
+            {answer3}
+            {answer4}
           </div>
         </div>
       </div>
