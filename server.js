@@ -6,6 +6,7 @@ const authController = require('./src/server/db/controllers/user/authController'
 const cookieController = require('./src/server/db/controllers/cookie/cookieController');
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
+const s3 = require('./src/server/db/controllers/admin/aws/s3_upload');
 
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
@@ -76,6 +77,10 @@ app.post('/admin/signup',
   sessionController.createAdminSession,
   cookieController.setAdminCookie,
   (req, res) => res.status(200).json({ signUpSuccess: true }));
+
+app.put('/admin/uploadPhotos',
+  s3.uploadToS3);
+
 
 app.listen(3000, () => console.log('server is listening on 3000'));
 

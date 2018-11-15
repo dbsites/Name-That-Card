@@ -1,0 +1,25 @@
+const fs = require('fs');
+const csv = require('fast-csv');
+const db = require('../util/postgres');
+
+
+const stream = fs.createReadStream('my.csv');
+// path from local
+
+csv
+  .fromStream(stream, { headers: true })
+  .on('data', (data) => {
+    console.log(data);
+    // eslint-disable-next-line max-len
+    const { game_id, card_name, card_category, mask, image, image_location_temp, ebay_link, category_a, category_b, category_c } = data;
+
+    db.query(`INSERT INTO "game.dbo".cards (game_id, card_name, card_category, mask, image, image_location_temp, ebay_link, category_a, category_b, category_c))
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`, [game_id, card_name, card_category, mask, image, image_location_temp, ebay_link, category_a, category_b, category_c], (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  })
+  .on('end', () => {
+    console.log('done');
+  });
