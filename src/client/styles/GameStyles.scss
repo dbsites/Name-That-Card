@@ -278,7 +278,7 @@
   width: 100%;
 }
 
-#answer1 {
+.answer1 {
   display: flex;
   height: 3rem;
   width: 10rem;
@@ -300,7 +300,7 @@
 //   background: radial-gradient(white, black);
 // }
 
-#answer2 {
+.answer2 {
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
@@ -324,7 +324,7 @@
 //   background: radial-gradient(white, black);
 // }
 
-#answer3 {
+.answer3 {
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
@@ -348,7 +348,7 @@
 //   background: radial-gradient(white, black);
 // }
 
-#answer4 {
+.answer4 {
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
@@ -366,6 +366,14 @@
   align-content: center;
   color: white;
   user-select: none;
+}
+
+#correctAnswer {
+  color: green;
+}
+
+#wrongAnswer {
+  color: red;
 }
 
 // #answer4:hover {

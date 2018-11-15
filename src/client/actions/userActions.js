@@ -38,7 +38,7 @@ export const submitSignUp = (signUpInfoObj) => {
         return res.json();
       })
       .then((data) => {
-        if (data.signUpSuccess) {
+        if (data.signupSuccess) {
           dispatch(successfulSignUp());
         } else {
           dispatch(failedSignUp(data.msg));
