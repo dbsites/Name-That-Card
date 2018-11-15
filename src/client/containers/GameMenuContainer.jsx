@@ -158,7 +158,7 @@ class GameMenuContainer extends Component {
             {allBtn}
           </div>
         </div>
-        <div>
+        <div className="outerSliderContainer">
           {slider}
         </div>
         <h3 className="text--center">CHOOSE DIFFICULTY</h3>
