@@ -38,7 +38,7 @@ export const submitSignUp = (signUpInfoObj) => {
         return res.json();
       })
       .then((data) => {
-        if (data.signUpSuccess) {
+        if (data.signupSuccess) {
           dispatch(successfulSignUp());
         } else {
           dispatch(failedSignUp(data.msg));
@@ -100,3 +100,33 @@ export const submitLogin = (loginInfoObj) => {
       });
   };
 };
+
+export const successfulAuthVerification = data => ({
+  type: types.SUCCESSFUL_AUTH_VERIFICATION,
+  payload: data,
+});
+
+export const failedAuthVerification = data => ({
+  type: types.FAILED_AUTH_VERIFICATION,
+  payload: data,
+});
+
+export const checkAuth = () => {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/rootPage')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.loginSuccess) {
+          dispatch(successfulAuthVerification(data));
+        } else {
+          dispatch(failedAuthVerification());
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+

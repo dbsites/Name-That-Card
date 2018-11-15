@@ -81,7 +81,6 @@ class GameMenuContainer extends Component {
       selectedDifficulty,
       selectedGame,
       years,
-      //setYearsBool,
       minYear,
       maxYear,
       updateMinMaxYears,
