@@ -107,7 +107,7 @@ class GameContainer extends Component {
     }
 
     return (
-      <div className="MainContainer">
+      <div className="GameContainer">
         <h4 className="text--center">{title}</h4>
         <div className="list">
           {content}

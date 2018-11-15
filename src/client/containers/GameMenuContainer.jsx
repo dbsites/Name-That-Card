@@ -168,7 +168,7 @@ class GameMenuContainer extends Component {
           {hardBtn}
         </div>
         <div className="center">
-          <div className="allButtonStyle" onClick={() => startGame()}>START</div>
+          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
         </div>
       </div>
     );

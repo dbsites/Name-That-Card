@@ -259,7 +259,7 @@ p {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height: 31rem;
+  height: 35rem;
   max-width: 25rem;
   margin-left: auto;
   margin-right: auto;
@@ -390,7 +390,8 @@ p {
   // justify-content: center;
   // align-items: center;
   // align-content: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   margin-left: auto;
   margin-right: auto;
   // border: 0.08em solid blue;
@@ -401,9 +402,18 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  // height: 10rem;
   max-width: 25rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.disclaimer {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.7rem;
+  line-height: 0.75rem;
 }
 
 .footer {
@@ -414,17 +424,57 @@ p {
   cursor: pointer;
 }
 
+.disclaimerFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.gameScore {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.totalScore {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #5dc428;
+}
+
 .categoryContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin-top: 0.5rem;
+}
+
+.GameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 32rem;
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .leaderboard-menu {
   display: flex;
-  height: 5rem;
+  height: 3rem;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -441,7 +491,7 @@ p {
   // margin-bottom: 1.5rem;
   // margin: 1rem;
   padding: 0.5rem 0.8rem !important;
-  border: 0.08em solid white;
+  border-bottom: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   // align-items: center;
@@ -488,42 +538,6 @@ p {
   // margin: 1rem;
 }
 
-// .card {
-//   height: 50%;
-//   width: 50%;
-// }
-
-// .cardReveal {
-//   height: 50%;
-//   width: 50%;
-// }
-
-// .categoryContainer {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   margin: auto;
-// }
-
-// .leaderboardButton {
-//   display: flex;
-//   height: 5.5vh;
-//   width: auto;
-//   line-height: 1.8em;
-//   font-size: 1em !important;
-//   font-weight: 400;
-//   margin: 0 1vw;
-//   padding: 0.5em 0.8em !important;
-//   border: 0.08em solid white;
-//   cursor: pointer;
-//   justify-content: center;
-//   align-items: center;
-//   align-content: center;
-//   border-radius: 0.25rem;
-//   color: white;
-// }
-
 // .leaderboard {
 //   display: flex;
 //   width: 100%;
@@ -546,16 +560,16 @@ p {
 //   margin-top: 2vh;
 // }
 
-// .leaderboardContainer {
-//   height: 65vh;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-content: center;
-//   overflow: scroll;
-//   margin: 2vw;
-//   padding: auto;
-// }
+.LeaderboardContainer {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-content: center;
+  height: 35rem;
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 // .leaderboardFilter {
 //   display: flex;
@@ -579,11 +593,9 @@ p {
 //   align-content: center;
 // }
 
-// .scoreFooter {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-// }
+.scoreFooter {
+  line-height: 2rem;
+}
 
 // .footerLinks {
 //   height: 65vh;

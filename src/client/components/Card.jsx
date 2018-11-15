@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { wrongAnswers, cardInfo, selectAnswer, selectedGame, selectedDifficulty, selectedAnswer } = props;
+  const { cardInfo, selectAnswer, selectedDifficulty, selectedAnswer } = props;
 
   const shuffledAnswers = (answersArr) => {
     let counter = answersArr.length;

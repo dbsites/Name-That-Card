@@ -39,8 +39,7 @@ const Navigation = (props) => {
     signUpButton = '';
     navUsername = '';
     homeLogo = '';
-    // document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
-    document.body.style.backgroundImage = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
     xBtn = <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>;
     if(questionNumber === 20) {

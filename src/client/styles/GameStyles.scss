@@ -5,7 +5,7 @@
   // width: 35vw;
   flex-basis: 40%;
   line-height: 1.8rem;
-  font-size: 1.3rem !important;
+  font-size: 1.5rem !important;
   font-weight: 700;
   margin: 0.5rem 1rem;
   padding: 0.5rem 0.8rem !important;
@@ -135,6 +135,7 @@
   border-bottom: 0.08rem solid white;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -154,7 +155,8 @@
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -180,6 +182,7 @@
   border-bottom: 0.08rem solid white;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -208,17 +211,21 @@
 
 .startButtonStyle {
   display: flex;
-  width: 30vw;
-  line-height: 1.3em;
-  font-size: 1.1em !important;
+  width: 10rem;
+  // flex-basis: 10%;
+  line-height: 1.8rem;
+  font-size: 1.3rem !important;
   font-weight: 700;
-  margin: 3vh 2vw 0vh 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem !important;
+  border: 0.08rem solid white;
   cursor: pointer;
+  flex-direction: row;
   justify-content: center;
+  // align-items: center;
+  // text-align: center;
   border-radius: 0.25rem;
-  // background-color: #ea4c88;
+  background-color: black;
   color: white;
   user-select: none;
 }
@@ -232,8 +239,8 @@
   text-align: center;
   flex-direction: row;
   flex-wrap: wrap;
-  // margin: auto;
   position: relative;
+  box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
 }
 
 .card {
@@ -242,20 +249,16 @@
   align-items: center;
   justify-content: center;
   align-content: center;
-  height: 40vh;
-  // width: 50%;
-  // position: absolute;
+  height: 20rem;
 }
 
 .cardReveal {
-  // max-width: 10vh;
-  height: 40vh;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   position: absolute;
-  // opacity: 0.5;
 }
 
 .answersBox {
@@ -263,10 +266,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  // flex-wrap: wrap;
-  // width: auto;
-  // line-height: 1.8em;
-  margin: 1rem;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: center;
   color: white;
   user-select: none;
@@ -278,16 +280,14 @@
 
 #answer1 {
   display: flex;
-  // flex-basis: 100%;
-  // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-right: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-right: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -304,14 +304,14 @@
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-right: 0.08em solid white;
-  border-top: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-right: 0.08rem solid white;
+  border-top: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -328,14 +328,14 @@
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-left: 0.08em solid white;
-  border-bottom: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-left: 0.08rem solid white;
+  border-bottom: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -352,14 +352,14 @@
   display: flex;
   // flex-basis: 100%;
   // width: 25vw;
-  height: 10vw;
-  width: 30vw;
-  line-height: 5vw;
-  font-size: 3vw !important;
-  margin: 1vw;
-  padding: 1vw 0 !important;
-  border-left: 0.08em solid white;
-  border-top: 0.08em solid white;
+  height: 3rem;
+  width: 10rem;
+  line-height: 1rem;
+  font-size: 1rem !important;
+  margin: 0.25rem;
+  padding: 0.5rem 0.8rem !important;
+  border-left: 0.08rem solid white;
+  border-top: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -380,7 +380,7 @@
   font-weight: 700;
   margin: 1vw;
   padding: 0.3em 0 !important;
-  border: 0.08em solid white;
+  border: 0.08rem solid white;
   cursor: pointer;
   justify-content: center;
   text-align: center;
