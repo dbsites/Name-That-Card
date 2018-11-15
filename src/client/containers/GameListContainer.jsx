@@ -66,7 +66,7 @@ class GameListContainer extends Component {
 
     return (
       <div className="MainContainer">
-        <h3 className="headers">-- PICK A DECK --</h3>
+        <h3 className="text--center">PICK A DECK</h3>
         <div className="list">
           {games}
         </div>

@@ -75,11 +75,13 @@ const Leaderboard = (props) => {
   })
 
   return (
-    <div className="leaderboardContainer">
-      <h1 className="headers">{selectedGame}</h1>
-      <div className="right-menu"><NavLink to={selectedGameRoute}>X</NavLink></div>
-      <div>
-        Leaderboard
+    <div className="LeaderboardContainer">
+      <h1 className="text--center">{selectedGame}</h1>
+      <div className="right-menu">
+        <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>
+        {/* <span>
+          Leaderboard
+        </span> */}
       </div>
       <div>
         <div className="right-menu">
