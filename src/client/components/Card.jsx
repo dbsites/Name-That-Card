@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = store => ({
   ableToNext: store.gameReducer.ableToNext,
-  selectedAnswer: store.gameReducer.selectedAnswer,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -13,7 +12,7 @@ const mapDispatchToProps = dispatch => ({
 class Card extends Component {
   render() {
     console.log('card rendered')
-    const { cardInfo, selectAnswer, selectedDifficulty, ableToNext, selectedAnswer } = this.props;
+    const { cardInfo, selectAnswer, selectedDifficulty, ableToNext } = this.props;
 
     let picture = '';
     let coverImg = '';
