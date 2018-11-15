@@ -5,7 +5,7 @@ module.exports = {
   deleteSSIDCookie: (req, res, next) => {
     console.log('============================================');
     console.log('You are in cookieController deleteSSIDCookie');
-    console.log('*** req.locals ***', req.locals);
+    console.log('*** res.locals ***', res.locals);
 
     // Clear Cookie - Removes Authorization for User
     res.clearCookie('ssid');
@@ -15,7 +15,7 @@ module.exports = {
   setSSIDCookie: (req, res, next) => {
     console.log('=========================================');
     console.log('You are in cookieController setSSIDCookie');
-    console.log('*** req.locals ***', req.locals);
+    console.log('*** res.locals ***', res.locals);
 
     // Cookie accessible via HTTP only
     res.cookie('ssid', res.locals.ssid, { httpOnly: true });

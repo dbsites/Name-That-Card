@@ -115,7 +115,7 @@ module.exports = {
           if (resolve) {
             res.locals.user = user;
             console.log('*** verified user ***', res.locals.user);
-            next();
+            return next();
           }
           return res.status(400).send({
             loginSuccess: false,
