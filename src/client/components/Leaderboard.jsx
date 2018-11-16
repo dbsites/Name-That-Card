@@ -76,7 +76,7 @@ const Leaderboard = (props) => {
 
   return (
     <div className="LeaderboardContainer">
-      <h1 className="text--center">LEADERBOARD</h1>
+      <h1 className="leaderboardTitle">LEADERBOARD</h1>
       <div className="leaderboard-right-menu">
         <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>
         {/* <span>
@@ -94,12 +94,12 @@ const Leaderboard = (props) => {
       <div>
         <table className="leaderboard">
           <tbody>
-            <tr className="leaderboardRow">
-              <th>RANK</th>
-              <th onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
-              <th onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
-              <th onClick={() => changeLeaderboardSortCategory('avg')}>AVERAGE SCORE</th>
-              <th onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
+            <tr>
+              <th className="leaderboardHeaders">RANK</th>
+              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
+              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
+              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>
+              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
             </tr>
             {leaderboardEntries}
           </tbody>

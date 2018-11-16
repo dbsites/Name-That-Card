@@ -34,7 +34,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
-      gameDisclaimer = <span className="disclaimer">THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
+      gameDisclaimer = <span className="gameDisclaimer">THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';

@@ -66,11 +66,11 @@ class GameListContainer extends Component {
 
     return (
       <div className="HomescreenContainer">
-        <h3 className="text--center">PICK A DECK</h3>
+        <h3 className="pick-a-deck">PICK A DECK</h3>
         <div className="list">
           {games}
         </div>
-        <div className="container">
+        <div className="enterContainer">
           <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
         </div>
       </div>

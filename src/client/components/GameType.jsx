@@ -4,15 +4,15 @@ const GameType = (props) => {
   const { game, selectedGame, setSelectedGame } = props;
   if (selectedGame === game) {
     return (
-      <li className="listButtonStyle activated" onClick={() => setSelectedGame(game)}>
-        {game}
-      </li>
+      <div className="listButtonStyle activated" onClick={() => setSelectedGame(game)}>
+        {game + ' EDITION'}
+      </div>
     );
   }
   return (
-    <li className="listButtonStyle" onClick={() => setSelectedGame(game)}>
-      {game}
-    </li>
+    <div className="listButtonStyle" onClick={() => setSelectedGame(game)}>
+      {game + ' EDITION'}
+    </div>
   );
 };
 
