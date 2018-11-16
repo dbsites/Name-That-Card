@@ -26,7 +26,7 @@ export const failedSignUp = message => ({
 
 export const submitSignUp = (signUpInfoObj) => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/signup', {
+    return fetch('/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -85,7 +85,7 @@ export const logoutUser = () => ({
 export const submitLogin = (loginInfoObj) => {
   console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
-    return fetch('http://localhost:3000/login', {
+    return fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -122,7 +122,7 @@ export const failedAuthVerification = data => ({
 
 export const checkAuth = () => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/rootPage')
+    return fetch('/rootPage')
       .then((res) => {
         return res.json();
       })
