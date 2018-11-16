@@ -23,6 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// eslint-disable-next-line max-len
 /* ============================================ User ============================================== */
 
 app.get('/rootPage',
@@ -52,19 +53,20 @@ app.post('/login',
       username: res.locals.user.username,
       loginSuccess: true,
       msg: 'login success',
-    })
-  }
-);
+    });
+  });
 
 app.delete('/logout',
   cookieController.deleteSSIDCookie,
   sessionController.deleteSession,
   (req, res) => {
-    res.status(200).json({ loginSuccess: false })
-  }
-);
+    res.status(200).json({
+      loginSuccess: false,
+    });
+  });
 
 
+// eslint-disable-next-line max-len
 /* ============================================ Admin ============================================== */
 
 app.get('/admin/login',
