@@ -16,7 +16,7 @@ const Login = (props) => {
   const forgotPassword = <span className=""><NavLink to="/password">Forgot Password?</NavLink></span>;
 
   return (
-    <div className="MainContainer">
+    <div className="HomescreenContainer">
       <div className="grid">
         <h1>Login</h1>
         <form className="form login">

@@ -1,15 +1,6 @@
-// @media screen and (min-width: 600px) {
-//   .MainContainer {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-content: center;
-//     height: 31rem;
-//     max-width: 50rem;
-//     margin-left: auto;
-//     margin-right: auto;
-//   }
-// }
+/*********************************************************
+********************** LOGIN/SIGNUP **********************
+*********************************************************/
 
 /* config.css */
 
@@ -87,7 +78,7 @@
 html {
   box-sizing: border-box;
   font-size: 14px;
-  height: 100%;
+  // height: 100%;
 }
 
 body {
@@ -244,23 +235,52 @@ p {
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 0rem;
+  text-shadow: 0 0 0.5rem white;
 }
 
-// *********************************************************
-// menu ****************************************************
-// *********************************************************
+// .align-left {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   align-content: flex-start;
+//   max-width: 25rem;
+//   margin-top: 1rem;
+//   margin-bottom: 2rem;
+
+// }
+
+.text--left {
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 0.5rem white;
+}
+
+/*********************************************************
+************************* MENU ***************************
+*********************************************************/
 
 // .appWindow {
 //   height: 10rem;
 // }
 
-.MainContainer {
+.HomescreenContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height: 35rem;
-  max-width: 25rem;
+  height: 75vh;
+  max-width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  height: 75vh;
+  max-width: 95vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -270,8 +290,8 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 7rem;
-  max-width: 25rem;
+  height: 12.5vh;
+  max-width: 95vw;
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
@@ -291,18 +311,16 @@ p {
   align-content: center;
   height: auto;
   width: auto;
-  line-height: 1rem;
-  margin: auto;
+  // line-height: 1rem;
+  margin: 1vh 1vw;
 }
 
 .homeImgLogo {
-  width: 6rem;
-  height: 6rem;
+  height: 10.5vh;
 }
 
 .gameLogo {
-  width: 10rem;
-  height: 5rem;
+  height: 10.5vh;
   // margin: auto;
   // margin-left: auto;
   // margin-right: auto;
@@ -312,14 +330,11 @@ p {
   display: flex;
   height: auto;
   width: auto;
-  line-height: 1rem;
-  // margin: 1rem;
-  // padding: 0.5rem 0.8rem !important;
+  margin: 1vh 1vw;
   cursor: pointer;
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  border-radius: 0.25rem;
   // background-color: black;
   color: white;
 }
@@ -335,21 +350,16 @@ p {
   display: flex;
   height: auto;
   width: auto;
-  // line-height: 0.875rem;
   font-size: 1em !important;
   font-weight: 700;
-  // margin-top: 1.5rem;
-  // margin-bottom: 1.5rem;
-  margin: 0.9rem;
-  // padding: 0.5rem 0.8rem !important;
-  // border: 0.08em solid white;
+  margin: 3vh 3vw;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  // align-content: center;
-  border-radius: 0.25rem;
+  // border-radius: 0.25rem;
   // background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
 }
 
 .xButton {
@@ -371,6 +381,7 @@ p {
   border-radius: 0.25rem;
   // background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
 }
 
 .list {
@@ -387,13 +398,13 @@ p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // justify-content: center;
+  justify-content: center;
   // align-items: center;
   // align-content: center;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
   // border: 0.08em solid blue;
 }
 
@@ -441,6 +452,7 @@ p {
   margin-right: auto;
   font-size: 1.5rem;
   font-weight: 700;
+  text-shadow: 0 0 0.5rem black;
 }
 
 .totalScore {
@@ -450,6 +462,7 @@ p {
   font-size: 1rem;
   font-weight: 700;
   color: #5dc428;
+  text-shadow: 0 0 0.5rem black;
 }
 
 .categoryContainer {
@@ -478,6 +491,7 @@ p {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  text-shadow: 0 0 0.5rem white;
 }
 
 .leaderboard-right-menu {
@@ -486,6 +500,7 @@ p {
   margin: 0.5rem;
   flex-direction: row;
   justify-content: flex-end;
+  text-shadow: 0 0 0.5rem white;
 }
 
 .leaderboardButton {
@@ -494,7 +509,7 @@ p {
   width: auto;
   line-height: 1rem;
   font-size: 1rem !important;
-  font-weight: 400;
+  font-weight: 700;
   // margin-top: 1.5rem;
   // margin-bottom: 1.5rem;
   // margin: 1rem;
@@ -507,6 +522,7 @@ p {
   border-radius: 0.25rem;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
 }
 
 .outerSliderContainer {
@@ -517,9 +533,11 @@ p {
   align-content: center;
   width: auto;
   margin-top: 1rem;
-  // margin-left: auto;
-  // margin-right: auto;
+  margin-left: 1rem;
+  margin-right: 1rem;
   border: 0.08rem solid white;
+  border-radius: 0.25rem;
+  background-color: black;
 }
 
 .innerSliderContainer {
@@ -528,11 +546,20 @@ p {
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  width: 15rem;
+  width: 100%;
   margin: 1rem;
-  // margin-left: auto;
-  // margin-right: auto;
-  border: 0.08rem solid white;
+  text-shadow: 0 0 0.5rem white;
+}
+
+.innerSliderContainer span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
 }
 
 // .listContainer {
@@ -560,17 +587,21 @@ p {
   // margin: 1rem;
 }
 
-// .leaderboard {
-//   display: flex;
-//   width: 100%;
-//   flex-direction: row;
-//   justify-content: space-around;
-//   text-align: center;
-//   align-content: stretch;
-//   align-items: center;
-//   margin-top: 2vh;
-//   // border: 0.08em solid white;
-// }
+.leaderboard {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-content: stretch;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0.08rem solid white;
+  border-radius: 0.25rem;
+  background-color: black;
+  box-shadow: 0rem 0rem 2.5rem white;
+}
 
 // td, th {
 //   border: 0.08em solid white;
@@ -619,164 +650,54 @@ p {
   line-height: 2rem;
 }
 
-// .footerLinks {
-//   height: 65vh;
-//   // display: flex;
-//   // flex-direction: column;
-//   justify-content: center;
-//   align-content: center;
-//   align-items: center;
-//   overflow: scroll;
-//   margin: auto;
-//   // margin: 2vw;
-//   padding: auto;
-//   // border: 0.08em solid goldenrod;
-// }
-
-.center {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  // align-content: flex-start;
+  // align-items: flex-start;
+  height: 33rem;
+  max-width: 25rem;
+  overflow: scroll;
+  margin-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
+  padding: auto;
 }
+
+.h2-margins {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.p-margins {
+  margin-top: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+
+/*********************************************************
+********************* MEDIA QUERIES **********************
+*********************************************************/
+
 
 @media screen and (min-width: 768px) {
-  .MainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 31rem;
-    max-width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 7rem;
-    max-width: 25rem;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 25rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  
 }
 
-@media screen and (min-width: 1024px) {
-  .MainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 31rem;
-    max-width: 60rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 7rem;
-    max-width: 25rem;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 25rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+@media screen and (min-width: 1024) {
+  
 }
 
 @media screen and (min-width: 1440px) {
-  .MainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 31rem;
-    max-width: 75rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 7rem;
-    max-width: 25rem;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 25rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .MainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 56rem;
-    max-width: 90rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 10rem;
-    max-width: 90rem;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 10rem;
-    max-width: 90rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  
 }

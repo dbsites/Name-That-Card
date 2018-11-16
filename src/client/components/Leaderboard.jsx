@@ -76,7 +76,7 @@ const Leaderboard = (props) => {
 
   return (
     <div className="LeaderboardContainer">
-      <h1 className="text--center">{selectedGame}</h1>
+      <h1 className="text--center">LEADERBOARD</h1>
       <div className="leaderboard-right-menu">
         <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>
         {/* <span>

@@ -34,7 +34,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
-      gameDisclaimer = <span className="disclaimer">"NAME THAT CARD: " IS UNOFFICIAL FAN CONTENT PERMITTED UNDER THE FAN CONTENT POLICY. NOT APPROVED/ENDORSED BY WIZARDS/PORTIONS OF THE MATERIALS USED ARE PROPERTY OF WIZARDS OF THE COAST. WIZARDS OF THE COAST LLC.</span>;
+      gameDisclaimer = <span className="disclaimer">THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';
@@ -48,7 +48,7 @@ class Footer extends Component {
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
       termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
       contact = <span>Contact</span>;
-      disclaimer = <span>"NAME THAT CARD: " IS UNOFFICIAL FAN CONTENT PERMITTED UNDER THE FAN CONTENT POLICY. NOT APPROVED/ENDORSED BY WIZARDS/PORTIONS OF THE MATERIALS USED ARE PROPERTY OF WIZARDS OF THE COAST. WIZARDS OF THE COAST LLC.</span>;
+      disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     }

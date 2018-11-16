@@ -3,11 +3,11 @@
 .listButtonStyle {
   display: flex;
   // width: 35vw;
-  flex-basis: 40%;
+  flex-basis: 45%;
   line-height: 1.8rem;
   font-size: 1.5rem !important;
   font-weight: 700;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 0.5rem;
   padding: 0.5rem 0.8rem !important;
   border: 0.08rem solid white;
   cursor: pointer;
@@ -15,20 +15,21 @@
   justify-content: center;
   // align-items: center;
   // text-align: center;
-  border-radius: 0.25rem;
+  border-radius: 0.40rem;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
 .allButtonStyle {
   display: flex;
-  width: 10rem;
-  // flex-basis: 10%;
+  // width: 10rem;
+  flex-basis: 45%;
   line-height: 1.8rem;
-  font-size: 1.3rem !important;
+  font-size: 1.5rem !important;
   font-weight: 700;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 0.5rem;
   padding: 0.5rem 0.8rem !important;
   border: 0.08rem solid white;
   cursor: pointer;
@@ -36,15 +37,16 @@
   justify-content: center;
   // align-items: center;
   // text-align: center;
-  border-radius: 0.25rem;
+  border-radius: 0.40rem;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
-.listButtonStyle:hover {
-  background: radial-gradient(black, white);
-}
+// .listButtonStyle:hover {
+//   background: radial-gradient(black, white);
+// }
 
 .enterButtonStyle {
   display: flex;
@@ -61,25 +63,26 @@
   border-radius: 50%;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
-.buttonStyle {
-  display: flex;
-  width: 25vw;
-  line-height: 1.8rem;
-  font-size: 1.1em !important;
-  font-weight: 700;
-  margin: 2vw;
-  padding: 0.3em 0 !important;
-  border: 0.08em solid white;
-  cursor: pointer;
-  justify-content: center;
-  border-radius: 0.25rem;
-  // background-color: #ea4c88;
-  color: white;
-  user-select: none;
-}
+// .buttonStyle {
+//   display: flex;
+//   width: 25vw;
+//   line-height: 1.8rem;
+//   font-size: 1.1em !important;
+//   font-weight: 700;
+//   margin: 2vw;
+//   padding: 0.3em 0 !important;
+//   border: 0.08em solid white;
+//   cursor: pointer;
+//   justify-content: center;
+//   border-radius: 0.25rem;
+//   // background-color: #ea4c88;
+//   color: white;
+//   user-select: none;
+// }
 
 // .buttonStyle:hover {
 //   background: radial-gradient(black, white);
@@ -87,11 +90,11 @@
 
 .activated {
   display: flex;
-  flex-basis: 40%;
+  flex-basis: 45%;
   line-height: 1.8rem;
-  font-size: 1.3rem !important;
+  font-size: 1.5rem !important;
   font-weight: 700;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 0.5rem;
   padding: 0.5rem 0.8rem !important;
   border: 0.08rem solid white;
   cursor: pointer;
@@ -99,7 +102,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 0.25rem;
+  border-radius: 0.40rem;
+  background-color: black;
   color: white;
   background: radial-gradient(black, white);
   user-select: none;
@@ -133,10 +137,11 @@
   border-left: 0.08rem solid white;
   border-top: 0.08rem solid white;
   border-bottom: 0.08rem solid white;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.40rem;
+  border-bottom-left-radius: 0.40rem;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -158,6 +163,7 @@
   border: 0.08rem solid white;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -180,10 +186,11 @@
   border-right: 0.08rem solid white;
   border-top: 0.08rem solid white;
   border-bottom: 0.08rem solid white;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.40rem;
+  border-bottom-right-radius: 0.40rem;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -211,8 +218,8 @@
 
 .startButtonStyle {
   display: flex;
-  width: 10rem;
-  // flex-basis: 10%;
+  // width: 10rem;
+  flex-basis: 30%;
   line-height: 1.8rem;
   font-size: 1.3rem !important;
   font-weight: 700;
@@ -224,9 +231,10 @@
   justify-content: center;
   // align-items: center;
   // text-align: center;
-  border-radius: 0.25rem;
+  border-radius: 0.40rem;
   background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -240,7 +248,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-  box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
 }
 
 .card {
@@ -250,6 +257,7 @@
   justify-content: center;
   align-content: center;
   height: 20rem;
+  box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
 }
 
 .cardReveal {
@@ -293,6 +301,7 @@
   align-items: center;
   align-content: center;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -317,6 +326,7 @@
   align-items: center;
   align-content: center;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -341,6 +351,7 @@
   align-items: center;
   align-content: center;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
@@ -365,15 +376,18 @@
   align-items: center;
   align-content: center;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
 #correctAnswer {
   color: green;
+  text-shadow: 0 0 0.1rem black;
 }
 
 #wrongAnswer {
   color: red;
+  text-shadow: 0 0 0.1rem black;
 }
 
 // #answer4:hover {
@@ -382,11 +396,12 @@
 
 .gameButton {
   display: flex;
-  width: 30vw;
+  // width: 30vw;
+  flex-basis: 35%;
   line-height: 1.3em;
   font-size: 1.0em !important;
   font-weight: 700;
-  margin: 1vw;
+  margin: 0.5rem 1rem;
   padding: 0.3em 0 !important;
   border: 0.08rem solid white;
   cursor: pointer;
@@ -394,12 +409,30 @@
   text-align: center;
   align-content: center;
   align-items: center;
-  border-radius: 0.25rem;
-  // background-color: white;
+  border-radius: 0.40rem;
+  background-color: black;
   color: white;
+  text-shadow: 0 0 0.5rem white;
   user-select: none;
 }
 
 // .gameButton:hover {
 //   background: radial-gradient(black, white);
 // }
+
+/*********************************************************
+********************* MEDIA QUERIES **********************
+*********************************************************/
+
+
+@media screen and (min-width: 768px) {
+  
+}
+
+@media screen and (min-width: 1024) {
+  
+}
+
+@media screen and (min-width: 1440px) {
+  
+}
