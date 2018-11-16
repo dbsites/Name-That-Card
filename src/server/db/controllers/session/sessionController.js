@@ -35,9 +35,10 @@ module.exports = {
         });
     } else {
       console.log('There is no cookie for user')
-      res.locals.user.id = null
-      res.locals.user.loginSuccess = false
-      next();
+      //res.locals.data.id = null
+      res.locals.data.loginSuccess = false
+      res.send(res.locals.data);
+      return;
     }
   },
 

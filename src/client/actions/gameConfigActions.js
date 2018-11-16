@@ -36,7 +36,7 @@ export const displayGameMenu = data => ({
 
 export const getGameMenuContents = (url) => {
   return (dispatch) => {
-    return fetch(`${url}`)
+    return fetch(`/api${url}`)
       .then((res) => {
         return res.json();
       })

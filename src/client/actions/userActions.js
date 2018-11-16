@@ -127,13 +127,13 @@ export const checkAuth = () => {
         return res.json();
       })
       .then((data) => {
+        console.log('data in checkAuth$$$$ ', data)
         if (data.loginSuccess) {
           dispatch(successfulAuthVerification(data));
-        } else {
-          dispatch(failedAuthVerification());
         }
       })
       .catch((err) => {
+        console.log('eerrr ', error)
         console.log(err);
       });
   };

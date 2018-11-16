@@ -95,6 +95,7 @@ module.exports = {
       .then((data) => {
         console.log('******* res.locals.user.id *****', res.locals.user.id);
         res.locals.data = data;
+        res.locals.data.loginSuccess = true;
         next();
       })
       .catch(err => console.log(err));

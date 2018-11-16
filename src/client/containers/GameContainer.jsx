@@ -12,7 +12,6 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   cards: store.gameReducer.cards,
-  wrongAnswers: store.gameReducer.wrongAnswers,
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
@@ -87,7 +86,7 @@ class GameContainer extends Component {
       return answersArr;
     };
 
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty } = this.props;
+    const { selectedGame, cards, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty } = this.props;
     const cardInfo = cards[0];
     const answers = [];
     
@@ -103,9 +102,9 @@ class GameContainer extends Component {
       })
       answers.push(cardInfo.card_name);
       cardInfo.allAnswers = shuffledAnswers(answers);
-      if(cardInfo.ebay_link) {
+      if (cardInfo.ebay_link) {
         ebayLink = cardInfo.ebay_link;
-        buyBtn = <div className="gameButton"><a href={ebayLink} target="_blank">BUY NOW</a></div>
+        buyBtn = <div className="gameButton"><a href={ebayLink} target="_blank">BUY NOW</a></div>;
       }
     }
 
