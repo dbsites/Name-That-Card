@@ -52,9 +52,19 @@ app.post('/login',
       username: res.locals.user.username,
       loginSuccess: true,
       msg: 'login success',
-    });
-  });
-// eslint-disable-next-line max-len
+    })
+  }
+);
+
+app.delete('/logout',
+  cookieController.deleteSSIDCookie,
+  sessionController.deleteSession,
+  (req, res) => {
+    res.status(200).json({ loginSuccess: false })
+  }
+);
+
+
 /* ============================================ Admin ============================================== */
 
 app.get('/admin/login',
