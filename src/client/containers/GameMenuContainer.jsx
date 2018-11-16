@@ -147,7 +147,7 @@ class GameMenuContainer extends Component {
       <div className="MainContainer">
         <div className="leaderboard-menu">
           <div className="leaderboardButton">
-            <NavLink to="/leaderBoard">Leaderboard</NavLink>
+            <NavLink to="/leaderboard">Leaderboard</NavLink>
           </div>
         </div>
         <h3 className="text--center">CHOOSE CATEGORIES</h3>

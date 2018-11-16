@@ -49,7 +49,6 @@ const Navigation = (props) => {
     logInOutButton = '';
     xBtn = '';
     logo = '';
-
   } else if (window.location.pathname === '/signup') {
     signUpButton = '';
     xBtn = '';
@@ -59,7 +58,12 @@ const Navigation = (props) => {
     xBtn = '';
     logInOutButton = '';
     logo = '';
-  }
+  } else if (window.location.pathname === '/leaderboard') {
+    signUpButton = '';
+    xBtn = '';
+    logInOutButton = '';
+    homeLogo = '';
+  } 
   
   // logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>; 
 

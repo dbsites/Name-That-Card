@@ -8,15 +8,21 @@ class Login extends Component {
   }
   
   render() {
-    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword } = this.props;
+    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg } = this.props;
 
     const loginInfoObj = {
       email_address: loginInputEmail,
       password: loginInputPassword,
     };
 
+    let errorMsg = ''
+
     if (isLoggedIn) {
       return <Redirect to="/" />;
+    }
+
+    if (loginError) {
+      errorMsg = <span>{loginErrorMsg}</span>; 
     }
 
     const forgotPassword = <span className=""><NavLink to="/password">Forgot Password?</NavLink></span>;
@@ -41,6 +47,9 @@ class Login extends Component {
               <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
             </div>
           </form>
+          <div>
+            {errorMsg}
+          </div>
           <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a></p>
         </div>
       </div>
