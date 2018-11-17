@@ -5,7 +5,7 @@ const AWS = require('aws-sdk');
 AWS.config.loadFromPath('./config.json');
 // Set the region
 AWS.config.update({
-  region: 'us-west-2',
+  region: 'us-west-1',
 });
 
 

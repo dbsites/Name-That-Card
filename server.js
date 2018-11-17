@@ -102,9 +102,12 @@ app.post('/admin/signup',
     signupSuccess: true,
   }));
 
-app.put('/admin/upload',
-  s3.uploadToS3,
+app.post('/admin/csvUpload',
+  csv.placeHolder,
   csv.writeToCardsTable);
+
+app.post('/admin/s3Upload',
+  s3.uploadToS3);
 
 
 // eslint-disable-next-line max-len
