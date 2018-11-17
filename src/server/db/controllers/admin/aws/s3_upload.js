@@ -10,7 +10,7 @@ AWS.config.update({
 
 // Create S3 service object
 const s3 = new AWS.S3({
-  apiVersion: 'us-west-2',
+  apiVersion: 'us-west-1',
 });
 
 // call S3 to retrieve upload file to specified bucket
