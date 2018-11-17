@@ -20,7 +20,7 @@ const Signup = (props) =>  {
   }
 
   return (
-    <div className="MainContainer">
+    <div className="HomescreenContainer">
       <div className="grid">
         <h1>Sign Up</h1>
         <form className="form login">

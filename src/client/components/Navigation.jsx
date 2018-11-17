@@ -33,6 +33,19 @@ const Navigation = (props) => {
     xBtn = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
+  } else if (window.location.pathname === '/leaderBoard') {
+    xBtn = '';
+    homeLogo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
+  } else if (window.location.pathname === '/about') {
+    xBtn = '';
+    logo = '';
+  } else if (window.location.pathname === '/privacy-policy') {
+    xBtn = '';
+    logo = '';
+  } else if (window.location.pathname === '/terms-of-service') {
+    xBtn = '';
+    logo = '';
   } else if (window.location.pathname === '/game') {
     logInOutButton = '';
     homeBtn = '';

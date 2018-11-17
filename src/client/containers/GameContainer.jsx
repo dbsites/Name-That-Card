@@ -91,7 +91,6 @@ class GameContainer extends Component {
     const cardInfo = cards[0];
     const answers = [];
     
-
     let clickFunc = goToNext;
     let title = '';
     let buttonText = 'NEXT';
@@ -128,11 +127,10 @@ class GameContainer extends Component {
 
     return (
       <div className="GameContainer">
-        <h4 className="text--center">{title}</h4>
-        <div className="list">
+        <div>
           {content}
         </div>
-        <div className="container">
+        <div className="gameButtonContainer">
           {buyBtn}
           {nextBtn}
         </div>
