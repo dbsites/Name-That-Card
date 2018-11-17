@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import Card from '../components/Card.jsx';
 import Results from '../components/Results.jsx';
+import BuyAndNextBtns from '../components/BuyAndNextBtns.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 
@@ -12,7 +12,6 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   cards: store.gameReducer.cards,
-  wrongAnswers: store.gameReducer.wrongAnswers,
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
@@ -27,12 +26,6 @@ const mapDispatchToProps = dispatch => ({
   },
   selectAnswer: (answer) => {
     dispatch(gamePlayActions.selectAnswer(answer));
-  },
-  goToNext: () => {
-    dispatch(gamePlayActions.goToNext());
-  },
-  finishGame: () => {
-    dispatch(gamePlayActions.finishGame());
   },
 });
 class GameContainer extends Component {
@@ -87,42 +80,22 @@ class GameContainer extends Component {
       return answersArr;
     };
 
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty } = this.props;
+    const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty } = this.props;
     const cardInfo = cards[0];
     const answers = [];
-    
-    let clickFunc = goToNext;
-    let title = '';
-    let buttonText = 'NEXT';
-    let ebayLink; 
-    let buyBtn;
+  
     if (cardInfo) {
       cardInfo.wrongAnswers.forEach((answer) => {
         answers.push(answer.card_name);
       })
       answers.push(cardInfo.card_name);
       cardInfo.allAnswers = shuffledAnswers(answers);
-      if(cardInfo.ebay_link) {
-        ebayLink = cardInfo.ebay_link;
-        buyBtn = <div className="gameButton"><a href={ebayLink} target="_blank">BUY NOW</a></div>
-      }
     }
 
     let content = <Card selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
-    if (cards.length === 1) {
-      clickFunc = finishGame;
-      buttonText = 'FINISH';
-    }
-    
-    let nextBtn = <div className="gameButton" onClick={clickFunc}>{buttonText}</div>;
-    
     if (displayResults) {
-      title = `YOUR RESULTS`;
       content = <Results />;
-      buttonText = 'PLAY AGAIN';
-      let selectedGameRoute = `/gameMenu/${selectedGame}`
-      nextBtn = <div className="gameButton"><NavLink to={selectedGameRoute}>{buttonText}</NavLink></div>;
     }
 
     return (
@@ -130,10 +103,7 @@ class GameContainer extends Component {
         <div>
           {content}
         </div>
-        <div className="gameButtonContainer">
-          {buyBtn}
-          {nextBtn}
-        </div>
+        <BuyAndNextBtns />
       </div>
     );
   }

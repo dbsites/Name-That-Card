@@ -1,50 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 
-const Login = (props) => {
-  const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword } = props;
-
-  const loginInfoObj = {
-    email_address: loginInputEmail,
-    password: loginInputPassword,
-  };
-
-  if (isLoggedIn) {
-    return <Redirect to="/" />; // todo: recognize user identity
+class Login extends Component {
+  componentDidMount() {
+    const { resetLoginInfo } = this.props
+    resetLoginInfo();
   }
+  
+  render() {
+    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame } = this.props;
 
-  const forgotPassword = <span className=""><NavLink to="/password">Forgot Password?</NavLink></span>;
+    const loginInfoObj = {
+      email_address: loginInputEmail,
+      password: loginInputPassword,
+    };
 
-  return (
-    <div className="HomescreenContainer">
-      <div className="grid">
-        <h1>Login</h1>
-        <form className="form login">
-          <div className="form__field">
-            <span className="hidden">Email</span>
-            <input id="login__email" type="email" name="email" className="form__input" placeholder="Email" autoCorrect="off" onChange={updateLoginEmail} required />
-          </div>
-          <div className="form__field">
-            <span className="hidden">Password</span>
-            <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" onChange={updateLoginPassword} required />
-          </div>
+    let errorMsg = ''
 
-          {/* <p className="loginText">Email: </p>
-          <input id="email" className="loginInput" type="text" onChange={updateLoginEmail} /> */}
-          {/* <p className="loginText">Password: </p>
-          <input id="password" className="loginInput" type="password" onChange={updateLoginPassword} /> */}
-          <div className="text--center">
-            {forgotPassword}
+    if (isLoggedIn & selectedGame !== '') {
+      const selectedGameRoute = `/gameMenu/${selectedGame}`
+      return <Redirect to={selectedGameRoute} />;
+    } else if (isLoggedIn) {
+      return <Redirect to='/'/>;
+    }
+
+    if (loginError) {
+      errorMsg = <span>{loginErrorMsg}</span>; 
+    }
+
+    const forgotPassword = <span className=""><NavLink to="/password">Forgot Password?</NavLink></span>;
+
+    return (
+      <div className="HomescreenContainer">
+        <div className="grid">
+          <h1>Login</h1>
+          <form className="form login">
+            <div className="form__field">
+              <span className="hidden">Email</span>
+              <input id="login__email" type="email" name="email" className="form__input" value={loginInputEmail} placeholder="Email" autoCorrect="off" onChange={updateLoginEmail} required />
+            </div>
+            <div className="form__field">
+              <span className="hidden">Password</span>
+              <input id="login__password" type="password" name="password" className="form__input" value={loginInputPassword} placeholder="Password" onChange={updateLoginPassword} required />
+            </div>
+            <div className="text--center">
+              {forgotPassword}
+            </div>
+            <div className="form__field">
+              <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
+            </div>
+          </form>
+          <div>
+            {errorMsg}
           </div>
-          <div className="form__field">
-            <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
-          </div>
-        </form>
-        <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a></p>
-        {/* <button className="loginButton" onClick={() => submitLogin(loginInfoObj)} >Login</button> */}
+          <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a></p>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+}
 
 export default Login;
