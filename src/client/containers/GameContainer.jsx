@@ -91,7 +91,6 @@ class GameContainer extends Component {
     const cardInfo = cards[0];
     const answers = [];
     
-
     let clickFunc = goToNext;
     let title = '';
     let buttonText = 'NEXT';
