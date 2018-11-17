@@ -101,9 +101,9 @@ class GameMenuContainer extends Component {
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
-        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
+        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
       } else {
-        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
+        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
       }
     });
    
@@ -157,7 +157,7 @@ class GameMenuContainer extends Component {
             {allBtn}
           </div>
         </div>
-        <div>
+        <div className="outerSliderContainer">
           {slider}
         </div>
         <h3 className="text--center">CHOOSE DIFFICULTY</h3>
