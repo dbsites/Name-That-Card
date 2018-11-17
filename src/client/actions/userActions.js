@@ -78,10 +78,6 @@ export const resetSignUpInfo = () => ({
   type: types.RESET_SIGNUP_INFO,
 });
 
-export const logoutUser = () => ({
-  type: types.LOGOUT_USER,
-});
-
 export const submitLogin = (loginInfoObj) => {
   console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
@@ -133,9 +129,31 @@ export const checkAuth = () => {
         }
       })
       .catch((err) => {
-        console.log('eerrr ', error)
-        console.log(err);
+        console.log('eerrr ', err)
       });
   };
 };
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
 
+export const logout = () => {
+  return (dispatch) => {
+    console.log('hit logout')
+    return fetch('/logout', {
+      method: 'DELETE',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log('data in logout%%%% ', data);
+        if (data.logoutSuccess) {
+          dispatch(logoutUser());
+        }
+      })
+      .catch((err) => {
+        console.log('eerrr ', err)
+      });
+  };
+};
