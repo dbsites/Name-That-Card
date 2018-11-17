@@ -7,7 +7,7 @@ export const displayGameList = data => ({
 
 export const getGameList = () => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/gameList')
+    return fetch('/gameList')
       .then((res) => {
         return res.json();
       })
@@ -36,7 +36,7 @@ export const displayGameMenu = data => ({
 
 export const getGameMenuContents = (url) => {
   return (dispatch) => {
-    return fetch(`http://localhost:3000${url}`)
+    return fetch(`${url}`)
       .then((res) => {
         return res.json();
       })
@@ -83,7 +83,7 @@ export const populateCardsArray = cardsData => ({
 
 export const getCardsInfo = (cardInfoObj) => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/loadGame', {
+    return fetch('/loadGame', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',

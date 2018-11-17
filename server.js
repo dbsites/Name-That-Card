@@ -23,6 +23,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// eslint-disable-next-line max-len
 /* ============================================ User ============================================== */
 
 app.get('/rootPage',
@@ -54,6 +55,17 @@ app.post('/login',
       msg: 'login success',
     });
   });
+
+app.delete('/logout',
+  cookieController.deleteSSIDCookie,
+  sessionController.deleteSession,
+  (req, res) => {
+    res.status(200).json({
+      loginSuccess: false,
+    });
+  });
+
+
 // eslint-disable-next-line max-len
 /* ============================================ Admin ============================================== */
 
@@ -90,9 +102,12 @@ app.post('/admin/signup',
     signupSuccess: true,
   }));
 
-app.put('/admin/upload',
-  s3.uploadToS3,
+app.post('/admin/csvUpload',
+  csv.placeHolder,
   csv.writeToCardsTable);
+
+app.post('/admin/s3Upload',
+  s3.uploadToS3);
 
 
 // eslint-disable-next-line max-len
