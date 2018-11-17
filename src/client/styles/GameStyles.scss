@@ -1,5 +1,24 @@
 // GAME MENU BUTTONS
 
+.gameListButtonStyle {
+  display: flex;
+  width: 43.5vw;
+  line-height: 1.8em;
+  font-size: 1em !important;
+  font-weight: 700;
+  margin: 1vh 1vw;
+  padding: 0.5em 0.8em !important;
+  border: 0.08em solid white;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0.5em;
+  background-color: black;
+  color: white;
+  text-shadow: 0 0 1em white;
+  user-select: none;
+}
+
 .listButtonStyle {
   display: flex;
   width: 43.5vw;
@@ -85,7 +104,7 @@
 .difficultyBoxStyle {
   display: flex;
   width: auto;
-  margin: 1vh 1vw;
+  margin: 1vh 3.25vw;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -184,7 +203,7 @@
 
 .startButtonStyle {
   display: flex;
-  width: 40vw;
+  width: 43.5vw;
   line-height: 1.8em;
   font-size: 1em !important;
   font-weight: 700;
@@ -397,6 +416,25 @@
 @media screen and (min-width: 768px) {
   // GAME MENU BUTTONS
 
+  .gameListButtonStyle {
+    display: flex;
+    width: 33vw;
+    line-height: 1.8em;
+    font-size: 1em !important;
+    font-weight: 700;
+    margin: 1vh 1vw;
+    padding: 0.5em 0.8em !important;
+    border: 0.08em solid white;
+    cursor: pointer;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 0.5em;
+    background-color: black;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
   .listButtonStyle {
     display: flex;
     width: 33vw;
@@ -581,7 +619,7 @@
 
   .startButtonStyle {
     display: flex;
-    width: 30vw;
+    width: 33vw;
     line-height: 1.8em;
     font-size: 1em !important;
     font-weight: 700;
@@ -789,13 +827,53 @@
 @media screen and (min-width: 1280px) {
   // GAME MENU BUTTONS
 
-  .listButtonStyle {
+  .gameListButtonStyle {
     display: flex;
-    width: 33vw;
+    width: 20vw;
     line-height: 1.8em;
     font-size: 1em !important;
     font-weight: 700;
-    margin: 1vh 1vw;
+    margin: auto;
+    padding: 0.5em 0.8em !important;
+    border: 0.08em solid white;
+    cursor: pointer;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 0.5em;
+    background-color: black;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
+  .mqActivated {
+    display: flex;
+    width: 20vw;
+    line-height: 1.8em;
+    font-size: 1em !important;
+    font-weight: 700;
+    margin: auto;
+    padding: 0.5em 0.8em !important;
+    border: 0.08em solid white;
+    cursor: pointer;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 0.5em;
+    background-color: black;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+    background: radial-gradient(black, white);
+    user-select: none;
+  }
+
+  .listButtonStyle {
+    display: flex;
+    width: 20vw;
+    line-height: 1.8em;
+    font-size: 1em !important;
+    font-weight: 700;
+    margin: 1vh 4vw;
     padding: 0.5em 0.8em !important;
     border: 0.08em solid white;
     cursor: pointer;
@@ -810,11 +888,11 @@
 
   .allButtonStyle {
     display: flex;
-    width: 33vw;
+    width: 20vw;
     line-height: 1.8em;
     font-size: 1em !important;
     font-weight: 700;
-    margin: 1vh 1vw;
+    margin: 1vh 4vw;
     padding: 0.5em 0.8em !important;
     border: 0.08em solid white;
     cursor: pointer;
@@ -833,11 +911,11 @@
 
   .activated {
     display: flex;
-    width: 33vw;
+    width: 20vw;
     line-height: 1.8em;
     font-size: 1em !important;
     font-weight: 700;
-    margin: 1vh 1vw;
+    margin: 1vh 4vw;
     padding: 0.5em 0.8em !important;
     border: 0.08em solid white;
     cursor: pointer;
@@ -874,7 +952,7 @@
   .difficultyBoxStyle {
     display: flex;
     width: auto;
-    margin: 1vh 1vw;
+    margin: 1vh 11vw;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -973,7 +1051,7 @@
 
   .startButtonStyle {
     display: flex;
-    width: 30vw;
+    width: 20vw;
     line-height: 1.8em;
     font-size: 1em !important;
     font-weight: 700;
@@ -1045,7 +1123,7 @@
     width: 12em;
     line-height: 1em;
     font-size: 1em !important;
-    margin: 1vh 1vw;
+    margin: 1vh 0.5vw;
     padding: 0.5em 0.8em !important;
     border-right: 0.08em solid white;
     border-bottom: 0.08em solid white;
@@ -1068,7 +1146,7 @@
     width: 12em;
     line-height: 1em;
     font-size: 1em !important;
-    margin: 1vh 1vw;
+    margin: 1vh 0.5vw;
     padding: 0.5em 0.8em !important;
     border-right: 0.08em solid white;
     border-top: 0.08em solid white;
@@ -1091,7 +1169,7 @@
     width: 12em;
     line-height: 1em;
     font-size: 1em !important;
-    margin: 1vh 1vw;
+    margin: 1vh 0.5vw;
     padding: 0.5em 0.8em !important;
     border-left: 0.08em solid white;
     border-bottom: 0.08em solid white;
@@ -1114,7 +1192,7 @@
     width: 12em;
     line-height: 1em;
     font-size: 1em !important;
-    margin: 1vh 1vw;
+    margin: 1vh 0.5vw;
     padding: 0.5em 0.8em !important;
     border-left: 0.08em solid white;
     border-top: 0.08em solid white;
@@ -1152,13 +1230,13 @@
 
   .gameButton {
     display: flex;
-    width: 25vw;
-    height: 5vh;
+    width: 15vw;
+    height: 6vh;
     line-height: 1.3em;
     font-size: 1em !important;
     font-weight: 700;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
     padding: 0.3em 0 !important;
     border: 0.08em solid white;
     cursor: pointer;
