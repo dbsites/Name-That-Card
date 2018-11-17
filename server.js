@@ -62,7 +62,7 @@ cookieController.deleteSSIDCookie,
 sessionController.deleteSession,
 (req, res) => {
   res.status(200).json({
-    loginSuccess: false,
+    logoutSuccess: true,
   });
 });
 

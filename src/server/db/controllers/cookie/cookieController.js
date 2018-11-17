@@ -10,7 +10,7 @@ module.exports = {
 
     // Clear Cookie - Removes Authorization for User
     res.clearCookie('ssid');
-    next();
+    return next();
   },
 
   setSSIDCookie: (req, res, next) => {

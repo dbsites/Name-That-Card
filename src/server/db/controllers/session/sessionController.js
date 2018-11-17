@@ -73,7 +73,7 @@ module.exports = {
     console.log('*** req.cookies ***', req.cookies);
 
     db.none('DELETE FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid]);
-    next();
+    return next();
   },
 
   /* ============================================ Admin ============================================ */
