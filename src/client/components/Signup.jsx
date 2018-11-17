@@ -8,7 +8,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail, signUpError, signUpErrorMsg, isLoggedIn } = this.props;
+    const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail, signUpError, signUpErrorMsg, isLoggedIn, selectedGame } = this.props;
 
     const signUpInfoObj = {
       username: signUpInputUsername,
@@ -21,8 +21,11 @@ class Signup extends Component {
       errorText = <span>{signUpErrorMsg}</span>;
     }
 
-    if (isLoggedIn) {
-      return <Redirect to="/" />; // todo: recognize user identity
+    if (isLoggedIn & selectedGame !== '') {
+      const selectedGameRoute = `/gameMenu/${selectedGame}`
+      return <Redirect to={selectedGameRoute} />;
+    } else if (isLoggedIn) {
+      return <Redirect to='/'/>;
     }
 
   return (
@@ -32,15 +35,15 @@ class Signup extends Component {
         <form className="form login">
           <div className="form__field">
             <span className="hidden">Username</span>
-            <input id="signup_username" type="text" name="username" className="form__input" placeholder="Username" onChange={updateSignUpUsername} required />
+            <input id="signup_username" type="text" name="username" className="form__input" value={signUpInputUsername} placeholder="Username" onChange={updateSignUpUsername} required />
           </div>
           <div className="form__field">
             <span className="hidden">Password</span>
-            <input id="signup_username" type="password" name="password" className="form__input" placeholder="Password" onChange={updateSignUpPassword} required />
+            <input id="signup_username" type="password" name="password" className="form__input" value={signUpInputPassword} placeholder="Password" onChange={updateSignUpPassword} required />
           </div>
           <div className="form__field">
             <span className="hidden">Email</span>
-            <input id="signup_username" type="text" name="email" className="form__input" placeholder="Email" onChange={updateSignUpEmail} required />
+            <input id="signup_username" type="text" name="email" className="form__input" value={signUpInputEmail} placeholder="Email" onChange={updateSignUpEmail} required />
           </div>
           <div className="form__field">
             <input type="button" onClick={() => submitSignUp(signUpInfoObj)} value="Sign Up" />

@@ -54,9 +54,9 @@ const BuyAndNextBtns = (props) => {
   }
 
   return (
-    <div>
-      {nextBtn}
+    <div className="gameButtonContainer">
       {buyBtn}
+      {nextBtn}
     </div>
   );
 };

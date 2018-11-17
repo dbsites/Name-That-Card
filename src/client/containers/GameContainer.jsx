@@ -103,9 +103,7 @@ class GameContainer extends Component {
         <div>
           {content}
         </div>
-        <div className="gameButtonContainer">
-          <BuyAndNextBtns />
-        </div>
+        <BuyAndNextBtns />
       </div>
     );
   }

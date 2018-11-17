@@ -75,19 +75,22 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
+      let inputs = document.getElementsByClassName('form__input');
+      console.log(inputs)
       return stateCopy;
     }
     case types.FAILED_LOGIN: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.signUpInputUsername = '';
-      stateCopy.signUpInputPassword = '';
-      stateCopy.signUpInputEmail = '';
+      // stateCopy.signUpInputUsername = '';
+      // stateCopy.signUpInputPassword = '';
+      // stateCopy.signUpInputEmail = '';
       stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = true;
       stateCopy.loginErrorMsg = action.payload;
       return stateCopy;
     }
+
     case types.RESET_LOGIN_INFO: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.isLoggedIn = false;

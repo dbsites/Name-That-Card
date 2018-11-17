@@ -8,7 +8,7 @@ class Login extends Component {
   }
   
   render() {
-    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg } = this.props;
+    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame } = this.props;
 
     const loginInfoObj = {
       email_address: loginInputEmail,
@@ -17,8 +17,11 @@ class Login extends Component {
 
     let errorMsg = ''
 
-    if (isLoggedIn) {
-      return <Redirect to="/" />;
+    if (isLoggedIn & selectedGame !== '') {
+      const selectedGameRoute = `/gameMenu/${selectedGame}`
+      return <Redirect to={selectedGameRoute} />;
+    } else if (isLoggedIn) {
+      return <Redirect to='/'/>;
     }
 
     if (loginError) {
@@ -34,11 +37,11 @@ class Login extends Component {
           <form className="form login">
             <div className="form__field">
               <span className="hidden">Email</span>
-              <input id="login__email" type="email" name="email" className="form__input" placeholder="Email" autoCorrect="off" onChange={updateLoginEmail} required />
+              <input id="login__email" type="email" name="email" className="form__input" value={loginInputEmail} placeholder="Email" autoCorrect="off" onChange={updateLoginEmail} required />
             </div>
             <div className="form__field">
               <span className="hidden">Password</span>
-              <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" onChange={updateLoginPassword} required />
+              <input id="login__password" type="password" name="password" className="form__input" value={loginInputPassword} placeholder="Password" onChange={updateLoginPassword} required />
             </div>
             <div className="text--center">
               {forgotPassword}

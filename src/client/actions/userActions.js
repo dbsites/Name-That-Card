@@ -139,7 +139,6 @@ export const logoutUser = () => ({
 
 export const logout = () => {
   return (dispatch) => {
-    console.log('hit logout')
     return fetch('/logout', {
       method: 'DELETE',
     })
@@ -147,13 +146,12 @@ export const logout = () => {
         return res.json();
       })
       .then((data) => {
-        console.log('data in logout%%%% ', data);
         if (data.logoutSuccess) {
           dispatch(logoutUser());
         }
       })
       .catch((err) => {
-        console.log('eerrr ', err)
+        console.log('eerrr ', err);
       });
   };
 };
