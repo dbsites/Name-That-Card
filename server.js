@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 
 const adminController = require('./src/server/db/controllers/admin/adminController');
 const authController = require('./src/server/db/controllers/user/authController');
@@ -14,6 +15,7 @@ const sessionController = require('./src/server/db/controllers/session/sessionCo
 
 const app = express();
 
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
@@ -108,6 +110,7 @@ app.post('/admin/csvUpload',
 
 app.post('/admin/s3Upload',
   s3.uploadToS3);
+
 
 
 // eslint-disable-next-line max-len

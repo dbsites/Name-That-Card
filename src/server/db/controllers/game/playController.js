@@ -139,6 +139,7 @@ module.exports = {
     let prom;
     /** for games with years, generate 20 random cards with loadGameWithYears function vice-versa */
 
+
     if (years === true) {
       prom = loadGameWithYears(game, query, startDate, endDate);
     } else if (years === false) {
