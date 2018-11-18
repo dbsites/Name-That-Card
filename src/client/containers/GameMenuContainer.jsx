@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import RangeSlider from '../components/RangeSlider.jsx';
+import Loader from 'react-loader-advanced';
 
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
@@ -17,6 +18,7 @@ const mapStateToProps = store => ({
   years: store.gameMenuReducer.years,
   minYear: store.gameMenuReducer.minYear,
   maxYear: store.gameMenuReducer.maxYear,
+  menuLoadingContent: store.gameMenuReducer.menuLoadingContent,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -85,6 +87,7 @@ class GameMenuContainer extends Component {
       maxYear,
       updateMinMaxYears,
       setYearsBool,
+      menuLoadingContent,
     } = this.props;
     
     setYearsBool();
@@ -143,33 +146,65 @@ class GameMenuContainer extends Component {
       slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
     }
 
+    const spinner =
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>;
+
+    const foregroundStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: '2em',
+      color: 'white',
+    }
+
+    const backgroundStyle = {
+      backgroundColor: 'black',
+      opacity: 1,
+    }
+
     return (
-      <div className="MainContainer">
-        <div className="leaderboard-menu">
-          <div className="leaderboardButton">
-            <NavLink to="/leaderboard">Leaderboard</NavLink>
+      <Loader show={menuLoadingContent} message={spinner} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+        <div className="MainContainer">
+          <div className="leaderboard-menu">
+            <div className="leaderboardButton">
+              <NavLink to="/leaderboard">Leaderboard</NavLink>
+            </div>
+          </div>
+          <h3 className="text--center">CHOOSE CATEGORIES</h3>
+          <div className="categoryContainer">
+            <div className="list">
+              {categories}
+              {allBtn}
+            </div>
+          </div>
+          <div className="outerSliderContainer">
+            {slider}
+          </div>
+          <h3 className="text--center">CHOOSE DIFFICULTY</h3>
+          <div className="difficultyBoxStyle">
+            {easyBtn}
+            {medBtn}
+            {hardBtn}
+          </div>
+          <div className="center">
+            <div className="startButtonStyle" onClick={() => startGame()}>START</div>
           </div>
         </div>
-        <h3 className="text--center">CHOOSE CATEGORIES</h3>
-        <div className="categoryContainer">
-          <div className="list">
-            {categories}
-            {allBtn}
-          </div>
-        </div>
-        <div className="outerSliderContainer">
-          {slider}
-        </div>
-        <h3 className="text--center">CHOOSE DIFFICULTY</h3>
-        <div className="difficultyBoxStyle">
-          {easyBtn}
-          {medBtn}
-          {hardBtn}
-        </div>
-        <div className="center">
-          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
-        </div>
-      </div>
+      </Loader>
     );
   }
 }

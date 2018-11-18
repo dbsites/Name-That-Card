@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-advanced';
 import Card from '../components/Card.jsx';
 import Results from '../components/Results.jsx';
 import BuyAndNextBtns from '../components/BuyAndNextBtns.jsx';
@@ -18,6 +19,7 @@ const mapStateToProps = store => ({
   years: store.gameMenuReducer.years,
   selectedMinYear: store.gameMenuReducer.selectedMinYear,
   selectedMaxYear: store.gameMenuReducer.selectedMaxYear,
+  gameLoadingContent: store.gameReducer.gameLoadingContent,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -29,7 +31,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 class GameContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const {
       selectedGame,
       selectedCategories,
@@ -67,7 +69,6 @@ class GameContainer extends Component {
   }
 
   render() {
-    console.log('game container rendered')
     const shuffledAnswers = (answersArr) => {
       let counter = answersArr.length;
       while (counter > 0) {
@@ -80,7 +81,7 @@ class GameContainer extends Component {
       return answersArr;
     };
 
-    const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty } = this.props;
+    const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty, gameLoadingContent } = this.props;
     const cardInfo = cards[0];
     const answers = [];
   
@@ -98,13 +99,45 @@ class GameContainer extends Component {
       content = <Results />;
     }
 
+    const spinner =
+    <div class="sk-fading-circle">
+      <div class="sk-circle1 sk-circle"></div>
+      <div class="sk-circle2 sk-circle"></div>
+      <div class="sk-circle3 sk-circle"></div>
+      <div class="sk-circle4 sk-circle"></div>
+      <div class="sk-circle5 sk-circle"></div>
+      <div class="sk-circle6 sk-circle"></div>
+      <div class="sk-circle7 sk-circle"></div>
+      <div class="sk-circle8 sk-circle"></div>
+      <div class="sk-circle9 sk-circle"></div>
+      <div class="sk-circle10 sk-circle"></div>
+      <div class="sk-circle11 sk-circle"></div>
+      <div class="sk-circle12 sk-circle"></div>
+    </div>;
+
+    const foregroundStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: '2em',
+      color: 'white',
+    }
+
+    const backgroundStyle = {
+      backgroundColor: 'black',
+      opacity: 1,
+    }
+
     return (
-      <div className="GameContainer">
-        <div>
-          {content}
+      <Loader show={gameLoadingContent} message={spinner} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+        <div className="GameContainer">
+          <div>
+            {content}
+          </div>
+          <BuyAndNextBtns />
         </div>
-        <BuyAndNextBtns />
-      </div>
+      </Loader>
     );
   }
 }
