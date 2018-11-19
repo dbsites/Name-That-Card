@@ -105,11 +105,10 @@
 .enterButtonStyle {
   display: flex;
   height: 15vh;
-  width: 26.68vw;
+  width: 15vh;
   line-height: 1.8em;
   font-size: 1.5em !important;
   font-weight: 700;
-  padding: 0.3em 0 !important;
   border: 0.08em solid white;
   cursor: pointer;
   justify-content: center;
@@ -758,25 +757,6 @@
     user-select: none;
   }
 
-  .enterButtonStyle {
-    display: flex;
-    height: 15vh;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1.5em !important;
-    font-weight: 700;
-    padding: 0.3em 0 !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
   .difficultyBoxStyle {
     display: flex;
     width: auto;
@@ -1055,25 +1035,6 @@
     user-select: none;
   }
 
-  .enterButtonStyle {
-    display: flex;
-    height: 15vh;
-    width: 8.4375vw;
-    line-height: 1.8em;
-    font-size: 1.5em !important;
-    font-weight: 700;
-    padding: 0.3em 0 !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
   .difficultyBoxStyle {
     display: flex;
     width: auto;
@@ -1246,25 +1207,6 @@
 // *******************************************************
 
 @media screen and (min-width: 1440px) {
-  .enterButtonStyle {
-    display: flex;
-    height: 15vh;
-    width: 9.375vw;
-    line-height: 1.8em;
-    font-size: 1.5em !important;
-    font-weight: 700;
-    padding: 0.3em 0 !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
   .difficultyBoxStyle {
     display: flex;
     width: auto;
@@ -1417,25 +1359,6 @@
 // *******************************************************
 
 @media screen and (min-width: 1600px) {
-  .enterButtonStyle {
-    display: flex;
-    height: 16.667vh;
-    width: 9.375vw;
-    line-height: 1.8em;
-    font-size: 1.5em !important;
-    font-weight: 700;
-    padding: 0.3em 0 !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
   // LOADING ROTATING SQUARES
 
   .rotatingSquares {
@@ -1473,25 +1396,6 @@
 // *******************************************************
 
 @media screen and (min-width: 1920px) {
-  .enterButtonStyle {
-    display: flex;
-    height: 16.667vh;
-    width: 9.375vw;
-    line-height: 1.8em;
-    font-size: 1.5em !important;
-    font-weight: 700;
-    padding: 0.3em 0 !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
   // GAME BUTTONS
 
   .answer1 {
@@ -1580,6 +1484,8 @@
     width: 4.69vw;
     height: 10.42vh;
     background-color: white;
+    color: black;
+    font-size: 0.5em;
 
     margin: auto;
     -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;

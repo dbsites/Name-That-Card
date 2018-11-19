@@ -115,7 +115,7 @@ class GameContainer extends Component {
         <div className="sk-circle12 sk-child"></div>
       </div>;
 
-    const rotatingSquares = <div className="rotatingSquares"></div>;
+    const rotatingSquares = <div className="rotatingSquares">Loading...</div>;
 
     const movingCubes =
       <div className="movingCubes">
@@ -123,22 +123,26 @@ class GameContainer extends Component {
         <div className="cube2"></div>
       </div>;
 
-    const foregroundStyle = {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: '2em',
-      color: 'white',
-    }
+const foregroundStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '2em',
+  color: 'white',
+}
 
-    const backgroundStyle = {
-      backgroundColor: 'black',
-      opacity: 1,
-    }
+const backgroundStyle = {
+  display: 'block',
+  position: 'absolute',
+  top: '-12.5vh',
+  backgroundColor: 'black',
+  opacity: 1,
+  height: '100vh',
+}
 
     return (
-      <Loader show={gameLoadingContent} message={rotatingSquares} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+      <Loader show={gameLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="GameContainer">
           <div>
             {content}

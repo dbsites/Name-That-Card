@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, loadingContent } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg } = props;
   console.log('app ran')
   if (!isLoggedIn) {
     checkAuth();

@@ -78,7 +78,7 @@ const Navigation = (props) => {
     homeLogo = '';
   } 
   
-  // logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>; 
+  // logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
 
   return (
     <div className="navigation">

@@ -101,12 +101,16 @@ class GameListContainer extends Component {
     }
 
     const backgroundStyle = {
+      display: 'block',
+      position: 'absolute',
+      top: '-12.5vh',
       backgroundColor: 'black',
       opacity: 1,
+      height: '100vh',
     }
 
     return (
-      <Loader show={gameListLoadingContent} message={rotatingSquares} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+      <Loader show={gameListLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="HomescreenContainer">
           <h3 className="pick-a-deck">PICK A DECK</h3>
           <div className="list">

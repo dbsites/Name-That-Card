@@ -27,7 +27,7 @@
 
 html {
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 2vh;
 }
 
 body {
@@ -596,7 +596,7 @@ p {
 @media screen and (min-width: 768px) {
   html {
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 2vh;
   }
 
   // APP CONTAINERS
@@ -746,7 +746,7 @@ p {
 @media screen and (min-width: 1280px) {
   html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 2vh;
   }
 
   .text--center {
@@ -936,7 +936,7 @@ p {
 @media screen and (min-width: 1440px) {
   html {
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 2vh;
   }
 
   // SLIDER
@@ -958,7 +958,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 28vw;
+    width: 30vw;
   }
 }
 
@@ -969,7 +969,7 @@ p {
 @media screen and (min-width: 1920px) {
   html {
     box-sizing: border-box;
-    font-size: 24px;
+    font-size: 2vh;
   }
 
   // SLIDER

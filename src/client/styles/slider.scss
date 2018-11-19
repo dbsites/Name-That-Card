@@ -270,7 +270,7 @@
     cursor: pointer;
     cursor: -webkit-grab;
     cursor: grab;
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
     border: solid 2px white;
     background-color: black;
     -ms-touch-action: pan-x;
@@ -292,7 +292,7 @@
     cursor: pointer;
     cursor: -webkit-grab;
     cursor: grab;
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
     border: solid 2px white;
     background-color: black;
     -ms-touch-action: pan-x;
@@ -314,7 +314,7 @@
     cursor: pointer;
     cursor: -webkit-grab;
     cursor: grab;
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
     border: solid 2px white;
     background-color: black;
     -ms-touch-action: pan-x;
@@ -329,14 +329,14 @@
 @media screen and (min-width: 1600px) {
   .rc-slider-handle {
     position: absolute;
-    margin-left: -20px;
-    margin-top: -18px;
+    margin-left: -21px;
+    margin-top: -20px;
     width: 2.8125vw;
     height: 5vh;
     cursor: pointer;
     cursor: -webkit-grab;
     cursor: grab;
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
     border: solid 2px white;
     background-color: black;
     -ms-touch-action: pan-x;
@@ -348,7 +348,7 @@
 // DESKTOP
 // *******************************************************
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1920px) {
   .rc-slider-handle {
     position: absolute;
     margin-left: -27px;
@@ -358,7 +358,7 @@
     cursor: pointer;
     cursor: -webkit-grab;
     cursor: grab;
-    border-radius: 0.25rem;
+    border-radius: 0.25em;
     border: solid 2px white;
     background-color: black;
     -ms-touch-action: pan-x;

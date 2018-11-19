@@ -180,12 +180,16 @@ class GameMenuContainer extends Component {
     }
 
     const backgroundStyle = {
+      display: 'block',
+      position: 'absolute',
+      top: '-12.5vh',
       backgroundColor: 'black',
       opacity: 1,
+      height: '100vh',
     }
 
     return (
-      <Loader show={menuLoadingContent} message={rotatingSquares} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+      <Loader show={menuLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="MainContainer">
           <div className="leaderboard-menu">
             <div className="leaderboardButton">
