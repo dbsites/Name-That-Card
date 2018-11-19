@@ -69,11 +69,11 @@ class Card extends Component {
           {coverImg}
         </div>
         <div className="answersBox">
-          <div className="answers">
+          <div className="answersLeft">
             {answer1}
             {answer2}
           </div>
-          <div>
+          <div className="answersRight">
             {answer3}
             {answer4}
           </div>

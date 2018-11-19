@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Loader from 'react-loader-advanced';
 import GameType from '../components/GameType.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
 
@@ -9,6 +10,7 @@ const mapStateToProps = store => ({
   ableToProceed: store.gameListReducer.ableToProceed,
   playClicked: store.gameListReducer.playClicked,
   selectedGame: store.gameListReducer.selectedGame,
+  gameListLoadingContent: store.gameListReducer.gameListLoadingContent,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -48,7 +50,8 @@ class GameListContainer extends Component {
       playClicked,
       selectedGame,
       resetGameSelection,
-      successPlay
+      successPlay,
+      gameListLoadingContent,
     } = this.props;
 
     const games = gameList.map((gameObj, i) => {
@@ -64,16 +67,60 @@ class GameListContainer extends Component {
       return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
+    const spinningCircles =
+      <div className="sk-circle">
+        <div className="sk-circle1 sk-child"></div>
+        <div className="sk-circle2 sk-child"></div>
+        <div className="sk-circle3 sk-child"></div>
+        <div className="sk-circle4 sk-child"></div>
+        <div className="sk-circle5 sk-child"></div>
+        <div className="sk-circle6 sk-child"></div>
+        <div className="sk-circle7 sk-child"></div>
+        <div className="sk-circle8 sk-child"></div>
+        <div className="sk-circle9 sk-child"></div>
+        <div className="sk-circle10 sk-child"></div>
+        <div className="sk-circle11 sk-child"></div>
+        <div className="sk-circle12 sk-child"></div>
+      </div>;
+
+    const rotatingSquares = <div className="rotatingSquares"></div>;
+
+    const movingCubes =
+      <div className="movingCubes">
+        <div className="cube1"></div>
+        <div className="cube2"></div>
+      </div>;
+
+    const foregroundStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: '2em',
+      color: 'white',
+    }
+
+    const backgroundStyle = {
+      display: 'block',
+      position: 'absolute',
+      top: '-12.5vh',
+      backgroundColor: 'black',
+      opacity: 1,
+      height: '100vh',
+    }
+
     return (
-      <div className="HomescreenContainer">
-        <h3 className="pick-a-deck">PICK A DECK</h3>
-        <div className="list">
-          {games}
+      <Loader show={gameListLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+        <div className="HomescreenContainer">
+          <h3 className="pick-a-deck">PICK A DECK</h3>
+          <div className="list">
+            {games}
+          </div>
+          <div className="enterContainer">
+            <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
+          </div>
         </div>
-        <div className="enterContainer">
-          <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
-        </div>
-      </div>
+      </Loader>
     );
   }
 }

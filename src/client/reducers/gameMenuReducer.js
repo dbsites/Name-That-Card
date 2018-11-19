@@ -14,6 +14,7 @@ const initialState = {
   maxYear: '',
   selectedMinYear: '',
   selectedMaxYear: '',
+  menuLoadingContent: true,
 };
 
 export default function (previousState = initialState, action) {
@@ -24,6 +25,7 @@ export default function (previousState = initialState, action) {
     case types.DISPLAY_GAME_MENU: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.categoryList = action.payload;
+      stateCopy.menuLoadingContent = false;
       return stateCopy;
     }
     case types.TOGGLE_GAME_CATEGORY: {
@@ -78,6 +80,7 @@ export default function (previousState = initialState, action) {
       if (stateCopy.ableToStartGame) {
         stateCopy.startClicked = true;
         stateCopy.renderScoreFooter = true;
+        stateCopy.menuLoadingContent = true;
       }
       return stateCopy;
     }
@@ -85,6 +88,7 @@ export default function (previousState = initialState, action) {
       stateCopy = Object.assign({}, previousState);
       stateCopy.ableToStartGame = false;
       stateCopy.startClicked = false;
+      stateCopy.menuLoadingContent = true;
       return stateCopy;
     }
     case types.RESET_GAME_MENU: {
@@ -102,6 +106,7 @@ export default function (previousState = initialState, action) {
       stateCopy.maxYear = '';
       stateCopy.selectedMinYear = '';
       stateCopy.selectedMaxYear = '';
+      stateCopy.menuLoadingContent = true;
       return stateCopy;
     }
     case types.SET_YEARS_BOOL: {

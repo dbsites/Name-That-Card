@@ -12,6 +12,7 @@ const initialState = {
   gameLogo: '',
   displayResults: false,
   gameStarted: false,
+  gameLoadingContent: true,
 };
 
 export default function (previousState = initialState, action) {
@@ -21,7 +22,7 @@ export default function (previousState = initialState, action) {
     case types.POPULATE_CARDS_ARRAY: { 
       stateCopy = Object.assign({}, previousState);
       stateCopy.cards = action.payload;
-      console.log(' stateCopy.cards', stateCopy.cards);
+      stateCopy.gameLoadingContent = false;
       return stateCopy;
     }
     case types.SELECT_ANSWER: {
@@ -78,6 +79,7 @@ export default function (previousState = initialState, action) {
       stateCopy.gameLogo = '';
       stateCopy.displayResults = false;
       stateCopy.gameStarted = false;
+      stateCopy.gameLoadingContent = true;
       return stateCopy;
     }
     default:

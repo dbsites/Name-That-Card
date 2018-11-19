@@ -5,6 +5,7 @@ const initialState = {
   selectedGame: '',
   ableToProceed: false,
   playClicked: false,
+  gameListLoadingContent: true,
 };
 
 export default function (previousState = initialState, action) {
@@ -27,6 +28,7 @@ export default function (previousState = initialState, action) {
     case types.DISPLAY_GAME_LIST: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.gameList = action.payload;
+      stateCopy.gameListLoadingContent = false;
       return stateCopy;
     }
     case types.RESET_GAME_SELECTION: {
@@ -35,6 +37,7 @@ export default function (previousState = initialState, action) {
       stateCopy.playClicked = false;
       stateCopy.selectedGame = '';
       stateCopy.years = false;
+      stateCopy.gameListLoadingContent = true;
       return stateCopy;
     }
 
