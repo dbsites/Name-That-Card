@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
 
 const Leaderboard = (props) => {
   const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, results, sortCategory, changeLeaderboardSortCategory, sortDirection } = props;
-  const selectedGameRoute = `/gameMenu/${selectedGame}`;
+  const selectedGameRoute = `/gameMenu/${window.location.pathname.slice(13)}`;
   let difficultyFilteredResults = [];
 
   results.forEach((resultsObj, i) => {
@@ -50,10 +50,8 @@ const Leaderboard = (props) => {
       })
     }
     if (sortDirection) {
-      console.log('ran 3')
       return arr.sort((a, b) => Number(b[sortCategory]) - Number(a[sortCategory]));
     }
-    console.log('ran 4')
     return arr.sort((a, b) => Number(a[sortCategory]) - Number(b[sortCategory]));
   }
 

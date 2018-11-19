@@ -21,8 +21,9 @@ const LeaderboardContainer = (props) => {
   const { leaderboardDifficulty, selectedGame, changeLeaderboardDifficulty, getGameHistory } = props;
   
   const gameObj = {
-    game: selectedGame
+    game: window.location.pathname.slice(13)
   }
+
   getGameHistory(gameObj);
   return (
     <div>

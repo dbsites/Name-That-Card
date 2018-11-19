@@ -67,7 +67,6 @@ class GameMenuContainer extends Component {
     resetGameMenu();
   }
   
-  
   render() {
     
     const {
@@ -193,7 +192,7 @@ class GameMenuContainer extends Component {
         <div className="MainContainer">
           <div className="leaderboard-menu">
             <div className="leaderboardButton">
-              <NavLink to="/leaderboard">Leaderboard</NavLink>
+              <NavLink to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
             </div>
           </div>
           <h3 className="text--center">CHOOSE CATEGORIES</h3>
