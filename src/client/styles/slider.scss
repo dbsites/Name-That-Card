@@ -29,10 +29,10 @@
 }
 .rc-slider-handle {
   position: absolute;
-  margin-left: -7px;
-  margin-top: -5px;
-  width: 18px;
-  height: 18px;
+  margin-left: -12px;
+  margin-top: -10px;
+  width: 6.6666666vw;
+  height: 3.7481259vh;
   cursor: pointer;
   cursor: -webkit-grab;
   cursor: grab;
@@ -254,4 +254,114 @@
   margin-left: -4px;
   border-width: 4px 4px 0;
   border-top-color: #6c6c6c;
+}
+
+// *******************************************************
+// IPAD
+// *******************************************************
+
+@media screen and (min-width: 768px) {
+  .rc-slider-handle {
+    position: absolute;
+    margin-left: -17px;
+    margin-top: -15px;
+    width: 4.5573vw;
+    height: 3.418vh;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 0.25rem;
+    border: solid 2px white;
+    background-color: black;
+    -ms-touch-action: pan-x;
+        touch-action: pan-x;
+  }
+}
+
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
+@media screen and (min-width: 1280px) {
+  .rc-slider-handle {
+    position: absolute;
+    margin-left: -19px;
+    margin-top: -17px;
+    width: 3.125vw;
+    height: 5.5555555vh;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 0.25rem;
+    border: solid 2px white;
+    background-color: black;
+    -ms-touch-action: pan-x;
+        touch-action: pan-x;
+  }
+}
+
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
+@media screen and (min-width: 1440px) {
+  .rc-slider-handle {
+    position: absolute;
+    margin-left: -22px;
+    margin-top: -20px;
+    width: 3.125vw;
+    height: 5vh;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 0.25rem;
+    border: solid 2px white;
+    background-color: black;
+    -ms-touch-action: pan-x;
+        touch-action: pan-x;
+  }
+}
+
+// *******************************************************
+// DESKTOP
+// *******************************************************
+
+@media screen and (min-width: 1600px) {
+  .rc-slider-handle {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: -18px;
+    width: 2.8125vw;
+    height: 5vh;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 0.25rem;
+    border: solid 2px white;
+    background-color: black;
+    -ms-touch-action: pan-x;
+        touch-action: pan-x;
+  }
+}
+
+// *******************************************************
+// DESKTOP
+// *******************************************************
+
+@media screen and (min-width: 1600px) {
+  .rc-slider-handle {
+    position: absolute;
+    margin-left: -27px;
+    margin-top: -25px;
+    width: 2.8645833vw;
+    height: 5.0925925vh;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    cursor: grab;
+    border-radius: 0.25rem;
+    border: solid 2px white;
+    background-color: black;
+    -ms-touch-action: pan-x;
+        touch-action: pan-x;
+  }
 }

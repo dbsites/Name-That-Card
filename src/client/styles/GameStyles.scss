@@ -1246,111 +1246,6 @@
 // *******************************************************
 
 @media screen and (min-width: 1440px) {
-  // GAME MENU BUTTONS
-
-  .gameListButtonStyle {
-    display: flex;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 2vh 5vw;
-    padding: 0.5em 0.8em !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 0.5em;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
-  .mqActivated {
-    display: flex;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 2vh 5vw;
-    padding: 0.5em 0.8em !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 0.5em;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-    background: radial-gradient(black, white);
-    user-select: none;
-  }
-
-  .listButtonStyle {
-    display: flex;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 1vh 4vw;
-    padding: 0.5em 0.8em !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 0.5em;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
-  .allButtonStyle {
-    display: flex;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 1vh 4vw;
-    padding: 0.5em 0.8em !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 0.5em;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-  }
-
-  // .listButtonStyle:hover {
-  //   background: radial-gradient(black, white);
-  // }
-
-  .activated {
-    display: flex;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 1vh 4vw;
-    padding: 0.5em 0.8em !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 0.5em;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-    user-select: none;
-    background: radial-gradient(black, white);
-    user-select: none;
-  }
-
   .enterButtonStyle {
     display: flex;
     height: 15vh;
@@ -1377,26 +1272,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    user-select: none;
-  }
-
-
-  .startButtonStyle {
-    display: flex;
-    width: 20vw;
-    line-height: 1.8em;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 1vh 2.5vw;
-    padding: 0.5em 0.8em !important;
-    border: 0.08em solid white;
-    cursor: pointer;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 0.5em;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
     user-select: none;
   }
 
@@ -1542,6 +1417,25 @@
 // *******************************************************
 
 @media screen and (min-width: 1600px) {
+  .enterButtonStyle {
+    display: flex;
+    height: 15vh;
+    width: 9.375vw;
+    line-height: 1.8em;
+    font-size: 1.5em !important;
+    font-weight: 700;
+    padding: 0.3em 0 !important;
+    border: 0.08em solid white;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
   // LOADING ROTATING SQUARES
 
   .rotatingSquares {
@@ -1579,6 +1473,107 @@
 // *******************************************************
 
 @media screen and (min-width: 1920px) {
+  .enterButtonStyle {
+    display: flex;
+    height: 15vh;
+    width: 9.375vw;
+    line-height: 1.8em;
+    font-size: 1.5em !important;
+    font-weight: 700;
+    padding: 0.3em 0 !important;
+    border: 0.08em solid white;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
+  // GAME BUTTONS
+
+  .answer1 {
+    display: flex;
+    height: 4em;
+    width: 12em;
+    line-height: 1em;
+    font-size: 1em !important;
+    margin: 1vh 0.5vw;
+    padding-top: 0.5em !important;
+    padding-left: 0.8em !important;
+    padding-right: 0.8em !important;
+    padding-bottom: 1.5em !important;
+    border-bottom: 0.08em solid white;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
+  .answer2 {
+    display: flex;
+    height: 4em;
+    width: 12em;
+    line-height: 1em;
+    font-size: 1em !important;
+    margin: 1vh 0.5vw;
+    padding: 0.5em 0.8em !important;
+    // border-right: 0.08em solid white;
+    // border-top: 0.08em solid white;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
+  .answer3 {
+    display: flex;
+    height: 4em;
+    width: 12em;
+    line-height: 1em;
+    font-size: 1em !important;
+    margin: 1vh 0.5vw;
+    padding-top: 0.5em !important;
+    padding-left: 0.8em !important;
+    padding-right: 0.8em !important;
+    padding-bottom: 1.5em !important;
+    border-bottom: 0.08em solid white;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
+  .answer4 {
+    display: flex;
+    height: 4em;
+    width: 12em;
+    line-height: 1em;
+    font-size: 1em !important;
+    margin: 1vh 0.5vw;
+    padding: 0.5em 0.8em !important;
+    // border-left: 0.08em solid white;
+    // border-top: 0.08em solid white;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: white;
+    text-shadow: 0 0 1em white;
+    user-select: none;
+  }
+
   // LOADING ROTATING SQUARES
 
   .rotatingSquares {

@@ -472,7 +472,7 @@ p {
 .slider {
   display: flex;
   justify-content: center;
-  width: 50vw;
+  width: 46vw;
 }
 
 // GAME COMPONENTS
@@ -708,7 +708,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 37.5vw;
+    width: 30vw;
   }
 
   // GAME COMPONENTS
@@ -898,7 +898,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 30vw;
+    width: 28vw;
   }
 
   // GAME COMPONENTS
@@ -934,7 +934,18 @@ p {
 // *******************************************************
 
 @media screen and (min-width: 1440px) {
-  
+  html {
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+
+  // SLIDER
+
+  .slider {
+    display: flex;
+    justify-content: center;
+    width: 27vw;
+  }
 }
 
 // *******************************************************
@@ -942,7 +953,13 @@ p {
 // *******************************************************
 
 @media screen and (min-width: 1600px) {
-  
+  // SLIDER
+
+  .slider {
+    display: flex;
+    justify-content: center;
+    width: 28vw;
+  }
 }
 
 // *******************************************************
@@ -950,5 +967,16 @@ p {
 // *******************************************************
 
 @media screen and (min-width: 1920px) {
-  
+  html {
+    box-sizing: border-box;
+    font-size: 24px;
+  }
+
+  // SLIDER
+
+  .slider {
+    display: flex;
+    justify-content: center;
+    width: 29vw;
+  }
 }
