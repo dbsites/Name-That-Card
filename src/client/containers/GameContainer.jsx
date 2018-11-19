@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 class GameContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const {
       selectedGame,
       selectedCategories,

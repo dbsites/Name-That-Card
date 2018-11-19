@@ -86,7 +86,7 @@ cookieController.setAdminCookie,
 });
 
 // app.use(sessionController.checkAdminSession);
-app.get('/admin',
+app.get('/api/admin',
 sessionController.checkAdminSession);
 
 // eslint-disable-next-line max-len
@@ -118,7 +118,7 @@ app.post('/admin/s3Upload',
 app.get('/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
-app.post('/loadGame', playController.loadGame);
+app.post('/api/loadGame', playController.loadGame);
 app.post('/api/leaderboard', playController.leaderBoard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 
