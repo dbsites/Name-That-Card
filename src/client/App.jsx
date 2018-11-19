@@ -81,7 +81,7 @@ const App = (props) => {
           <Route path='/' component={GameListContainer} exact />
           <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/game' component={GameContainer} />
-          <Route path='/leaderboard' render={(props) =>
+          <Route path='/leaderboard/:game' render={(props) =>
             <LeaderboardContainer {...props} selectedGame={selectedGame} />}
           />
           <Route path='/login' render={(props) =>
