@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import RangeSlider from '../components/RangeSlider.jsx';
+import Loader from 'react-loader-advanced';
 
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
@@ -17,6 +18,7 @@ const mapStateToProps = store => ({
   years: store.gameMenuReducer.years,
   minYear: store.gameMenuReducer.minYear,
   maxYear: store.gameMenuReducer.maxYear,
+  menuLoadingContent: store.gameMenuReducer.menuLoadingContent,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -85,6 +87,7 @@ class GameMenuContainer extends Component {
       maxYear,
       updateMinMaxYears,
       setYearsBool,
+      menuLoadingContent,
     } = this.props;
     
     setYearsBool();
@@ -101,9 +104,9 @@ class GameMenuContainer extends Component {
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
-        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
+        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
       } else {
-        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category}</div>);
+        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
       }
     });
    
@@ -143,33 +146,77 @@ class GameMenuContainer extends Component {
       slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
     }
 
+    const spinningCircles =
+      <div className="sk-circle">
+        <div className="sk-circle1 sk-child"></div>
+        <div className="sk-circle2 sk-child"></div>
+        <div className="sk-circle3 sk-child"></div>
+        <div className="sk-circle4 sk-child"></div>
+        <div className="sk-circle5 sk-child"></div>
+        <div className="sk-circle6 sk-child"></div>
+        <div className="sk-circle7 sk-child"></div>
+        <div className="sk-circle8 sk-child"></div>
+        <div className="sk-circle9 sk-child"></div>
+        <div className="sk-circle10 sk-child"></div>
+        <div className="sk-circle11 sk-child"></div>
+        <div className="sk-circle12 sk-child"></div>
+      </div>;
+
+    const rotatingSquares = <div className="rotatingSquares"></div>;
+
+    const movingCubes =
+      <div className="movingCubes">
+        <div className="cube1"></div>
+        <div className="cube2"></div>
+      </div>;
+
+    const foregroundStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: '2em',
+      color: 'white',
+    }
+
+    const backgroundStyle = {
+      display: 'block',
+      position: 'absolute',
+      top: '-12.5vh',
+      backgroundColor: 'black',
+      opacity: 1,
+      height: '100vh',
+    }
+
     return (
-      <div className="MainContainer">
-        <div className="leaderboard-menu">
-          <div className="leaderboardButton">
-            <NavLink to="/leaderBoard">Leaderboard</NavLink>
+      <Loader show={menuLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+        <div className="MainContainer">
+          <div className="leaderboard-menu">
+            <div className="leaderboardButton">
+              <NavLink to="/leaderboard">Leaderboard</NavLink>
+            </div>
+          </div>
+          <h3 className="text--center">CHOOSE CATEGORIES</h3>
+          <div className="categoryContainer">
+            <div className="list">
+              {categories}
+              {allBtn}
+            </div>
+          </div>
+          <div className="outerSliderContainer">
+            {slider}
+          </div>
+          <h3 className="text--center">CHOOSE DIFFICULTY</h3>
+          <div className="difficultyBoxStyle">
+            {easyBtn}
+            {medBtn}
+            {hardBtn}
+          </div>
+          <div className="center">
+            <div className="startButtonStyle" onClick={() => startGame()}>START</div>
           </div>
         </div>
-        <h3 className="text--center">CHOOSE CATEGORIES</h3>
-        <div className="categoryContainer">
-          <div className="list">
-            {categories}
-            {allBtn}
-          </div>
-        </div>
-        <div>
-          {slider}
-        </div>
-        <h3 className="text--center">CHOOSE DIFFICULTY</h3>
-        <div className="difficultyBoxStyle">
-          {easyBtn}
-          {medBtn}
-          {hardBtn}
-        </div>
-        <div className="center">
-          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
-        </div>
-      </div>
+      </Loader>
     );
   }
 }

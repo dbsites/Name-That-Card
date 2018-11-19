@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 const adminController = require('./src/server/db/controllers/admin/adminController');
 const authController = require('./src/server/db/controllers/user/authController');
@@ -23,48 +24,50 @@ app.use((req, res, next) => {
   next();
 });
 
+// eslint-disable-next-line max-len
 /* ============================================ User ============================================== */
 
 app.get('/rootPage',
-  sessionController.checkSSIDSession,
-  authController.getUserInfo,
-  (req, res) => {
-    res.status(200).send(res.locals.data);
-  });
+sessionController.checkSSIDSession,
+authController.getUserInfo,
+(req, res) => {
+  res.status(200).send(res.locals.data);
+});
 
 app.post('/signup',
-  authController.checkEmailExists,
-  authController.checkUsernameExists,
-  authController.createUser,
-  sessionController.createSession,
-  cookieController.setSSIDCookie,
-  (req, res) => res.status(200).json({
-    signupSuccess: true,
-    loginSuccess: true,
-  }));
+authController.checkEmailExists,
+authController.checkUsernameExists,
+authController.createUser,
+sessionController.createSession,
+cookieController.setSSIDCookie,
+(req, res) => res.status(200).json({
+  signupSuccess: true,
+  loginSuccess: true,
+}));
 
 app.post('/login',
-  authController.verifyUser,
-  sessionController.createSession,
-  cookieController.setSSIDCookie,
-  (req, res) => {
-    res.status(200).json({
-      username: res.locals.user.username,
-      loginSuccess: true,
-      msg: 'login success',
-    })
-  }
-);
+authController.verifyUser,
+sessionController.createSession,
+cookieController.setSSIDCookie,
+(req, res) => {
+  res.status(200).json({
+    username: res.locals.user.username,
+    loginSuccess: true,
+    msg: 'login success',
+  });
+});
 
 app.delete('/logout',
-  cookieController.deleteSSIDCookie,
-  sessionController.deleteSession,
-  (req, res) => {
-    res.status(200).json({ loginSuccess: false })
-  }
-);
+cookieController.deleteSSIDCookie,
+sessionController.deleteSession,
+(req, res) => {
+  res.status(200).json({
+    logoutSuccess: true,
+  });
+});
 
 
+// eslint-disable-next-line max-len
 /* ============================================ Admin ============================================== */
 
 app.get('/admin/rootPage',
@@ -113,15 +116,19 @@ app.put('/admin/upload',
   s3.uploadToS3,
   csv.writeToCardsTable);
 
+app.post('/admin/s3Upload',
+  s3.uploadToS3);
+
 
 // eslint-disable-next-line max-len
 /* ============================================ Game ============================================== */
-// request object with game name and level of difficulty
+// requ  est object with game name and level of difficulty
 
 app.get('/gameList', gameController.gameList);
-app.get('/gameMenu/:game', gameController.gameMenu);
+app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', playController.loadGame);
-app.post('/leaderBoard', playController.leaderBoard);
+app.post('/api/leaderboard', playController.leaderBoard);
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 
 app.listen(3000, () => console.log('server is listening on 3000'));

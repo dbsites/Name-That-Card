@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --open",
+    "dev-webpack": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "server": "nodemon server.js"
+    "dev-server": "nodemon server.js",
+    "dev-start": "npm run dev-webpack & npm run dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -18,9 +19,12 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
+    "db-migrate": "^0.11.4",
+    "db-migrate-pg": "^0.4.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "fast-csv": "^2.4.1",
+    "g": "^2.0.1",
     "nodemon": "^1.18.5",
     "nouislider": "^12.1.0",
     "npm": "^6.4.1",
@@ -31,6 +35,7 @@
     "rc-slider": "^8.6.3",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-loader-advanced": "^1.7.1",
     "react-redux": "^5.1.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

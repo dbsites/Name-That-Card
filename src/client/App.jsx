@@ -14,11 +14,12 @@ import About from './components/About.jsx';
 import AdminContainer from './containers/AdminContainer.jsx';
 import * as userActions from './actions/userActions';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
-import Auth from './components/Auth.jsx';
 
 const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
+  loginError: store.userReducer.loginError,
+  loginErrorMsg: store.userReducer.loginErrorMsg,
   selectedGame: store.gameListReducer.selectedGame,
   signUpError: store.userReducer.signUpError,
   signUpErrorMsg: store.userReducer.signUpErrorMsg,
@@ -52,36 +53,42 @@ const mapDispatchToProps = dispatch => ({
   submitLogin: (obj) => {
     dispatch(userActions.submitLogin(obj));
   },
-  logoutUser: () => {
-    dispatch(userActions.logoutUser());
+  logout: () => {
+    dispatch(userActions.logout());
   },
   checkAuth: () => {
     dispatch(userActions.checkAuth());
   },
+  resetLoginInfo: () => {
+    dispatch(userActions.resetLoginInfo());
+  },
+  resetSignUpInfo: () => {
+    dispatch(userActions.resetSignUpInfo());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logoutUser, questionNumber, checkAuth } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg } = props;
   console.log('app ran')
-  // if (!isLoggedIn) {
-  //   checkAuth();
-  // }
+  if (!isLoggedIn) {
+    checkAuth();
+  }
   return (
     <BrowserRouter>
       <div>
-        <Navigation questionNumber={questionNumber} logoutUser={logoutUser} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
+        <Navigation questionNumber={questionNumber} logout={logout} isLoggedIn={isLoggedIn} selectedGame={selectedGame} loggedInUser={loggedInUser} />
         <Switch>
           <Route path='/' component={GameListContainer} exact />
           <Route path='/gameMenu/:game' component={GameMenuContainer} />
           <Route path='/game' component={GameContainer} />
-          <Route path='/leaderBoard' render={(props) =>
+          <Route path='/leaderboard' render={(props) =>
             <LeaderboardContainer {...props} selectedGame={selectedGame} />}
           />
           <Route path='/login' render={(props) =>
-            <Login {...props} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
+            <Login {...props} selectedGame={selectedGame} loginError={loginError} loginErrorMsg={loginErrorMsg} resetLoginInfo={resetLoginInfo} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
           />
           <Route path='/signup' render={(props) =>
-            <Signup {...props} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
+            <Signup {...props} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
           />
           <Route path='/admin' component={AdminContainer} />
           <Route path='/about' component={About} />

@@ -6,9 +6,9 @@ const db = require('../util/postgres');
 module.exports = {
 
   createUser: (req, res, next) => {
-    console.log('====================================');
-    console.log('You are in authController createUser');
-    console.log('*** req.body ***', req.body);
+    // console.log('====================================');
+    // console.log('You are in authController createUser');
+    // console.log('*** req.body ***', req.body);
 
     const userInfo = req.body;
     const {
@@ -39,9 +39,9 @@ module.exports = {
   },
 
   checkEmailExists: (req, res, next) => {
-    console.log('==========================================');
-    console.log('You are in authController checkEmailExists');
-    console.log('*** req.body.email_address ***', req.body.email_address);
+    // console.log('==========================================');
+    // console.log('You are in authController checkEmailExists');
+    // console.log('*** req.body.email_address ***', req.body.email_address);
 
     const { email_address } = req.body;
     db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
@@ -60,9 +60,9 @@ module.exports = {
   },
 
   checkUsernameExists: (req, res, next) => {
-    console.log('=============================================');
-    console.log('You are in authController checkUsernameExists');
-    console.log('*** req.body.username ***', req.body.username);
+    // console.log('=============================================');
+    // console.log('You are in authController checkUsernameExists');
+    // console.log('*** req.body.username ***', req.body.username);
 
     const { username } = req.body;
     db.any('SELECT * FROM "game.dbo".users where username=$1', [username])
@@ -80,9 +80,9 @@ module.exports = {
   },
 
   getUserInfo: (req, res, next) => {
-    console.log('=============================================');
-    console.log('You are in authController getUserInfo');
-    console.log('*** req.body ***', req.body);
+    // console.log('=============================================');
+    // console.log('You are in authController getUserInfo');
+    // console.log('*** req.body ***', req.body);
 
     const { id } = res.locals.user;
     const integer = Number(id);
@@ -95,15 +95,16 @@ module.exports = {
       .then((data) => {
         console.log('******* res.locals.user.id *****', res.locals.user.id);
         res.locals.data = data;
+        res.locals.data.loginSuccess = true;
         next();
       })
       .catch(err => console.log(err));
   },
 
   verifyUser(req, res, next) {
-    console.log('====================================');
-    console.log('You are in authController verifyUser');
-    console.log('*** req.body ***', req.body);
+    // console.log('====================================');
+    // console.log('You are in authController verifyUser');
+    // console.log('*** req.body ***', req.body);
 
     const { email_address, password } = req.body;
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])

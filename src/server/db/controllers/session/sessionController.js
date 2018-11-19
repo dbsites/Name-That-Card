@@ -6,9 +6,9 @@ module.exports = {
   /* ============================================ User ============================================ */
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res, next) => {
-    console.log('=============================================');
-    console.log('You are in sessionController checkSSIDSession');
-    console.log('*** req.cookies ***', req.cookies);
+    // console.log('=============================================');
+    // console.log('You are in sessionController checkSSIDSession');
+    // console.log('*** req.cookies ***', req.cookies);
 
     res.locals.user = {};
 
@@ -35,9 +35,10 @@ module.exports = {
         });
     } else {
       console.log('There is no cookie for user')
-      res.locals.user.id = null
-      res.locals.user.loginSuccess = false
-      next();
+      //res.locals.data.id = null
+      res.locals.data.loginSuccess = false
+      res.send(res.locals.data);
+      return;
     }
   },
 
@@ -46,9 +47,9 @@ module.exports = {
   // }
 
   createSession: (req, res, next) => {
-    console.log('==========================================');
-    console.log('You are in sessionController createSession');
-    console.log('*** req.body ***', req.body);
+    // console.log('==========================================');
+    // console.log('You are in sessionController createSession');
+    // console.log('*** req.body ***', req.body);
 
     // Send query to Postgres DB to add user to users
     // delete current session then create a new session
@@ -72,15 +73,22 @@ module.exports = {
     console.log('*** req.cookies ***', req.cookies);
 
     db.none('DELETE FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid]);
-    next();
+    return next();
   },
 
   /* ============================================ Admin ============================================ */
+<<<<<<< HEAD
 
   checkAdminSession: (req, res, next) => {
     console.log('==============================================');
     console.log('You are in sessionController checkAdminSession');
     console.log('*** req.cookies ***', req.cookies);
+=======
+  checkAdminSession: (req, res) => {
+    // console.log('==============================================');
+    // console.log('You are in sessionController checkAdminSession');
+    // console.log('*** req.cookies ***', req.cookies);
+>>>>>>> master
 
     res.locals.admin = {};
 
@@ -113,10 +121,16 @@ module.exports = {
   },
 
   createAdminSession: (req, res, next) => {
+<<<<<<< HEAD
     console.log('===============================================');
     console.log('You are in sessionController createAdminSession');
     console.log('*** req.body ***', req.body);
     console.log('***res.locals in createAdminSession*****', res.locals);
+=======
+    // console.log('===============================================');
+    // console.log('You are in sessionController createAdminSession');
+    // console.log('*** req.body ***', req.body);
+>>>>>>> master
 
     // Send query to Postgres DB to add user to users
     db.none('DELETE FROM "game.dbo".admin_sessions WHERE admin_id = $1', [res.locals.admin.admin_id])

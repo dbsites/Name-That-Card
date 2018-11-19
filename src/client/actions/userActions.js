@@ -26,7 +26,7 @@ export const failedSignUp = message => ({
 
 export const submitSignUp = (signUpInfoObj) => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/signup', {
+    return fetch('/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -70,14 +70,18 @@ export const failedLogin = message => ({
   payload: message,
 });
 
-export const logoutUser = () => ({
-  type: types.LOGOUT_USER,
+export const resetLoginInfo = () => ({
+  type: types.RESET_LOGIN_INFO,
+});
+
+export const resetSignUpInfo = () => ({
+  type: types.RESET_SIGNUP_INFO,
 });
 
 export const submitLogin = (loginInfoObj) => {
   console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
-    return fetch('http://localhost:3000/login', {
+    return fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -89,6 +93,7 @@ export const submitLogin = (loginInfoObj) => {
         return res.json();
       })
       .then((data) => {
+        console.log('data***** ', data)
         if (data.loginSuccess) {
           dispatch(successfulLogin(data.username));
         } else {
@@ -113,20 +118,40 @@ export const failedAuthVerification = data => ({
 
 export const checkAuth = () => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/rootPage')
+    return fetch('/rootPage')
       .then((res) => {
         return res.json();
       })
       .then((data) => {
+        console.log('data in checkAuth$$$$ ', data)
         if (data.loginSuccess) {
           dispatch(successfulAuthVerification(data));
-        } else {
-          dispatch(failedAuthVerification());
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log('eerrr ', err)
       });
   };
 };
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
 
+export const logout = () => {
+  return (dispatch) => {
+    return fetch('/logout', {
+      method: 'DELETE',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.logoutSuccess) {
+          dispatch(logoutUser());
+        }
+      })
+      .catch((err) => {
+        console.log('eerrr ', err);
+      });
+  };
+};

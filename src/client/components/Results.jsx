@@ -27,7 +27,7 @@ const Results = (props) => {
     score: score,
   };
 
-  let joinLeaderboardMsg = <div><NavLink to="/signup">Sign up</NavLink> or <NavLink to="/login">login</NavLink> to join the leaderboard!</div>;
+  let joinLeaderboardMsg = <div className="text--center"><NavLink to="/signup">Sign up</NavLink> or <NavLink to="/login">login</NavLink> to join the leaderboard!</div>;
 
   if (isLoggedIn) {
     sendResult(gameResultInfo);
@@ -36,8 +36,14 @@ const Results = (props) => {
 
   return (
     <div>
-      {/* <div>Results</div> */}
-      <h2>You got {score} points!</h2>
+      <h1 className="resultHeader--center">You got {score} points!</h1>
+      <div className="result--center">
+        <h2 className="text--center">Score 18/20 or Better, then Share Below on Twitter or FB to Enter our Raffle!</h2>
+        <div className="center">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><img className="imgLink" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png"></img></a>
+          <a href="https://twitter.com/home?status=" target="_blank"><img className="imgLink" src="https://cdn1.iconfinder.com/data/icons/iconza-circle-social/64/697029-twitter-512.png"></img></a>
+        </div>
+      </div>
       {joinLeaderboardMsg}
     </div>
   );
