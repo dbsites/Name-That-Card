@@ -27,6 +27,7 @@ module.exports = {
   deleteAdminCookie: (req, res, next) => {
     console.log('=============================================');
     console.log('You are in cookieController deleteAdminCookie');
+    console.log('*** req.cookies ***', req.cookies);
 
     // Clear Cookie - Removes Authorization for Admin
     res.clearCookie('admin');

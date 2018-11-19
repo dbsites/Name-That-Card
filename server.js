@@ -67,8 +67,12 @@ app.delete('/logout',
 
 /* ============================================ Admin ============================================== */
 
-app.get('/admin/login',
-  sessionController.checkAdminSession);
+app.get('/admin/rootPage',
+  sessionController.checkAdminSession,
+  adminController.getAdminInfo,
+  (req, res) => {
+    res.status(200).send(res.locals.data);
+  });
 
 app.post('/admin/login',
   adminController.verifyAdmin,
@@ -79,14 +83,18 @@ app.post('/admin/login',
       username: res.locals.admin.admin_username,
       loginSuccess: true,
       msg: 'login success',
-    });
-  });
+    })
+  }
+);
 
-// app.use(sessionController.checkAdminSession);
-app.get('/admin',
-  sessionController.checkAdminSession);
+app.delete('/admin/logout',
+  cookieController.deleteAdminCookie,
+  sessionController.deleteAdminSession,
+  (req, res) => {
+    res.status(200).json({ loginSuccess: false })
+  }
+);
 
-// eslint-disable-next-line max-len
 /* ============================================ Backend CMS ============================================== */
 app.post('/admin/submitForm');
 
@@ -98,6 +106,7 @@ app.post('/admin/signup',
   cookieController.setAdminCookie,
   (req, res) => res.status(200).json({
     signupSuccess: true,
+    loginSuccess: true,
   }));
 
 app.put('/admin/upload',

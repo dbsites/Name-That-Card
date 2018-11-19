@@ -87,11 +87,11 @@ module.exports = {
     const { id } = res.locals.user;
     const integer = Number(id);
 
-    db.one(`SELECT session.user_id, users.username, session.ssid
-    FROM "game.dbo".sessions as session
+    db.one(`SELECT sessions.user_id, users.username, sessions.ssid
+    FROM "game.dbo".sessions as sessions
     JOIN "game.dbo".users as users
-    ON users.user_id = session.user_id
-    WHERE session.user_id = ${integer}`)
+    ON users.user_id = sessions.user_id
+    WHERE sessions.user_id = ${integer}`)
       .then((data) => {
         console.log('******* res.locals.user.id *****', res.locals.user.id);
         res.locals.data = data;
@@ -111,7 +111,7 @@ module.exports = {
         console.log('*** data ***', data);
         const user = data[0];
         console.log('*** user ***', user);
-        if (!data[0]){
+        if (!data[0]) {
           return res.status(200).send({
             loginSuccess: false,
             msg: 'Incorrect email account or password',
