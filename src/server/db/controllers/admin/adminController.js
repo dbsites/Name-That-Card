@@ -82,18 +82,19 @@ module.exports = {
     console.log('=============================================');
     console.log('You are in adminController getAdminInfo');
     console.log('*** req.body ***', req.body);
+    console.log('*** res.locals ***', res.locals);
 
     const { id } = res.locals.admin;
     const integer = Number(id);
 
-    db.one(`SELECT admin_sessions.admin_id, admin.username, admin_sessions.ssid_sessions
+    db.one(`SELECT admin_sessions.admin_id, admin.admin_username, admin_sessions.ssid_sessions
     FROM "game.dbo".admin_sessions as admin_sessions
     JOIN "game.dbo".admin as admin
-    ON admin.admin_id = admin_session.admin_id
+    ON admin.admin_id = admin_sessions.admin_id
     WHERE admin_sessions.admin_id = ${integer}`)
       .then((data) => {
-        console.log('******* res.locals.admin.id *****', res.locals.admin.id);
         res.locals.data = data;
+        console.log('******* res.locals.data *****', res.locals.data);
         next();
       })
       .catch(err => console.log(err));

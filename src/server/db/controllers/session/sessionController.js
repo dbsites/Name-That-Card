@@ -6,9 +6,11 @@ module.exports = {
   /* ============================================ User ============================================ */
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res, next) => {
-    // console.log('=============================================');
-    // console.log('You are in sessionController checkSSIDSession');
-    // console.log('*** req.cookies ***', req.cookies);
+    console.log('=============================================');
+    console.log('You are in sessionController checkSSIDSession');
+    console.log('*** req.cookies ***', req.cookies);
+    console.log('*** res.locals***', res.locals);
+
 
     res.locals.user = {};
 
@@ -81,18 +83,19 @@ module.exports = {
   checkAdminSession: (req, res, next) => {
     console.log('==============================================');
     console.log('You are in sessionController checkAdminSession');
-    console.log('*** req.cookies ***', req.cookies);
+    console.log('*** req.cookies line 84 ***', req.cookies);
+    console.log('*** res.locals***', res.locals);
 
     res.locals.admin = {};
 
-    if (req.cookies.ssid_sessions) {
+    if (req.cookies.admin) {
       console.log('cookie exists for admin');
 
       // If a matching session exists, set loginStatus to 'success'
-      db.one('SELECT admin_id, ssid_sessions FROM "game.dbo".admin_sessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions])
+      db.one('SELECT admin_id, ssid_sessions FROM "game.dbo".admin_sessions WHERE ssid_sessions = $1', [req.cookies.admin])
         .then((session) => {
           console.log('*** session ***', session);
-          if (req.cookies.ssid_sessions === session.ssid_sessions) {
+          if (req.cookies.admin === session.ssid_sessions) {
             res.locals.admin.id = session.admin_id;
             console.log('session exists!');
 
