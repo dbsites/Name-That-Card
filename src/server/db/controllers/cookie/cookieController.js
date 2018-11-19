@@ -25,9 +25,10 @@ module.exports = {
   /* ============================================ Admin ============================================ */
 
   deleteAdminCookie: (req, res, next) => {
+    console.log('=============================================');
+    console.log('You are in cookieController deleteAdminCookie');
+    console.log('*** req.cookies ***', req.cookies);
 
-    // console.log('=============================================');
-    // console.log('You are in cookieController deleteAdminCookie');
     // Clear Cookie - Removes Authorization for Admin
     res.clearCookie('admin');
     next();
@@ -39,7 +40,8 @@ module.exports = {
     // console.log('*** res.locals.admin ***', res.locals.admin);
 
     // Cookie accessible via HTTP only
-    res.cookie('admin', res.locals.admin, { httpOnly: true });
+    console.log('********res.local*********', res.locals);
+    res.cookie('admin', res.locals.ssid_sessions, { httpOnly: true });
     next();
   },
 };
