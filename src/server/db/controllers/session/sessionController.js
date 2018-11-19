@@ -77,18 +77,11 @@ module.exports = {
   },
 
   /* ============================================ Admin ============================================ */
-<<<<<<< HEAD
 
   checkAdminSession: (req, res, next) => {
     console.log('==============================================');
     console.log('You are in sessionController checkAdminSession');
     console.log('*** req.cookies ***', req.cookies);
-=======
-  checkAdminSession: (req, res) => {
-    // console.log('==============================================');
-    // console.log('You are in sessionController checkAdminSession');
-    // console.log('*** req.cookies ***', req.cookies);
->>>>>>> master
 
     res.locals.admin = {};
 
@@ -121,16 +114,10 @@ module.exports = {
   },
 
   createAdminSession: (req, res, next) => {
-<<<<<<< HEAD
     console.log('===============================================');
     console.log('You are in sessionController createAdminSession');
     console.log('*** req.body ***', req.body);
     console.log('***res.locals in createAdminSession*****', res.locals);
-=======
-    // console.log('===============================================');
-    // console.log('You are in sessionController createAdminSession');
-    // console.log('*** req.body ***', req.body);
->>>>>>> master
 
     // Send query to Postgres DB to add user to users
     db.none('DELETE FROM "game.dbo".admin_sessions WHERE admin_id = $1', [res.locals.admin.admin_id])
