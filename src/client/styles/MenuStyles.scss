@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed');
+
 /*********************************************************
 ********************** LOGIN/SIGNUP **********************
 *********************************************************/
@@ -30,6 +32,11 @@ html {
   font-size: 2vh;
 }
 
+// @font-face {
+//   font-family: 'firaSansCondensed';
+//   src: url("https://fonts.google.com/specimen/Fira+Sans+Extra+Condensed");
+// }
+
 body {
   display: flex;
   flex-direction: column;
@@ -38,7 +45,7 @@ body {
   background-size: cover;
   background-position: center;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-size: 1em;
   font-weight: 400;
   height: 100%;
@@ -405,6 +412,11 @@ p {
   text-shadow: 0 0 1em white;
 }
 
+.leaderboardPosition {
+  display: flex;
+  justify-content: center;
+}
+
 .leaderboard {
   display: flex;
   height: 55vh;
@@ -472,7 +484,7 @@ p {
 .slider {
   display: flex;
   justify-content: center;
-  width: 46vw;
+  width: 44vw;
 }
 
 // GAME COMPONENTS
@@ -856,7 +868,7 @@ p {
   .leaderboard {
     display: flex;
     height: 55vh;
-    width: 100%;
+    width: 35vw;
     // flex-basis: 100%;
     flex-direction: row;
     justify-content: center;
@@ -898,7 +910,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 28vw;
+    width: 29vw;
   }
 
   // GAME COMPONENTS
@@ -944,7 +956,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 27vw;
+    width: 28vw;
   }
 }
 
@@ -958,7 +970,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 30vw;
+    width: 29vw;
   }
 }
 

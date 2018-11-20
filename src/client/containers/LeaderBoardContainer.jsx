@@ -24,8 +24,9 @@ const LeaderboardContainer = (props) => {
     game: selectedGame
   }
   getGameHistory(gameObj);
+
   return (
-    <div>
+    <div className="leaderboardPosition">
       <Leaderboard changeLeaderboardDifficulty={changeLeaderboardDifficulty} leaderboardDifficulty={leaderboardDifficulty} selectedGame={selectedGame} />
     </div>
   );
