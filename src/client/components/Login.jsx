@@ -3,8 +3,9 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 class Login extends Component {
   componentDidMount() {
-    const { resetLoginInfo } = this.props
+    const { resetLoginInfo, resetLeaderboardLoadingContent } = this.props
     resetLoginInfo();
+    resetLeaderboardLoadingContent();
   }
   
   render() {

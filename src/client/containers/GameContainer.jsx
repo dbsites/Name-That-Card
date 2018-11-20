@@ -40,6 +40,7 @@ class GameContainer extends Component {
       years,
       selectedMinYear,
       selectedMaxYear,
+      cards,
     } = this.props;
     
     function getQueryString(arr) {
@@ -64,8 +65,10 @@ class GameContainer extends Component {
       startDate: selectedMinYear,
       endDate: selectedMaxYear,
     };
-    console.log('cardparams ', cardParameters)
-    getCardsInfo(cardParameters);
+    if (cards.length === 0) {
+      getCardsInfo(cardParameters);
+    }
+
   }
 
   render() {
@@ -81,7 +84,9 @@ class GameContainer extends Component {
       return answersArr;
     };
 
+
     const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty, gameLoadingContent } = this.props;
+ 
     const cardInfo = cards[0];
     const answers = [];
   

@@ -434,8 +434,8 @@ p {
   text-shadow: 0 0 1em white;
 }
 
-.leaderboardHeaders {
-  // padding: 0.25em 1em;
+.leaderboardHeaders:hover {
+  cursor: pointer;
 }
 
 // SLIDER
