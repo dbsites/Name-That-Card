@@ -122,4 +122,4 @@ app.post('/loadGame', playController.loadGame);
 app.post('/api/leaderboard', playController.leaderBoard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 
-app.listen(3000, () => console.log('server is listening on 3000'));
+app.listen(3000, () => console.log('Server is listening on 3000'));
