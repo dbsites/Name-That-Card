@@ -70,41 +70,54 @@ sessionController.deleteSession,
 // eslint-disable-next-line max-len
 /* ============================================ Admin ============================================== */
 
-app.get('/admin/login',
-sessionController.checkAdminSession);
-
-app.post('/admin/login',
-adminController.verifyAdmin,
-sessionController.createAdminSession,
-cookieController.setAdminCookie,
-(req, res) => {
-  res.status(200).json({
-    username: res.locals.admin.admin_username,
-    loginSuccess: true,
-    msg: 'login success',
+app.get('/admin/rootPage',
+  sessionController.checkAdminSession,
+  adminController.getAdminInfo,
+  (req, res) => {
+    res.status(200).send(res.locals.data);
   });
-});
 
 // app.use(sessionController.checkAdminSession);
 app.get('/api/admin',
 sessionController.checkAdminSession);
 
-// eslint-disable-next-line max-len
+app.post('/admin/login',
+  adminController.verifyAdmin,
+  sessionController.createAdminSession,
+  cookieController.setAdminCookie,
+  (req, res) => {
+    res.status(200).json({
+      username: res.locals.admin.admin_username,
+      loginSuccess: true,
+      msg: 'login success',
+    })
+  }
+);
+
+app.delete('/admin/logout',
+  cookieController.deleteAdminCookie,
+  sessionController.deleteAdminSession,
+  (req, res) => {
+    res.status(200).json({ loginSuccess: false })
+  }
+);
+
 /* ============================================ Backend CMS ============================================== */
 app.post('/admin/submitForm');
 
 app.post('/admin/signup',
-adminController.checkEmailExists,
-adminController.checkAdminUsernameExists,
-adminController.createAdmin,
-sessionController.createAdminSession,
-cookieController.setAdminCookie,
-(req, res) => res.status(200).json({
-  signupSuccess: true,
-}));
+  adminController.checkEmailExists,
+  adminController.checkAdminUsernameExists,
+  adminController.createAdmin,
+  sessionController.createAdminSession,
+  cookieController.setAdminCookie,
+  (req, res) => res.status(200).json({
+    signupSuccess: true,
+    loginSuccess: true,
+  }));
 
-app.post('/admin/csvUpload',
-  csv.placeHolder,
+app.put('/admin/upload',
+  s3.uploadToS3,
   csv.writeToCardsTable);
 
 app.post('/admin/s3Upload',
