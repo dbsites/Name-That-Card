@@ -70,8 +70,12 @@ export const failedLogin = message => ({
   payload: message,
 });
 
-export const logoutUser = () => ({
-  type: types.LOGOUT_USER,
+export const resetLoginInfo = () => ({
+  type: types.RESET_LOGIN_INFO,
+});
+
+export const resetSignUpInfo = () => ({
+  type: types.RESET_SIGNUP_INFO,
 });
 
 export const submitLogin = (loginInfoObj) => {
@@ -89,6 +93,7 @@ export const submitLogin = (loginInfoObj) => {
         return res.json();
       })
       .then((data) => {
+        console.log('data***** ', data)
         if (data.loginSuccess) {
           dispatch(successfulLogin(data.username));
         } else {
@@ -118,15 +123,35 @@ export const checkAuth = () => {
         return res.json();
       })
       .then((data) => {
+        console.log('data in checkAuth$$$$ ', data)
         if (data.loginSuccess) {
           dispatch(successfulAuthVerification(data));
-        } else {
-          dispatch(failedAuthVerification());
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log('eerrr ', err)
       });
   };
 };
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
 
+export const logout = () => {
+  return (dispatch) => {
+    return fetch('/logout', {
+      method: 'DELETE',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.logoutSuccess) {
+          dispatch(logoutUser());
+        }
+      })
+      .catch((err) => {
+        console.log('eerrr ', err);
+      });
+  };
+};

@@ -1,11 +1,10 @@
-const fs = require('fs');
 const path = require('path');
 const csv = require('fast-csv');
 const db = require('../util/postgres');
 
 module.exports = {
 
-  writeToCardsTable(req, res) {
+  writeToCardsTable(res) {
     csv.fromPath(path.join(__dirname, '../admin/csv.csv'), {
       headers: true,
     })
@@ -27,7 +26,7 @@ module.exports = {
 
         db.none(`INSERT INTO "game.dbo".cards_n (game_id, card_name, category, year, mask, image, image_after, ebay_link, category_a, category_b, category_c)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`, [Number(game_id), Card_Name, card_category, Number(year), mask, image, image_after, ebay_link, category_a, category_b, category_c])
-          .catch(err => console.log('EEEERRRRRRRORRRRRR', err));
+          .catch(err => console.log('ERROR', err));
       })
       .on('end', () => {
         console.log('done');
@@ -36,9 +35,9 @@ module.exports = {
         });
       });
   },
-  placeHolder(req, res, next) {
+  placeHolder(req, next) {
     const {
-      csv
+      csv,
     } = req.files;
     csv.mv(path.join(__dirname, './csv.csv'), (err) => {
       console.log('ERRO', err);

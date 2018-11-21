@@ -2,14 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const adminController = require('./src/server/db/controllers/admin/adminController');
 const authController = require('./src/server/db/controllers/user/authController');
 const cookieController = require('./src/server/db/controllers/cookie/cookieController');
 const gameController = require('./src/server/db/controllers/game/gameController');
 const playController = require('./src/server/db/controllers/game/playController');
-const s3 = require('./src/server/db/controllers/admin/aws/s3_upload');
 const csv = require('./src/server/db/controllers/admin/csvUpload');
+
+const upload = require('./src/server/db/controllers/admin/aws/multer.config');
+const awsWorker = require('./src/server/db/controllers/admin/aws/s3_upload');
 
 const sessionController = require('./src/server/db/controllers/session/sessionController');
 
@@ -24,6 +27,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   next();
 });
+
 
 // eslint-disable-next-line max-len
 /* ============================================ User ============================================== */
@@ -63,7 +67,7 @@ app.delete('/logout',
   sessionController.deleteSession,
   (req, res) => {
     res.status(200).json({
-      loginSuccess: false,
+      logoutSuccess: true,
     });
   });
 
@@ -108,19 +112,19 @@ app.post('/admin/csvUpload',
   csv.placeHolder,
   csv.writeToCardsTable);
 
-app.post('/admin/s3Upload',
-  s3.uploadToS3);
-
+app.post('/admin/file/upload', upload.single('file'), awsWorker.uploadToS3);
+app.post('/admin/file/unzip', awsWorker.unzipfile);
 
 
 // eslint-disable-next-line max-len
 /* ============================================ Game ============================================== */
-// request object with game name and level of difficulty
+// requ  est object with game name and level of difficulty
 
 app.get('/gameList', gameController.gameList);
-app.get('/gameMenu/:game', gameController.gameMenu);
+app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
 app.post('/loadGame', playController.loadGame);
-app.post('/leaderBoard', playController.leaderBoard);
+app.post('/api/leaderboard', playController.leaderBoard);
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 
 app.listen(3000, () => console.log('server is listening on 3000'));

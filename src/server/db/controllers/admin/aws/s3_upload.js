@@ -1,49 +1,47 @@
-const path = require('path');
-const AWS = require('aws-sdk');
-const fs = require('fs');
-
-AWS.config.loadFromPath(path.join(__dirname, './config.json'));
-// Set the region
-AWS.config.update({
-  region: 'REGION',
-});
-
-// Create S3 service object
-const s3 = new AWS.S3({
-  apiVersion: 'us-west-1',
-});
-
-// call S3 to retrieve upload file to specified bucket
-const uploadParams = {
-  Bucket: 'namethatcard',
-  Key: 'AKIAI2LULRQZGXWUVSRA',
-  Body: '',
-};
+const s3 = require('./s3.config.js');
 
 module.exports = {
   uploadToS3(req, res) {
-    // file to be uploaded
-    const { images } = req.body;
-    const file = images; // file
-    const fileStream = fs.createReadStream(file);
-    fileStream.on('error', (err) => {
-      console.log('File Error', err);
-    });
-    uploadParams.Body = fileStream;
+    const {
+      s3Client,
+    } = s3;
+    const params = s3.uploadParams;
+    const {
+      name,
+    } = req.files.file;
+    const {
+      data,
+    } = req.files.file;
 
+    console.log('req.files', req.files.file.name);
+    console.log('params', params);
 
-    uploadParams.Key = path.basename(file);
+    params.Key = name;
+    params.Body = data;
 
-    // call S3 to retrieve upload file to specified bucket
-    s3.upload(uploadParams, (err, data) => {
+    s3Client.upload(params, (err, data) => {
       if (err) {
-        console.log('Error', err);
+        res.status(500).json({
+          error: `Error -> ${err}`,
+        });
       }
-      if (data) {
-        console.log('Upload Success', data.Location);
-        res.send({ msg: 'upload Success' });
-      }
+      console.log('Data', data);
+      res.json({
+        message: `File uploaded successfully! -> keyname = ${name}`,
+      });
     });
   },
+  unzipfile(req, res) {
+    // console.log('files', req.files.upload.mv);
+
+    // const readStream = fs.createReadStream('');
+    // const writeStream = fstream.Writer('./unzipped');
+
+    // readStream
+    //   .pipe(unzip.Parse())
+    //   .pipe(writeStream);
+  },
+
+  copyToServer(req, res) {},
 
 };

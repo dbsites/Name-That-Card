@@ -149,6 +149,7 @@ module.exports = {
     prom.then((cards) => {
       res.locals.cards = cards;
 
+      // eslint-disable-next-line max-len
       /** runs appropriate function based on selected level for each of the randomly selected cards */
       return Promise.all(res.locals.cards.map((card) => {
         if (level === 'EASY') return easyAnswers(card.card_id, card.card_name);
