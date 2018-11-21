@@ -5,6 +5,7 @@ const initialState = {
   sortCategory: 'sum',
   sortDirection: true,
   results: [],
+  leaderboardLoadingContent: true,
 };
 
 export default function (previousState = initialState, action) {
@@ -25,6 +26,12 @@ export default function (previousState = initialState, action) {
     case types.POPULATE_RESULTS_ARRAY: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.results = action.payload;
+      stateCopy.leaderboardLoadingContent = false;
+      return stateCopy;
+    }
+    case types.RESET_LEADERBOARD_LOADING_CONTENT: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.leaderboardLoadingContent = true;
       return stateCopy;
     }
     default:

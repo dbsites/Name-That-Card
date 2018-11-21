@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
 
 const Leaderboard = (props) => {
   const { selectedGame, changeLeaderboardDifficulty, leaderboardDifficulty, results, sortCategory, changeLeaderboardSortCategory, sortDirection } = props;
-  const selectedGameRoute = `/gameMenu/${selectedGame}`;
+  const selectedGameRoute = `/gameMenu/${window.location.pathname.slice(13)}`;
   let difficultyFilteredResults = [];
 
   results.forEach((resultsObj, i) => {
@@ -31,44 +31,31 @@ const Leaderboard = (props) => {
   });
 
   function sortResults(arr) {
-    console.log('sort cat ', sortCategory)
     if (sortCategory === 'user') {
       if (sortDirection) {
-        console.log('ran 1')
         return arr.sort((a, b) => {
-          console.log('a user ', a.user)
-          console.log('b user ', b.user)
           const x = a.user.toLowerCase();
           const y = b.user.toLowerCase();
           if(x < y) {return -1;}
           if(x > y) {return 1;}
           return 0;
-          //return a.user.toLowerCase() < b.user.toLowerCase();
-        // arr.sort((a, b) => a.game.toLowerCase() < b.game.toLowerCase())
         })
       }
-      console.log('ran 2')
       return arr.sort((a, b) => {
-        console.log('a user 2', a.user)
-        console.log('b user 2', b.user)
         const x = a.user.toLowerCase();
         const y = b.user.toLowerCase();
         if(x > y) {return -1;}
         if(x < y) {return 1;}
         return 0;
-        //return a.user.toLowerCase() < b.user.toLowerCase();
       })
     }
     if (sortDirection) {
-      console.log('ran 3')
       return arr.sort((a, b) => Number(b[sortCategory]) - Number(a[sortCategory]));
     }
-    console.log('ran 4')
     return arr.sort((a, b) => Number(a[sortCategory]) - Number(b[sortCategory]));
   }
 
   difficultyFilteredResults = sortResults(difficultyFilteredResults);
-  console.log('difficultyFilteredResults ', difficultyFilteredResults);
 
   const leaderboardEntries = difficultyFilteredResults.map((resultObj, i) => {
     return <LeaderboardEntry numEntries={difficultyFilteredResults.length} key={i} entryContents={resultObj} rank={i} sortDirection={sortDirection}/>;
@@ -79,9 +66,6 @@ const Leaderboard = (props) => {
       <h1 className="leaderboardTitle">LEADERBOARD</h1>
       <div className="leaderboard-right-menu">
         <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>
-        {/* <span>
-          Leaderboard
-        </span> */}
       </div>
       <div>
         <div className="right-menu">

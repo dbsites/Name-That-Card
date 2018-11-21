@@ -18,34 +18,30 @@ export const failedAdminLogin = () => ({
   type: types.FAILED_ADMIN_LOGIN,
 });
 
-// export const submitAdminLogin = (adminInfo) => {
-//   return (dispatch) => {
-//     return fetch('http://localhost:3000/adminLogin', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json; charset=utf-8',
-//       },
-//       body: JSON.stringify(adminInfo),
-//     })
-//       .then((res) => {
-//         return res.json();
-//       })
-//       .then((data) => {
-//         if (data.loginSuccess) {
-//           dispatch(successfulAdminLogin());
-//         } else {
-//           dispatch(failedAdminLogin());
-//         }
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
-
-export const submitAdminLogin = () => ({
-  type: types.SUBMIT_ADMIN_LOGIN,
-});
+export const submitAdminLogin = (adminInfo) => {
+  return (dispatch) => {
+    return fetch('/admin/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify(adminInfo),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.loginSuccess) {
+          dispatch(successfulAdminLogin());
+        } else {
+          dispatch(failedAdminLogin());
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 
 // admin form actions
