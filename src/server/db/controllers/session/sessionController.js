@@ -6,12 +6,14 @@ module.exports = {
   /* ============================================ User ============================================ */
   // Check if cookie for SSID is available in the req
   checkSSIDSession: (req, res, next) => {
-    // console.log('=============================================');
-    // console.log('You are in sessionController checkSSIDSession');
-    // console.log('*** req.cookies ***', req.cookies);
+    console.log('=============================================');
+    console.log('You are in sessionController checkSSIDSession');
+    console.log('*** req.cookies ***', req.cookies);
+    console.log('*** res.locals***', res.locals);
+
 
     res.locals.user = {};
-    
+
     if (req.cookies.ssid) {
       // start the response object
       console.log('cookie exists for user');
@@ -56,20 +58,20 @@ module.exports = {
     db.none('DELETE FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
       .then(() => {
         res.locals.ssid = uuidv4();
-        db.none('INSERT INTO "game.dbo".sessions(user_id, ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
-          .then(() => {
-            console.log('*** res.locals ***', res.locals)
-            next();
-          })
-          .catch(() => {
-            res.status(500).send();
-          });
-      });
+        return db.none('INSERT INTO "game.dbo".sessions(user_id, ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
+      })
+      .then(() => {
+        console.log('*** res.locals ***', res.locals)
+        next();
+      })
+      .catch(() => {
+        res.status(500).send();
+      })
   },
 
   deleteSession: (req, res, next) => {
     console.log('==========================================');
-    console.log('You are in sessionController createSession');
+    console.log('You are in sessionController deleteSession');
     console.log('*** req.cookies ***', req.cookies);
 
     db.none('DELETE FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid]);
@@ -77,55 +79,72 @@ module.exports = {
   },
 
   /* ============================================ Admin ============================================ */
-  checkAdminSession: (req, res) => {
-    // console.log('==============================================');
-    // console.log('You are in sessionController checkAdminSession');
-    // console.log('*** req.cookies ***', req.cookies);
+
+  checkAdminSession: (req, res, next) => {
+    console.log('==============================================');
+    console.log('You are in sessionController checkAdminSession');
+    console.log('*** req.cookies line 84 ***', req.cookies);
+    console.log('*** res.locals***', res.locals);
+
+    res.locals.admin = {};
 
     if (req.cookies.admin) {
       console.log('cookie exists for admin');
 
       // If a matching session exists, set loginStatus to 'success'
-      db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions])
+      db.one('SELECT admin_id, ssid_sessions FROM "game.dbo".admin_sessions WHERE ssid_sessions = $1', [req.cookies.admin])
         .then((session) => {
           console.log('*** session ***', session);
-          res.json({
-            loggedIn: true,
-          });
+          if (req.cookies.admin === session.ssid_sessions) {
+            res.locals.admin.id = session.admin_id;
+            console.log('session exists!');
+
+            res.locals.admin.loginSuccess = true;
+            console.log('res.locals ==>', res.locals);
+            next();
+          }
         })
-        .catch(() => {
-          res.json({
-            loggedIn: false,
-          });
+        .catch((error) => {
+          console.log('ERROR at checkAdminSession in sessioncontroller.js', error)
+          res.status(500).send('SERVER ERROR');
         });
     } else {
-      res.json({
-        loggedIn: false,
-      });
+      console.log('There is no cookie for user')
+      res.locals.admin.id = null
+      res.locals.admin.loginSuccess = false
+      next();
     }
   },
 
   createAdminSession: (req, res, next) => {
-    // console.log('===============================================');
-    // console.log('You are in sessionController createAdminSession');
-    // console.log('*** req.body ***', req.body);
+    console.log('===============================================');
+    console.log('You are in sessionController createAdminSession');
+    console.log('*** req.body ***', req.body);
+    console.log('***res.locals in createAdminSession*****', res.locals);
 
     // Send query to Postgres DB to add user to users
-    db.one('SELECT ssid_sessions FROM "game.dbo".adminSessions WHERE admin_id = $1', [res.locals.admin.admin_id])
-      .then((result) => {
-        console.log('*** result ***', result);
-        res.locals.ssid_sessions = result.ssid_sessions;
+    db.none('DELETE FROM "game.dbo".admin_sessions WHERE admin_id = $1', [res.locals.admin.admin_id])
+      .then(() => {
+        console.log('***res.locals.admin.admin_id in createAdminSession*****', res.locals.admin.admin_id);
+
+        res.locals.ssid_sessions = uuidv4();
+        return db.none('INSERT INTO "game.dbo".admin_sessions(admin_id, ssid_sessions) VALUES ($1, $2)', [res.locals.admin.admin_id, res.locals.ssid_sessions])
+      })
+      .then(() => {
+        console.log('*** res.locals ***', res.locals)
         next();
       })
       .catch(() => {
-        res.locals.ssid_sessions = uuidv4();
-        db.none('INSERT INTO "game.dbo".adminSessions(admin_id,ssid_sessions) VALUES ($1, $2)', [res.locals.admin.admin_id, res.locals.ssid_sessions])
-          .then(() => {
-            next();
-          })
-          .catch(() => {
-            res.status(500).send();
-          });
-      });
+        res.status(500).send();
+      })
+  },
+
+  deleteAdminSession: (req, res, next) => {
+    console.log('==========================================');
+    console.log('You are in sessionController deleteAdminSession');
+    console.log('*** req.cookies ***', req.cookies);
+
+    db.none('DELETE FROM "game.dbo".admin_sessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions]);
+    next();
   },
 };
