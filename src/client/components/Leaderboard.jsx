@@ -68,14 +68,14 @@ const Leaderboard = (props) => {
         <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>
       </div>
       <div>
-        <div className="right-menu">
+        <div className="center-leaderboardFilter">
           <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>
           <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>
           <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>
           <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>
         </div>
       </div>
-      <div>
+      <div className="leaderboardPosition">
         <table className="leaderboard">
           <tbody>
             <tr>

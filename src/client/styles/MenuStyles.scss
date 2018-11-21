@@ -242,6 +242,7 @@ p {
   display: flex;
   flex-direction: column;
   align-content: center;
+  // align-items: center;
   height: 75vh;
   max-width: 95vw;
   margin-left: auto;
@@ -444,6 +445,14 @@ p {
   margin: 0vh 2vw;
   border-bottom: 0.08em solid white;
   text-shadow: 0 0 1em white;
+}
+
+.center-leaderboardFilter {
+  display: flex;
+  height: auto;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .leaderboardHeaders:hover {
@@ -693,8 +702,7 @@ p {
   .leaderboard {
     display: flex;
     height: 55vh;
-    // width: 100%;
-    flex-basis: 100%;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
     text-align: center;
@@ -883,6 +891,15 @@ p {
     // box-shadow: 0em 0em 3em white;
     text-shadow: 0 0 1em white;
     // overflow: scroll;
+  }
+
+  .center-leaderboardFilter {
+    display: flex;
+    height: auto;
+    width: 35vw;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .leaderboardHeaders {
