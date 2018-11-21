@@ -28,8 +28,8 @@ class Card extends Component {
         coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.imagename;
       }
       
-      picture = <img className="card" src={imgSrc} alt="MASK OFF" />;
-      coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK ON" />;
+      picture = <img className="card" src={imgSrc} />;
+      coverImg = <img className="cardReveal" src={coverImgSrc} />;
     }
 
     let answer1 = <div className="answer1" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
@@ -69,11 +69,11 @@ class Card extends Component {
           {coverImg}
         </div>
         <div className="answersBox">
-          <div className="answers">
+          <div className="answersLeft">
             {answer1}
             {answer2}
           </div>
-          <div>
+          <div className="answersRight">
             {answer3}
             {answer4}
           </div>

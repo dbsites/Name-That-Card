@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed');
+
 /*********************************************************
 ********************** LOGIN/SIGNUP **********************
 *********************************************************/
@@ -27,8 +29,13 @@
 
 html {
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 2vh;
 }
+
+// @font-face {
+//   font-family: 'firaSansCondensed';
+//   src: url("https://fonts.google.com/specimen/Fira+Sans+Extra+Condensed");
+// }
 
 body {
   display: flex;
@@ -38,7 +45,7 @@ body {
   background-size: cover;
   background-position: center;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-size: 1em;
   font-weight: 400;
   height: 100%;
@@ -235,6 +242,7 @@ p {
   display: flex;
   flex-direction: column;
   align-content: center;
+  // align-items: center;
   height: 75vh;
   max-width: 95vw;
   margin-left: auto;
@@ -332,7 +340,7 @@ p {
   justify-content: center;
   align-items: center;
   color: white;
-  text-shadow: 0 0 0.5em white;
+  text-shadow: 0 0 1em white;
 }
 
 .list {
@@ -393,6 +401,7 @@ p {
   display: flex;
   height: auto;
   width: auto;
+  margin-right: 2vw;
   font-size: 1em !important;
   font-weight: 700;
   padding: 0.5em 0.8em !important;
@@ -402,6 +411,11 @@ p {
   background-color: black;
   color: white;
   text-shadow: 0 0 1em white;
+}
+
+.leaderboardPosition {
+  display: flex;
+  justify-content: center;
 }
 
 .leaderboard {
@@ -433,8 +447,16 @@ p {
   text-shadow: 0 0 1em white;
 }
 
-.leaderboardHeaders {
-  // padding: 0.25em 1em;
+.center-leaderboardFilter {
+  display: flex;
+  height: auto;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.leaderboardHeaders:hover {
+  cursor: pointer;
 }
 
 // SLIDER
@@ -471,7 +493,7 @@ p {
 .slider {
   display: flex;
   justify-content: center;
-  width: 50vw;
+  width: 44vw;
 }
 
 // GAME COMPONENTS
@@ -563,7 +585,7 @@ p {
   font-size: 1em;
   font-weight: 700;
   color: #5dc428;
-  text-shadow: 0 0 0.5rem black;
+  text-shadow: 0 0 1em black;
 }
 
 .h2-margins {
@@ -588,79 +610,14 @@ p {
 *********************************************************/
 
 
+// *******************************************************
+// IPAD
+// *******************************************************
+
 @media screen and (min-width: 768px) {
   html {
     box-sizing: border-box;
-    font-size: 20px;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: 1em;
-    font-weight: 400;
-    height: 100%;
-    line-height: 1.8em;
-    margin: 0;
-    min-height: 100vh;
-  }
-
-  .text--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-
-  .result--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .resultHeader--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    font-size: 2.5em;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .leaderboardTitle {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .pick-a-deck {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    font-size: 2em;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .text--left {
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    text-shadow: 0 0 1em white;
+    font-size: 2vh;
   }
 
   // APP CONTAINERS
@@ -731,78 +688,6 @@ p {
     margin-right: auto;
   }
 
-  .left-menu {
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .homeLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: auto;
-    width: auto;
-    margin: 1vh 1vw;
-  }
-
-  .homeImgLogo {
-    height: 10.5vh;
-  }
-
-  .gameLogo {
-    height: 10.5vh;
-  }
-
-  .logo {
-    display: flex;
-    height: auto;
-    width: auto;
-    margin: 1vh 1vw;
-    cursor: pointer;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    color: white;
-  }
-
-  .right-menu {
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .menu-item {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 3vh 3vw;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
-  .xButton {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 2em !important;
-    font-weight: 900;
-    margin: 1vh 1vw;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
   .list {
     display: flex;
     height: auto;
@@ -812,69 +697,12 @@ p {
     flex-wrap: wrap;
   }
 
-  .enterContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-  }
-
-  .categoryContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-  }
-
-  .center {
-    display: flex;
-    justify-content: center;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-  }
-
   // LEADERBOARD
-
-  .leaderboard-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboard-right-menu {
-    display: flex;
-    height: 3vh;
-    margin: 1vh 1vw;
-    flex-direction: row;
-    justify-content: flex-end;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboardButton {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 1em !important;
-    font-weight: 700;
-    padding: 0.5em 0.8em !important;
-    border-bottom: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
 
   .leaderboard {
     display: flex;
     height: 55vh;
-    // width: 100%;
-    flex-basis: 100%;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
     text-align: center;
@@ -890,16 +718,6 @@ p {
     overflow: scroll;
   }
 
-  .leaderboardFilter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    cursor: pointer;
-    margin: 0vh 2vw;
-    border-bottom: 0.08em solid white;
-    text-shadow: 0 0 1em white;
-  }
-
   .leaderboardHeaders {
     width: 5vw;
     padding: 0.25em 0.5em;
@@ -907,49 +725,13 @@ p {
 
   // SLIDER
 
-  .outerSliderContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: auto;
-    margin: 1vh 1vw;
-    border: 0.08em solid white;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .innerSliderContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-    margin: 2vh 2vw;
-    text-shadow: 0 0 1em white;
-  }
-
-  .innerSliderContainer span {
-    font-size: 1em;
-    font-weight: 700;
-  }
-
   .slider {
     display: flex;
     justify-content: center;
-    width: 37.5vw;
+    width: 30vw;
   }
 
   // GAME COMPONENTS
-
-  .cardContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-  }
 
   // FOOTER COMPONENTS
 
@@ -966,74 +748,6 @@ p {
     padding: auto;
   }
 
-  .disclaimer {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0.7em;
-    line-height: 1em;
-  }
-
-  .gameDisclaimer {
-    text-align: center;
-    margin-top: 5vh;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0.7em;
-    line-height: 1em;
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .disclaimerFooter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .scoreFooter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 10vh;
-    width: 35vw;
-    margin-bottom: 4vh;
-  }
-
-  .gameScore {
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.8em;
-    font-weight: 700;
-    text-shadow: 0 0 1em white;
-  }
-
-  .totalScore {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.3em;
-    font-weight: 700;
-    color: #5dc428;
-    text-shadow: 0 0 0.5rem black;
-  }
-
   .h2-margins {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -1045,27 +759,14 @@ p {
   }
 }
 
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
 @media screen and (min-width: 1280px) {
   html {
     box-sizing: border-box;
-    font-size: 16px;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: 1em;
-    font-weight: 400;
-    height: 100%;
-    line-height: 1.8em;
-    margin: 0;
-    min-height: 100vh;
+    font-size: 2vh;
   }
 
   .text--center {
@@ -1073,50 +774,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-
-  .result--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .resultHeader--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    font-size: 2.5em;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .leaderboardTitle {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .pick-a-deck {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    font-size: 2em;
-    text-shadow: 0 0 1em white;
-  }
-  
-  .text--left {
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
+    margin-bottom: 0.5vh;
     text-shadow: 0 0 1em white;
   }
 
@@ -1186,78 +844,6 @@ p {
     max-width: 70vw;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .left-menu {
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .homeLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: auto;
-    width: auto;
-    margin: 1vh 1vw;
-  }
-
-  .homeImgLogo {
-    height: 10.5vh;
-  }
-
-  .gameLogo {
-    height: 10.5vh;
-  }
-
-  .logo {
-    display: flex;
-    height: auto;
-    width: auto;
-    margin: 1vh 1vw;
-    cursor: pointer;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    color: white;
-  }
-
-  .right-menu {
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .menu-item {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 3vh 3vw;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
-  .xButton {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 2em !important;
-    font-weight: 900;
-    margin: 1vh 1vw;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 1em white;
   }
 
   .list {
@@ -1278,59 +864,19 @@ p {
     margin-bottom: 5vh;
   }
 
-  .categoryContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-  }
-
   .center {
     display: flex;
     justify-content: center;
-    margin-top: 1vh;
+    margin-top: 0.5vh;
     margin-bottom: 1vh;
   }
 
   // LEADERBOARD
 
-  .leaderboard-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboard-right-menu {
-    display: flex;
-    height: 3vh;
-    margin: 1vh 1vw;
-    flex-direction: row;
-    justify-content: flex-end;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboardButton {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 1em !important;
-    font-weight: 700;
-    padding: 0.5em 0.8em !important;
-    border-bottom: 0.08em solid white;
-    cursor: pointer;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
   .leaderboard {
     display: flex;
     height: 55vh;
-    width: 100%;
+    width: 35vw;
     // flex-basis: 100%;
     flex-direction: row;
     justify-content: center;
@@ -1347,14 +893,13 @@ p {
     // overflow: scroll;
   }
 
-  .leaderboardFilter {
+  .center-leaderboardFilter {
     display: flex;
+    height: auto;
+    width: 35vw;
+    margin: auto;
     flex-direction: row;
-    justify-content: space-evenly;
-    cursor: pointer;
-    margin: 0vh 2vw;
-    border-bottom: 0.08em solid white;
-    text-shadow: 0 0 1em white;
+    justify-content: space-around;
   }
 
   .leaderboardHeaders {
@@ -1371,42 +916,21 @@ p {
     align-items: center;
     align-content: center;
     width: auto;
-    margin: 1vh 11vw;
+    margin-top: 2.5vh;
+    margin-left: 11vw;
+    margin-right: 11vw;
     border: 0.08em solid white;
     border-radius: 0.5em;
     background-color: black;
   }
 
-  .innerSliderContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-    margin: 2vh 2vw;
-    text-shadow: 0 0 1em white;
-  }
-
-  .innerSliderContainer span {
-    font-size: 1em;
-    font-weight: 700;
-  }
-
   .slider {
     display: flex;
     justify-content: center;
-    width: 30vw;
+    width: 29vw;
   }
 
   // GAME COMPONENTS
-
-  .cardContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-  }
 
   // FOOTER COMPONENTS
 
@@ -1423,74 +947,6 @@ p {
     padding: auto;
   }
 
-  .disclaimer {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0.7em;
-    line-height: 1em;
-  }
-
-  .gameDisclaimer {
-    text-align: center;
-    margin-top: 5vh;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0.7em;
-    line-height: 1em;
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .disclaimerFooter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .scoreFooter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 10vh;
-    width: 35vw;
-    margin-bottom: 4vh;
-  }
-
-  .gameScore {
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.8em;
-    font-weight: 700;
-    text-shadow: 0 0 1em white;
-  }
-
-  .totalScore {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.3em;
-    font-weight: 700;
-    color: #5dc428;
-    text-shadow: 0 0 0.5rem black;
-  }
-
   .h2-margins {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
@@ -1500,6 +956,62 @@ p {
     margin-top: 0.3em;
     margin-bottom: 1.3em;
   }
+}
+
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
+@media screen and (min-width: 1440px) {
+  html {
+    box-sizing: border-box;
+    font-size: 2vh;
+  }
+
+  // SLIDER
+
+  .slider {
+    display: flex;
+    justify-content: center;
+    width: 28vw;
+  }
+}
+
+// *******************************************************
+// DESKTOP
+// *******************************************************
+
+@media screen and (min-width: 1600px) {
+  // SLIDER
+
+  .slider {
+    display: flex;
+    justify-content: center;
+    width: 29vw;
+  }
+}
+
+// *******************************************************
+// DESKTOP
+// *******************************************************
+
+@media screen and (min-width: 1920px) {
+  html {
+    box-sizing: border-box;
+    font-size: 2vh;
+  }
+
+  // SLIDER
+
+  .slider {
+    display: flex;
+    justify-content: center;
+    width: 29vw;
+  }
+}
+
+.adminInput {
+  color: black;
 }
 
 @media screen and (min-width: 1600px) {

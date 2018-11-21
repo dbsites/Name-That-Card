@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-advanced';
 import Card from '../components/Card.jsx';
 import Results from '../components/Results.jsx';
 import BuyAndNextBtns from '../components/BuyAndNextBtns.jsx';
@@ -18,6 +19,7 @@ const mapStateToProps = store => ({
   years: store.gameMenuReducer.years,
   selectedMinYear: store.gameMenuReducer.selectedMinYear,
   selectedMaxYear: store.gameMenuReducer.selectedMaxYear,
+  gameLoadingContent: store.gameReducer.gameLoadingContent,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -29,7 +31,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 class GameContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const {
       selectedGame,
       selectedCategories,
@@ -38,6 +40,7 @@ class GameContainer extends Component {
       years,
       selectedMinYear,
       selectedMaxYear,
+      cards,
     } = this.props;
     
     function getQueryString(arr) {
@@ -62,12 +65,13 @@ class GameContainer extends Component {
       startDate: selectedMinYear,
       endDate: selectedMaxYear,
     };
-    console.log('cardparams ', cardParameters)
-    getCardsInfo(cardParameters);
+    if (cards.length === 0) {
+      getCardsInfo(cardParameters);
+    }
+
   }
 
   render() {
-    console.log('game container rendered')
     const shuffledAnswers = (answersArr) => {
       let counter = answersArr.length;
       while (counter > 0) {
@@ -80,7 +84,9 @@ class GameContainer extends Component {
       return answersArr;
     };
 
-    const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty } = this.props;
+
+    const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty, gameLoadingContent } = this.props;
+ 
     const cardInfo = cards[0];
     const answers = [];
   
@@ -98,13 +104,57 @@ class GameContainer extends Component {
       content = <Results />;
     }
 
+    const spinningCircles =
+      <div className="sk-circle">
+        <div className="sk-circle1 sk-child"></div>
+        <div className="sk-circle2 sk-child"></div>
+        <div className="sk-circle3 sk-child"></div>
+        <div className="sk-circle4 sk-child"></div>
+        <div className="sk-circle5 sk-child"></div>
+        <div className="sk-circle6 sk-child"></div>
+        <div className="sk-circle7 sk-child"></div>
+        <div className="sk-circle8 sk-child"></div>
+        <div className="sk-circle9 sk-child"></div>
+        <div className="sk-circle10 sk-child"></div>
+        <div className="sk-circle11 sk-child"></div>
+        <div className="sk-circle12 sk-child"></div>
+      </div>;
+
+    const rotatingSquares = <div className="rotatingSquares">Loading...</div>;
+
+    const movingCubes =
+      <div className="movingCubes">
+        <div className="cube1"></div>
+        <div className="cube2"></div>
+      </div>;
+
+const foregroundStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '2em',
+  color: 'white',
+}
+
+const backgroundStyle = {
+  display: 'block',
+  position: 'absolute',
+  top: '-12.5vh',
+  backgroundColor: 'black',
+  opacity: 1,
+  height: '100vh',
+}
+
     return (
-      <div className="GameContainer">
-        <div>
-          {content}
+      <Loader show={gameLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+        <div className="GameContainer">
+          <div>
+            {content}
+          </div>
+          <BuyAndNextBtns />
         </div>
-        <BuyAndNextBtns />
-      </div>
+      </Loader>
     );
   }
 }

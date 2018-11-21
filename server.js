@@ -75,8 +75,16 @@ app.delete('/logout',
 // eslint-disable-next-line max-len
 /* ============================================ Admin ============================================== */
 
-app.get('/admin/login',
-  sessionController.checkAdminSession);
+app.get('/admin/rootPage',
+  sessionController.checkAdminSession,
+  adminController.getAdminInfo,
+  (req, res) => {
+    res.status(200).send(res.locals.data);
+  });
+
+// app.use(sessionController.checkAdminSession);
+app.get('/api/admin',
+sessionController.checkAdminSession);
 
 app.post('/admin/login',
   adminController.verifyAdmin,
@@ -87,14 +95,18 @@ app.post('/admin/login',
       username: res.locals.admin.admin_username,
       loginSuccess: true,
       msg: 'login success',
-    });
-  });
+    })
+  }
+);
 
-// app.use(sessionController.checkAdminSession);
-app.get('/admin',
-  sessionController.checkAdminSession);
+app.delete('/admin/logout',
+  cookieController.deleteAdminCookie,
+  sessionController.deleteAdminSession,
+  (req, res) => {
+    res.status(200).json({ loginSuccess: false })
+  }
+);
 
-// eslint-disable-next-line max-len
 /* ============================================ Backend CMS ============================================== */
 app.post('/admin/submitForm');
 
@@ -106,10 +118,11 @@ app.post('/admin/signup',
   cookieController.setAdminCookie,
   (req, res) => res.status(200).json({
     signupSuccess: true,
+    loginSuccess: true,
   }));
 
-app.post('/admin/csvUpload',
-  csv.placeHolder,
+app.put('/admin/upload',
+  s3.uploadToS3,
   csv.writeToCardsTable);
 
 app.post('/admin/file/upload', upload.single('file'), awsWorker.uploadToS3);
@@ -123,8 +136,8 @@ app.post('/admin/file/unzip', awsWorker.unzipfile);
 app.get('/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
-app.post('/loadGame', playController.loadGame);
+app.post('/api/loadGame', playController.loadGame);
 app.post('/api/leaderboard', playController.leaderBoard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 
-app.listen(3000, () => console.log('server is listening on 3000'));
+app.listen(3000, () => console.log('Server is listening on 3000'));
