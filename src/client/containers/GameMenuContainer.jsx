@@ -98,6 +98,7 @@ class GameMenuContainer extends Component {
     setYearsBool();
 
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
+    const removeUnderscore = string => string.split('').map(char => char === '_' ? ' ' : char).join('');
     const categories = [];
     let modCategoryList = categoryList.slice();
     for(let i = 0; i < modCategoryList.length; i += 1) {
@@ -105,13 +106,14 @@ class GameMenuContainer extends Component {
         modCategoryList.pop();
       }
     }
+    
 
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
         categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
       } else {
-        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
+        categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{removeUnderscore(category).toUpperCase()}</div>);
       }
     });
    
