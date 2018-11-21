@@ -12,6 +12,9 @@ const initialState = {
   signUpErrorMsg: '',
   loginError: false,
   loginErrorMsg: '',
+  passwordErrorMsg: '',
+  usernameErrorMsg: '',
+  emailErrorMsg: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -53,6 +56,9 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputPassword = '';
       stateCopy.signUpError = true;
       stateCopy.signUpErrorMsg = action.payload;
+      stateCopy.passwordErrorMsg = '';
+      stateCopy.usernameErrorMsg = '';
+      stateCopy.emailErrorMsg = '';
       return stateCopy;
     }
     case types.UPDATE_LOGIN_EMAIL: {
@@ -93,6 +99,7 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
       stateCopy.loginErrorMsg = '';
+ 
       return stateCopy;
     }
     case types.RESET_SIGNUP_INFO: {
@@ -102,6 +109,9 @@ export default function (previousState = initialState, action) {
       stateCopy.signUpInputEmail = '';
       stateCopy.signUpError = false;
       stateCopy.signUpErrorMsg = '';
+      stateCopy.passwordErrorMsg = '';
+      stateCopy.usernameErrorMsg = '';
+      stateCopy.emailErrorMsg = '';
       return stateCopy;
     }
     case types.LOGOUT_USER: {
@@ -120,6 +130,25 @@ export default function (previousState = initialState, action) {
       stateCopy = Object.assign({}, previousState);
       stateCopy.loggedInUser = '';
       stateCopy.isLoggedIn = false;
+      return stateCopy;
+    }
+    case types.SET_SIGNUP_CREDENTIAL_ERRORS: {
+      stateCopy = Object.assign({}, previousState);
+      if (stateCopy.signUpInputUsername === '') {
+        stateCopy.usernameErrorMsg = 'Username must not be empty';
+      } else {
+        stateCopy.usernameErrorMsg = '';
+      }
+      if (stateCopy.signUpInputPassword.length < 5) {
+        stateCopy.passwordErrorMsg = 'Password must be atleast five characters long';
+      } else {
+        stateCopy.passwordErrorMsg = '';
+      }
+      if (!stateCopy.signUpInputEmail.split('').includes('@') || !stateCopy.signUpInputEmail.split('').includes('.')) {
+        stateCopy.emailErrorMsg = 'Please enter a valid email address';
+      } else {
+        stateCopy.emailErrorMsg = '';
+      }
       return stateCopy;
     }
     default:

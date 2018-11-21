@@ -133,6 +133,7 @@ export const checkAuth = () => {
       });
   };
 };
+
 export const logoutUser = () => ({
   type: types.LOGOUT_USER,
 });
@@ -155,3 +156,7 @@ export const logout = () => {
       });
   };
 };
+
+export const setSignUpCredentialErrors = () => ({
+  type: types.SET_SIGNUP_CREDENTIAL_ERRORS,
+});
