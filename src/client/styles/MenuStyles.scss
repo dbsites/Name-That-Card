@@ -434,8 +434,8 @@ p {
   text-shadow: 0 0 1em white;
 }
 
-.leaderboardHeaders {
-  // padding: 0.25em 1em;
+.leaderboardHeaders:hover {
+  cursor: pointer;
 }
 
 // SLIDER
@@ -979,4 +979,16 @@ p {
     justify-content: center;
     width: 29vw;
   }
+}
+
+.adminInput {
+  color: black;
+}
+
+@media screen and (min-width: 1600px) {
+  
+}
+
+@media screen and (min-width: 1920px) {
+  
 }

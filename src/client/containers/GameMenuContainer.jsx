@@ -6,6 +6,8 @@ import Loader from 'react-loader-advanced';
 
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
+import * as leaderboardActions from '../actions/leaderboardActions';
+
 
 
 const mapStateToProps = store => ({
@@ -55,18 +57,21 @@ const mapDispatchToProps = dispatch => ({
   updateMinMaxYears: (event) => {
     dispatch(gameConfigActions.updateMinMaxYears(event));
   },
+  resetLeaderboardLoadingContent: () => {
+    dispatch(leaderboardActions.resetLeaderboardLoadingContent());
+  },
 });
 
 class GameMenuContainer extends Component {
   componentDidMount() {
-    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu } = this.props;
+    const { getGameMenuContents, setSelectedGame, resetGame, resetGameMenu, resetLeaderboardLoadingContent } = this.props;
     const urlSelectedGame = window.location.pathname.split('').slice(10).join('');
     setSelectedGame(urlSelectedGame);
     getGameMenuContents(window.location.pathname);
     resetGame();
     resetGameMenu();
+    resetLeaderboardLoadingContent();
   }
-  
   
   render() {
     
@@ -193,7 +198,7 @@ class GameMenuContainer extends Component {
         <div className="MainContainer">
           <div className="leaderboard-menu">
             <div className="leaderboardButton">
-              <NavLink to="/leaderboard">Leaderboard</NavLink>
+              <NavLink to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
             </div>
           </div>
           <h3 className="text--center">CHOOSE CATEGORIES</h3>

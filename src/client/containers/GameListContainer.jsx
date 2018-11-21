@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 import Loader from 'react-loader-advanced';
 import GameType from '../components/GameType.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
+import * as leaderboardActions from '../actions/leaderboardActions';
+
 
 const mapStateToProps = store => ({
   gameList: store.gameListReducer.gameList,
@@ -32,14 +34,18 @@ const mapDispatchToProps = dispatch => ({
   resetGameMenu: () => {
     dispatch(gameConfigActions.resetGameMenu());
   },
+  resetLeaderboardLoadingContent: () => {
+    dispatch(leaderboardActions.resetLeaderboardLoadingContent());
+  },
 });
 
 class GameListContainer extends Component {
   componentDidMount() {
-    const { getGameList, resetGameSelection, resetGameMenu } = this.props;
+    const { getGameList, resetGameSelection, resetGameMenu, resetLeaderboardLoadingContent } = this.props;
     resetGameSelection();
     getGameList();
     resetGameMenu();
+    resetLeaderboardLoadingContent();
   }
 
   render() {

@@ -77,6 +77,10 @@ app.get('/admin/rootPage',
     res.status(200).send(res.locals.data);
   });
 
+// app.use(sessionController.checkAdminSession);
+app.get('/api/admin',
+sessionController.checkAdminSession);
+
 app.post('/admin/login',
   adminController.verifyAdmin,
   sessionController.createAdminSession,
@@ -127,7 +131,7 @@ app.post('/admin/s3Upload',
 app.get('/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
-app.post('/loadGame', playController.loadGame);
+app.post('/api/loadGame', playController.loadGame);
 app.post('/api/leaderboard', playController.leaderBoard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 

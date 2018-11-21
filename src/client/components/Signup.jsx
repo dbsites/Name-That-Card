@@ -3,8 +3,9 @@ import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount() {
-    const { resetSignUpInfo } = this.props;
+    const { resetSignUpInfo, resetLeaderboardLoadingContent } = this.props;
     resetSignUpInfo();
+    resetLeaderboardLoadingContent();
   }
 
   render() {
