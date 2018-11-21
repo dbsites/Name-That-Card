@@ -21,12 +21,10 @@
     "cookie-session": "^2.0.0-beta.3",
     "db-migrate": "^0.11.4",
     "db-migrate-pg": "^0.4.0",
-    "decompress-zip": "^0.3.1",
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "express-session": "^1.15.6",
     "fast-csv": "^2.4.1",
-    "fstream-npm": "^1.2.1",
     "g": "^2.0.1",
     "multer": "^1.4.1",
     "multer-s3": "^2.9.0",
@@ -46,8 +44,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
-    "redux-thunk": "^2.3.0",
-    "unzip": "^0.1.11"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
