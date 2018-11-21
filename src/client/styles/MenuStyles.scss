@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed');
+
 /*********************************************************
 ********************** LOGIN/SIGNUP **********************
 *********************************************************/
@@ -30,6 +32,11 @@ html {
   font-size: 2vh;
 }
 
+// @font-face {
+//   font-family: 'firaSansCondensed';
+//   src: url("https://fonts.google.com/specimen/Fira+Sans+Extra+Condensed");
+// }
+
 body {
   display: flex;
   flex-direction: column;
@@ -38,7 +45,7 @@ body {
   background-size: cover;
   background-position: center;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-size: 1em;
   font-weight: 400;
   height: 100%;
@@ -235,6 +242,7 @@ p {
   display: flex;
   flex-direction: column;
   align-content: center;
+  // align-items: center;
   height: 75vh;
   max-width: 95vw;
   margin-left: auto;
@@ -405,6 +413,11 @@ p {
   text-shadow: 0 0 1em white;
 }
 
+.leaderboardPosition {
+  display: flex;
+  justify-content: center;
+}
+
 .leaderboard {
   display: flex;
   height: 55vh;
@@ -432,6 +445,14 @@ p {
   margin: 0vh 2vw;
   border-bottom: 0.08em solid white;
   text-shadow: 0 0 1em white;
+}
+
+.center-leaderboardFilter {
+  display: flex;
+  height: auto;
+  margin: auto;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .leaderboardHeaders:hover {
@@ -472,7 +493,7 @@ p {
 .slider {
   display: flex;
   justify-content: center;
-  width: 46vw;
+  width: 44vw;
 }
 
 // GAME COMPONENTS
@@ -681,8 +702,7 @@ p {
   .leaderboard {
     display: flex;
     height: 55vh;
-    // width: 100%;
-    flex-basis: 100%;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
     text-align: center;
@@ -856,7 +876,7 @@ p {
   .leaderboard {
     display: flex;
     height: 55vh;
-    width: 100%;
+    width: 35vw;
     // flex-basis: 100%;
     flex-direction: row;
     justify-content: center;
@@ -871,6 +891,15 @@ p {
     // box-shadow: 0em 0em 3em white;
     text-shadow: 0 0 1em white;
     // overflow: scroll;
+  }
+
+  .center-leaderboardFilter {
+    display: flex;
+    height: auto;
+    width: 35vw;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
   .leaderboardHeaders {
@@ -898,7 +927,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 28vw;
+    width: 29vw;
   }
 
   // GAME COMPONENTS
@@ -944,7 +973,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 27vw;
+    width: 28vw;
   }
 }
 
@@ -958,7 +987,7 @@ p {
   .slider {
     display: flex;
     justify-content: center;
-    width: 30vw;
+    width: 29vw;
   }
 }
 
