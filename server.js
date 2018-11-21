@@ -122,7 +122,6 @@ app.post('/admin/signup',
   }));
 
 app.put('/admin/upload',
-  s3.uploadToS3,
   csv.writeToCardsTable);
 
 app.post('/admin/file/upload', upload.single('file'), awsWorker.uploadToS3);
