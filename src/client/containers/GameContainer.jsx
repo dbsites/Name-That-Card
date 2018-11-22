@@ -149,10 +149,8 @@ const backgroundStyle = {
     return (
       <Loader show={gameLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="GameContainer">
-          <div>
-            {content}
-          </div>
-          <BuyAndNextBtns />
+        {content}
+        <BuyAndNextBtns />
         </div>
       </Loader>
     );
