@@ -160,3 +160,10 @@ export const logout = () => {
 export const setSignUpCredentialErrors = () => ({
   type: types.SET_SIGNUP_CREDENTIAL_ERRORS,
 });
+
+export const updateForgotInputEmail = (event) => ({
+  type: types.UPDATE_FORGOT_INPUT_EMAIL,
+  payload: event,
+});
+
+

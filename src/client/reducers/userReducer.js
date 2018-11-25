@@ -15,6 +15,7 @@ const initialState = {
   passwordErrorMsg: '',
   usernameErrorMsg: '',
   emailErrorMsg: '',
+  forgotInputEmail: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -149,6 +150,11 @@ export default function (previousState = initialState, action) {
       } else {
         stateCopy.emailErrorMsg = '';
       }
+      return stateCopy;
+    }
+    case types.UPDATE_FORGOT_INPUT_EMAIL: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.forgotInputEmail = action.payload.target.value;
       return stateCopy;
     }
     default:

@@ -12,6 +12,7 @@ import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
 import AdminContainer from './containers/AdminContainer.jsx';
+import Forgot from './components/Forgot.jsx';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
 import * as userActions from './actions/userActions';
 import * as leaderboardActions from './actions/leaderboardActions';
@@ -27,6 +28,7 @@ const mapStateToProps = store => ({
   signUpInputEmail: store.userReducer.signUpInputEmail,
   signUpInputPassword: store.userReducer.signUpInputPassword,
   signUpInputUsername: store.userReducer.signUpInputUsername,
+  forgotInputEmail: store.userReducer.forgotInputEmail,
   loginInputEmail: store.userReducer.loginInputEmail,
   loginInputPassword: store.userReducer.loginInputPassword,
   questionNumber: store.gameReducer.questionNumber,
@@ -54,6 +56,9 @@ const mapDispatchToProps = dispatch => ({
   updateLoginPassword: (event) => {
     dispatch(userActions.updateLoginPassword(event));
   },
+  updateForgotInputEmail: (event) => {
+    dispatch(userActions.updateForgotInputEmail(event));
+  },
   submitLogin: (obj) => {
     dispatch(userActions.submitLogin(obj));
   },
@@ -78,7 +83,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail } = props;
   console.log('app ran')
   if (!isLoggedIn) {
     checkAuth();
@@ -104,6 +109,12 @@ const App = (props) => {
           <Route path='/about' component={About} />
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />
+          <Route path='/forgot-pw' render={(props) =>
+            <Forgot {...props} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
+          />
+          <Route path='/forgot-pw' render={(props) =>
+            <Forgot {...props} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
+          />
         </Switch>
         <Footer />
       </div>

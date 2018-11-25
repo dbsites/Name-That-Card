@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.1",
     "aws-sdk": "^2.355.0",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
@@ -25,6 +26,7 @@
     "express-session": "^1.15.6",
     "fast-csv": "^2.4.1",
     "g": "^2.0.1",
+    "nodemailer": "^4.7.0",
     "nodemon": "^1.18.5",
     "nouislider": "^12.1.0",
     "npm": "^6.4.1",

@@ -29,7 +29,7 @@ class Login extends Component {
       errorMsg = <span>{loginErrorMsg}</span>; 
     }
 
-    const forgotPassword = <span className=""><NavLink to="/password">Forgot Password?</NavLink></span>;
+    const forgotPassword = <span className=""><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
 
     return (
       <div className="HomescreenContainer">
