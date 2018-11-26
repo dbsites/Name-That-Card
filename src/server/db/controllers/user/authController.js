@@ -125,8 +125,8 @@ module.exports = {
               return next();
             }
             return res.status(200).send({
-              loginSuccess: true,
-              msg: 'successful logged in',
+              loginSuccess: false,
+              msg: 'Incorrect email account or password',
             });
           });
         }
