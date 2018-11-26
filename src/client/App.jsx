@@ -13,6 +13,7 @@ import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
 import AdminContainer from './containers/AdminContainer.jsx';
 import Forgot from './components/Forgot.jsx';
+import Reset from './components/Reset.jsx';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
 import * as userActions from './actions/userActions';
 import * as leaderboardActions from './actions/leaderboardActions';
@@ -35,6 +36,11 @@ const mapStateToProps = store => ({
   passwordErrorMsg: store.userReducer.passwordErrorMsg,
   usernameErrorMsg: store.userReducer.usernameErrorMsg,
   emailErrorMsg: store.userReducer.emailErrorMsg,
+  emailStatusMsg: store.userReducer.emailStatusMsg,
+  emailSuccess: store.userReducer.emailSuccess,
+  firstNewPassword: store.userReducer.firstNewPassword,
+  secondNewPassword: store.userReducer.secondNewPassword,
+  newPasswordStatusMsg: store.userReducer.newPasswordStatusMsg,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -80,10 +86,25 @@ const mapDispatchToProps = dispatch => ({
   setSignUpCredentialErrors: () => {
     dispatch(userActions.setSignUpCredentialErrors());
   },
+  sendResetPwEmail: (emailObj) => {
+    dispatch(userActions.sendResetPwEmail(emailObj));
+  },
+  updateFirstNewPassword: (event) => {
+    dispatch(userActions.updateFirstNewPassword(event));
+  },
+  updateSecondNewPassword: (event) => {
+    dispatch(userActions.updateSecondNewPassword(event));
+  },
+  resetPassword: (newPasswordObj) => {
+    dispatch(userActions.resetPassword(newPasswordObj));
+  },
+  setNewPasswordErrors: () => {
+    dispatch(userActions.setNewPasswordErrors());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors } = props;
   console.log('app ran')
   if (!isLoggedIn) {
     checkAuth();
@@ -110,10 +131,10 @@ const App = (props) => {
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />
           <Route path='/forgot-pw' render={(props) =>
-            <Forgot {...props} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
+            <Forgot {...props} emailSuccess={emailSuccess} emailStatusMsg={emailStatusMsg} sendResetPwEmail={sendResetPwEmail} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
           />
-          <Route path='/forgot-pw' render={(props) =>
-            <Forgot {...props} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
+          <Route path='/reset/:token' render={(props) =>
+            <Reset {...props} setNewPasswordErrors={setNewPasswordErrors} resetPassword={resetPassword} newPasswordStatusMsg={newPasswordStatusMsg} updateFirstNewPassword={updateFirstNewPassword} updateSecondNewPassword={updateSecondNewPassword} firstNewPassword={firstNewPassword} secondNewPassword={secondNewPassword} />}
           />
         </Switch>
         <Footer />

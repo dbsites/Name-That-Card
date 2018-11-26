@@ -16,6 +16,11 @@ const initialState = {
   usernameErrorMsg: '',
   emailErrorMsg: '',
   forgotInputEmail: '',
+  emailStatusMsg: '',
+  emailSuccess: false,
+  firstNewPassword: '',
+  secondNewPassword: '',
+  newPasswordStatusMsg: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -155,6 +160,38 @@ export default function (previousState = initialState, action) {
     case types.UPDATE_FORGOT_INPUT_EMAIL: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.forgotInputEmail = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.EMAIL_SUCCESSFULLY_SENT: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.emailStatusMsg = action.payload.msg;
+      stateCopy.emailSuccess = action.payload.emailSuccess;
+      return stateCopy;
+    }
+    case types.EMAIL_FAILED_TO_SEND: {
+      stateCopy = Object.assign({}, previousState);
+      console.log('data in reducer ', action.payload)
+      stateCopy.emailStatusMsg = action.payload.msg;
+      stateCopy.emailSuccess = action.payload.emailSuccess;
+      return stateCopy;
+    }
+    case types.UPDATE_FIRST_NEW_PASSWORD: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.firstNewPassword = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.UPDATE_SECOND_NEW_PASSWORD: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.secondNewPassword = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.SET_NEW_PASSWORD_ERRORS: {
+      stateCopy = Object.assign({}, previousState);
+      if (stateCopy.firstNewPassword !== stateCopy.secondNewPassword) {
+        stateCopy.newPasswordStatusMsg = 'Passwords must match'
+      } else if (stateCopy.firstNewPassword.length < 5 || stateCopy.secondNewPassword.length < 5) {
+        stateCopy.newPasswordStatusMsg = 'Password must be atleast five characters long'
+      }
       return stateCopy;
     }
     default:

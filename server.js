@@ -5,8 +5,8 @@ const path = require('path');
 const async = require('async');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-// const passport = require('passport');
-// const router = express.Router();
+const SALT = 10;
+const bcrypt = require('bcrypt');
 
 const adminController = require('./src/server/db/controllers/admin/adminController');
 const authController = require('./src/server/db/controllers/user/authController');
@@ -52,7 +52,7 @@ cookieController.setSSIDCookie,
   loginSuccess: true,
 }));
 
-app.post('/login',
+app.post('/api/login',
 authController.verifyUser,
 sessionController.createSession,
 cookieController.setSSIDCookie,
@@ -73,7 +73,7 @@ sessionController.deleteSession,
   });
 });
 
-app.post('/forgot', (req, res, next) => {
+app.post('/api/forgot', (req, res, next) => {
   async.waterfall([
     (done) => {
       crypto.randomBytes(20, (err, buf) => {
@@ -130,6 +130,39 @@ app.post('/forgot', (req, res, next) => {
       });
     }
   ])
+});
+
+app.post('/api/reset/:token', (req, res, next) => {
+  async.waterfall([
+    (done) => {
+      console.log('params token ', req.params.token)
+      db.any('SELECT * FROM "game.dbo".users where "resetPasswordToken"=$1', [req.params.token])
+        .then((data) => {
+          console.log('result ', data);
+          if (Number(data[0].resetPasswordExpires) > Date.now()) {
+            console.log('token has not expired')
+            let newPassword = req.body.new_password;
+              bcrypt.genSalt(SALT, (saltErr, newSalt) => {
+              if (saltErr) {
+                return res.status(500).json({ message: 'Error: Could Not Generate Salt', error: saltErr });
+              }
+              // Hash password and store in res.locals, then continue
+              bcrypt.hash(newPassword, newSalt, (hashErr, hashPass) => {
+                if (hashErr) {
+                  return res.status(500).json({ message: 'Error: Could Not Encrypt Password', error: hashErr });
+                }
+                db.none('UPDATE "game.dbo".users SET password=$1 WHERE "resetPasswordToken"=$2', [hashPass, req.params.token])
+                  .then((err) => {
+                    console.log(err);
+                  })
+              });
+            });
+          } else {
+            console.log('token has expired')
+          }
+        });
+    }
+  ]);
 });
 
 
