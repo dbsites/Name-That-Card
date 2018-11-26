@@ -249,3 +249,11 @@ export const resetPassword = (newPasswordObj) => {
     })
   };
 };
+
+export const resetNewPasswordInputs = () => ({
+  type: types.RESET_NEW_PASSWORD_INPUTS,
+});
+
+export const resetNewPasswordEmailInputs = () => ({
+  type: types.RESET_NEW_PASSWORD_EMAIL_INPUTS,
+});

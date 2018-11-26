@@ -194,6 +194,20 @@ export default function (previousState = initialState, action) {
       }
       return stateCopy;
     }
+    case types.RESET_NEW_PASSWORD_EMAIL_INPUTS: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.forgotInputEmail = '';
+      stateCopy.emailStatusMsg = '';
+      stateCopy.emailSuccess = false;
+      return stateCopy;
+    }
+    case types.RESET_NEW_PASSWORD_INPUTS: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.firstNewPassword = '';
+      stateCopy.secondNewPassword = '';
+      stateCopy.newPasswordStatusMsg = '';
+      return stateCopy;
+    }
     default:
       return previousState;
   }

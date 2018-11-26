@@ -101,10 +101,16 @@ const mapDispatchToProps = dispatch => ({
   setNewPasswordErrors: () => {
     dispatch(userActions.setNewPasswordErrors());
   },
+  resetNewPasswordEmailInputs: () => {
+    dispatch(userActions.resetNewPasswordEmailInputs());
+  },
+  resetNewPasswordInputs: () => {
+    dispatch(userActions.resetNewPasswordInputs());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs } = props;
   console.log('app ran')
   if (!isLoggedIn) {
     checkAuth();
@@ -131,10 +137,10 @@ const App = (props) => {
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />
           <Route path='/forgot-pw' render={(props) =>
-            <Forgot {...props} emailSuccess={emailSuccess} emailStatusMsg={emailStatusMsg} sendResetPwEmail={sendResetPwEmail} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
+            <Forgot {...props} resetNewPasswordEmailInputs={resetNewPasswordEmailInputs} emailSuccess={emailSuccess} emailStatusMsg={emailStatusMsg} sendResetPwEmail={sendResetPwEmail} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
           />
           <Route path='/reset/:token' render={(props) =>
-            <Reset {...props} setNewPasswordErrors={setNewPasswordErrors} resetPassword={resetPassword} newPasswordStatusMsg={newPasswordStatusMsg} updateFirstNewPassword={updateFirstNewPassword} updateSecondNewPassword={updateSecondNewPassword} firstNewPassword={firstNewPassword} secondNewPassword={secondNewPassword} />}
+            <Reset {...props} resetNewPasswordInputs={resetNewPasswordInputs} setNewPasswordErrors={setNewPasswordErrors} resetPassword={resetPassword} newPasswordStatusMsg={newPasswordStatusMsg} updateFirstNewPassword={updateFirstNewPassword} updateSecondNewPassword={updateSecondNewPassword} firstNewPassword={firstNewPassword} secondNewPassword={secondNewPassword} />}
           />
         </Switch>
         <Footer />

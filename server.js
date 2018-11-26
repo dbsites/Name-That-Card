@@ -119,9 +119,9 @@ app.post('/api/forgot', (req, res, next) => {
         to: email_address,
         from: 'codesmith.ntc@gmail.com',
         subject: 'Password Reset - Name th?t Card',
-        text: 'You are recieving this email because you have requested to reset your password. Please click the following link, or copy and paste the link into your browser to complete the process' + '\n\n' + 
+        text: 'You are recieving this email because you have requested to reset your password. Please click the following link, or copy and paste the link into your browser to complete the process.' + '\n\n' + 
         'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-        'If you did not request this, please ignore this email and your password will remain unchanged'
+        'If you did not request this, please ignore this email and your password will remain unchanged.'
       }
       smtpTransport.sendMail(mailOptions, (err) => {
         console.log('mail sent')
