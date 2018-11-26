@@ -30,10 +30,18 @@ const Leaderboard = (props) => {
     }
   });
 
+  console.log('results ', difficultyFilteredResults)
+
   function sortResults(arr) {
     if (sortCategory === 'user') {
       if (sortDirection) {
         return arr.sort((a, b) => {
+          if(a.user === null) {
+            a.user = '';
+          }
+          if(b.user === null) {
+            b.user = '';
+          }
           const x = a.user.toLowerCase();
           const y = b.user.toLowerCase();
           if(x < y) {return -1;}
@@ -42,6 +50,12 @@ const Leaderboard = (props) => {
         })
       }
       return arr.sort((a, b) => {
+        if(a.user === null) {
+          a.user = '';
+        }
+        if(b.user === null) {
+          b.user = '';
+        }
         const x = a.user.toLowerCase();
         const y = b.user.toLowerCase();
         if(x > y) {return -1;}
