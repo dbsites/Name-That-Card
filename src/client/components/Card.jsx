@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import ReactCardFlip from 'react-card-flip';
 
 const mapStateToProps = store => ({
