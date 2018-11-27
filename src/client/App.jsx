@@ -133,7 +133,9 @@ const App = (props) => {
             <Signup {...props} setSignUpCredentialErrors={setSignUpCredentialErrors} emailErrorMsg={emailErrorMsg} passwordErrorMsg={passwordErrorMsg} usernameErrorMsg={usernameErrorMsg} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
           />
           <Route path='/admin' component={AdminContainer} />
-          <Route path='/about' component={About} />
+          <Route path='/about' render={(props) => 
+            <About {...props} selectedGame={selectedGame}/>}
+          />
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />
           <Route path='/forgot-pw' render={(props) =>
