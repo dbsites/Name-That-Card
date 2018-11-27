@@ -507,6 +507,10 @@ p {
 
 // FOOTER COMPONENTS
 
+.links {
+  text-decoration: underline;
+}
+
 .footerLinks {
   display: flex;
   flex-direction: column;
