@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactCardFlip from 'react-card-flip';
 
 const mapStateToProps = store => ({
+  flipped: store.gameReducer.flipped,
   ableToNext: store.gameReducer.ableToNext,
 });
 
@@ -12,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 class Card extends Component {
   render() {
     console.log('card rendered')
-    const { cardInfo, selectAnswer, selectedDifficulty, ableToNext } = this.props;
+    const { cardInfo, selectAnswer, selectedDifficulty, flipped, ableToNext } = this.props;
 
     let picture = '';
     let coverImg = '';
@@ -64,10 +66,15 @@ class Card extends Component {
 
     return (
       <div className="cardContainer">
-        <div className="cards">
-          {picture}
-          {coverImg}
-        </div>
+        <ReactCardFlip isFlipped={flipped} infinite={false}>
+          <div className="cards" key="front">
+            {picture}
+            {coverImg}
+          </div>
+          <div className="cards" key="back">
+            {picture}
+          </div>
+        </ReactCardFlip>
         <div className="answersBox">
           <div className="answersLeft">
             {answer1}
