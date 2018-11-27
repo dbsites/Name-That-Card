@@ -249,15 +249,23 @@ p {
   margin-right: auto;
 }
 
+// .GameContainer {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-content: center;
+//   height: 70vh;
+//   max-width: 95vw;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
 .GameContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
   height: 70vh;
   max-width: 95vw;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 40vh 20vh 10vh;
 }
 
 .footerContainer {
@@ -499,10 +507,14 @@ p {
 // GAME COMPONENTS
 
 .cardContainer {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-content: center;
+  // align-items: center;
+  display: grid;
+  grid-template-rows: 40vh auto;
+  justify-items: center;
 }
 
 // FOOTER COMPONENTS

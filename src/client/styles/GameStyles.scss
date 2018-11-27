@@ -247,7 +247,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
+  grid-row: 1;
 }
+
+// .ReactCardFlip {
+//   display: flex;
+//   flex-direction: row;
+//   position: absolute;
+// }
 
 .card {
   display: flex;
@@ -275,11 +282,12 @@
   justify-content: center;
   align-content: center;
   text-align: center;
-  margin-top: 2vh;
+  margin-top: 2.5vh;
   margin-left: auto;
   margin-right: auto;
   color: white;
   user-select: none;
+  grid-row: 2;
 }
 
 .answersLeft {
@@ -406,6 +414,7 @@
   justify-content: center;
   margin-top: 1vh;
   margin-bottom: 1vh;
+  grid-row: 3;
 }
 
 .gameButton {

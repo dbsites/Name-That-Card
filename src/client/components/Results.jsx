@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as gamePlayActions from '../actions/gamePlayActions';
 import { NavLink } from 'react-router-dom';
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
+import * as gamePlayActions from '../actions/gamePlayActions';
 
 const mapStateToProps = store => ({
   score: store.gameReducer.score,
@@ -34,14 +35,22 @@ const Results = (props) => {
     joinLeaderboardMsg = '';
   }
 
+  let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Score 18/20 or higher and you could win a Jace, the Mind Sculptor!! Test your skills at www.namethatcard.com`;
+
+  const socialMediaHashtags = [`${selectedGame}`, 'namethatcard'];
+
   return (
     <div>
       <h1 className="resultHeader--center">You got {score} points!</h1>
       <div className="result--center">
         <h2 className="text--center">Score 18/20 or Better, then Share Below on Twitter or FB to Enter our Raffle!</h2>
         <div className="center">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><img className="imgLink" src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png"></img></a>
-          <a href="https://twitter.com/home?status=" target="_blank"><img className="imgLink" src="https://cdn1.iconfinder.com/data/icons/iconza-circle-social/64/697029-twitter-512.png"></img></a>
+          <FacebookShareButton url={'https://www.facebook.com/sharer/sharer.php?u='} quote={socialMediaDialog} hashtag={'#namethatcard'}>
+            <FacebookIcon round={true} />
+          </FacebookShareButton>
+          <TwitterShareButton url={'twitter'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
+            <TwitterIcon round={true} />
+          </TwitterShareButton>
         </div>
       </div>
       {joinLeaderboardMsg}
