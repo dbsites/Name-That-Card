@@ -12,6 +12,8 @@ import PrivacyPolicy from './components/PrivacyPolicy.jsx';
 import ToS from './components/ToS.jsx';
 import About from './components/About.jsx';
 import AdminContainer from './containers/AdminContainer.jsx';
+import Forgot from './components/Forgot.jsx';
+import Reset from './components/Reset.jsx';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
 import * as userActions from './actions/userActions';
 import * as leaderboardActions from './actions/leaderboardActions';
@@ -27,9 +29,18 @@ const mapStateToProps = store => ({
   signUpInputEmail: store.userReducer.signUpInputEmail,
   signUpInputPassword: store.userReducer.signUpInputPassword,
   signUpInputUsername: store.userReducer.signUpInputUsername,
+  forgotInputEmail: store.userReducer.forgotInputEmail,
   loginInputEmail: store.userReducer.loginInputEmail,
   loginInputPassword: store.userReducer.loginInputPassword,
   questionNumber: store.gameReducer.questionNumber,
+  passwordErrorMsg: store.userReducer.passwordErrorMsg,
+  usernameErrorMsg: store.userReducer.usernameErrorMsg,
+  emailErrorMsg: store.userReducer.emailErrorMsg,
+  emailStatusMsg: store.userReducer.emailStatusMsg,
+  emailSuccess: store.userReducer.emailSuccess,
+  firstNewPassword: store.userReducer.firstNewPassword,
+  secondNewPassword: store.userReducer.secondNewPassword,
+  newPasswordStatusMsg: store.userReducer.newPasswordStatusMsg,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -51,6 +62,9 @@ const mapDispatchToProps = dispatch => ({
   updateLoginPassword: (event) => {
     dispatch(userActions.updateLoginPassword(event));
   },
+  updateForgotInputEmail: (event) => {
+    dispatch(userActions.updateForgotInputEmail(event));
+  },
   submitLogin: (obj) => {
     dispatch(userActions.submitLogin(obj));
   },
@@ -69,10 +83,34 @@ const mapDispatchToProps = dispatch => ({
   resetLeaderboardLoadingContent: () => {
     dispatch(leaderboardActions.resetLeaderboardLoadingContent());
   },
+  setSignUpCredentialErrors: () => {
+    dispatch(userActions.setSignUpCredentialErrors());
+  },
+  sendResetPwEmail: (emailObj) => {
+    dispatch(userActions.sendResetPwEmail(emailObj));
+  },
+  updateFirstNewPassword: (event) => {
+    dispatch(userActions.updateFirstNewPassword(event));
+  },
+  updateSecondNewPassword: (event) => {
+    dispatch(userActions.updateSecondNewPassword(event));
+  },
+  resetPassword: (newPasswordObj) => {
+    dispatch(userActions.resetPassword(newPasswordObj));
+  },
+  setNewPasswordErrors: () => {
+    dispatch(userActions.setNewPasswordErrors());
+  },
+  resetNewPasswordEmailInputs: () => {
+    dispatch(userActions.resetNewPasswordEmailInputs());
+  },
+  resetNewPasswordInputs: () => {
+    dispatch(userActions.resetNewPasswordInputs());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent } = props;
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs } = props;
   console.log('app ran')
   if (!isLoggedIn) {
     checkAuth();
@@ -92,12 +130,18 @@ const App = (props) => {
             <Login {...props} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} loginError={loginError} loginErrorMsg={loginErrorMsg} resetLoginInfo={resetLoginInfo} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
           />
           <Route path='/signup' render={(props) =>
-            <Signup {...props} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
+            <Signup {...props} setSignUpCredentialErrors={setSignUpCredentialErrors} emailErrorMsg={emailErrorMsg} passwordErrorMsg={passwordErrorMsg} usernameErrorMsg={usernameErrorMsg} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
           />
           <Route path='/admin' component={AdminContainer} />
           <Route path='/about' component={About} />
           <Route path='/terms-of-service' component={ToS} />
           <Route path='/privacy-policy' component={PrivacyPolicy} />
+          <Route path='/forgot-pw' render={(props) =>
+            <Forgot {...props} resetNewPasswordEmailInputs={resetNewPasswordEmailInputs} emailSuccess={emailSuccess} emailStatusMsg={emailStatusMsg} sendResetPwEmail={sendResetPwEmail} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
+          />
+          <Route path='/reset/:token' render={(props) =>
+            <Reset {...props} resetNewPasswordInputs={resetNewPasswordInputs} setNewPasswordErrors={setNewPasswordErrors} resetPassword={resetPassword} newPasswordStatusMsg={newPasswordStatusMsg} updateFirstNewPassword={updateFirstNewPassword} updateSecondNewPassword={updateSecondNewPassword} firstNewPassword={firstNewPassword} secondNewPassword={secondNewPassword} />}
+          />
         </Switch>
         <Footer />
       </div>

@@ -91,9 +91,11 @@ class GameContainer extends Component {
     const answers = [];
   
     if (cardInfo) {
-      cardInfo.wrongAnswers.forEach((answer) => {
-        answers.push(answer.card_name);
-      })
+      if(cardInfo.wrongAnswers) {
+        cardInfo.wrongAnswers.forEach((answer) => {
+          answers.push(answer.card_name);
+        })
+      }
       answers.push(cardInfo.card_name);
       cardInfo.allAnswers = shuffledAnswers(answers);
     }

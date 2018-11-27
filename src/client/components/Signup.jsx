@@ -9,7 +9,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail, signUpError, signUpErrorMsg, isLoggedIn, selectedGame } = this.props;
+    const { updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, signUpInputUsername, signUpInputPassword, signUpInputEmail, signUpError, signUpErrorMsg, isLoggedIn, selectedGame, usernameErrorMsg, passwordErrorMsg, emailErrorMsg, setSignUpCredentialErrors } = this.props;
 
     const signUpInfoObj = {
       username: signUpInputUsername,
@@ -29,6 +29,11 @@ class Signup extends Component {
       return <Redirect to='/'/>;
     }
 
+    let submitFunc = submitSignUp;
+    if (signUpInputUsername === '' || !signUpInputEmail.split('').includes('@') || !signUpInputEmail.split('').includes('.') || signUpInputPassword.length < 5) {
+      submitFunc = setSignUpCredentialErrors;
+    }
+
   return (
     <div className="HomescreenContainer">
       <div className="grid">
@@ -38,16 +43,19 @@ class Signup extends Component {
             <span className="hidden">Username</span>
             <input id="signup_username" type="text" name="username" className="form__input" value={signUpInputUsername} placeholder="Username" onChange={updateSignUpUsername} required />
           </div>
+            <span>{usernameErrorMsg}</span> 
           <div className="form__field">
             <span className="hidden">Password</span>
             <input id="signup_username" type="password" name="password" className="form__input" value={signUpInputPassword} placeholder="Password" onChange={updateSignUpPassword} required />
           </div>
+            <span>{passwordErrorMsg}</span> 
           <div className="form__field">
             <span className="hidden">Email</span>
             <input id="signup_username" type="text" name="email" className="form__input" value={signUpInputEmail} placeholder="Email" onChange={updateSignUpEmail} required />
           </div>
+            <span>{emailErrorMsg}</span>
           <div className="form__field">
-            <input type="button" onClick={() => submitSignUp(signUpInfoObj)} value="Sign Up" />
+            <input type="button" onClick={() => submitFunc(signUpInfoObj)} value="Sign Up" />
           </div>
           <div>
             {errorText}
