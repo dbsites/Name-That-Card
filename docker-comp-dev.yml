@@ -1,0 +1,45 @@
+# command to run:
+# docker-compose -f docker-comp-dev.yml up
+
+# This will start namethatcard-dependencies & postgres db container with it's associated data volumes container
+# and run 'npm run dev'
+
+version: "3"
+services:
+
+  dev:
+    image: dbsites/namethatcard-dependencies
+    container_name: "namethatcard-dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    depends_on:
+      - postgres-db
+      - postgres-data
+    command: ["./scripts/postgres-db/run-migrate.sh", "postgres-db", "${DATABASE_MIGRATIONS}", "dev", "${DATABASE_SCOPES}"]
+
+  postgres-db:
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=namethatcardadmin
+      - POSTGRES_DB=namethatcard
+    image: dbsites/namethatcard-postgres
+    container_name: namethatcard-postgres
+    volumes:
+      - dev-db-volume:/var/lib/postgresql/data
+      - ./scripts/postgres-db:/postgres-db
+    depends_on:
+      - postgres-data
+
+  postgres-data:
+    image: busybox
+    container_name: namethatcard-dev-dbdata
+    volumes:
+      - dev-db-volume:/var/lib/postgresql/data
+
+# shared volumes for development
+volumes:
+  dev-db-volume:
+  node_modules:
