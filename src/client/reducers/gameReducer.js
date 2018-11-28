@@ -12,6 +12,8 @@ const initialState = {
   gameLogo: '',
   displayResults: false,
   gameStarted: false,
+  gameLoadingContent: true,
+  flipped: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -21,7 +23,8 @@ export default function (previousState = initialState, action) {
     case types.POPULATE_CARDS_ARRAY: { 
       stateCopy = Object.assign({}, previousState);
       stateCopy.cards = action.payload;
-      console.log(' stateCopy.cards', stateCopy.cards);
+      stateCopy.gameLoadingContent = false;
+      stateCopy.flipped = false;
       return stateCopy;
     }
     case types.SELECT_ANSWER: {
@@ -32,6 +35,7 @@ export default function (previousState = initialState, action) {
       if (stateCopy.cards[0].card_name === stateCopy.selectedAnswer && !stateCopy.ableToNext) {
         stateCopy.score += 1;
       }
+      stateCopy.flipped = true;
       stateCopy.ableToNext = true;
       return stateCopy;
     }
@@ -50,6 +54,7 @@ export default function (previousState = initialState, action) {
         }
         stateCopy.selectedAnswer = '';
       }
+      stateCopy.flipped = false;
       stateCopy.ableToNext = false;
       return stateCopy;
     }
@@ -73,11 +78,13 @@ export default function (previousState = initialState, action) {
       stateCopy.wrongAnswers = [];
       stateCopy.answeredQuestions = [];
       stateCopy.selectedAnswer = '';
+      stateCopy.flipped = false;
       stateCopy.ableToNext = false;
       stateCopy.nextClicked = false;
       stateCopy.gameLogo = '';
       stateCopy.displayResults = false;
       stateCopy.gameStarted = false;
+      stateCopy.gameLoadingContent = true;
       return stateCopy;
     }
     default:

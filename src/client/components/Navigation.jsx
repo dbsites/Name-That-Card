@@ -2,14 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = (props) => {
-  const { isLoggedIn, loggedInUser, logoutUser, gameLogo, selectedGame, questionNumber } = props;
+  const { isLoggedIn, loggedInUser, logout, selectedGame, questionNumber } = props;
   let logInOutButton = isLoggedIn
-  ? <div className="menu-item"><NavLink onClick={() => logoutUser()} to="">Logout</NavLink></div>
+  ? <div className="menu-item"><NavLink onClick={() => logout()} to="">Logout</NavLink></div>
   : <div className="menu-item"><NavLink to="/login">Login</NavLink></div>;
   
-  let navUsername = isLoggedIn
-  ? <div className="menu-item"><span id="loginuser-text">Welcome, {loggedInUser}</span></div>
-  : '';
   
   let signUpButton = isLoggedIn
   ? ''
@@ -33,11 +30,19 @@ const Navigation = (props) => {
     xBtn = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
+  } else if (window.location.pathname === '/about') {
+    xBtn = '';
+    logo = '';
+  } else if (window.location.pathname === '/privacy-policy') {
+    xBtn = '';
+    logo = '';
+  } else if (window.location.pathname === '/terms-of-service') {
+    xBtn = '';
+    logo = '';
   } else if (window.location.pathname === '/game') {
     logInOutButton = '';
     homeBtn = '';
     signUpButton = '';
-    navUsername = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
@@ -49,7 +54,6 @@ const Navigation = (props) => {
     logInOutButton = '';
     xBtn = '';
     logo = '';
-
   } else if (window.location.pathname === '/signup') {
     signUpButton = '';
     xBtn = '';
@@ -59,10 +63,14 @@ const Navigation = (props) => {
     xBtn = '';
     logInOutButton = '';
     logo = '';
-  }
+  } else if (window.location.pathname === '/leaderboard/' + window.location.pathname.slice(13)) {
+    xBtn = '';
+    homeLogo = '';
+    logoUrl = 'https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/' + window.location.pathname.slice(13) + 'LogoWhite.png';
+    logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + window.location.pathname.slice(13) + "Background.jpg')";
+  } 
   
-  // logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>; 
-
   return (
     <div className="navigation">
       <div className="left-menu">
@@ -72,7 +80,6 @@ const Navigation = (props) => {
       <div className="right-menu">
         {homeBtn}
         {xBtn}
-        {navUsername}
         {logInOutButton}
         {signUpButton}
       </div>

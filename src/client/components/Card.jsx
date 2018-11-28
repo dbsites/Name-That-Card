@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactCardFlip from 'react-card-flip';
 
 const mapStateToProps = store => ({
+  flipped: store.gameReducer.flipped,
   ableToNext: store.gameReducer.ableToNext,
 });
 
@@ -12,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 class Card extends Component {
   render() {
     console.log('card rendered')
-    const { cardInfo, selectAnswer, selectedDifficulty, ableToNext } = this.props;
+    const { cardInfo, selectAnswer, selectedDifficulty, flipped, ableToNext } = this.props;
 
     let picture = '';
     let coverImg = '';
@@ -28,8 +30,8 @@ class Card extends Component {
         coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.imagename;
       }
       
-      picture = <img className="card" src={imgSrc} alt="MASK OFF" />;
-      coverImg = <img className="cardReveal" src={coverImgSrc} alt="MASK ON" />;
+      picture = <img className="card" src={imgSrc} alt="" />;
+      coverImg = <img className="cardReveal" src={coverImgSrc} alt="" />;
     }
 
     let answer1 = <div className="answer1" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
@@ -64,16 +66,21 @@ class Card extends Component {
 
     return (
       <div className="cardContainer">
-        <div className="cards">
-          {picture}
-          {coverImg}
-        </div>
+        <ReactCardFlip isFlipped={flipped} infinite={false}>
+          <div className="cards" key="front">
+            {picture}
+            {coverImg}
+          </div>
+          <div className="cards" key="back">
+            {picture}
+          </div>
+        </ReactCardFlip>
         <div className="answersBox">
-          <div className="answers">
+          <div className="answersLeft">
             {answer1}
             {answer2}
           </div>
-          <div>
+          <div className="answersRight">
             {answer3}
             {answer4}
           </div>

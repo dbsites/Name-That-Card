@@ -36,7 +36,7 @@ export const displayGameMenu = data => ({
 
 export const getGameMenuContents = (url) => {
   return (dispatch) => {
-    return fetch(`${url}`)
+    return fetch(`/api${url}`)
       .then((res) => {
         return res.json();
       })
@@ -83,7 +83,7 @@ export const populateCardsArray = cardsData => ({
 
 export const getCardsInfo = (cardInfoObj) => {
   return (dispatch) => {
-    return fetch('/loadGame', {
+    return fetch('/api/loadGame', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',

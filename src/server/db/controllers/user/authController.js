@@ -6,9 +6,9 @@ const db = require('../util/postgres');
 module.exports = {
 
   createUser: (req, res, next) => {
-    console.log('====================================');
-    console.log('You are in authController createUser');
-    console.log('*** req.body ***', req.body);
+    // console.log('====================================');
+    // console.log('You are in authController createUser');
+    // console.log('*** req.body ***', req.body);
 
     const userInfo = req.body;
     const {
@@ -39,9 +39,9 @@ module.exports = {
   },
 
   checkEmailExists: (req, res, next) => {
-    console.log('==========================================');
-    console.log('You are in authController checkEmailExists');
-    console.log('*** req.body.email_address ***', req.body.email_address);
+    // console.log('==========================================');
+    // console.log('You are in authController checkEmailExists');
+    // console.log('*** req.body.email_address ***', req.body.email_address);
 
     const { email_address } = req.body;
     db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
@@ -60,9 +60,9 @@ module.exports = {
   },
 
   checkUsernameExists: (req, res, next) => {
-    console.log('=============================================');
-    console.log('You are in authController checkUsernameExists');
-    console.log('*** req.body.username ***', req.body.username);
+    // console.log('=============================================');
+    // console.log('You are in authController checkUsernameExists');
+    // console.log('*** req.body.username ***', req.body.username);
 
     const { username } = req.body;
     db.any('SELECT * FROM "game.dbo".users where username=$1', [username])
@@ -80,30 +80,31 @@ module.exports = {
   },
 
   getUserInfo: (req, res, next) => {
-    console.log('=============================================');
-    console.log('You are in authController getUserInfo');
-    console.log('*** req.body ***', req.body);
+    // console.log('=============================================');
+    // console.log('You are in authController getUserInfo');
+    // console.log('*** req.body ***', req.body);
 
     const { id } = res.locals.user;
     const integer = Number(id);
 
-    db.one(`SELECT session.user_id, users.username, session.ssid
-    FROM "game.dbo".sessions as session
+    db.one(`SELECT sessions.user_id, users.username, sessions.ssid
+    FROM "game.dbo".sessions as sessions
     JOIN "game.dbo".users as users
-    ON users.user_id = session.user_id
-    WHERE session.user_id = ${integer}`)
+    ON users.user_id = sessions.user_id
+    WHERE sessions.user_id = ${integer}`)
       .then((data) => {
         console.log('******* res.locals.user.id *****', res.locals.user.id);
         res.locals.data = data;
+        res.locals.data.loginSuccess = true;
         next();
       })
       .catch(err => console.log(err));
   },
 
   verifyUser(req, res, next) {
-    console.log('====================================');
-    console.log('You are in authController verifyUser');
-    console.log('*** req.body ***', req.body);
+    // console.log('====================================');
+    // console.log('You are in authController verifyUser');
+    // console.log('*** req.body ***', req.body);
 
     const { email_address, password } = req.body;
     db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
@@ -111,7 +112,7 @@ module.exports = {
         console.log('*** data ***', data);
         const user = data[0];
         console.log('*** user ***', user);
-        if (!data[0]){
+        if (!data[0]) {
           return res.status(200).send({
             loginSuccess: false,
             msg: 'Incorrect email account or password',
@@ -124,8 +125,8 @@ module.exports = {
               return next();
             }
             return res.status(200).send({
-              loginSuccess: true,
-              msg: 'successful logged in',
+              loginSuccess: false,
+              msg: 'Incorrect email account or password',
             });
           });
         }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as gamePlayActions from '../actions/gamePlayActions';
 import { NavLink } from 'react-router-dom';
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share';
+import * as gamePlayActions from '../actions/gamePlayActions';
 
 const mapStateToProps = store => ({
   score: store.gameReducer.score,
@@ -27,17 +28,31 @@ const Results = (props) => {
     score: score,
   };
 
-  let joinLeaderboardMsg = <div><NavLink to="/signup">Sign up</NavLink> or <NavLink to="/login">login</NavLink> to join the leaderboard!</div>;
+  let joinLeaderboardMsg = <div className="text--center"><NavLink to="/signup">Sign up</NavLink> or <NavLink to="/login">login</NavLink> to join the leaderboard!</div>;
 
   if (isLoggedIn) {
     sendResult(gameResultInfo);
     joinLeaderboardMsg = '';
   }
 
+  let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Score 18/20 or higher and you could win a Jace, the Mind Sculptor!! Test your skills at www.namethatcard.com`;
+
+  const socialMediaHashtags = [`${selectedGame}`, 'namethatcard'];
+
   return (
     <div>
-      {/* <div>Results</div> */}
-      <h2>You got {score} points!</h2>
+      <h1 className="resultHeader--center">You got {score} points!</h1>
+      <div className="result--center">
+        <h2 className="text--center">Score 18/20 or Better, then Share Below on Twitter or FB to Enter our Raffle!</h2>
+        <div className="center">
+          <FacebookShareButton url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
+            <FacebookIcon round={true} />
+          </FacebookShareButton>
+          <TwitterShareButton url={'https://www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
+            <TwitterIcon round={true} />
+          </TwitterShareButton>
+        </div>
+      </div>
       {joinLeaderboardMsg}
     </div>
   );

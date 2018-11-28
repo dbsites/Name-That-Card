@@ -70,14 +70,18 @@ export const failedLogin = message => ({
   payload: message,
 });
 
-export const logoutUser = () => ({
-  type: types.LOGOUT_USER,
+export const resetLoginInfo = () => ({
+  type: types.RESET_LOGIN_INFO,
+});
+
+export const resetSignUpInfo = () => ({
+  type: types.RESET_SIGNUP_INFO,
 });
 
 export const submitLogin = (loginInfoObj) => {
   console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
-    return fetch('/login', {
+    return fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -89,6 +93,7 @@ export const submitLogin = (loginInfoObj) => {
         return res.json();
       })
       .then((data) => {
+        console.log('data***** ', data)
         if (data.loginSuccess) {
           dispatch(successfulLogin(data.username));
         } else {
@@ -118,15 +123,137 @@ export const checkAuth = () => {
         return res.json();
       })
       .then((data) => {
+        console.log('data in checkAuth$$$$ ', data)
         if (data.loginSuccess) {
           dispatch(successfulAuthVerification(data));
-        } else {
-          dispatch(failedAuthVerification());
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log('eerrr ', err)
       });
   };
 };
 
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
+});
+
+export const logout = () => {
+  return (dispatch) => {
+    return fetch('/logout', {
+      method: 'DELETE',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.logoutSuccess) {
+          dispatch(logoutUser());
+        }
+      })
+      .catch((err) => {
+        console.log('eerrr ', err);
+      });
+  };
+};
+
+export const setSignUpCredentialErrors = () => ({
+  type: types.SET_SIGNUP_CREDENTIAL_ERRORS,
+});
+
+export const updateForgotInputEmail = (event) => ({
+  type: types.UPDATE_FORGOT_INPUT_EMAIL,
+  payload: event,
+});
+
+export const emailSuccessfullySent = (data) => ({
+  type: types.EMAIL_SUCCESSFULLY_SENT,
+  payload: data,
+});
+
+export const emailFailedToSend = (message) => ({
+  type: types.EMAIL_FAILED_TO_SEND,
+  payload: message,
+});
+
+export const sendResetPwEmail = (emailObj) => {
+  console.log('sendResetPwEmail in actions', emailObj);
+  return (dispatch) => {
+    return fetch('/api/forgot', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify(emailObj),
+      credentials: 'include',
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log('data***** ', data)
+      if (data.emailSuccess) {
+        console.log(('here 1'))
+        dispatch(emailSuccessfullySent(data));
+      } else {
+        console.log(('here 2'))
+        dispatch(emailFailedToSend(data));
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  };
+};
+
+export const updateFirstNewPassword = (event) => ({
+  type: types.UPDATE_FIRST_NEW_PASSWORD,
+  payload: event,
+});
+
+export const updateSecondNewPassword = (event) => ({
+  type: types.UPDATE_SECOND_NEW_PASSWORD,
+  payload: event,
+});
+
+export const setNewPasswordErrors = () => ({
+  type: types.SET_NEW_PASSWORD_ERRORS,
+});
+
+export const resetPassword = (newPasswordObj) => {
+  console.log('sendResetPwEmail in actions', newPasswordObj);
+  return (dispatch) => {
+    return fetch('/api' + newPasswordObj.user_token, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      body: JSON.stringify(newPasswordObj),
+      credentials: 'include',
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log('reset pw data***** ', data)
+      if (data) {
+        console.log(('succeess ', data))
+      //   dispatch(emailSuccessfullySent(data));
+      // } else {
+      //   console.log(('here 2'))
+      //   dispatch(emailFailedToSend(data));
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  };
+};
+
+export const resetNewPasswordInputs = () => ({
+  type: types.RESET_NEW_PASSWORD_INPUTS,
+});
+
+export const resetNewPasswordEmailInputs = () => ({
+  type: types.RESET_NEW_PASSWORD_EMAIL_INPUTS,
+});

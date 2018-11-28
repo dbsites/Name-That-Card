@@ -7,6 +7,7 @@ const mapStateToProps = store => ({
   score: store.gameReducer.score,
   questionNumber: store.gameReducer.questionNumber,
   renderScoreFooter: store.gameMenuReducer.renderScoreFooter,
+  selectedGame: store.gameListReducer.selectedGame,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,15 +19,13 @@ let privacyPolicy;
 let termsOfService;
 let contact;
 let disclaimer;
-let footerScore;//= '';
+let footerScore;
 let gameDisclaimer;
-class Footer extends Component {
-  componentDidMount() {
 
-  }
+class Footer extends Component {
 
   render() {
-    const { score, questionNumber, renderScoreFooter } = this.props;
+    const { score, questionNumber, renderScoreFooter, selectedGame } = this.props;
     if (renderScoreFooter) {
       footerScore = <Score questionNumber={questionNumber} score={score} />;
       about = '';
@@ -34,7 +33,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
-      gameDisclaimer = <span className="disclaimer">"NAME THAT CARD: " IS UNOFFICIAL FAN CONTENT PERMITTED UNDER THE FAN CONTENT POLICY. NOT APPROVED/ENDORSED BY WIZARDS/PORTIONS OF THE MATERIALS USED ARE PROPERTY OF WIZARDS OF THE COAST. WIZARDS OF THE COAST LLC.</span>;
+      gameDisclaimer = <span className="gameDisclaimer">THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';
@@ -43,12 +42,20 @@ class Footer extends Component {
       contact = '';
       disclaimer = '';
       gameDisclaimer =' ';
+    } else if (window.location.pathname === '/') {
+      about = '';
+      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
+      footerScore = '';
+      gameDisclaimer =' ';
     } else {
       about = <span className=""><NavLink to="/about">About</NavLink></span>;
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
       termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
-      contact = <span>Contact</span>;
-      disclaimer = <span>"NAME THAT CARD: " IS UNOFFICIAL FAN CONTENT PERMITTED UNDER THE FAN CONTENT POLICY. NOT APPROVED/ENDORSED BY WIZARDS/PORTIONS OF THE MATERIALS USED ARE PROPERTY OF WIZARDS OF THE COAST. WIZARDS OF THE COAST LLC.</span>;
+      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     }

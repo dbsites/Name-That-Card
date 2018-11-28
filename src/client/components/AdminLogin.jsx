@@ -4,7 +4,7 @@ const AdminLogin = (props) => {
   const { updateAdminLoginUsername, updateAdminLoginPassword, submitAdminLogin, adminUsername, adminPassword } = props;
 
   const adminInfo = {
-    username: adminUsername,
+    admin_username: adminUsername,
     password: adminPassword,
   };
 
@@ -13,12 +13,12 @@ const AdminLogin = (props) => {
       <h1>Admin Login</h1>
       <form>
         <div>
-          <label><span>Username</span></label>
-          <input placeholder="Username" onChange={updateAdminLoginUsername} required /> <br/>
+          <label>Username</label>
+          <input className="adminInput" placeholder="Username" value={adminUsername} onChange={updateAdminLoginUsername} required /> <br/>
         </div>
         <div>
-          <label><span>Password</span></label>
-          <input placeholder="Password" onChange={updateAdminLoginPassword} required /> <br/>
+          <label>Password</label>
+          <input type="Password" className="adminInput" placeholder="Password" value={adminPassword} onChange={updateAdminLoginPassword} required /> <br/>
         </div>
         <div type="button" onClick={() => submitAdminLogin(adminInfo)}>Login</div>
       </form>

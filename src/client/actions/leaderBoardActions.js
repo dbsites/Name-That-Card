@@ -19,10 +19,13 @@ export const toggleSortDirection = () => ({
   type: types.TOGGLE_SORT_DIRECTION,
 });
 
+export const resetLeaderboardLoadingContent = () => ({
+  type: types.RESET_LEADERBOARD_LOADING_CONTENT,
+});
+
 export const getGameHistory = (obj) => {
-  console.log('gameObj in actions ', obj);
   return (dispatch) => {
-    return fetch('/leaderboard', {
+    return fetch('/api/leaderboard', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify(obj),

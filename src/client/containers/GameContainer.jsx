@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import Loader from 'react-loader-advanced';
 import Card from '../components/Card.jsx';
 import Results from '../components/Results.jsx';
+import BuyAndNextBtns from '../components/BuyAndNextBtns.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 
@@ -12,13 +13,13 @@ const mapStateToProps = store => ({
   selectedCategories: store.gameMenuReducer.selectedCategories,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
   cards: store.gameReducer.cards,
-  wrongAnswers: store.gameReducer.wrongAnswers,
   displayResults: store.gameReducer.displayResults,
   isLoggedIn: store.userReducer.isLoggedIn,
   loggedInUser: store.userReducer.loggedInUser,
   years: store.gameMenuReducer.years,
   selectedMinYear: store.gameMenuReducer.selectedMinYear,
   selectedMaxYear: store.gameMenuReducer.selectedMaxYear,
+  gameLoadingContent: store.gameReducer.gameLoadingContent,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -28,15 +29,9 @@ const mapDispatchToProps = dispatch => ({
   selectAnswer: (answer) => {
     dispatch(gamePlayActions.selectAnswer(answer));
   },
-  goToNext: () => {
-    dispatch(gamePlayActions.goToNext());
-  },
-  finishGame: () => {
-    dispatch(gamePlayActions.finishGame());
-  },
 });
 class GameContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const {
       selectedGame,
       selectedCategories,
@@ -45,6 +40,7 @@ class GameContainer extends Component {
       years,
       selectedMinYear,
       selectedMaxYear,
+      cards,
     } = this.props;
     
     function getQueryString(arr) {
@@ -69,12 +65,13 @@ class GameContainer extends Component {
       startDate: selectedMinYear,
       endDate: selectedMaxYear,
     };
-    console.log('cardparams ', cardParameters)
-    getCardsInfo(cardParameters);
+    if (cards.length === 0) {
+      getCardsInfo(cardParameters);
+    }
+
   }
 
   render() {
-    console.log('game container rendered')
     const shuffledAnswers = (answersArr) => {
       let counter = answersArr.length;
       while (counter > 0) {
@@ -87,56 +84,77 @@ class GameContainer extends Component {
       return answersArr;
     };
 
-    const { selectedGame, cards, wrongAnswers, selectAnswer, goToNext, finishGame, displayResults, selectedDifficulty } = this.props;
+
+    const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty, gameLoadingContent } = this.props;
+ 
     const cardInfo = cards[0];
     const answers = [];
-    
-
-    let clickFunc = goToNext;
-    let title = '';
-    let buttonText = 'NEXT';
-    let ebayLink; 
-    let buyBtn;
+  
     if (cardInfo) {
-      cardInfo.wrongAnswers.forEach((answer) => {
-        answers.push(answer.card_name);
-      })
+      if(cardInfo.wrongAnswers) {
+        cardInfo.wrongAnswers.forEach((answer) => {
+          answers.push(answer.card_name);
+        })
+      }
       answers.push(cardInfo.card_name);
       cardInfo.allAnswers = shuffledAnswers(answers);
-      if(cardInfo.ebay_link) {
-        ebayLink = cardInfo.ebay_link;
-        buyBtn = <div className="gameButton"><a href={ebayLink} target="_blank">BUY NOW</a></div>
-      }
     }
 
     let content = <Card selectedDifficulty={selectedDifficulty} selectedGame={selectedGame} cardInfo={cardInfo} selectAnswer={selectAnswer} />;
 
-    if (cards.length === 1) {
-      clickFunc = finishGame;
-      buttonText = 'FINISH';
-    }
-    
-    let nextBtn = <div className="gameButton" onClick={clickFunc}>{buttonText}</div>;
-    
     if (displayResults) {
-      title = `YOUR RESULTS`;
       content = <Results />;
-      buttonText = 'PLAY AGAIN';
-      let selectedGameRoute = `/gameMenu/${selectedGame}`
-      nextBtn = <div className="gameButton"><NavLink to={selectedGameRoute}>{buttonText}</NavLink></div>;
     }
 
+    const spinningCircles =
+      <div className="sk-circle">
+        <div className="sk-circle1 sk-child"></div>
+        <div className="sk-circle2 sk-child"></div>
+        <div className="sk-circle3 sk-child"></div>
+        <div className="sk-circle4 sk-child"></div>
+        <div className="sk-circle5 sk-child"></div>
+        <div className="sk-circle6 sk-child"></div>
+        <div className="sk-circle7 sk-child"></div>
+        <div className="sk-circle8 sk-child"></div>
+        <div className="sk-circle9 sk-child"></div>
+        <div className="sk-circle10 sk-child"></div>
+        <div className="sk-circle11 sk-child"></div>
+        <div className="sk-circle12 sk-child"></div>
+      </div>;
+
+    const rotatingSquares = <div className="rotatingSquares">Loading...</div>;
+
+    const movingCubes =
+      <div className="movingCubes">
+        <div className="cube1"></div>
+        <div className="cube2"></div>
+      </div>;
+
+const foregroundStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '2em',
+  color: 'white',
+}
+
+const backgroundStyle = {
+  display: 'block',
+  position: 'absolute',
+  top: '-12.5vh',
+  backgroundColor: 'black',
+  opacity: 1,
+  height: '100vh',
+}
+
     return (
-      <div className="GameContainer">
-        <h4 className="text--center">{title}</h4>
-        <div className="list">
-          {content}
+      <Loader show={gameLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
+        <div className="GameContainer">
+        {content}
+        <BuyAndNextBtns />
         </div>
-        <div className="container">
-          {buyBtn}
-          {nextBtn}
-        </div>
-      </div>
+      </Loader>
     );
   }
 }
