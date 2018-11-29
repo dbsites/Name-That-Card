@@ -45,10 +45,10 @@ const Results = (props) => {
       <div className="result--center">
         <h2 className="text--center">Score 18/20 or Better, then Share Below on Twitter or FB to Enter our Raffle!</h2>
         <div className="center">
-          <FacebookShareButton url={'https://www.facebook.com/sharer/sharer.php?u='} quote={socialMediaDialog} hashtag={'#namethatcard'}>
+          <FacebookShareButton url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
             <FacebookIcon round={true} />
           </FacebookShareButton>
-          <TwitterShareButton url={'twitter'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
+          <TwitterShareButton url={'https://www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
             <TwitterIcon round={true} />
           </TwitterShareButton>
         </div>
