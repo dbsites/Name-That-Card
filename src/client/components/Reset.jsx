@@ -8,7 +8,7 @@ class Reset extends Component {
   }
   render() {
     const { firstNewPassword, secondNewPassword, updateFirstNewPassword, updateSecondNewPassword, setNewPasswordErrors, newPasswordStatusMsg, resetPassword, resetNewPasswordInputs, passwordReset } = this.props;
-    const token = window.location.pathname;
+    const token = window.location.pathname.slice(7);
     const newPasswordObj = {
       new_password: firstNewPassword,
       user_token: token,
@@ -29,13 +29,15 @@ class Reset extends Component {
           <form className="form login">
             <div>Enter New Password</div>
             <div className="form__field">
-              <input id="login__password" type="password" name="password" className="form__input" value={firstNewPassword} placeholder="Password" autoCorrect="off" onChange={updateFirstNewPassword} required />
+              <input type="password" name="password" className="form__input" value={firstNewPassword} placeholder="Password" autoCorrect="off" onChange={updateFirstNewPassword} required />
             </div>
             <div>Re-Enter New Password</div>
             <div className="form__field">
-              <input id="login__password" type="password" name="password" className="form__input" value={secondNewPassword} placeholder="Password" autoCorrect="off" onChange={updateSecondNewPassword} required />
+              <input type="password" name="password" className="form__input" value={secondNewPassword} placeholder="Password" autoCorrect="off" onChange={updateSecondNewPassword} required />
             </div>
-            <span>{newPasswordStatusMsg}</span>
+            <div>
+              <span>{newPasswordStatusMsg}</span>
+            </div>
           </form>
           <div className="form__field">
             <input type="button" onClick={() => submitPwFunc(newPasswordObj)} value="Reset Password" />

@@ -224,9 +224,15 @@ export const passwordSuccessfullyReset = () => ({
   type: types.PASSWORD_SUCCESSFULLY_RESET,
 });
 
+export const failedPasswordReset = (message) => ({
+  type: types.FAILED_PASSWORD_RESET,
+  payload: message,
+});
+
 export const resetPassword = (newPasswordObj) => {
   return (dispatch) => {
-    return fetch('/api' + newPasswordObj.user_token, {
+    console.log('fetching')
+    return fetch('/api/reset/' + newPasswordObj.user_token, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -235,16 +241,19 @@ export const resetPassword = (newPasswordObj) => {
       credentials: 'include',
     })
     .then((res) => {
+      console.log('here before')
       return res.json();
     })
     .then((data) => {
       console.log('reset pw data***** ', data)
-      if (data) {
+      if (data.successfulReset) {
         dispatch(passwordSuccessfullyReset());
+      } else {
+        dispatch(failedPasswordReset(data.msg));
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.log('error ', err);
     })
   };
 };

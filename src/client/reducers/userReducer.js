@@ -56,11 +56,9 @@ export default function (previousState = initialState, action) {
     }
     case types.FAILED_SIGNUP: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.signUpInputUsername = '';
-      stateCopy.signUpInputPassword = '';
-      stateCopy.signUpInputEmail = '';
-      stateCopy.loginInputEmail = '';
-      stateCopy.loginInputPassword = '';
+      // stateCopy.signUpInputUsername = '';
+      // stateCopy.signUpInputPassword = '';
+      // stateCopy.signUpInputEmail = '';
       stateCopy.signUpError = true;
       stateCopy.signUpErrorMsg = action.payload;
       stateCopy.passwordErrorMsg = '';
@@ -212,6 +210,12 @@ export default function (previousState = initialState, action) {
     case types.PASSWORD_SUCCESSFULLY_RESET: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.passwordReset = true;
+      return stateCopy;
+    }
+    case types.FAILED_PASSWORD_RESET: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.passwordReset = false;
+      stateCopy.newPasswordStatusMsg = action.payload;
       return stateCopy;
     }
     default:

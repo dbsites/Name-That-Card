@@ -230,7 +230,7 @@ class GameMenuContainer extends Component {
           <div className="center">
             <div className="startButtonStyle" onClick={() => startGame()}>START</div>
           </div>
-          <div>
+          <div className="text--center">
             {loginPrompt}
           </div>
         </div>

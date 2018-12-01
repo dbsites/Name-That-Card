@@ -134,7 +134,7 @@ class GameListContainer extends Component {
           <div className="enterContainer">
             <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
           </div>
-          <div>
+          <div className="text--center">
             {loginPrompt}
           </div>
         </div>

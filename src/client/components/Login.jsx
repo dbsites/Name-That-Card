@@ -32,7 +32,7 @@ class Login extends Component {
       errorMsg = <span>Please login with your new password</span>;
     }
 
-    const forgotPassword = <span className=""><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
+    const forgotPassword = <span><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
 
     return (
       <div className="HomescreenContainer">
@@ -54,10 +54,9 @@ class Login extends Component {
               <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
             </div>
           </form>
-          <div>
+          <div className="text--center">
             {errorMsg}
           </div>
-          <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a></p>
         </div>
       </div>
     );

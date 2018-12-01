@@ -116,9 +116,10 @@ const mapDispatchToProps = dispatch => ({
 
 const App = (props) => {
   const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs, resetRenderScoreFooter, passwordReset } = props;
-  if (!isLoggedIn) {
-    checkAuth();
-  }
+  // if (!isLoggedIn) {
+  //   checkAuth();
+  // }
+  console.log('user ', loggedInUser )
   return (
     <BrowserRouter>
       <div>

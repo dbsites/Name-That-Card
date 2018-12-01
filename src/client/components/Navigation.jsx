@@ -25,7 +25,7 @@ const Navigation = (props) => {
     homeBtn = '';
     xBtn = '';
     logo = '';
-    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg')";
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
   } else if (window.location.pathname === '/gameMenu/' + selectedGame) {
     xBtn = '';
     homeLogo = '';
