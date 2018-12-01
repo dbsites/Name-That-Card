@@ -17,6 +17,7 @@ import Reset from './components/Reset.jsx';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
 import * as userActions from './actions/userActions';
 import * as leaderboardActions from './actions/leaderboardActions';
+import * as gameConfigActions from './actions/gameConfigActions';
 
 const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
@@ -107,11 +108,13 @@ const mapDispatchToProps = dispatch => ({
   resetNewPasswordInputs: () => {
     dispatch(userActions.resetNewPasswordInputs());
   },
+  resetRenderScoreFooter: () => {
+    dispatch(gameConfigActions.resetRenderScoreFooter());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs } = props;
-  console.log('app ran')
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs, resetRenderScoreFooter } = props;
   if (!isLoggedIn) {
     checkAuth();
   }
@@ -127,10 +130,10 @@ const App = (props) => {
             <LeaderboardContainer {...props} selectedGame={selectedGame} />}
           />
           <Route path='/login' render={(props) =>
-            <Login {...props} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} loginError={loginError} loginErrorMsg={loginErrorMsg} resetLoginInfo={resetLoginInfo} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
+            <Login {...props} resetRenderScoreFooter={resetRenderScoreFooter} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} loginError={loginError} loginErrorMsg={loginErrorMsg} resetLoginInfo={resetLoginInfo} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
           />
           <Route path='/signup' render={(props) =>
-            <Signup {...props} setSignUpCredentialErrors={setSignUpCredentialErrors} emailErrorMsg={emailErrorMsg} passwordErrorMsg={passwordErrorMsg} usernameErrorMsg={usernameErrorMsg} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
+            <Signup {...props} resetRenderScoreFooter={resetRenderScoreFooter} setSignUpCredentialErrors={setSignUpCredentialErrors} emailErrorMsg={emailErrorMsg} passwordErrorMsg={passwordErrorMsg} usernameErrorMsg={usernameErrorMsg} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
           />
           <Route path='/admin' component={AdminContainer} />
           <Route path='/about' render={(props) => 

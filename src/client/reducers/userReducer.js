@@ -105,7 +105,6 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
       stateCopy.loginErrorMsg = '';
- 
       return stateCopy;
     }
     case types.RESET_SIGNUP_INFO: {

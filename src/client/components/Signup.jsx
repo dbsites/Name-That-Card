@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount() {
-    const { resetSignUpInfo, resetLeaderboardLoadingContent } = this.props;
+    const { resetSignUpInfo, resetLeaderboardLoadingContent, resetRenderScoreFooter } = this.props;
     resetSignUpInfo();
     resetLeaderboardLoadingContent();
+    resetRenderScoreFooter();
   }
 
   render() {

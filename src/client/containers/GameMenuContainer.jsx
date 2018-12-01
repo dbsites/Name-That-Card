@@ -21,6 +21,7 @@ const mapStateToProps = store => ({
   minYear: store.gameMenuReducer.minYear,
   maxYear: store.gameMenuReducer.maxYear,
   menuLoadingContent: store.gameMenuReducer.menuLoadingContent,
+  isLoggedIn: store.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -93,6 +94,7 @@ class GameMenuContainer extends Component {
       updateMinMaxYears,
       setYearsBool,
       menuLoadingContent,
+      isLoggedIn,
     } = this.props;
     
     setYearsBool();
@@ -151,6 +153,12 @@ class GameMenuContainer extends Component {
     let slider = '';
     if (years) {
       slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
+    }
+
+    let loginPrompt = <span><NavLink to="/login">Log in</NavLink> to be able to join the leaderboard!</span>;
+
+    if(isLoggedIn) {
+      loginPrompt = '';
     }
 
     const spinningCircles =
@@ -221,6 +229,9 @@ class GameMenuContainer extends Component {
           </div>
           <div className="center">
             <div className="startButtonStyle" onClick={() => startGame()}>START</div>
+          </div>
+          <div>
+            {loginPrompt}
           </div>
         </div>
       </Loader>
