@@ -25,7 +25,7 @@ let gameDisclaimer;
 class Footer extends Component {
 
   render() {
-    const { score, questionNumber, renderScoreFooter, selectedGame } = this.props;
+    const { score, questionNumber, renderScoreFooter } = this.props;
     if (renderScoreFooter) {
       footerScore = <Score questionNumber={questionNumber} score={score} />;
       about = '';
@@ -50,6 +50,15 @@ class Footer extends Component {
       disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
       footerScore = '';
       gameDisclaimer =' ';
+    // } else if (window.location.pathname === '/signup' || window.location.pathname === '/login') {
+    //   console.log('login or signup')
+    //   about = '';
+    //   privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+    //   termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+    //   contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+    //   disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
+    //   footerScore = '';
+    //   gameDisclaimer =' ';
     } else {
       about = <span className=""><NavLink to="/about">About</NavLink></span>;
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
@@ -62,9 +71,6 @@ class Footer extends Component {
 
     return (
       <div className="footerContainer">
-        <div className="disclaimer">
-          {disclaimer}
-        </div>
         <div className="footer">
           {about}
           {privacyPolicy}
@@ -73,6 +79,9 @@ class Footer extends Component {
           {footerScore}
         </div>
         <br/>
+        <div className="disclaimer">
+          {disclaimer}
+        </div>
         <div className="disclaimerFooter">
           {gameDisclaimer}
         </div>
