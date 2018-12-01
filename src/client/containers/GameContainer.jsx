@@ -56,6 +56,8 @@ class GameContainer extends Component {
     }
 
     const queryString = getQueryString(selectedCategories)
+    console.log('query string ', queryString)
+    console.log('selected cats ', selectedCategories)
 
     const cardParameters = {
       game: selectedGame,
@@ -84,8 +86,8 @@ class GameContainer extends Component {
       return answersArr;
     };
 
-
     const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty, gameLoadingContent } = this.props;
+    console.log('cards ', cards)
  
     const cardInfo = cards[0];
     const answers = [];

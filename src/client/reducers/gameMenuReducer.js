@@ -46,7 +46,7 @@ export default function (previousState = initialState, action) {
     }
     case types.TOGGLE_ALL_GAME_CATEGORIES: {
       stateCopy = Object.assign({}, previousState);
-      let numCategories = stateCopy.categoryList.length-1;
+      const numCategories = stateCopy.categoryList.length-1;
       const allCategoriesSelected = [];
       stateCopy.categoryList.forEach((category) => {
         if (category.game_category) {
@@ -134,6 +134,11 @@ export default function (previousState = initialState, action) {
       const [min, max] = action.payload;
       stateCopy.selectedMinYear = min;
       stateCopy.selectedMaxYear = max;
+      return stateCopy;
+    }
+    case types.RESET_RENDER_SCORE_FOOTER: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.renderScoreFooter = false;
       return stateCopy;
     }
     default:
