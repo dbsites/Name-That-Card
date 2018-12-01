@@ -21,6 +21,7 @@ const initialState = {
   firstNewPassword: '',
   secondNewPassword: '',
   newPasswordStatusMsg: '',
+  passwordReset: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -205,6 +206,12 @@ export default function (previousState = initialState, action) {
       stateCopy.firstNewPassword = '';
       stateCopy.secondNewPassword = '';
       stateCopy.newPasswordStatusMsg = '';
+      stateCopy.passwordReset = false;
+      return stateCopy;
+    }
+    case types.PASSWORD_SUCCESSFULLY_RESET: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.passwordReset = true;
       return stateCopy;
     }
     default:

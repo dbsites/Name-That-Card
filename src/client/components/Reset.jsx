@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Reset extends Component {
   componentDidMount() {
@@ -6,9 +7,8 @@ class Reset extends Component {
     resetNewPasswordInputs();
   }
   render() {
-    const { firstNewPassword, secondNewPassword, updateFirstNewPassword, updateSecondNewPassword, setNewPasswordErrors, newPasswordStatusMsg, resetPassword, resetNewPasswordInputs } = this.props;
+    const { firstNewPassword, secondNewPassword, updateFirstNewPassword, updateSecondNewPassword, setNewPasswordErrors, newPasswordStatusMsg, resetPassword, resetNewPasswordInputs, passwordReset } = this.props;
     const token = window.location.pathname;
-    console.log('token in reset ', token)
     const newPasswordObj = {
       new_password: firstNewPassword,
       user_token: token,
@@ -17,6 +17,9 @@ class Reset extends Component {
     let submitPwFunc = resetPassword;
     if (firstNewPassword !== secondNewPassword || firstNewPassword.length < 5 || secondNewPassword.length < 5) {
       submitPwFunc = setNewPasswordErrors;
+    }
+    if (passwordReset) {
+      return <Redirect to='/login' />;
     }
 
     return (

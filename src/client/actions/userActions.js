@@ -220,8 +220,11 @@ export const setNewPasswordErrors = () => ({
   type: types.SET_NEW_PASSWORD_ERRORS,
 });
 
+export const passwordSuccessfullyReset = () => ({
+  type: types.PASSWORD_SUCCESSFULLY_RESET,
+});
+
 export const resetPassword = (newPasswordObj) => {
-  console.log('sendResetPwEmail in actions', newPasswordObj);
   return (dispatch) => {
     return fetch('/api' + newPasswordObj.user_token, {
       method: 'POST',
@@ -237,11 +240,7 @@ export const resetPassword = (newPasswordObj) => {
     .then((data) => {
       console.log('reset pw data***** ', data)
       if (data) {
-        console.log(('succeess ', data))
-      //   dispatch(emailSuccessfullySent(data));
-      // } else {
-      //   console.log(('here 2'))
-      //   dispatch(emailFailedToSend(data));
+        dispatch(passwordSuccessfullyReset());
       }
     })
     .catch((err) => {

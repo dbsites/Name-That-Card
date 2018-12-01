@@ -10,7 +10,7 @@ class Login extends Component {
   }
   
   render() {
-    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame } = this.props;
+    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame, passwordReset } = this.props;
 
     const loginInfoObj = {
       email_address: loginInputEmail,
@@ -28,6 +28,8 @@ class Login extends Component {
 
     if (loginError) {
       errorMsg = <span>{loginErrorMsg}</span>; 
+    } else if (passwordReset) {
+      errorMsg = <span>Please login with your new password</span>;
     }
 
     const forgotPassword = <span className=""><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
