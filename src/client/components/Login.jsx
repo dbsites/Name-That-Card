@@ -29,7 +29,7 @@ class Login extends Component {
     if (loginError) {
       errorMsg = <span>{loginErrorMsg}</span>; 
     } else if (passwordReset) {
-      errorMsg = <span>Please login with your new password</span>;
+      errorMsg = <span>Your password has been successfully reset. Please login with your new password.</span>;
     }
 
     const forgotPassword = <span><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;

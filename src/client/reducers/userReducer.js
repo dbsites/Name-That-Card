@@ -86,6 +86,7 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
+      stateCopy.passwordReset = false;
       return stateCopy;
     }
     case types.FAILED_LOGIN: {
@@ -168,7 +169,6 @@ export default function (previousState = initialState, action) {
     }
     case types.EMAIL_FAILED_TO_SEND: {
       stateCopy = Object.assign({}, previousState);
-      console.log('data in reducer ', action.payload)
       stateCopy.emailStatusMsg = action.payload.msg;
       stateCopy.emailSuccess = action.payload.emailSuccess;
       return stateCopy;

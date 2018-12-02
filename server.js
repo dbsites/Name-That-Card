@@ -111,13 +111,13 @@ app.post('/api/forgot', (req, res, next) => {
       const smtpTransport = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'codesmith.ntc@gmail.com',
-          pass: 'Codesmith24'
+          user: 'ntc.forgot@gmail.com',
+          pass: 'Codesmith26'
         }
       });
       const mailOptions = {
         to: email_address,
-        from: 'codesmith.ntc@gmail.com',
+        from: 'ntc.forgot@gmail.com',
         subject: 'Password Reset - Name th?t Card',
         text: 'You are recieving this email because you have requested to reset your password. Please click the following link, or copy and paste the link into your browser to complete the process.' + '\n\n' + 
         'http://' + req.headers.host + '/reset/' + token + '\n\n' +

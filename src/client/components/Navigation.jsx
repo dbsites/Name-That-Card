@@ -20,7 +20,7 @@ const Navigation = (props) => {
   
   let logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
   let homeLogo = <div className="homeLogo"> <img className="homeImgLogo" src='https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIconWhite.png'></img> </div>; 
-
+  
   if (window.location.pathname === '/') {
     homeBtn = '';
     xBtn = '';
@@ -33,6 +33,14 @@ const Navigation = (props) => {
   } else if (window.location.pathname === '/about') {
     xBtn = '';
     logo = '';
+  } else if (window.location.pathname.slice(0,6) === '/reset') {
+    xBtn = '';
+    logo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
+  } else if (window.location.pathname === '/forgot-pw') {
+    xBtn = '';
+    logo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
   } else if (window.location.pathname === '/privacy-policy') {
     xBtn = '';
     logo = '';
@@ -54,10 +62,13 @@ const Navigation = (props) => {
     logInOutButton = '';
     xBtn = '';
     logo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
+
   } else if (window.location.pathname === '/signup') {
     signUpButton = '';
     xBtn = '';
     logo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
   } else if (window.location.pathname === '/admin') {
     signUpButton = '';
     xBtn = '';
