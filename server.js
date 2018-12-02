@@ -22,6 +22,9 @@ const db = require('./src/server/db/controllers/util/postgres.js');
 
 const app = express();
 
+require('dotenv').config();
+
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
@@ -111,13 +114,13 @@ app.post('/api/forgot', (req, res, next) => {
       const smtpTransport = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'ntc.forgot@gmail.com',
-          pass: 'Codesmith26'
+          user: process.env.GMAIL_ADDRESS,
+          pass: process.env.GMAIL_PW,
         }
       });
       const mailOptions = {
         to: email_address,
-        from: 'ntc.forgot@gmail.com',
+        from: process.env.GMAIL_ADDRESS,
         subject: 'Password Reset - Name th?t Card',
         text: 'You are recieving this email because you have requested to reset your password. Please click the following link, or copy and paste the link into your browser to complete the process.' + '\n\n' + 
         'http://' + req.headers.host + '/reset/' + token + '\n\n' +
