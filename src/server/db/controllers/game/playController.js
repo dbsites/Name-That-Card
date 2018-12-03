@@ -182,7 +182,7 @@ module.exports = {
       .catch(err => console.error(err));
   },
 
-  leaderBoard(req, res) {
+  leaderboard(req, res) {
     const {
       game,
     } = req.body;
