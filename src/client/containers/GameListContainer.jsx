@@ -127,14 +127,14 @@ class GameListContainer extends Component {
     return (
       <Loader show={gameListLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="HomescreenContainer">
-          <h3 className="pick-a-deck">PICK A DECK</h3>
-          <div className="list">
+          <h3 className="pick-a-game">PICK A GAME</h3>
+          <div className="gameList">
             {games}
           </div>
           <div className="enterContainer">
             <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
           </div>
-          <div className="text--center">
+          <div className="homeLoginPrompt--text--center">
             {loginPrompt}
           </div>
         </div>

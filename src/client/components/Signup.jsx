@@ -36,7 +36,7 @@ class Signup extends Component {
     }
 
   return (
-    <div className="HomescreenContainer">
+    <div className="UserContainer">
       <div className="grid">
         <h1>Sign Up</h1>
         <form className="form login">
