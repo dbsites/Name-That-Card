@@ -4,4 +4,5 @@ dist
 .cache
 .DS_Store
 config.json
+npm-debug.log
 yarn.lock
