@@ -17,6 +17,7 @@ import Reset from './components/Reset.jsx';
 import LeaderboardContainer from './containers/LeaderboardContainer.jsx';
 import * as userActions from './actions/userActions';
 import * as leaderboardActions from './actions/leaderboardActions';
+import * as gameConfigActions from './actions/gameConfigActions';
 
 const mapStateToProps = store => ({
   isLoggedIn: store.userReducer.isLoggedIn,
@@ -41,6 +42,7 @@ const mapStateToProps = store => ({
   firstNewPassword: store.userReducer.firstNewPassword,
   secondNewPassword: store.userReducer.secondNewPassword,
   newPasswordStatusMsg: store.userReducer.newPasswordStatusMsg,
+  passwordReset: store.userReducer.passwordReset,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -107,14 +109,17 @@ const mapDispatchToProps = dispatch => ({
   resetNewPasswordInputs: () => {
     dispatch(userActions.resetNewPasswordInputs());
   },
+  resetRenderScoreFooter: () => {
+    dispatch(gameConfigActions.resetRenderScoreFooter());
+  },
 });
 
 const App = (props) => {
-  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs } = props;
-  console.log('app ran')
-  if (!isLoggedIn) {
-    checkAuth();
-  }
+  const { selectedGame, updateSignUpUsername, updateSignUpPassword, updateSignUpEmail, submitSignUp, updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, signUpError, signUpErrorMsg, signUpInputUsername, signUpInputPassword, signUpInputEmail, loginInputEmail, loginInputPassword, loggedInUser, logout, questionNumber, checkAuth, resetLoginInfo, resetSignUpInfo, loginError, loginErrorMsg, resetLeaderboardLoadingContent, passwordErrorMsg, usernameErrorMsg, emailErrorMsg, setSignUpCredentialErrors, forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess, updateFirstNewPassword, updateSecondNewPassword, firstNewPassword, secondNewPassword, resetPassword, newPasswordStatusMsg, setNewPasswordErrors, resetNewPasswordEmailInputs, resetNewPasswordInputs, resetRenderScoreFooter, passwordReset } = props;
+  // if (!isLoggedIn) {
+  //   checkAuth();
+  // }
+  console.log('user ', loggedInUser )
   return (
     <BrowserRouter>
       <div>
@@ -127,10 +132,10 @@ const App = (props) => {
             <LeaderboardContainer {...props} selectedGame={selectedGame} />}
           />
           <Route path='/login' render={(props) =>
-            <Login {...props} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} loginError={loginError} loginErrorMsg={loginErrorMsg} resetLoginInfo={resetLoginInfo} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
+            <Login {...props} passwordReset={passwordReset} resetRenderScoreFooter={resetRenderScoreFooter} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} loginError={loginError} loginErrorMsg={loginErrorMsg} resetLoginInfo={resetLoginInfo} updateLoginEmail={updateLoginEmail} updateLoginPassword={updateLoginPassword} submitLogin={submitLogin} isLoggedIn={isLoggedIn} loginInputEmail={loginInputEmail} loginInputPassword={loginInputPassword} />}
           />
           <Route path='/signup' render={(props) =>
-            <Signup {...props} setSignUpCredentialErrors={setSignUpCredentialErrors} emailErrorMsg={emailErrorMsg} passwordErrorMsg={passwordErrorMsg} usernameErrorMsg={usernameErrorMsg} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
+            <Signup {...props} resetRenderScoreFooter={resetRenderScoreFooter} setSignUpCredentialErrors={setSignUpCredentialErrors} emailErrorMsg={emailErrorMsg} passwordErrorMsg={passwordErrorMsg} usernameErrorMsg={usernameErrorMsg} resetLeaderboardLoadingContent={resetLeaderboardLoadingContent} selectedGame={selectedGame} resetSignUpInfo={resetSignUpInfo} signUpInputUsername={signUpInputUsername} signUpInputPassword={signUpInputPassword} signUpInputEmail={signUpInputEmail} signUpErrorMsg={signUpErrorMsg} signUpError={signUpError} updateSignUpUsername={updateSignUpUsername} updateSignUpPassword={updateSignUpPassword} updateSignUpEmail={updateSignUpEmail} submitSignUp={submitSignUp} isLoggedIn={isLoggedIn}/>}
           />
           <Route path='/admin' component={AdminContainer} />
           <Route path='/about' render={(props) => 
@@ -142,7 +147,7 @@ const App = (props) => {
             <Forgot {...props} resetNewPasswordEmailInputs={resetNewPasswordEmailInputs} emailSuccess={emailSuccess} emailStatusMsg={emailStatusMsg} sendResetPwEmail={sendResetPwEmail} updateForgotInputEmail={updateForgotInputEmail} forgotInputEmail={forgotInputEmail} />}
           />
           <Route path='/reset/:token' render={(props) =>
-            <Reset {...props} resetNewPasswordInputs={resetNewPasswordInputs} setNewPasswordErrors={setNewPasswordErrors} resetPassword={resetPassword} newPasswordStatusMsg={newPasswordStatusMsg} updateFirstNewPassword={updateFirstNewPassword} updateSecondNewPassword={updateSecondNewPassword} firstNewPassword={firstNewPassword} secondNewPassword={secondNewPassword} />}
+            <Reset {...props} passwordReset={passwordReset} resetNewPasswordInputs={resetNewPasswordInputs} setNewPasswordErrors={setNewPasswordErrors} resetPassword={resetPassword} newPasswordStatusMsg={newPasswordStatusMsg} updateFirstNewPassword={updateFirstNewPassword} updateSecondNewPassword={updateSecondNewPassword} firstNewPassword={firstNewPassword} secondNewPassword={secondNewPassword} />}
           />
         </Switch>
         <Footer />

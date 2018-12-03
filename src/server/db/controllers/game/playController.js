@@ -48,14 +48,14 @@ function loadGameWithYears(game, query, startDate, endDate) {
  */
 function easyAnswers(id, name) {
   return db.many(`        
-          SELECT c1.card_id, c1.card_name, 'EASY' as answer
+          SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'EASY' as answer
           FROM "game.dbo".cards c
             JOIN "game.dbo".cards c1
               ON c.card_category = c1.card_category 
               AND c1.card_id <> $1
               AND c1.card_name <> $2
           WHERE c.card_id = $1
-          ORDER BY RANDOM()
+          ) x ORDER BY RANDOM()
           LIMIT 3;
           `, [id, name])
     .catch(err => console.error(err));
@@ -68,7 +68,7 @@ function easyAnswers(id, name) {
  */
 function mediumAnswers(id, name) {
   return db.many(`
-          SELECT c1.card_id, c1.card_name, 'MEDIUM' as answer
+          SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'MEDIUM' as answer
           FROM "game.dbo".cards c
           JOIN "game.dbo".cards c1
             ON c.card_category = c1.card_category 
@@ -76,7 +76,7 @@ function mediumAnswers(id, name) {
             AND c1.card_id <> $1
             AND c1.card_name <> $2
           WHERE c.card_id = $1
-          ORDER BY RANDOM()
+          ) x ORDER BY RANDOM()
           LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
@@ -88,7 +88,7 @@ function mediumAnswers(id, name) {
  */
 function hardAnswers(id, name) {
   return db.many(`
-          SELECT c1.card_id, c1.card_name, 'HARD' as answer
+          SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'HARD' as answer
           FROM "game.dbo".cards c
           JOIN "game.dbo".cards c1
             ON c.card_category = c1.card_category 
@@ -97,7 +97,7 @@ function hardAnswers(id, name) {
               AND c1.card_id <> $1
               AND c1.card_name <> $2
           WHERE c.card_id = $1
-          ORDER BY RANDOM()
+          ) x ORDER BY RANDOM()
           LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }
@@ -109,7 +109,7 @@ function hardAnswers(id, name) {
  */
 function yearHardAnswers(id, name) {
   return db.many(`
-          SELECT c1.card_id, c1.card_name, 'HARD' as answer
+          SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'HARD' as answer
           FROM "game.dbo".cards c
           JOIN "game.dbo".cards c1
             ON c.card_category = c1.card_category 
@@ -118,7 +118,7 @@ function yearHardAnswers(id, name) {
               AND c1.card_id <> $1
               AND c1.card_name <> $2
           WHERE c.card_id = $1 AND c.game_id = 1
-          ORDER BY RANDOM()
+          ) x ORDER BY RANDOM()
           LIMIT 3;`, [id, name])
     .catch(err => console.error(err));
 }

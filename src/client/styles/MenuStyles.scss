@@ -41,7 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
-  background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/GENERALBackground.jpg");
+  background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg");
   background-size: cover;
   background-position: center;
   color: white;
@@ -153,6 +153,58 @@ p {
   text-shadow: 0 0 1em white;
 }
 
+.chooseCategories--text--center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // text-align: center;
+  // margin-left: auto;
+  // margin-right: auto;
+  text-shadow: 0 0 1em white;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.chooseDifficulty--text--center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // text-align: center;
+  // margin-left: auto;
+  // margin-right: auto;
+  text-shadow: 0 0 1em white;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.gameMenuLoginPrompt--text--center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // text-align: center;
+  // margin-left: auto;
+  // margin-right: auto;
+  font-size: 1.5em;
+  text-shadow: 0 0 1em white;
+  grid-row-start: 8;
+}
+
+.homeLoginPrompt--text--center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // text-align: center;
+  // margin-left: auto;
+  // margin-right: auto;
+  font-size: 1.5em;
+  text-shadow: 0 0 1em white;
+  grid-row-start: 4;
+}
+
 .result--center {
   text-align: center;
   margin-left: auto;
@@ -181,14 +233,14 @@ p {
   text-shadow: 0 0 1em white;
 }
 
-.pick-a-deck {
+.pick-a-game {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
   font-size: 2em;
   text-shadow: 0 0 1em white;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .text--left {
@@ -205,6 +257,19 @@ p {
 // APP CONTAINERS
 
 .HomescreenContainer {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-content: center;
+  display: grid;
+  grid-template-rows: 10vh 35vh 25vh 5vh;
+  height: 75vh;
+  max-width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.UserContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -216,10 +281,12 @@ p {
 }
 
 .MainContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-content: center;
+  display: grid;
+  grid-template-rows: 5vh 5vh 25vh 10vh 5vh 10vh 10vh 5vh;
   height: 75vh;
   max-width: 95vw;
   margin-left: auto;
@@ -351,7 +418,7 @@ p {
   text-shadow: 0 0 1em white;
 }
 
-.list {
+.gameList {
   display: flex;
   height: auto;
   max-width: 100%;
@@ -360,6 +427,8 @@ p {
   align-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .enterContainer {
@@ -369,6 +438,8 @@ p {
   justify-content: center;
   margin-top: 5vh;
   margin-bottom: 5vh;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .categoryContainer {
@@ -377,13 +448,14 @@ p {
   justify-content: center;
   align-content: center;
   align-items: center;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .center {
   display: flex;
   justify-content: center;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  margin: auto;
 }
 
 // LEADERBOARD
@@ -394,6 +466,8 @@ p {
   justify-content: flex-end;
   align-items: center;
   text-shadow: 0 0 1em white;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .leaderboard-right-menu {
@@ -413,10 +487,9 @@ p {
   font-size: 1em !important;
   font-weight: 700;
   padding: 0.5em 0.8em !important;
-  border-bottom: 0.08em solid white;
   cursor: pointer;
   justify-content: center;
-  background-color: black;
+  background-color: transparent;
   color: white;
   text-shadow: 0 0 1em white;
 }
@@ -494,7 +567,7 @@ p {
 }
 
 .innerSliderContainer span {
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 700;
 }
 

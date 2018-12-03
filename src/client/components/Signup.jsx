@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount() {
-    const { resetSignUpInfo, resetLeaderboardLoadingContent } = this.props;
+    const { resetSignUpInfo, resetLeaderboardLoadingContent, resetRenderScoreFooter } = this.props;
     resetSignUpInfo();
     resetLeaderboardLoadingContent();
+    resetRenderScoreFooter();
   }
 
   render() {
@@ -35,7 +36,7 @@ class Signup extends Component {
     }
 
   return (
-    <div className="HomescreenContainer">
+    <div className="UserContainer">
       <div className="grid">
         <h1>Sign Up</h1>
         <form className="form login">

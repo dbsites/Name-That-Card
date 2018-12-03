@@ -4,10 +4,10 @@
   display: flex;
   width: 43.5vw;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
@@ -23,10 +23,10 @@
   display: flex;
   width: 43.5vw;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
@@ -42,10 +42,10 @@
   display: flex;
   width: 43.5vw;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
@@ -65,10 +65,10 @@
   display: flex;
   width: 43.5vw;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
@@ -85,10 +85,10 @@
   display: flex;
   width: 43.5vw;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
@@ -107,7 +107,7 @@
   height: 15vh;
   width: 15vh;
   line-height: 1.8em;
-  font-size: 1.5em !important;
+  font-size: 2em !important;
   font-weight: 700;
   border: 0.08em solid white;
   cursor: pointer;
@@ -128,6 +128,8 @@
   align-items: center;
   justify-content: center;
   user-select: none;
+  grid-row-start: 6;
+  grid-row-end: 7;
 }
 
 .difficultyStyleE {
@@ -135,9 +137,9 @@
   flex: 2;
   margin-left: auto;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
@@ -160,9 +162,9 @@
   display: flex;
   flex: 2;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
@@ -182,9 +184,9 @@
   flex: 2;
   margin-right: auto;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
@@ -207,9 +209,9 @@
   display: flex;
   flex: 2;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
-  padding: 0.5em 0.8em !important;
+  padding: 0em 0em !important;
   cursor: pointer;
   justify-content: center;
   text-align: center;
@@ -222,19 +224,23 @@
   display: flex;
   width: 43.5vw;
   line-height: 1.8em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   font-weight: 700;
-  margin: 1.25vh 2.5vw;
-  padding: 0.5em 0.8em !important;
+  margin: 1vh 1vw;
+  padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
+  align-content: center;
   border-radius: 0.5em;
   background-color: black;
   color: white;
   text-shadow: 0 0 1em white;
   user-select: none;
+  grid-row-start: 7;
+  grid-row-end: 8;
 }
 
 // GAME BUTTONS
@@ -293,10 +299,12 @@
 .answersLeft {
   width: 100%;
   border-right: 0.08em ridge white;
+  margin: auto;
 }
 
 .answersRight {
   width: 100%;
+  margin: auto;
 }
 
 .answer1 {
@@ -304,12 +312,12 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   margin: 1vh 1vw;
-  padding-top: 0.5em !important;
-  padding-left: 0.8em !important;
-  padding-right: 0.8em !important;
-  padding-bottom: 1.5em !important;
+  // padding-top: 0.5em !important;
+  // padding-left: 0.8em !important;
+  // padding-right: 0.8em !important;
+  // padding-bottom: 1.5em !important;
   // border-right: 0.08em solid white;
   border-bottom: 0.08em ridge white;
   cursor: pointer;
@@ -330,9 +338,9 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  // padding: 0.5em 0.8em !important;
   // border-right: 0.08em solid white;
   // border-top: 0.08em solid white;
   cursor: pointer;
@@ -353,12 +361,12 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   margin: 1vh 1vw;
-  padding-top: 0.5em !important;
-  padding-left: 0.8em !important;
-  padding-right: 0.8em !important;
-  padding-bottom: 1.5em !important;
+  // padding-top: 0.5em !important;
+  // padding-left: 0.8em !important;
+  // padding-right: 0.8em !important;
+  // padding-bottom: 1.5em !important;
   // border-left: 0.08em solid white;
   border-bottom: 0.08em ridge white;
   cursor: pointer;
@@ -379,9 +387,9 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1em !important;
+  font-size: 1.5em !important;
   margin: 1vh 1vw;
-  padding: 0.5em 0.8em !important;
+  // padding: 0.5em 0.8em !important;
   // border-left: 0.08em solid white;
   // border-top: 0.08em solid white;
   cursor: pointer;

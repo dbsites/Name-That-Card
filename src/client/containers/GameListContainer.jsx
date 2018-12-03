@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Loader from 'react-loader-advanced';
 import GameType from '../components/GameType.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
@@ -13,6 +14,7 @@ const mapStateToProps = store => ({
   playClicked: store.gameListReducer.playClicked,
   selectedGame: store.gameListReducer.selectedGame,
   gameListLoadingContent: store.gameListReducer.gameListLoadingContent,
+  isLoggedIn: store.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -58,6 +60,7 @@ class GameListContainer extends Component {
       resetGameSelection,
       successPlay,
       gameListLoadingContent,
+      isLoggedIn,
     } = this.props;
 
     const games = gameList.map((gameObj, i) => {
@@ -71,6 +74,12 @@ class GameListContainer extends Component {
       resetGameSelection();
       const gameMenuRoute = `/gameMenu/${selectedGame}`;
       return <Redirect to={{ pathname: gameMenuRoute }} />;
+    }
+
+    let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+
+    if(isLoggedIn) {
+      loginPrompt = '';
     }
 
     const spinningCircles =
@@ -118,12 +127,15 @@ class GameListContainer extends Component {
     return (
       <Loader show={gameListLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="HomescreenContainer">
-          <h3 className="pick-a-deck">PICK A DECK</h3>
-          <div className="list">
+          <h3 className="pick-a-game">PICK A GAME</h3>
+          <div className="gameList">
             {games}
           </div>
           <div className="enterContainer">
             <div className="enterButtonStyle" onClick={() => successPlay(selectedGame)}>ENTER</div>
+          </div>
+          <div className="homeLoginPrompt--text--center">
+            {loginPrompt}
           </div>
         </div>
       </Loader>
