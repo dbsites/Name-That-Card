@@ -18,7 +18,7 @@
         "dev:hot-new": "NODE_ENV=development-hot nodemon ./server.js & NODE_ENV=development webpack-dev-server --config ./webpack/dev.config.js",
         "dev:hot": "NODE_ENV=development-hot nodemon ./server.js & NODE_ENV=development webpack-dev-server",
         "test": "echo \"-- add tests here NODE_ENV=test jest\"",
-        "test-coverage": "NODE_ENV=test jest --coverage",
+        "test-coverage": "echo \"-- add tests here NODE_ENV=test jest --coverage\"",
         "test-watch": "NODE_ENV=test jest --watch",
         "test-updateSnapshot": "NODE_ENV=development jest --updateSnapshot",
         "add-dep": "bash ./scripts/npm-docker/add-dep.sh",
