@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-advanced';
-import Leaderboard from '../components/Leaderboard';
+import Leaderboard from '../components/Leaderboard.jsx';
 import * as leaderboardActions from '../actions/leaderboardActions';
 
 const mapStateToProps = store => ({
