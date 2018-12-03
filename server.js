@@ -22,6 +22,9 @@ const db = require('./src/server/db/controllers/util/postgres.js');
 
 const app = express();
 
+require('dotenv').config();
+
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
@@ -111,21 +114,23 @@ app.post('/api/forgot', (req, res, next) => {
       const smtpTransport = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'codesmith.ntc@gmail.com',
-          pass: 'Codesmith24'
+          user: process.env.GMAIL_ADDRESS,
+          pass: process.env.GMAIL_PW,
         }
       });
       const mailOptions = {
         to: email_address,
-        from: 'codesmith.ntc@gmail.com',
+        from: process.env.GMAIL_ADDRESS,
         subject: 'Password Reset - Name th?t Card',
         text: 'You are recieving this email because you have requested to reset your password. Please click the following link, or copy and paste the link into your browser to complete the process.' + '\n\n' + 
         'http://' + req.headers.host + '/reset/' + token + '\n\n' +
         'If you did not request this, please ignore this email and your password will remain unchanged.'
       }
       smtpTransport.sendMail(mailOptions, (err) => {
-        console.log('mail sent')
-        res.send({emailSuccess: true, token: token, msg: 'Success, an e-mail has been sent to ' + email_address + ' with further instructions.'})
+        if(err) {
+          return res.send({emailSuccess: false, msg: 'Email failed to send to ' + email_address + '.'})
+        }
+        return res.send({emailSuccess: true, token: token, msg: 'Success, an e-mail has been sent to ' + email_address + ' with further instructions.'})
         done(err, 'done');
       });
     }
@@ -153,12 +158,15 @@ app.post('/api/reset/:token', (req, res, next) => {
                 }
                 db.none('UPDATE "game.dbo".users SET password=$1 WHERE "resetPasswordToken"=$2', [hashPass, req.params.token])
                   .then((err) => {
-                    console.log(err);
+                    if(err){
+                      return res.json({successfulReset: false, msg: err});
+                    }
+                    return res.json({successfulReset: true, msg: 'success'})
                   })
               });
             });
           } else {
-            console.log('token has expired')
+            return res.json({successfulReset: false, msg: 'This link to reset your password has expired'});
           }
         });
     }

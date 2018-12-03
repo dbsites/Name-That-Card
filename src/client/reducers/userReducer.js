@@ -21,6 +21,7 @@ const initialState = {
   firstNewPassword: '',
   secondNewPassword: '',
   newPasswordStatusMsg: '',
+  passwordReset: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -55,11 +56,9 @@ export default function (previousState = initialState, action) {
     }
     case types.FAILED_SIGNUP: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.signUpInputUsername = '';
-      stateCopy.signUpInputPassword = '';
-      stateCopy.signUpInputEmail = '';
-      stateCopy.loginInputEmail = '';
-      stateCopy.loginInputPassword = '';
+      // stateCopy.signUpInputUsername = '';
+      // stateCopy.signUpInputPassword = '';
+      // stateCopy.signUpInputEmail = '';
       stateCopy.signUpError = true;
       stateCopy.signUpErrorMsg = action.payload;
       stateCopy.passwordErrorMsg = '';
@@ -87,6 +86,7 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputEmail = '';
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
+      stateCopy.passwordReset = false;
       return stateCopy;
     }
     case types.FAILED_LOGIN: {
@@ -105,7 +105,6 @@ export default function (previousState = initialState, action) {
       stateCopy.loginInputPassword = '';
       stateCopy.loginError = false;
       stateCopy.loginErrorMsg = '';
- 
       return stateCopy;
     }
     case types.RESET_SIGNUP_INFO: {
@@ -170,7 +169,6 @@ export default function (previousState = initialState, action) {
     }
     case types.EMAIL_FAILED_TO_SEND: {
       stateCopy = Object.assign({}, previousState);
-      console.log('data in reducer ', action.payload)
       stateCopy.emailStatusMsg = action.payload.msg;
       stateCopy.emailSuccess = action.payload.emailSuccess;
       return stateCopy;
@@ -206,6 +204,18 @@ export default function (previousState = initialState, action) {
       stateCopy.firstNewPassword = '';
       stateCopy.secondNewPassword = '';
       stateCopy.newPasswordStatusMsg = '';
+      stateCopy.passwordReset = false;
+      return stateCopy;
+    }
+    case types.PASSWORD_SUCCESSFULLY_RESET: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.passwordReset = true;
+      return stateCopy;
+    }
+    case types.FAILED_PASSWORD_RESET: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.passwordReset = false;
+      stateCopy.newPasswordStatusMsg = action.payload;
       return stateCopy;
     }
     default:

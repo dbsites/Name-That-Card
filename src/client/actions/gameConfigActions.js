@@ -114,3 +114,7 @@ export const updateMinMaxYears = event => ({
   type: types.UPDATE_MIN_MAX_YEARS,
   payload: event,
 });
+
+export const resetRenderScoreFooter = () => ({
+  type: types.RESET_RENDER_SCORE_FOOTER,
+});

@@ -25,7 +25,7 @@ let gameDisclaimer;
 class Footer extends Component {
 
   render() {
-    const { score, questionNumber, renderScoreFooter, selectedGame } = this.props;
+    const { score, questionNumber, renderScoreFooter } = this.props;
     if (renderScoreFooter) {
       footerScore = <Score questionNumber={questionNumber} score={score} />;
       about = '';
@@ -33,7 +33,7 @@ class Footer extends Component {
       termsOfService = '';
       contact = '';
       disclaimer = '';
-      gameDisclaimer = <span className="gameDisclaimer">THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
+      gameDisclaimer = <span className="gameDisclaimer">Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
     } else if (window.location.pathname === '/admin') {
       footerScore = '';
       about = '';
@@ -47,7 +47,23 @@ class Footer extends Component {
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
       termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
       contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
-      disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
+      disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
+      footerScore = '';
+      gameDisclaimer =' ';
+    } else if (window.location.pathname.slice(0,6) === '/reset') {
+      about = '';
+      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
+      footerScore = '';
+      gameDisclaimer =' '; 
+    } else if (window.location.pathname === '/login' || window.location.pathname === '/signup') {
+      about = '';
+      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     } else {
@@ -55,16 +71,13 @@ class Footer extends Component {
       privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
       termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
       contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
-      disclaimer = <span>THE INFORMATION ON THIS SITE ABOUT __________________, BOTH LITERAL AND GRAPHICAL, IS COPYRIGHTED BY WIZARDS OF THE COAST. THIS WEBSITE IS NOT PRODUCED, ENDORSED, SUPPORTED, OR AFFILIATED WITH WIZARDS OF THE COAST.</span>;
+      disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     }
 
     return (
       <div className="footerContainer">
-        <div className="disclaimer">
-          {disclaimer}
-        </div>
         <div className="footer">
           {about}
           {privacyPolicy}
@@ -72,7 +85,9 @@ class Footer extends Component {
           {contact}
           {footerScore}
         </div>
-        <br/>
+        <div className="disclaimer">
+          {disclaimer}
+        </div>
         <div className="disclaimerFooter">
           {gameDisclaimer}
         </div>

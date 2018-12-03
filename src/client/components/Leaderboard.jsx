@@ -91,13 +91,13 @@ const Leaderboard = (props) => {
       </div>
       <div className="leaderboardPosition">
         <table className="leaderboard">
-          <tbody>
+          <tbody className="leaderboard-body">
             <tr>
               <th className="leaderboardHeaders">RANK</th>
               <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
-              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL POINTS</th>
+              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>
               <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>
-              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}> TOTAL GAMES PLAYED</th>
+              <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>
             </tr>
             {leaderboardEntries}
           </tbody>

@@ -220,10 +220,19 @@ export const setNewPasswordErrors = () => ({
   type: types.SET_NEW_PASSWORD_ERRORS,
 });
 
+export const passwordSuccessfullyReset = () => ({
+  type: types.PASSWORD_SUCCESSFULLY_RESET,
+});
+
+export const failedPasswordReset = (message) => ({
+  type: types.FAILED_PASSWORD_RESET,
+  payload: message,
+});
+
 export const resetPassword = (newPasswordObj) => {
-  console.log('sendResetPwEmail in actions', newPasswordObj);
   return (dispatch) => {
-    return fetch('/api' + newPasswordObj.user_token, {
+    console.log('fetching')
+    return fetch('/api/reset/' + newPasswordObj.user_token, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -232,20 +241,19 @@ export const resetPassword = (newPasswordObj) => {
       credentials: 'include',
     })
     .then((res) => {
+      console.log('here before')
       return res.json();
     })
     .then((data) => {
       console.log('reset pw data***** ', data)
-      if (data) {
-        console.log(('succeess ', data))
-      //   dispatch(emailSuccessfullySent(data));
-      // } else {
-      //   console.log(('here 2'))
-      //   dispatch(emailFailedToSend(data));
+      if (data.successfulReset) {
+        dispatch(passwordSuccessfullyReset());
+      } else {
+        dispatch(failedPasswordReset(data.msg));
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.log('error ', err);
     })
   };
 };

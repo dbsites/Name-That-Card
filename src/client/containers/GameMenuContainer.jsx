@@ -21,6 +21,7 @@ const mapStateToProps = store => ({
   minYear: store.gameMenuReducer.minYear,
   maxYear: store.gameMenuReducer.maxYear,
   menuLoadingContent: store.gameMenuReducer.menuLoadingContent,
+  isLoggedIn: store.userReducer.isLoggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -93,6 +94,7 @@ class GameMenuContainer extends Component {
       updateMinMaxYears,
       setYearsBool,
       menuLoadingContent,
+      isLoggedIn,
     } = this.props;
     
     setYearsBool();
@@ -153,6 +155,12 @@ class GameMenuContainer extends Component {
       slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
     }
 
+    let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+
+    if(isLoggedIn) {
+      loginPrompt = '';
+    }
+
     const spinningCircles =
       <div className="sk-circle">
         <div className="sk-circle1 sk-child"></div>
@@ -203,7 +211,7 @@ class GameMenuContainer extends Component {
               <NavLink to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
             </div>
           </div>
-          <h3 className="text--center">CHOOSE CATEGORIES</h3>
+          <h3 className="chooseCategories--text--center">CHOOSE CATEGORIES</h3>
           <div className="categoryContainer">
             <div className="list">
               {categories}
@@ -213,7 +221,7 @@ class GameMenuContainer extends Component {
           <div className="outerSliderContainer">
             {slider}
           </div>
-          <h3 className="text--center">CHOOSE DIFFICULTY</h3>
+          <h3 className="chooseDifficulty--text--center">CHOOSE DIFFICULTY</h3>
           <div className="difficultyBoxStyle">
             {easyBtn}
             {medBtn}
@@ -221,6 +229,9 @@ class GameMenuContainer extends Component {
           </div>
           <div className="center">
             <div className="startButtonStyle" onClick={() => startGame()}>START</div>
+          </div>
+          <div className="gameMenuLoginPrompt--text--center">
+            {loginPrompt}
           </div>
         </div>
       </Loader>
