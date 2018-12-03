@@ -17,18 +17,15 @@ class Forgot extends Component {
       <div className="HomescreenContainer">
         <div className="grid">
           <h1>Reset Password</h1>
+          <div>Enter Account Email Address</div>
           <form className="form login">
-            <div >Enter Account Email Address</div>
             <div className="form__field">
               <input id="login__email" type="email" name="email" className="form__input" value={forgotInputEmail} placeholder="Email" autoCorrect="off" onChange={updateForgotInputEmail} required />
             </div>
+            <div className="form__field">
+              <input type="button" onClick={() => sendResetPwEmail(forgotInfoObj)} value="Send Email" />
+            </div>
           </form>
-          {/* <div>
-            {errorMsg}
-          </div> */}
-          <div className="form__field">
-            <input type="button" onClick={() => sendResetPwEmail(forgotInfoObj)} value="Send Email" />
-          </div>
           <span>{emailStatusMsg}</span>
         </div>
       </div>

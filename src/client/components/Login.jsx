@@ -10,7 +10,7 @@ class Login extends Component {
   }
   
   render() {
-    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame } = this.props;
+    const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame, passwordReset } = this.props;
 
     const loginInfoObj = {
       email_address: loginInputEmail,
@@ -28,9 +28,11 @@ class Login extends Component {
 
     if (loginError) {
       errorMsg = <span>{loginErrorMsg}</span>; 
+    } else if (passwordReset) {
+      errorMsg = <span>Your password has been successfully reset. Please login with your new password.</span>;
     }
 
-    const forgotPassword = <span className=""><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
+    const forgotPassword = <span><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
 
     return (
       <div className="HomescreenContainer">
@@ -52,10 +54,9 @@ class Login extends Component {
               <input type="button" onClick={() => submitLogin(loginInfoObj)} value="Login" />
             </div>
           </form>
-          <div>
+          <div className="text--center">
             {errorMsg}
           </div>
-          <p className="text--center">Want to join the leaderboard? <a href="#">Sign up now</a></p>
         </div>
       </div>
     );
