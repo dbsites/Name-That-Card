@@ -85,7 +85,6 @@ class Footer extends Component {
           {contact}
           {footerScore}
         </div>
-        <br/>
         <div className="disclaimer">
           {disclaimer}
         </div>
