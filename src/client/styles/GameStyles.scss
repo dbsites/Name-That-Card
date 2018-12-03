@@ -269,10 +269,12 @@
 .cardReveal {
   height: 40vh;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-content: center;
   align-items: center;
   position: absolute;
+  box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
 }
 
 .answersBox {
