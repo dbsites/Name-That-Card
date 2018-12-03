@@ -2,7 +2,7 @@
 # docker-compose -f docker-comp-test.yml up
 
 # This will start namethatcard-dependencies & postgres db container with it's associated data volumes container
-# and run 'npm run test'
+# and run 'npm run test-coverage'
 
 version: "3"
 services:
