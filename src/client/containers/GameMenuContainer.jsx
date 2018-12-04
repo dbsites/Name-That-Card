@@ -211,7 +211,7 @@ class GameMenuContainer extends Component {
               <NavLink to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
             </div>
           </div>
-          <h3 className="text--center">CHOOSE CATEGORIES</h3>
+          <h3 className="chooseCategories--text--center">CHOOSE CATEGORIES</h3>
           <div className="categoryContainer">
             <div className="list">
               {categories}
@@ -221,7 +221,7 @@ class GameMenuContainer extends Component {
           <div className="outerSliderContainer">
             {slider}
           </div>
-          <h3 className="text--center">CHOOSE DIFFICULTY</h3>
+          <h3 className="chooseDifficulty--text--center">CHOOSE DIFFICULTY</h3>
           <div className="difficultyBoxStyle">
             {easyBtn}
             {medBtn}
@@ -230,7 +230,7 @@ class GameMenuContainer extends Component {
           <div className="center">
             <div className="startButtonStyle" onClick={() => startGame()}>START</div>
           </div>
-          <div className="text--center">
+          <div className="gameMenuLoginPrompt--text--center">
             {loginPrompt}
           </div>
         </div>

@@ -239,7 +239,7 @@ app.get('/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
 app.post('/api/loadGame', playController.loadGame);
-app.post('/api/leaderboard', playController.leaderBoard);
+app.post('/api/leaderboard', playController.leaderboard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
 
 app.listen(3000, () => console.log('Server is listening on 3000'));

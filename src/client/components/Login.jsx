@@ -35,7 +35,7 @@ class Login extends Component {
     const forgotPassword = <span><NavLink to="/forgot-pw">Forgot Password?</NavLink></span>;
 
     return (
-      <div className="HomescreenContainer">
+      <div className="UserContainer">
         <div className="grid">
           <h1>Login</h1>
           <form className="form login">

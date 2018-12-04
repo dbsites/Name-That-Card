@@ -2,7 +2,8 @@ const path = require('path');
 const AWS = require('aws-sdk');
 const fs = require('fs');
 
-AWS.config.loadFromPath(path.join(__dirname, './config.json'));
+//AWS.config.loadFromPath(path.join(__dirname, './config.json'));
+
 // Set the region
 AWS.config.update({
   region: 'REGION',
