@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-//import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from '../reducers/combineReducers';
 
 function saveToLocalStorage(state) {
@@ -29,8 +29,8 @@ const persistedState = loadFromLocalStorage();
 const store = createStore(
   reducers,
   persistedState,
- // composeWithDevTools(applyMiddleware(thunk)),
- applyMiddleware(thunk),
+  composeWithDevTools(applyMiddleware(thunk)),
+//  applyMiddleware(thunk),
 );
 
 store.subscribe(() => saveToLocalStorage(store.getState()));

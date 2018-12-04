@@ -1,9 +1,13 @@
 import React from 'react';
 
 const MediumRule = (props) => {
-  const { category } = props;
+  const { category, removeRuleFromCategory } = props;
+  const infoObj = {
+    category: category,
+    difficulty: 'medium'
+  }
   return (
-    <li onclick={() => removeMediumCategory(category)}>{category}</li>
+    <li className="adminRule" onClick={() => removeRuleFromCategory(infoObj)}>{category}</li>
   );
 };
 

@@ -1,11 +1,20 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  adminIsLoggedIn: false,
+  adminIsLoggedIn: true,
   adminUsername: '',
   adminPassword: '',
+  newMediumRule: '',
+  newHardRule: '',
   mediumRules: [],
   hardRules: [],
+  primaryFont: '',
+  secondaryFont: '',
+  gameIcon: '',
+  gameSkin: '',
+  gameName: '',
+  csvData: '',
+  gameSaveStatusMsg: '',
 };
 
 export default function (previousState = initialState, action) {
@@ -41,6 +50,16 @@ export default function (previousState = initialState, action) {
       stateCopy.newMediumRule = action.payload.target.value;
       return stateCopy;
     }
+    case types.UPDATE_PRIMARY_FONT: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.primaryFont = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.UPDATE_SECONDARY_FONT: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.secondaryFont = action.payload.target.value;
+      return stateCopy;
+    }
     case types.UPDATE_NEW_HARD_RULE: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.newHardRule = action.payload.target.value;
@@ -49,19 +68,22 @@ export default function (previousState = initialState, action) {
     case types.ADD_MEDIUM_RULE_CATEGORY: {
       stateCopy = Object.assign({}, previousState);
       const newMediumRules = stateCopy.mediumRules.slice();
-      newMediumRules.push(action.payload);
+      newMediumRules.push(stateCopy.newMediumRule);
       stateCopy.mediumRules = newMediumRules;
+      stateCopy.newMediumRule = '';
       return stateCopy;
     }
     case types.ADD_HARD_RULE_CATEGORY: {
       stateCopy = Object.assign({}, previousState);
       const newHardRules = stateCopy.hardRules.slice();
-      newHardRules.push(action.payload);
+      newHardRules.push(stateCopy.newHardRule);
       stateCopy.hardRules = newHardRules;
+      stateCopy.newHardRule = '';
       return stateCopy;
     }
     case types.REMOVE_MEDIUM_RULE_CATEGORY: {
       stateCopy = Object.assign({}, previousState);
+      console.log('rule in reducer ', action.payload)
       const newMediumRules = stateCopy.mediumRules.slice();
       newMediumRules.splice(newMediumRules.indexOf(action.payload), 1);
       stateCopy.mediumRules = newMediumRules;
@@ -77,6 +99,77 @@ export default function (previousState = initialState, action) {
     case types.SUBMIT_ADMIN_LOGIN: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.adminIsLoggedIn = true;
+      return stateCopy;
+    }
+    case types.REMOVE_RULE_FROM_CATEGORY: {
+      stateCopy = Object.assign({}, previousState);
+      console.log('reducer ran ', action.payload.rule)
+      if (action.payload.difficulty === 'medium') {
+        const newRules = stateCopy.mediumRules.slice();
+        newRules.splice(newRules.indexOf(action.payload.category), 1);
+        stateCopy.mediumRules = newRules;
+      } else if (action.payload.difficulty === 'hard') {
+        const newRules = stateCopy.hardRules.slice();
+        newRules.splice(newRules.indexOf(action.payload.category), 1);
+        stateCopy.hardRules = newRules;
+      }
+      return stateCopy;
+    }
+    case types.HANDLE_ICON_UPLOAD: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.gameIcon = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.HANDLE_SKIN_UPLOAD: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.gameSkin = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.UPDATE_GAME_NAME: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.gameName = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.HANDLE_CSV_UPLOAD: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.csvData = action.payload.target.value;
+      return stateCopy;
+    }
+    case types.SUCCESSFUL_GAME_SAVE: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.adminIsLoggedIn = true;
+      stateCopyadminUsername = '';
+      stateCopy.adminPassword = '';
+      stateCopy.newMediumRule = '';
+      stateCopy.newHardRule = '';
+      stateCopy.mediumRules = [];
+      stateCopy.hardRules = [];
+      stateCopy.primaryFont = '';
+      stateCopy.secondaryFont = '';
+      stateCopy.gameIcon = '';
+      stateCopy.gameSkin = '';
+      stateCopygameName = '';
+      stateCopy.csvData = '';
+      stateCopy.gameSaveStatusMsg = 'The new game info was successfully saved to the database'
+      return stateCopy;
+    }
+    case types.RESET_ADMIN_FORM: {
+      stateCopy = Object.assign({}, previousState);
+      console.log('in reducer')
+      stateCopy.adminIsLoggedIn = true;
+      stateCopyadminUsername = '';
+      stateCopy.adminPassword = '';
+      stateCopy.newMediumRule = '';
+      stateCopy.newHardRule = '';
+      stateCopy.mediumRules = [];
+      stateCopy.hardRules = [];
+      stateCopy.primaryFont = '';
+      stateCopy.secondaryFont = '';
+      stateCopy.gameIcon = '';
+      stateCopy.gameSkin = '';
+      stateCopygameName = '';
+      stateCopy.csvData = '';
+      stateCopy.gameSaveStatusMsg = '';
       return stateCopy;
     }
     default:
