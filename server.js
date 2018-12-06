@@ -34,6 +34,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// server static files from dist directory
+app.use(express.static(path.resolve(__dirname, './dist')));
+
 // eslint-disable-next-line max-len
 /* ============================================ User ============================================== */
 
