@@ -21,11 +21,10 @@ function loadFromLocalStorage() {
     console.log(e)
     return undefined
   }
-
 }
 
 const persistedState = loadFromLocalStorage();
-
+ 
 const store = createStore(
   reducers,
   persistedState,
