@@ -30,12 +30,16 @@
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
   border-radius: 0.5em;
   background-color: black;
   color: white;
   text-shadow: 0 0 1em white;
   user-select: none;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .allButtonStyle {
@@ -275,10 +279,12 @@
 .cardReveal {
   height: 40vh;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-content: center;
   align-items: center;
   position: absolute;
+  box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
 }
 
 .answersBox {
@@ -676,10 +682,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -695,10 +701,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -714,10 +720,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -737,10 +743,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -757,10 +763,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -788,10 +794,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1.25vh 2.5vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;

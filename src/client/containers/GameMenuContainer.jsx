@@ -192,7 +192,7 @@ class GameMenuContainer extends Component {
       alignItems: 'center',
       fontSize: '2em',
       color: 'white',
-    }
+    };
 
     const backgroundStyle = {
       display: 'block',
@@ -201,7 +201,7 @@ class GameMenuContainer extends Component {
       backgroundColor: 'black',
       opacity: 1,
       height: '100vh',
-    }
+    };
 
     return (
       <Loader show={menuLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>

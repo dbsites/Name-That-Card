@@ -1,5 +1,5 @@
-const db = require('../util/postgres');
 const uuidv4 = require('uuid/v4');
+const db = require('../util/postgres');
 
 module.exports = {
 
@@ -38,7 +38,7 @@ module.exports = {
     } else {
       console.log('There is no cookie for user')
       //res.locals.data.id = null
-      res.locals.data.loginSuccess = false
+      res.locals.data.loginSuccess = false;
       res.send(res.locals.data);
       return;
     }
