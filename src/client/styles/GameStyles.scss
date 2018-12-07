@@ -30,12 +30,16 @@
   border: 0.08em solid white;
   cursor: pointer;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
   border-radius: 0.5em;
   background-color: black;
   color: white;
   text-shadow: 0 0 1em white;
   user-select: none;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .allButtonStyle {
@@ -678,10 +682,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -697,10 +701,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -716,10 +720,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -739,10 +743,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -759,10 +763,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1vh 1vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
@@ -790,10 +794,10 @@
     display: flex;
     width: 33vw;
     line-height: 1.8em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
     margin: 1.25vh 2.5vw;
-    padding: 0.5em 0.8em !important;
+    padding: 0em 0em !important;
     border: 0.08em solid white;
     cursor: pointer;
     flex-direction: row;
