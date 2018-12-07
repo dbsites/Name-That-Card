@@ -1109,8 +1109,16 @@ p {
   }
 }
 
-.adminInput {
+.admin_input {
   color: black;
+}
+
+.adminRule:hover {
+  cursor: pointer;
+}
+
+.adminRule {
+  list-style-type: none;
 }
 
 @media screen and (min-width: 1600px) {

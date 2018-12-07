@@ -7,7 +7,6 @@ import GameType from '../components/GameType.jsx';
 import * as gameConfigActions from '../actions/gameConfigActions';
 import * as leaderboardActions from '../actions/leaderboardActions';
 
-
 const mapStateToProps = store => ({
   gameList: store.gameListReducer.gameList,
   ableToProceed: store.gameListReducer.ableToProceed,

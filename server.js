@@ -34,6 +34,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// server static files from dist directory
+app.use(express.static(path.resolve(__dirname, './dist')));
+
 // eslint-disable-next-line max-len
 /* ============================================ User ============================================== */
 
@@ -210,7 +213,12 @@ app.delete('/admin/logout',
 );
 
 /* ============================================ Backend CMS ============================================== */
-app.post('/admin/submitForm');
+app.post('/admin/submitForm', 
+  
+  csv.placeHolder,
+  csv.writeToCardsTable,
+
+);
 
 app.post('/admin/signup',
   adminController.checkEmailExists,
@@ -222,13 +230,6 @@ app.post('/admin/signup',
     signupSuccess: true,
     loginSuccess: true,
   }));
-
-app.put('/admin/upload',
-  s3.uploadToS3,
-  csv.writeToCardsTable);
-
-app.post('/admin/s3Upload',
-  s3.uploadToS3);
 
 
 // eslint-disable-next-line max-len

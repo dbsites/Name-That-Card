@@ -150,9 +150,9 @@ class GameMenuContainer extends Component {
       hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     }
 
-    let slider = '';
+    let slider;
     if (years) {
-      slider = <RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} />;
+      slider = <div className="outerSliderContainer"><RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} /></div>;
     }
 
     let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
@@ -218,9 +218,7 @@ class GameMenuContainer extends Component {
               {allBtn}
             </div>
           </div>
-          <div className="outerSliderContainer">
-            {slider}
-          </div>
+          {slider}
           <h3 className="chooseDifficulty--text--center">CHOOSE DIFFICULTY</h3>
           <div className="difficultyBoxStyle">
             {easyBtn}
