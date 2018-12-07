@@ -7,10 +7,6 @@ const mapStateToProps = store => ({
   ableToNext: store.gameReducer.ableToNext,
 });
 
-const mapDispatchToProps = dispatch => ({
-
-});
-
 class Card extends Component {
   render() {
     console.log('card rendered')
@@ -91,4 +87,4 @@ class Card extends Component {
   };
 }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, null)(Card);

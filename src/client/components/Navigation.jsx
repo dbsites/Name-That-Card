@@ -55,7 +55,7 @@ const Navigation = (props) => {
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
     xBtn = <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>;
-    if(questionNumber === 20) {
+    if (questionNumber === 20) {
       xBtn = <div className="xButton"><NavLink to='/'>x</NavLink></div>;
     }
   } else if (window.location.pathname === '/login') {
