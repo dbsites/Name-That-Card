@@ -238,7 +238,7 @@ app.post('/admin/signup',
 
 app.get('/api/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
-app.post('/saveScore', playController.saveScore);
+app.post('/api/saveScore', playController.saveScore);
 app.post('/api/loadGame', playController.loadGame);
 app.post('/api/leaderboard', playController.leaderboard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));
