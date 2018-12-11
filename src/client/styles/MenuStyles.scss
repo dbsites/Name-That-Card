@@ -533,8 +533,19 @@ p {
   justify-content: space-evenly;
   cursor: pointer;
   margin: 0vh 2vw;
+  // border-bottom: 0.08em solid white;
+  text-shadow: 0 0 1em white;
+}
+
+.activeLeaderboardFilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  cursor: pointer;
+  margin: 0vh 2vw;
   border-bottom: 0.08em solid white;
   text-shadow: 0 0 1em white;
+  font-weight: 900;
 }
 
 .center-leaderboardFilter {
