@@ -140,10 +140,6 @@ class Leaderboard extends Component {
                 {totalPts}
                 {avg}
                 {totalGames}
-                {/* <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
-                <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>
-                <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>
-                <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th> */}
               </tr>
               {leaderboardEntries}
             </tbody>
