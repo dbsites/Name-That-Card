@@ -115,7 +115,7 @@ class GameMenuContainer extends Component {
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
-        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
+        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{removeUnderscore(category).toUpperCase()}</div>);
       } else {
         categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{removeUnderscore(category).toUpperCase()}</div>);
       }
