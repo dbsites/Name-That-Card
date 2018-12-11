@@ -85,11 +85,13 @@ class Leaderboard extends Component {
     const leaderboardEntries = difficultyFilteredResults.map((resultObj, i) => {
       return <LeaderboardEntry numEntries={difficultyFilteredResults.length} key={i} entryContents={resultObj} rank={i} sortDirection={sortDirection}/>;
     })
+
     let all = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>;
     let easy = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>;
     let medium = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>;
     let hard = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>;
     
+    // set dynamic leaderboard difficulty header styles
     if(leaderboardDifficulty === 'ALL') {
       all = <span className="activeLeaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>;
     } else if (leaderboardDifficulty === 'EASY') {
@@ -100,6 +102,21 @@ class Leaderboard extends Component {
       hard = <span className="activeLeaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>;
     }
 
+    let player = <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
+    let totalPts = <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>
+    let avg = <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>
+    let totalGames = <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>
+    
+    // set dynamic leaderboard category header styles
+    if(sortCategory === 'user') {
+      player = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
+    } else if (sortCategory === 'sum') {
+      totalPts = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>
+    } else if (sortCategory === 'avg') {
+      avg = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>
+    } else if (sortCategory === 'gamecount') {
+      totalGames = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>
+    }
     return (
       <div className="LeaderboardContainer">
         <h1 className="leaderboardTitle">LEADERBOARD</h1>
@@ -112,10 +129,6 @@ class Leaderboard extends Component {
             {easy}
             {medium}
             {hard}
-            {/* <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>
-            <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>
-            <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>
-            <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span> */}
           </div>
         </div>
         <div className="leaderboardPosition">
@@ -123,10 +136,14 @@ class Leaderboard extends Component {
             <tbody className="leaderboard-body">
               <tr>
                 <th className="leaderboardHeaders">RANK</th>
-                <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
+                {player}
+                {totalPts}
+                {avg}
+                {totalGames}
+                {/* <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>
                 <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>
                 <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>
-                <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>
+                <th className="leaderboardHeaders" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th> */}
               </tr>
               {leaderboardEntries}
             </tbody>
