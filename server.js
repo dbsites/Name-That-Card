@@ -47,7 +47,7 @@ authController.getUserInfo,
   res.status(200).send(res.locals.data);
 });
 
-app.post('/signup',
+app.post('/api/signup',
 authController.checkEmailExists,
 authController.checkUsernameExists,
 authController.createUser,
@@ -70,7 +70,7 @@ cookieController.setSSIDCookie,
   });
 });
 
-app.delete('/logout',
+app.delete('/api/logout',
 cookieController.deleteSSIDCookie,
 sessionController.deleteSession,
 (req, res) => {
@@ -236,9 +236,9 @@ app.post('/admin/signup',
 /* ============================================ Game ============================================== */
 // requ  est object with game name and level of difficulty
 
-app.get('/gameList', gameController.gameList);
+app.get('/api/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
-app.post('/saveScore', playController.saveScore);
+app.post('/api/saveScore', playController.saveScore);
 app.post('/api/loadGame', playController.loadGame);
 app.post('/api/leaderboard', playController.leaderboard);
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')));

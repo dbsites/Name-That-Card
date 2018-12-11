@@ -26,7 +26,7 @@ export const failedSignUp = message => ({
 
 export const submitSignUp = (signUpInfoObj) => {
   return (dispatch) => {
-    return fetch('/signup', {
+    return fetch('/api/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -140,7 +140,7 @@ export const logoutUser = () => ({
 
 export const logout = () => {
   return (dispatch) => {
-    return fetch('/logout', {
+    return fetch('/api/logout', {
       method: 'DELETE',
     })
       .then((res) => {

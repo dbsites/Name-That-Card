@@ -34,6 +34,14 @@ export default function (previousState = initialState, action) {
       stateCopy.leaderboardLoadingContent = true;
       return stateCopy;
     }
+    case types.RESET_LEADERBOARD_CONFIG: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.leaderboardDifficulty = 'ALL';
+      stateCopy.sortCategory = 'sum';
+      stateCopy.sortDirection = true;
+      return stateCopy;
+    }
+    
     default:
       return previousState;
   }
