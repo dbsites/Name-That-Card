@@ -22,6 +22,7 @@ const mapStateToProps = store => ({
   maxYear: store.gameMenuReducer.maxYear,
   menuLoadingContent: store.gameMenuReducer.menuLoadingContent,
   isLoggedIn: store.userReducer.isLoggedIn,
+  loggedInUser: store.userReducer.loggedInUser,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -95,6 +96,7 @@ class GameMenuContainer extends Component {
       setYearsBool,
       menuLoadingContent,
       isLoggedIn,
+      loggedInUser,
     } = this.props;
     
     setYearsBool();
@@ -158,7 +160,7 @@ class GameMenuContainer extends Component {
     let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
     if(isLoggedIn) {
-      loginPrompt = '';
+      loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
     }
 
     const spinningCircles =

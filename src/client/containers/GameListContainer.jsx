@@ -14,6 +14,7 @@ const mapStateToProps = store => ({
   selectedGame: store.gameListReducer.selectedGame,
   gameListLoadingContent: store.gameListReducer.gameListLoadingContent,
   isLoggedIn: store.userReducer.isLoggedIn,
+  loggedInUser: store.userReducer.loggedInUser,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -60,6 +61,7 @@ class GameListContainer extends Component {
       successPlay,
       gameListLoadingContent,
       isLoggedIn,
+      loggedInUser,
     } = this.props;
 
     const games = gameList.map((gameObj, i) => {
@@ -78,7 +80,7 @@ class GameListContainer extends Component {
     let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
     if(isLoggedIn) {
-      loginPrompt = '';
+      loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
     }
 
     const spinningCircles =
