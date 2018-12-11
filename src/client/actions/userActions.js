@@ -140,7 +140,7 @@ export const logoutUser = () => ({
 
 export const logout = () => {
   return (dispatch) => {
-    return fetch('/logout', {
+    return fetch('/api/logout', {
       method: 'DELETE',
     })
       .then((res) => {

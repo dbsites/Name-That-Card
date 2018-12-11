@@ -70,7 +70,7 @@ cookieController.setSSIDCookie,
   });
 });
 
-app.delete('/logout',
+app.delete('/api/logout',
 cookieController.deleteSSIDCookie,
 sessionController.deleteSession,
 (req, res) => {
