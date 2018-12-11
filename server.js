@@ -236,7 +236,7 @@ app.post('/admin/signup',
 /* ============================================ Game ============================================== */
 // requ  est object with game name and level of difficulty
 
-app.get('/gameList', gameController.gameList);
+app.get('/api/gameList', gameController.gameList);
 app.get('/api/gameMenu/:game', gameController.gameMenu);
 app.post('/saveScore', playController.saveScore);
 app.post('/api/loadGame', playController.loadGame);

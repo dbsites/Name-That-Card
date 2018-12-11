@@ -7,7 +7,7 @@ export const displayGameList = data => ({
 
 export const getGameList = () => {
   return (dispatch) => {
-    return fetch('/gameList')
+    return fetch('/api/gameList')
       .then((res) => {
         return res.json();
       })
