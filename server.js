@@ -47,7 +47,7 @@ authController.getUserInfo,
   res.status(200).send(res.locals.data);
 });
 
-app.post('/signup',
+app.post('/api/signup',
 authController.checkEmailExists,
 authController.checkUsernameExists,
 authController.createUser,
