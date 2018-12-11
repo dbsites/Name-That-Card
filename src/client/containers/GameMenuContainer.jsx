@@ -157,7 +157,7 @@ class GameMenuContainer extends Component {
       slider = <div className="outerSliderContainer"><RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} /></div>;
     }
 
-    let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+    let loginPrompt = <span><NavLink className="loginPrompt" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
     if(isLoggedIn) {
       loginPrompt = <span>Welcome, {loggedInUser}!</span>;;

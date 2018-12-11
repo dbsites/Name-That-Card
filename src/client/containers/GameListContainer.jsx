@@ -77,7 +77,7 @@ class GameListContainer extends Component {
       return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
-    let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+    let loginPrompt = <span><NavLink className="loginPrompt" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
     if(isLoggedIn) {
       loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
