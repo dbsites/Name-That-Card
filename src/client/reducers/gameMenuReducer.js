@@ -139,6 +139,7 @@ export default function (previousState = initialState, action) {
     case types.RESET_RENDER_SCORE_FOOTER: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.renderScoreFooter = false;
+      console.log('score footer bool ', stateCopy.renderScoreFooter);
       return stateCopy;
     }
     default:
