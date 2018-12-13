@@ -22,6 +22,7 @@ const mapStateToProps = store => ({
   maxYear: store.gameMenuReducer.maxYear,
   menuLoadingContent: store.gameMenuReducer.menuLoadingContent,
   isLoggedIn: store.userReducer.isLoggedIn,
+  loggedInUser: store.userReducer.loggedInUser,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -95,6 +96,7 @@ class GameMenuContainer extends Component {
       setYearsBool,
       menuLoadingContent,
       isLoggedIn,
+      loggedInUser,
     } = this.props;
     
     setYearsBool();
@@ -113,7 +115,7 @@ class GameMenuContainer extends Component {
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
-        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{category.toUpperCase()}</div>);
+        categories.push(<div className="listButtonStyle activated" onClick={() => toggleGameCategory(category)} key={ind}>{removeUnderscore(category).toUpperCase()}</div>);
       } else {
         categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{removeUnderscore(category).toUpperCase()}</div>);
       }
@@ -155,10 +157,10 @@ class GameMenuContainer extends Component {
       slider = <div className="outerSliderContainer"><RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} /></div>;
     }
 
-    let loginPrompt = <span><NavLink to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+    let loginPrompt = <span><NavLink className="loginPrompt" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
     if(isLoggedIn) {
-      loginPrompt = '';
+      loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
     }
 
     const spinningCircles =
@@ -218,7 +220,9 @@ class GameMenuContainer extends Component {
               {allBtn}
             </div>
           </div>
-          {slider}
+          <div>
+            {slider}
+          </div>
           <h3 className="chooseDifficulty--text--center">CHOOSE DIFFICULTY</h3>
           <div className="difficultyBoxStyle">
             {easyBtn}

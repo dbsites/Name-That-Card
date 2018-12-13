@@ -25,6 +25,10 @@ export const resetLeaderboardLoadingContent = () => ({
   type: types.RESET_LEADERBOARD_LOADING_CONTENT,
 });
 
+export const resetLeaderboardConfig = () => ({
+  type: types.RESET_LEADERBOARD_CONFIG,
+});
+
 export const getGameHistory = (obj) => {
   return (dispatch) => {
     return fetch('/api/leaderboard', {

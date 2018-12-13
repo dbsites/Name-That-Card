@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  adminIsLoggedIn: true,
+  adminIsLoggedIn: false,
   adminUsername: '',
   adminPassword: '',
   newMediumRule: '',
@@ -115,12 +115,12 @@ export default function (previousState = initialState, action) {
       }
       return stateCopy;
     }
-    case types.HANDLE_ICON_UPLOAD: {
+    case types.UPDATE_ICON_NAME: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.gameIcon = action.payload.target.value;
       return stateCopy;
     }
-    case types.HANDLE_SKIN_UPLOAD: {
+    case types.UPDATE_SKIN_NAME: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.gameSkin = action.payload.target.value;
       return stateCopy;
@@ -132,6 +132,8 @@ export default function (previousState = initialState, action) {
     }
     case types.HANDLE_CSV_UPLOAD: {
       stateCopy = Object.assign({}, previousState);
+      // const reader = new FileReader();
+      console.log(action.payload.target.value)
       stateCopy.csvData = action.payload.target.value;
       return stateCopy;
     }

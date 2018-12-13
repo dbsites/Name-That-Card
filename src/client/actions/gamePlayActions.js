@@ -19,7 +19,7 @@ export const resetGame = () => ({
 
 export const sendResult = (gameResultInfo) => {
   return () => {
-    return fetch('/saveScore', {
+    return fetch('/api/saveScore', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',

@@ -45,12 +45,6 @@ const mapDispatchToProps = dispatch => ({
   removeRuleFromCategory: (info) => {
     dispatch(adminActions.removeRuleFromCategory(info));
   },
-  handleIconUpload: (event) => {
-    dispatch(adminActions.handleIconUpload(event));
-  },
-  handleSkinUpload: (event) => {
-    dispatch(adminActions.handleSkinUpload(event));
-  },
   updatePrimaryFont: (event) => {
     dispatch(adminActions.updatePrimaryFont(event));
   },
@@ -69,15 +63,21 @@ const mapDispatchToProps = dispatch => ({
   resetAdminForm: () => {
     dispatch(adminActions.resetAdminForm());
   },
+  updateIconName: (event) => {
+    dispatch(adminActions.updateIconName(event));
+  },
+  updateSkinName: (event) => {
+    dispatch(adminActions.updateSkinName(event));
+  },
 });
 
 const AdminContainer = (props) => {
-  const { csvData, resetAdminForm,gameSaveStatusMsg, submitAdminForm, handleCsvUpload, gameIcon, gameSkin, removeRuleFromCategory, adminUsername, primaryFont, secondaryFont, updateAdminLoginUsername, updateAdminLoginPassword, adminIsLoggedIn, submitAdminLogin, mediumRules, hardRules, addMediumRuleCategory, addHardRuleCategory, newMediumRule, newHardRule, updateNewMediumRule, updateNewHardRule,handleSkinUpload, handleIconUpload, updatePrimaryFont, updateSecondaryFont, updateGameName, gameName } = props;
+  const { updateIconName, csvData, resetAdminForm,gameSaveStatusMsg, submitAdminForm, handleCsvUpload, gameIcon, gameSkin, removeRuleFromCategory, adminUsername, primaryFont, secondaryFont, updateAdminLoginUsername, updateAdminLoginPassword, adminIsLoggedIn, submitAdminLogin, mediumRules, hardRules, addMediumRuleCategory, addHardRuleCategory, newMediumRule, newHardRule, updateNewMediumRule, updateNewHardRule,updateSkinName, updatePrimaryFont, updateSecondaryFont, updateGameName, gameName } = props;
 
   let renderItem = <AdminLogin submitAdminLogin={submitAdminLogin} updateAdminLoginUsername={updateAdminLoginUsername} updateAdminLoginPassword={updateAdminLoginPassword} />;
 
   if (adminIsLoggedIn) {
-    renderItem = <AdminForm resetAdminForm={resetAdminForm} gameSaveStatusMsg={gameSaveStatusMsg} csvData={csvData} submitAdminForm={submitAdminForm} handleCsvUpload={handleCsvUpload} gameName={gameName} updateGameName={updateGameName} updatePrimaryFont={updatePrimaryFont} updateSecondaryFont={updateSecondaryFont} handleSkinUpload={handleSkinUpload} handleIconUpload={handleIconUpload} gameSkin={gameSkin} gameIcon={gameIcon} newHardRule={newHardRule} newMediumRule={newHardRule} removeRuleFromCategory={removeRuleFromCategory} primaryFont={primaryFont} secondaryFont={secondaryFont} newMediumRule={newMediumRule} newHardRule={newHardRule} mediumRules={mediumRules} hardRules={hardRules} addHardRuleCategory={addHardRuleCategory} addMediumRuleCategory={addMediumRuleCategory} updateNewMediumRule={updateNewMediumRule} updateNewHardRule={updateNewHardRule} />;
+    renderItem = <AdminForm updateIconName={updateIconName} resetAdminForm={resetAdminForm} gameSaveStatusMsg={gameSaveStatusMsg} csvData={csvData} submitAdminForm={submitAdminForm} handleCsvUpload={handleCsvUpload} gameName={gameName} updateGameName={updateGameName} updatePrimaryFont={updatePrimaryFont} updateSecondaryFont={updateSecondaryFont} updateSkinName={updateSkinName} gameSkin={gameSkin} gameIcon={gameIcon} newHardRule={newHardRule} newMediumRule={newHardRule} removeRuleFromCategory={removeRuleFromCategory} primaryFont={primaryFont} secondaryFont={secondaryFont} newMediumRule={newMediumRule} newHardRule={newHardRule} mediumRules={mediumRules} hardRules={hardRules} addHardRuleCategory={addHardRuleCategory} addMediumRuleCategory={addMediumRuleCategory} updateNewMediumRule={updateNewMediumRule} updateNewHardRule={updateNewHardRule} />;
   }
 
   return (

@@ -21,7 +21,17 @@ const About = (props) => {
     } else if (selectedGame === 'SPORTS') {
       content = (<div className="footerLinks">
         <h1 className="text--left">ABOUT</h1>
-        <h2 className="h2-margins">What is Name That Card: Sports Edition?</h2>
+          <h2 className="h2-margins">What is Name That Card: Sports Edition?</h2>
+
+          <p className="p-margins">Name That Card: Sports Edition allows you to test your knowledge of sports trading cards throughout the years. Upon starting, you will be presented with a card. An identifying portion of the card has been hidden. Select from one of the 4 card names below the card, and see if you can correctly identify that card. You are presented with 20 cards in total.</p>
+
+          <h2 className="h2-margins">What is the difference between EASY, MEDIUM and HARD?</h2>
+
+          <p className="p-margins">Some of us are more well-versed in the thousands of available sports cards than others. To test your skills, you can select between easy, medium and hard. On the EASY setting, all four card options are presented randomly. They may be from any sport and any year. On the MEDIUM setting, all four card options come from the same league and team. On the HARD setting, all four card options come from the same league, team and +/- 3 year time span.</p>
+
+          <h2 className="h2-margins">Who do I contact if I have questions, concerns, comments, or have spotted an error?</h2>
+
+          <p className="p-margins">We welcome your feedback! Please reach out to us at info@namethatcard.com</p>
         </div>)
     }
 
