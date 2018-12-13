@@ -6,6 +6,7 @@ const initialState = {
   ableToProceed: false,
   playClicked: false,
   gameListLoadingContent: true,
+  footerBool: false,
 };
 
 export default function (previousState = initialState, action) {
@@ -40,7 +41,11 @@ export default function (previousState = initialState, action) {
       stateCopy.gameListLoadingContent = true;
       return stateCopy;
     }
-
+    case types.RESET_FOOTER_BOOL: {
+      stateCopy = Object.assign({}, previousState);
+      stateCopy.footerBool = !stateCopy.footerBool;
+      return stateCopy;
+    }
     default:
       return previousState;
   }

@@ -10,7 +10,7 @@ class AdminForm extends Component {
   }
   
   render() {
-    const { gameSaveStatusMsg, csvData, gameSkin, gameIcon, removeRuleFromCategory, secondaryFont, primaryFont, handleIconUpload, addMediumRuleCategory, addHardRuleCategory, mediumRules, hardRules, newHardRule, newMediumRule, updateNewMediumRule, updateNewHardRule, handleSkinUpload, updateSecondaryFont, updatePrimaryFont, updateGameName, gameName, handleCsvUpload, submitAdminForm } = this.props;
+    const { gameSaveStatusMsg, csvData, gameSkin, gameIcon, removeRuleFromCategory, secondaryFont, primaryFont, addMediumRuleCategory, addHardRuleCategory, mediumRules, hardRules, newHardRule, newMediumRule, updateNewMediumRule, updateNewHardRule, updateSkinName, updateSecondaryFont, updatePrimaryFont, updateGameName, gameName, handleCsvUpload, submitAdminForm, updateIconName } = this.props;
 
     const mediumRulesList = mediumRules.map((cat) => {
       return <MediumRule removeRuleFromCategory={removeRuleFromCategory} category={cat} />
@@ -43,13 +43,13 @@ class AdminForm extends Component {
           </div>
           <br/>
           <div>
-            <label>Upload Game Icon</label>  <br/>
-            <input placeholder="Icon" type="file" onChange={handleIconUpload} />
+            <label>Enter Game Icon Name</label>  <br/>
+            <input className="admin_input" placeholder="Game Icon" value={gameIcon} onChange={updateIconName} />
           </div>
           <br/>
           <div>
-            <label>Upload Background Skin </label>  <br/>
-            <input placeholder="Background Skin" type="file" onChange={handleSkinUpload} />
+            <label>Enter Background Skin Name</label>  <br/>
+            <input className="admin_input" placeholder="Game Icon" value={gameSkin} onChange={updateSkinName} />
           </div>
           <br/>
           <div>
@@ -90,10 +90,10 @@ class AdminForm extends Component {
         <div>
           {saveMessage}
         </div>
-
       </div>  );
   }
 };
+
 
 
 export default AdminForm;

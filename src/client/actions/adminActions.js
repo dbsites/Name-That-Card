@@ -55,6 +55,7 @@ export const resetAdminForm = () => ({
 });
 
 export const submitAdminForm = (formInfo) => {
+  console.log('formInfo in actions ', formInfo)
   return (dispatch) => {
     return fetch('/admin/submitForm', {
       method: 'POST',
@@ -102,13 +103,13 @@ export const removeRuleFromCategory = info => ({
   payload: info,
 });
 
-export const handleIconUpload = event => ({
-  type: types.HANDLE_ICON_UPLOAD,
+export const updateIconName = event => ({
+  type: types.UPDATE_ICON_NAME,
   payload: event,
 });
 
-export const handleSkinUpload = event => ({
-  type: types.HANDLE_SKIN_UPLOAD,
+export const updateSkinName = event => ({
+  type: types.UPDATE_SKIN_NAME,
   payload: event,
 });
 

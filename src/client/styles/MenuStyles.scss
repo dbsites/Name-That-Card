@@ -467,6 +467,10 @@ p {
   margin: auto;
 }
 
+.loginSignupLink {
+  font-weight: bolder;
+}
+
 // LEADERBOARD
 
 .leaderboard-menu {
@@ -533,8 +537,19 @@ p {
   justify-content: space-evenly;
   cursor: pointer;
   margin: 0vh 2vw;
-  border-bottom: 0.08em solid white;
+  // border-bottom: 0.08em solid white;
   text-shadow: 0 0 1em white;
+}
+
+.activeLeaderboardFilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  cursor: pointer;
+  margin: 0vh 2vw;
+  // border-bottom: 0.08em solid white;
+  text-shadow: 0 0 1em white;
+  font-weight: bolder;
 }
 
 .center-leaderboardFilter {
@@ -546,6 +561,10 @@ p {
 }
 
 .leaderboardHeaders:hover {
+  cursor: pointer;
+}
+
+.activeLeaderboardHeader:hover {
   cursor: pointer;
 }
 
@@ -820,6 +839,13 @@ p {
   .leaderboardHeaders {
     width: 5vw;
     padding: 0.25em 0.5em;
+    font-weight: 400;
+  }
+
+  .activeLeaderboardHeader {
+    width: 5vw;
+    padding: 0.25em 0.5em;
+    font-weight: bolder;
   }
 
   // SLIDER
