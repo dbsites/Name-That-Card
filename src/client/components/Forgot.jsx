@@ -14,7 +14,7 @@ class Forgot extends Component {
     };
 
     return (
-      <div className="HomescreenContainer">
+      <div className="UserContainer">
         <div className="grid">
           <h1>Reset Password</h1>
           <div>Enter Account Email Address</div>
