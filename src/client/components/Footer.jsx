@@ -8,6 +8,7 @@ const mapStateToProps = store => ({
   questionNumber: store.gameReducer.questionNumber,
   renderScoreFooter: store.gameMenuReducer.renderScoreFooter,
   selectedGame: store.gameListReducer.selectedGame,
+  footerBool: store.gameListReducer.footerBool,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -46,6 +46,7 @@ export const RESET_GAME_MENU = 'RESET_GAME_MENU';
 export const SET_YEARS_BOOL = 'SET_YEARS_BOOL';
 export const UPDATE_MIN_MAX_YEARS = 'UPDATE_MIN_MAX_YEARS';
 export const RESET_RENDER_SCORE_FOOTER = 'RESET_RENDER_SCORE_FOOTER';
+export const RESET_FOOTER_BOOL = 'RESET_FOOTER_BOOL';
 
 // gameplay action types
 export const SELECT_ANSWER = 'SELECT_ANSWER';
