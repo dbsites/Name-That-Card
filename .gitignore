@@ -7,3 +7,5 @@ config.json
 npm-debug.log
 yarn.lock
 webpack.config.old
+.env
+database.json
