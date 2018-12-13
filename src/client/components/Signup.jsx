@@ -3,10 +3,11 @@ import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount() {
-    const { resetSignUpInfo, resetLeaderboardLoadingContent, resetRenderScoreFooter } = this.props;
+    const { resetSignUpInfo, resetLeaderboardLoadingContent, resetRenderScoreFooter, resetFooterBool } = this.props;
     resetSignUpInfo();
     resetLeaderboardLoadingContent();
     resetRenderScoreFooter();
+    resetFooterBool();
   }
 
   render() {
@@ -47,12 +48,12 @@ class Signup extends Component {
             <span>{usernameErrorMsg}</span> 
           <div className="form__field">
             <span className="hidden">Password</span>
-            <input id="signup_username" type="password" name="password" className="form__input" value={signUpInputPassword} placeholder="Password" onChange={updateSignUpPassword} required />
+            <input id="signup_password" type="password" name="password" className="form__input" value={signUpInputPassword} placeholder="Password" onChange={updateSignUpPassword} required />
           </div>
             <span>{passwordErrorMsg}</span> 
           <div className="form__field">
             <span className="hidden">Email</span>
-            <input id="signup_username" type="text" name="email" className="form__input" value={signUpInputEmail} placeholder="Email" onChange={updateSignUpEmail} required />
+            <input id="signup_email" type="text" name="email" className="form__input" value={signUpInputEmail} placeholder="Email" onChange={updateSignUpEmail} required />
           </div>
             <span>{emailErrorMsg}</span>
           <div className="form__field">
