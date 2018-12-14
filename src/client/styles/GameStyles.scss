@@ -295,8 +295,8 @@
   align-content: center;
   text-align: center;
   margin-top: 2.5vh;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
   color: white;
   user-select: none;
   grid-row: 2;
@@ -318,12 +318,12 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1.5em !important;
+  font-size: 1.25em !important;
   margin: 1vh 1vw;
-  // padding-top: 0.5em !important;
+  padding-top: 0.5em !important;
   // padding-left: 0.8em !important;
   // padding-right: 0.8em !important;
-  // padding-bottom: 1.5em !important;
+  padding-bottom: 1.5em !important;
   // border-right: 0.08em solid white;
   border-bottom: 0.08em ridge white;
   cursor: pointer;
@@ -344,7 +344,7 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1.5em !important;
+  font-size: 1.25em !important;
   margin: 1vh 1vw;
   // padding: 0.5em 0.8em !important;
   // border-right: 0.08em solid white;
@@ -367,12 +367,12 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1.5em !important;
+  font-size: 1.25em !important;
   margin: 1vh 1vw;
-  // padding-top: 0.5em !important;
+  padding-top: 0.5em !important;
   // padding-left: 0.8em !important;
   // padding-right: 0.8em !important;
-  // padding-bottom: 1.5em !important;
+  padding-bottom: 1.5em !important;
   // border-left: 0.08em solid white;
   border-bottom: 0.08em ridge white;
   cursor: pointer;
@@ -393,7 +393,7 @@
   height: 3em;
   width: 10em;
   line-height: 1em;
-  font-size: 1.5em !important;
+  font-size: 1.25em !important;
   margin: 1vh 1vw;
   // padding: 0.5em 0.8em !important;
   // border-left: 0.08em solid white;
@@ -426,8 +426,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  // margin-top: 1vh;
+  // margin-bottom: 1vh;
+  margin: auto;
   grid-row: 3;
 }
 
