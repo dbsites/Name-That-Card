@@ -37,7 +37,7 @@ class Results extends Component {
       score: score,
     };
 
-    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/signup">Sign up</NavLink> or <NavLink className="loginSignupLink" to="/login">login</NavLink> to join the leaderboard!</div>;
+    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/login">Login</NavLink> to join the leaderboard!</div>;
 
     if (isLoggedIn) {
       sendResult(gameResultInfo);
@@ -47,6 +47,8 @@ class Results extends Component {
     let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Score 18/20 or higher and you could win a Jace, the Mind Sculptor!! Test your skills at www.namethatcard.com`;
 
     const socialMediaHashtags = [`${selectedGame}`, 'namethatcard'];
+
+    let selectedGameRoute = `/gameMenu/${selectedGame}`
 
     return (
       <div>
@@ -62,7 +64,12 @@ class Results extends Component {
             </TwitterShareButton>
           </div>
         </div>
-        {joinLeaderboardMsg}
+        <div>
+          <div className="gameButton text--center"><NavLink to={selectedGameRoute}>PLAY AGAIN</NavLink></div>
+        </div>
+        <div>
+          {joinLeaderboardMsg}
+        </div>
       </div>
     );
   }
