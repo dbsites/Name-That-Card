@@ -147,29 +147,32 @@ app.post('/api/reset/:token', (req, res, next) => {
       db.any('SELECT * FROM "game.dbo".users where "resetPasswordToken"=$1', [req.params.token])
         .then((data) => {
           console.log('result ', data);
-          if (Number(data[0].resetPasswordExpires) > Date.now()) {
-            console.log('token has not expired')
-            let newPassword = req.body.new_password;
-              bcrypt.genSalt(SALT, (saltErr, newSalt) => {
-              if (saltErr) {
-                return res.status(500).json({ message: 'Error: Could Not Generate Salt', error: saltErr });
-              }
-              // Hash password and store in res.locals, then continue
-              bcrypt.hash(newPassword, newSalt, (hashErr, hashPass) => {
-                if (hashErr) {
-                  return res.status(500).json({ message: 'Error: Could Not Encrypt Password', error: hashErr });
+          if (data.length !== 0) {
+            if (Number(data[0].resetPasswordExpires) > Date.now()) {
+              console.log('token has not expired')
+              let newPassword = req.body.new_password;
+                bcrypt.genSalt(SALT, (saltErr, newSalt) => {
+                if (saltErr) {
+                  return res.status(500).json({ message: 'Error: Could Not Generate Salt', error: saltErr });
                 }
-                db.none('UPDATE "game.dbo".users SET password=$1 WHERE "resetPasswordToken"=$2', [hashPass, req.params.token])
-                  .then((err) => {
-                    if(err){
-                      return res.json({successfulReset: false, msg: err});
-                    }
-                    return res.json({successfulReset: true, msg: 'success'})
-                  })
+                bcrypt.hash(newPassword, newSalt, (hashErr, hashPass) => {
+                  if (hashErr) {
+                    return res.status(500).json({ message: 'Error: Could Not Encrypt Password', error: hashErr });
+                  }
+                  db.none('UPDATE "game.dbo".users SET password=$1 WHERE "resetPasswordToken"=$2', [hashPass, req.params.token])
+                    .then((err) => {
+                      if(err){
+                        return res.json({successfulReset: false, msg: err});
+                      }
+                      return res.json({successfulReset: true, msg: 'success'})
+                    })
+                });
               });
-            });
+            } else {
+              return res.json({successfulReset: false, msg: 'Unable to reset password'});
+            }
           } else {
-            return res.json({successfulReset: false, msg: 'This link to reset your password has expired'});
+            return res.json({successfulReset: false, msg: 'Unable to reset password. Link is invalid or has expired.'});
           }
         });
     }
