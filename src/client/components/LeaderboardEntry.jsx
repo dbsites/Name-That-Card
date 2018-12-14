@@ -8,14 +8,14 @@ const LeaderboardEntry = (props) => {
     rankIncrement = numEntries - rank;
   }
   return (
-    <tr>
-      <td className="leaderboardEntry">{rankIncrement}</td>
-      <td className="leaderboardEntry">{entryContents.user}</td>
-      <td className="leaderboardEntry">{entryContents.sum}</td>
-      <td className="leaderboardEntry">{average}</td>
-      <td className="leaderboardEntry">{entryContents.gamecount}</td>
+    <tr className="leaderboardEntriesRow">
+      <td className="leaderboardEntry1">{rankIncrement}</td>
+      <td className="leaderboardEntry2">{entryContents.user}</td>
+      <td className="leaderboardEntry3">{entryContents.sum}</td>
+      <td className="leaderboardEntry4">{average}</td>
+      <td className="leaderboardEntry5">{entryContents.gamecount}</td>
     </tr>
-  )
-}
+  );
+};
 
 export default LeaderboardEntry;
