@@ -6,9 +6,7 @@ class Forgot extends Component {
     resetNewPasswordEmailInputs();
   }
   render() {
-
     const { forgotInputEmail, updateForgotInputEmail, sendResetPwEmail, emailStatusMsg, emailSuccess } =this.props;
-
     const forgotInfoObj = {
       email_address: forgotInputEmail,
     };
