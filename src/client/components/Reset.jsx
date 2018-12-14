@@ -37,13 +37,13 @@ class Reset extends Component {
             <div className="form__field">
               <input type="password" name="password" className="form__input" value={secondNewPassword} placeholder="Password" autoCorrect="off" onChange={updateSecondNewPassword} required />
             </div>
-            <div>
-              <span>{newPasswordStatusMsg}</span>
-            </div>
             <div className="form__field">
               <input type="button" onClick={() => submitPwFunc(newPasswordObj)} value="Reset Password" />
             </div>
           </form>
+          <div>
+            <div>{newPasswordStatusMsg}</div>
+          </div>
         </div>
       </div>
     );
