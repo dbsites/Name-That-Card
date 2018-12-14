@@ -8,9 +8,9 @@ const Navigation = (props) => {
   : <div className="menu-item"><NavLink to="/login">Login</NavLink></div>;
   
   
-  let signUpButton = isLoggedIn
-  ? ''
-  : <div className="menu-item"><NavLink to="/signup">Signup</NavLink></div>;
+  // let signUpButton = isLoggedIn
+  // ? ''
+  // : <div className="menu-item"><NavLink to="/signup">Signup</NavLink></div>;
   
   let homeBtn = <div className="menu-item"><NavLink to="/">Home</NavLink></div>;
   
@@ -50,7 +50,7 @@ const Navigation = (props) => {
   } else if (window.location.pathname === '/game') {
     logInOutButton = '';
     homeBtn = '';
-    signUpButton = '';
+    // signUpButton = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
@@ -65,12 +65,12 @@ const Navigation = (props) => {
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
 
   } else if (window.location.pathname === '/signup') {
-    signUpButton = '';
+    // signUpButton = '';
     xBtn = '';
     logo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
   } else if (window.location.pathname === '/admin') {
-    signUpButton = '';
+    // signUpButton = '';
     xBtn = '';
     logInOutButton = '';
     logo = '';
@@ -81,7 +81,6 @@ const Navigation = (props) => {
     logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + window.location.pathname.slice(13) + "Background.jpg')";
   } 
-  
   return (
     <div className="navigation">
       <div className="left-menu">
@@ -92,7 +91,7 @@ const Navigation = (props) => {
         {homeBtn}
         {xBtn}
         {logInOutButton}
-        {signUpButton}
+        {/* {signUpButton} */}
       </div>
     </div>
   );

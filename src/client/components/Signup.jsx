@@ -60,6 +60,9 @@ class Signup extends Component {
             <input type="button" onClick={() => submitFunc(signUpInfoObj)} value="Sign Up" />
           </div>
           <div>
+            <div className="menu-item"><NavLink to="/signup">Signup</NavLink></div>;
+          </div>
+          <div>
             {errorText}
           </div>
         </form>
