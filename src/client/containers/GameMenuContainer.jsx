@@ -229,9 +229,9 @@ class GameMenuContainer extends Component {
             {medBtn}
             {hardBtn}
           </div>
-          <div className="center">
-            <div className="startButtonStyle" onClick={() => startGame()}>START</div>
-          </div>
+          {/* <div className="center-startbutton"> */}
+          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
+          {/* </div> */}
           <div className="gameMenuLoginPrompt--text--center">
             {loginPrompt}
           </div>
