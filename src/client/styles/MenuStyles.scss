@@ -332,7 +332,7 @@ p {
   max-width: 95vw;
   margin: auto;
   display: grid;
-  grid-template-rows: 40vh 20vh 10vh;
+  grid-template-rows: 38vh 22vh 10vh;
 }
 
 .footerContainer {
@@ -715,7 +715,7 @@ table {
   // align-content: center;
   // align-items: center;
   display: grid;
-  grid-template-rows: 40vh auto;
+  grid-template-rows: 38vh auto;
   justify-items: center;
 }
 
@@ -838,6 +838,8 @@ table {
 // *******************************************************
 // IPHONE
 // *******************************************************
+
+
 
 @media screen and (min-width: 375px) {
   /*********************************************************
@@ -1172,7 +1174,7 @@ table {
     max-width: 95vw;
     margin: auto;
     display: grid;
-    grid-template-rows: 40vh 20vh 10vh;
+    grid-template-rows: 38vh 22vh 10vh;
   }
 
   .footerContainer {
@@ -1553,7 +1555,7 @@ table {
     // align-content: center;
     // align-items: center;
     display: grid;
-    grid-template-rows: 40vh auto;
+    grid-template-rows: 38vh auto;
     justify-items: center;
   }
 
@@ -1742,7 +1744,7 @@ table {
     max-width: 70vw;
     margin: auto;
     display: grid;
-    grid-template-rows: 40vh 20vh 10vh;
+    grid-template-rows: 38vh 22vh 10vh;
   }
 
   .footerContainer {
@@ -1913,9 +1915,13 @@ table {
   }
 }
 
+
+
 // *******************************************************
 // LAPTOP
 // *******************************************************
+
+
 
 @media screen and (min-width: 1280px) {
   html {
@@ -1998,7 +2004,7 @@ table {
     max-width: 70vw;
     margin: auto;
     display: grid;
-    grid-template-rows: 40vh 20vh 10vh;
+    grid-template-rows: 38vh 22vh 10vh;
   }
 
   .footerContainer {
@@ -2234,9 +2240,13 @@ table {
   }
 }
 
+
+
 // *******************************************************
 // LAPTOP
 // *******************************************************
+
+
 
 @media screen and (min-width: 1440px) {
   html {
@@ -2253,9 +2263,13 @@ table {
   }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
+
+
 
 @media screen and (min-width: 1600px) {
   // SLIDER
@@ -2286,14 +2300,14 @@ table {
   }
 }
 
-.admin_input {
-  color: black;
-}
+// .admin_input {
+//   color: black;
+// }
 
-.adminRule:hover {
-  cursor: pointer;
-}
+// .adminRule:hover {
+//   cursor: pointer;
+// }
 
-.adminRule {
-  list-style-type: none;
-}
+// .adminRule {
+//   list-style-type: none;
+// }

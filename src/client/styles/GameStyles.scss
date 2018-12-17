@@ -259,6 +259,7 @@
   position: relative;
   grid-row-start: 1;
   grid-row-end: 2;
+  height: 38vh;
 }
 
 .card {
@@ -289,8 +290,8 @@
   justify-content: center;
   align-content: center;
   text-align: center;
-  margin: auto;
-  // margin-top: 2.5vh;
+  // margin: auto;
+  margin-top: 2.5vh;
   // margin-left: auto;
   // margin-right: auto;
   color: white;
@@ -943,6 +944,7 @@
     position: relative;
     grid-row-start: 1;
     grid-row-end: 2;
+    height: 38vh;
   }
 
   .card {
@@ -973,7 +975,7 @@
     justify-content: center;
     align-content: center;
     text-align: center;
-    margin-top: auto;
+    margin-top: 2.5vh;
     // margin-left: auto;
     // margin-right: auto;
     color: white;
@@ -1624,6 +1626,7 @@
     position: relative;
     grid-row-start: 1;
     grid-row-end: 2;
+    height: 38vh;
   }
 
   .card {
@@ -1633,11 +1636,13 @@
     justify-content: center;
     align-content: center;
     height: 38vh;
+    // width: 38vw;
     box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
   }
 
   .cardReveal {
     height: 38vh;
+    // width: 38vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1654,7 +1659,7 @@
     justify-content: center;
     align-content: center;
     text-align: center;
-    margin-top: auto;
+    margin-top: 2.5vh;
     // margin-left: auto;
     // margin-right: auto;
     color: white;
@@ -1804,7 +1809,7 @@
 
   .gameButton {
     display: flex;
-    width: 30vw;
+    width: 25vw;
     height: 5vh;
     line-height: 1.3em;
     font-size: 1.5em !important;
@@ -2012,10 +2017,46 @@
 
   // GAME BUTTONS
 
+  .cards {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 38vh;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 38vh;
+    // width: 38vw;
+    box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
+  }
+
+  .cardReveal {
+    height: 38vh;
+    // width: 38vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: absolute;
+    box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
+  }
+
   .answer1 {
     display: flex;
     height: 8vh;
-    width: 30vw;
+    width: 15vw;
     line-height: 1em;
     font-size: 1.5em !important;
     margin: 1vh 1vw;
@@ -2035,12 +2076,12 @@
 
   .answer2 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
-    padding: 0.5em 0.8em !important;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
+    // padding: 0.5em 0.8em !important;
     // border-right: 0.08em solid white;
     // border-top: 0.08em solid white;
     cursor: pointer;
@@ -2054,14 +2095,14 @@
 
   .answer3 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
     padding-top: 0.5em !important;
-    padding-left: 0.8em !important;
-    padding-right: 0.8em !important;
+    // padding-left: 0.8em !important;
+    // padding-right: 0.8em !important;
     padding-bottom: 1.5em !important;
     border-bottom: 0.08em solid white;
     cursor: pointer;
@@ -2075,12 +2116,12 @@
 
   .answer4 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
-    padding: 0.5em 0.8em !important;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
+    // padding: 0.5em 0.8em !important;
     // border-left: 0.08em solid white;
     // border-top: 0.08em solid white;
     cursor: pointer;
@@ -2102,14 +2143,15 @@
 
   .gameButton {
     display: flex;
-    width: 220vw;
+    width: 100vw;
     height: 6vh;
     line-height: 1.3em;
     font-size: 1.5em !important;
     font-weight: 700;
+    // margin: auto;
     margin-left: 3vw;
     margin-right: 3vw;
-    padding: 0em 0 !important;
+    // padding: 0em 0 !important;
     border: 0.08em solid white;
     cursor: pointer;
     justify-content: center;
@@ -2176,16 +2218,52 @@
 
   // GAME BUTTONS
 
+  .cards {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 38vh;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 38vh;
+    // width: 38vw;
+    box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
+  }
+
+  .cardReveal {
+    height: 38vh;
+    // width: 38vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: absolute;
+    box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
+  }
+
   .answer1 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
     padding-top: 0.5em !important;
-    padding-left: 0.8em !important;
-    padding-right: 0.8em !important;
+    // padding-left: 0.8em !important;
+    // padding-right: 0.8em !important;
     padding-bottom: 1.5em !important;
     border-bottom: 0.08em solid white;
     cursor: pointer;
@@ -2199,12 +2277,12 @@
 
   .answer2 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
-    padding: 0.5em 0.8em !important;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
+    // padding: 0.5em 0.8em !important;
     // border-right: 0.08em solid white;
     // border-top: 0.08em solid white;
     cursor: pointer;
@@ -2218,14 +2296,14 @@
 
   .answer3 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
     padding-top: 0.5em !important;
-    padding-left: 0.8em !important;
-    padding-right: 0.8em !important;
+    // padding-left: 0.8em !important;
+    // padding-right: 0.8em !important;
     padding-bottom: 1.5em !important;
     border-bottom: 0.08em solid white;
     cursor: pointer;
@@ -2239,12 +2317,12 @@
 
   .answer4 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
-    padding: 0.5em 0.8em !important;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
+    // padding: 0.5em 0.8em !important;
     // border-left: 0.08em solid white;
     // border-top: 0.08em solid white;
     cursor: pointer;
@@ -2261,11 +2339,12 @@
     width: 15vw;
     height: 6vh;
     line-height: 1.3em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     font-weight: 700;
+    // margin: auto;
     margin-left: 3vw;
     margin-right: 3vw;
-    padding: 0.3em 0 !important;
+    // padding: 0.3em 0 !important;
     border: 0.08em solid white;
     cursor: pointer;
     justify-content: center;
@@ -2311,9 +2390,13 @@
   }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
+
+
 
 @media screen and (min-width: 1600px) {
   // LOADING ROTATING SQUARES
@@ -2348,23 +2431,27 @@
   }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
+
+
 
 @media screen and (min-width: 1920px) {
   // GAME BUTTONS
 
   .answer1 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
     padding-top: 0.5em !important;
-    padding-left: 0.8em !important;
-    padding-right: 0.8em !important;
+    // padding-left: 0.8em !important;
+    // padding-right: 0.8em !important;
     padding-bottom: 1.5em !important;
     border-bottom: 0.08em solid white;
     cursor: pointer;
@@ -2378,12 +2465,12 @@
 
   .answer2 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
-    padding: 0.5em 0.8em !important;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
+    // padding: 0.5em 0.8em !important;
     // border-right: 0.08em solid white;
     // border-top: 0.08em solid white;
     cursor: pointer;
@@ -2397,14 +2484,14 @@
 
   .answer3 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
-    margin: 1vh 0.5vw;
+    font-size: 1.5em !important;
+    margin: 1vh 1vw;
     padding-top: 0.5em !important;
-    padding-left: 0.8em !important;
-    padding-right: 0.8em !important;
+    // padding-left: 0.8em !important;
+    // padding-right: 0.8em !important;
     padding-bottom: 1.5em !important;
     border-bottom: 0.08em solid white;
     cursor: pointer;
@@ -2418,12 +2505,12 @@
 
   .answer4 {
     display: flex;
-    height: 4em;
-    width: 12em;
+    height: 8vh;
+    width: 15vw;
     line-height: 1em;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     margin: 1vh 0.5vw;
-    padding: 0.5em 0.8em !important;
+    // padding: 0.5em 0.8em !important;
     // border-left: 0.08em solid white;
     // border-top: 0.08em solid white;
     cursor: pointer;
