@@ -48,9 +48,8 @@ const BuyAndNextBtns = (props) => {
   }
 
   if (displayResults) {
-    buttonText = 'PLAY AGAIN';
-    let selectedGameRoute = `/gameMenu/${selectedGame}`
-    nextBtn = <div className="gameButton"><NavLink to={selectedGameRoute}>{buttonText}</NavLink></div>;
+    nextBtn ='';
+    buyBtn ='';
   }
 
   return (

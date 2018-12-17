@@ -7,10 +7,7 @@ const Navigation = (props) => {
   ? <div className="menu-item"><NavLink onClick={() => logout()} to="">Logout</NavLink></div>
   : <div className="menu-item"><NavLink to="/login">Login</NavLink></div>;
   
-  
-  let signUpButton = isLoggedIn
-  ? ''
-  : <div className="menu-item"><NavLink to="/signup">Signup</NavLink></div>;
+  let about = <span className="menu-item"><NavLink to="/about">About</NavLink></span>;
   
   let homeBtn = <div className="menu-item"><NavLink to="/">Home</NavLink></div>;
   
@@ -22,6 +19,7 @@ const Navigation = (props) => {
   let homeLogo = <div className="homeLogo"> <img className="homeImgLogo" src='https://s3-us-west-1.amazonaws.com/namethatcard/Logos+%2B+Icons/GENERALIconWhite.png'></img> </div>; 
   
   if (window.location.pathname === '/') {
+    about = '';
     homeBtn = '';
     xBtn = '';
     logo = '';
@@ -30,27 +28,19 @@ const Navigation = (props) => {
     xBtn = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
+  } else if (window.location.pathname === '/privacy-policy' || window.location.pathname === '/terms-of-service' || window.location.pathname === '/forgot-pw' || window.location.pathname.slice(0,6) === '/reset') {
+    about = '';
+    xBtn = '';
+    logo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
   } else if (window.location.pathname === '/about') {
     xBtn = '';
     logo = '';
-  } else if (window.location.pathname.slice(0,6) === '/reset') {
-    xBtn = '';
-    logo = '';
-    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
-  } else if (window.location.pathname === '/forgot-pw') {
-    xBtn = '';
-    logo = '';
-    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
-  } else if (window.location.pathname === '/privacy-policy') {
-    xBtn = '';
-    logo = '';
-  } else if (window.location.pathname === '/terms-of-service') {
-    xBtn = '';
-    logo = '';
+    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
   } else if (window.location.pathname === '/game') {
+    about = '';
     logInOutButton = '';
     homeBtn = '';
-    signUpButton = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
@@ -58,19 +48,14 @@ const Navigation = (props) => {
     if (questionNumber === 20) {
       xBtn = <div className="xButton"><NavLink to='/'>x</NavLink></div>;
     }
-  } else if (window.location.pathname === '/login') {
+  } else if (window.location.pathname === '/login' || window.location.pathname === '/signup') {
+    about = '';
     logInOutButton = '';
     xBtn = '';
     logo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
-
-  } else if (window.location.pathname === '/signup') {
-    signUpButton = '';
-    xBtn = '';
-    logo = '';
-    document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg')";
   } else if (window.location.pathname === '/admin') {
-    signUpButton = '';
+    about = '';
     xBtn = '';
     logInOutButton = '';
     logo = '';
@@ -81,7 +66,6 @@ const Navigation = (props) => {
     logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
     document.body.style.backgroundImage = "url('https://s3-us-west-1.amazonaws.com/namethatcard/Background/" + window.location.pathname.slice(13) + "Background.jpg')";
   } 
-  
   return (
     <div className="navigation">
       <div className="left-menu">
@@ -90,9 +74,9 @@ const Navigation = (props) => {
       </div>
       <div className="right-menu">
         {homeBtn}
+        {about}
         {xBtn}
         {logInOutButton}
-        {signUpButton}
       </div>
     </div>
   );
