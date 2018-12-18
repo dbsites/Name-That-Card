@@ -44,7 +44,7 @@ const BuyAndNextBtns = (props) => {
   }
   let nextBtn = <div className="gameButton" onClick={clickFunc}>{buttonText}</div>;
   if (ableToNext) {
-    nextBtn = <div className="gameButton activeNextBtn" onClick={clickFunc}>{buttonText}</div>;
+    nextBtn = <div className="gameButton" onClick={clickFunc}>{buttonText}</div>;
   }
 
   if (displayResults) {
