@@ -56,7 +56,7 @@ class Login extends Component {
             </div>
           </form>
           <div className="text--center">
-            <div className="">Or <NavLink className="loginSignupLink" to="/signup"> sign up </NavLink> if you don't have an account</div>
+            <div className="">Don't have an account? <NavLink className="loginSignupLink" to="/signup"> Sign up.</NavLink></div>
           </div>
           <div className="text--center">
             {errorMsg}

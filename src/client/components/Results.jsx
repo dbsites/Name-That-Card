@@ -37,7 +37,7 @@ class Results extends Component {
       score: score,
     };
 
-    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/signup">Sign Up</NavLink> to join the leaderboard!</div>;
+    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/login">Login</NavLink> to join the leaderboard!</div>;
 
     if (isLoggedIn) {
       sendResult(gameResultInfo);
