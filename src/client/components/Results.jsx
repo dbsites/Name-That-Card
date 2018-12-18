@@ -37,7 +37,7 @@ class Results extends Component {
       score: score,
     };
 
-    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/login">Login</NavLink> to join the leaderboard!</div>;
+    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/signup">Sign Up</NavLink> to join the leaderboard!</div>;
 
     if (isLoggedIn) {
       sendResult(gameResultInfo);
@@ -55,7 +55,7 @@ class Results extends Component {
         <h1 className="resultHeader--center">You got {score} points!</h1>
         <div className="result--center">
           <h2 className="text--center">Score 18/20 or Better, then Share Below on Twitter or FB to Enter our Raffle!</h2>
-          <div className="center">
+          <div className="socialmedia--center">
             <FacebookShareButton url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
               <FacebookIcon round={true} />
             </FacebookShareButton>

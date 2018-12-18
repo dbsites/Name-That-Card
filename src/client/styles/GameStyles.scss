@@ -661,6 +661,187 @@
 // IPHONE
 // *******************************************************
 
+
+
 @media screen and (min-width: 375px) {
+
+}
+
+
+
+// *******************************************************
+// IPAD
+// *******************************************************
+
+
+
+@media screen and (min-width: 768px) {
+    // GAME MENU BUTTONS
+
+    .gameListButtonStyle {
+      width: 33vw;
+    }
+  
+    .listButtonStyle {
+      width: 33vw;
+    }
+  
+    .allButtonStyle {
+      width: 33vw;
+    }
+  
+    .gameListButtonStyle.activated {
+      width: 33vw;
+    }
+  
+    .listButtonStyle.activated {
+      width: 33vw;
+    }
+    
+    .allButtonStyle.activated {
+      width: 33vw;
+    }
+  
+    .startButtonStyle {
+      width: 33vw;
+    }
+  
+    // GAME BUTTONS
+  
+    .answer1 {
+      height: 8vh;
+      width: 33vw;
+    }
+    
+    .answer2 {
+      height: 8vh;
+      width: 33vw;
+    }
+    
+    .answer3 {
+      height: 8vh;
+      width: 33vw;
+    }
+    
+    .answer4 {
+      height: 8vh;
+      width: 33vw;
+    }
+  
+    .gameButton {
+      width: 25vw;
+    }
+}
+
+
+
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
+
+
+@media screen and (min-width: 1280px) {
+    // GAME MENU BUTTONS
+
+    .gameListButtonStyle {
+      width: 22vw;
+    }
+  
+    .listButtonStyle {
+      width: 22vw;
+    }
+  
+    .allButtonStyle {
+      width: 22vw;
+    }
+  
+    .gameListButtonStyle.activated {
+      width: 22vw;
+    }
+  
+    .listButtonStyle.activated {
+      width: 22vw;
+    }
+    
+    .allButtonStyle.activated {
+      width: 22vw;
+    }
+  
+    .difficultyBoxStyle {
+      margin: 0.5vh 11vw;
+    }
+  
+    .startButtonStyle {
+      width: 22vw;
+    }
+  
+    // GAME BUTTONS
+  
+    .answer1 {
+      width: 15vw;
+      font-size: 1.5em !important;
+    }
+  
+    .answer2 {
+      width: 15vw;
+      font-size: 1.5em !important;
+    }
+  
+    .answer3 {
+      width: 15vw;
+      font-size: 1.5em !important;
+    }
+  
+    .answer4 {
+      width: 15vw;
+      font-size: 1.5em !important;
+    }
+  
+    .gameButton {
+      width: 22vw;
+      height: 6vh;
+      margin-left: 3vw;
+      margin-right: 3vw;
+    }
+}
+
+
+
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
+
+
+@media screen and (min-width: 1440px) {
+  // GAME BUTTONS
+
+  .gameButton {
+    width: 15vw;
+  }
+}
+
+
+
+// *******************************************************
+// DESKTOP
+// *******************************************************
+
+
+
+@media screen and (min-width: 1600px) {
+
+}
+
+
+
+// *******************************************************
+// DESKTOP
+// *******************************************************
+
+
+
+@media screen and (min-width: 1920px) {
 
 }
