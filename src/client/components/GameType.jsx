@@ -4,7 +4,7 @@ const GameType = (props) => {
   const { game, selectedGame, setSelectedGame } = props;
   if (selectedGame === game) {
     return (
-      <div className="gameListButtonStyle mqActivated" onClick={() => setSelectedGame(game)}>
+      <div className="gameListButtonStyle activated" onClick={() => setSelectedGame(game)}>
         {game + ' EDITION'}
       </div>
     );

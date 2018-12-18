@@ -139,17 +139,17 @@ class GameMenuContainer extends Component {
 
     let easyBtn = <div className="difficultyStyleE" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
     if (selectedDifficulty === 'EASY') {
-      easyBtn = <div className="difficultyStyleE difficultyActivated" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
+      easyBtn = <div className="difficultyStyleE activated" onClick={() => setGameDifficulty('EASY')}>EASY</div>;
     }
 
     let medBtn = <div className="difficultyStyleM" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
     if (selectedDifficulty === 'MEDIUM') {
-      medBtn = <div className="difficultyStyleM difficultyActivated" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
+      medBtn = <div className="difficultyStyleM activated" onClick={() => setGameDifficulty('MEDIUM')}>MED.</div>;
     }
 
     let hardBtn = <div className="difficultyStyleH" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     if (selectedDifficulty === 'HARD') {
-      hardBtn = <div className="difficultyStyleH difficultyActivated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
+      hardBtn = <div className="difficultyStyleH activated" onClick={() => setGameDifficulty('HARD')}>HARD</div>;
     }
 
     let slider;
@@ -207,7 +207,7 @@ class GameMenuContainer extends Component {
 
     return (
       <Loader show={menuLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
-        <div className="MainContainer">
+        <div className="MenuContainer">
           <div className="leaderboard-menu">
             <div className="leaderboardButton">
               <NavLink to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
@@ -229,9 +229,9 @@ class GameMenuContainer extends Component {
             {medBtn}
             {hardBtn}
           </div>
-          {/* <div className="center-startbutton"> */}
-          <div className="startButtonStyle" onClick={() => startGame()}>START</div>
-          {/* </div> */}
+          <div className="center-startbutton">
+            <div className="startButtonStyle" onClick={() => startGame()}>START</div>
+          </div>
           <div className="gameMenuLoginPrompt--text--center">
             {loginPrompt}
           </div>
