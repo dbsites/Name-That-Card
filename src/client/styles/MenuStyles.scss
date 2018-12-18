@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed');
 
+
 /*********************************************************
 ********************** LOGIN/SIGNUP **********************
 *********************************************************/
@@ -32,15 +33,7 @@ html {
   font-size: 2vh;
 }
 
-// @font-face {
-//   font-family: 'firaSansCondensed';
-//   src: url("https://fonts.google.com/specimen/Fira+Sans+Extra+Condensed");
-// }
-
 body {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
   background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg");
   background-size: cover;
   background-position: center;
@@ -60,10 +53,10 @@ a {
   text-decoration: none;
 }
 
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
+// a:focus,
+// a:hover {
+//   text-decoration: underline;
+// }
 
 input {
   border: 0;
@@ -158,9 +151,6 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // text-align: center;
-  // margin-left: auto;
-  // margin-right: auto;
   text-shadow: 0 0 1em white;
   grid-row-start: 2;
   grid-row-end: 3;
@@ -171,9 +161,6 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // text-align: center;
-  // margin-left: auto;
-  // margin-right: auto;
   text-shadow: 0 0 1em white;
   grid-row-start: 5;
   grid-row-end: 6;
@@ -184,9 +171,6 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // text-align: center;
-  // margin-left: auto;
-  // margin-right: auto;
   font-size: 1.5em;
   text-shadow: 0 0 1em white;
   grid-row-start: 8;
@@ -197,9 +181,6 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // text-align: center;
-  // margin-left: auto;
-  // margin-right: auto;
   font-size: 1.5em;
   text-shadow: 0 0 1em white;
   grid-row-start: 4;
@@ -257,10 +238,6 @@ p {
 // APP CONTAINERS
 
 .HomescreenContainer {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-content: center;
   display: grid;
   grid-template-rows: 10vh 35vh 25vh 5vh;
   height: 75vh;
@@ -280,11 +257,7 @@ p {
   margin-right: auto;
 }
 
-.MainContainer {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: flex-start;
-  // align-content: center;
+.MenuContainer {
   display: grid;
   grid-template-rows: 5vh 5vh 25vh 10vh 5vh 10vh 10vh 5vh;
   height: 75vh;
@@ -300,7 +273,6 @@ p {
   justify-content: space-between;
   height: 12.5vh;
   max-width: 95vw;
-  margin-top: auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -309,23 +281,11 @@ p {
   display: flex;
   flex-direction: column;
   align-content: center;
-  // align-items: center;
   height: 75vh;
   max-width: 95vw;
   margin-left: auto;
   margin-right: auto;
 }
-
-// .GameContainer {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-content: center;
-//   height: 70vh;
-//   max-width: 95vw;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
 
 .GameContainer {
   height: 70vh;
@@ -348,7 +308,7 @@ p {
 
 .list {
   display: flex;
-  height: auto;
+  // height: auto;
   justify-content: center;
   text-align: center;
   flex-direction: row;
@@ -357,7 +317,7 @@ p {
 
 .left-menu {
   display: flex;
-  height: auto;
+  // height: auto;
   flex-direction: row;
   justify-content: flex-start;
 }
@@ -394,14 +354,14 @@ p {
 
 .right-menu {
   display: flex;
-  height: auto;
+  // height: auto;
   flex-direction: row;
   justify-content: flex-end;
 }
 
 .menu-item {
   display: flex;
-  height: auto;
+  // height: auto;
   width: auto;
   font-size: 1em !important;
   font-weight: 700;
@@ -415,7 +375,7 @@ p {
 
 .xButton {
   display: flex;
-  height: auto;
+  // height: auto;
   width: auto;
   font-size: 2em !important;
   font-weight: 900;
@@ -429,7 +389,7 @@ p {
 
 .gameList {
   display: flex;
-  height: auto;
+  // height: auto;
   max-width: 100%;
   justify-content: center;
   text-align: center;
@@ -445,8 +405,7 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin: auto;
   grid-row-start: 3;
   grid-row-end: 4;
 }
@@ -463,9 +422,14 @@ p {
 
 .center-startbutton {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  grid-row-start: 7;
+  grid-row-end: 8;
 }
 
 .loginSignupLink {
@@ -512,10 +476,10 @@ table {
   text-shadow: 0 0 1em white;
 }
 
-.leaderboardPosition {
-  // display: flex;
-  // justify-content: space-evenly;
-}
+// .leaderboardPosition {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
 
 .leaderboard {
   display: grid;
@@ -542,7 +506,6 @@ table {
   justify-content: space-evenly;
   cursor: pointer;
   margin: 0vh 2vw;
-  // border-bottom: 0.08em solid white;
   text-shadow: 0 0 1em white;
 }
 
@@ -662,9 +625,6 @@ table {
 // }
 
 .leaderboard-body {
-//   display: flex;
-//   flex-direction: column;
-//   width: 95vw;
   grid-row-start: 2;
   grid-row-end: 3;
 }
@@ -709,11 +669,6 @@ table {
 // GAME COMPONENTS
 
 .cardContainer {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: flex-start;
-  // align-content: center;
-  // align-items: center;
   display: grid;
   grid-template-rows: 38vh auto;
   justify-items: center;
@@ -731,7 +686,7 @@ table {
   justify-content: flex-start;
   height: 71vh;
   max-width: 95vw;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-bottom: 4vh;
   margin-left: auto;
   margin-right: auto;
@@ -740,8 +695,6 @@ table {
 
 .disclaimer {
   text-align: center;
-  // margin-left: auto;
-  // margin-right: auto;
   margin: auto;
   font-size: 0.7em;
   line-height: 1em;
@@ -750,8 +703,6 @@ table {
 .gameDisclaimer {
   text-align: center;
   margin-top: 5vh;
-  margin-left: auto;
-  margin-right: auto;
   font-size: 0.7em;
   line-height: 1em;
 }
@@ -781,7 +732,7 @@ table {
   justify-content: center;
   height: 10vh;
   width: 35vw;
-  margin-bottom: 4vh;
+  // margin-bottom: 4vh;
 }
 
 .gameScore {
@@ -822,1492 +773,3 @@ table {
 .imgLink {
   height: 10vh;
 }
-
-
-
-
-
-/*********************************************************
-********************* MEDIA QUERIES **********************
-*********************************************************/
-
-
-
-
-
-// *******************************************************
-// IPHONE
-// *******************************************************
-
-
-
-@media screen and (min-width: 375px) {
-  /*********************************************************
-  ********************** LOGIN/SIGNUP **********************
-  *********************************************************/
-
-
-  .grid {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 25rem;
-    width: 100%;
-  }
-
-  .hidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  * {
-    box-sizing: inherit;
-  }
-
-  html {
-    box-sizing: border-box;
-    font-size: 2vh;
-  }
-
-  // @font-face {
-  //   font-family: 'firaSansCondensed';
-  //   src: url("https://fonts.google.com/specimen/Fira+Sans+Extra+Condensed");
-  // }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    background-image: url("https://s3-us-west-1.amazonaws.com/namethatcard/Background/ntc-homescreen.jpg");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    font-family: 'Fira Sans Extra Condensed', sans-serif;
-    font-size: 1em;
-    font-weight: 400;
-    height: 100%;
-    line-height: 1.8em;
-    margin: 0;
-    min-height: 100vh;
-  }
-
-  a {
-    color: white;
-    outline: 0;
-    text-decoration: none;
-  }
-
-  a:focus,
-  a:hover {
-    text-decoration: underline;
-  }
-
-  input {
-    border: 0;
-    color: inherit;
-    font: inherit;
-    margin: 0;
-    outline: 0;
-    padding: 0;
-    transition: background-color 0.3s;
-  }
-
-  input[type='button'] {
-    cursor: pointer;
-  }
-
-  .form {
-    margin: -0.875rem;
-  }
-
-  .form input[type='password'],
-  .form input[type='text'],
-  .form input[type='email'],
-  .form input[type='button'] {
-    width: 100%;
-  }
-
-  .form__field {
-    display: flex;
-    margin: 0.875rem;
-  }
-
-  .form__input {
-    flex: 1;
-  }
-
-  .login {
-    color: white;
-  }
-
-  .login label,
-  .login input[type='text'],
-  .login input[type='email'],
-  .login input[type='password'],
-  .login input[type='button'] {
-    border-radius: 0.5em;
-    padding: 1rem;
-  }
-
-  .login input[type='password'],
-  .login input[type='text'],
-  .login input[type='email'] {
-    background-color: #363b41;
-  }
-
-  .login input[type='password']:focus,
-  .login input[type='password']:hover,
-  .login input[type='text']:focus,
-  .login input[type='text']:hover,
-  .login input[type='email']:focus,
-  .login input[type='email']:hover {
-    background-color: #434a52;
-  }
-
-  .login input[type='button'] {
-    background-color: black;
-    color: #eee;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: 0.08em solid white;
-  }
-
-  .login input[type='button']:focus,
-  .login input[type='button']:hover {
-    background-color: #434a52;
-  }
-
-  p {
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .text--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-
-  .chooseCategories--text--center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // text-align: center;
-    // margin-left: auto;
-    // margin-right: auto;
-    text-shadow: 0 0 1em white;
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-
-  .chooseDifficulty--text--center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // text-align: center;
-    // margin-left: auto;
-    // margin-right: auto;
-    text-shadow: 0 0 1em white;
-    grid-row-start: 5;
-    grid-row-end: 6;
-  }
-
-  .gameMenuLoginPrompt--text--center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // text-align: center;
-    // margin-left: auto;
-    // margin-right: auto;
-    font-size: 1.5em;
-    text-shadow: 0 0 1em white;
-    grid-row-start: 8;
-  }
-
-  .homeLoginPrompt--text--center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // text-align: center;
-    // margin-left: auto;
-    // margin-right: auto;
-    font-size: 1.5em;
-    text-shadow: 0 0 1em white;
-    grid-row-start: 4;
-  }
-
-  .result--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-
-  .resultHeader--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    font-size: 2.5em;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboardTitle {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
-    text-shadow: 0 0 1em white;
-  }
-
-  .pick-a-game {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 2em;
-    text-shadow: 0 0 1em white;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  .text--left {
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    text-shadow: 0 0 1em white;
-  }
-
-
-  /*********************************************************
-  ************************* MENU ***************************
-  *********************************************************/
-
-  // APP CONTAINERS
-
-  .HomescreenContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-content: center;
-    display: grid;
-    grid-template-rows: 10vh 35vh 25vh 5vh;
-    height: 75vh;
-    max-width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .UserContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 75vh;
-    max-width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .MainContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-content: center;
-    display: grid;
-    grid-template-rows: 5vh 5vh 25vh 10vh 5vh 10vh 10vh 5vh;
-    height: 75vh;
-    max-width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 12.5vh;
-    max-width: 95vw;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .LeaderboardContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    // align-items: center;
-    height: 75vh;
-    max-width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  // .GameContainer {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-content: center;
-  //   height: 70vh;
-  //   max-width: 95vw;
-  //   margin-left: auto;
-  //   margin-right: auto;
-  // }
-
-  .GameContainer {
-    height: 70vh;
-    max-width: 95vw;
-    margin: auto;
-    display: grid;
-    grid-template-rows: 38vh 22vh 10vh;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 12.5vh;
-    max-width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .list {
-    display: flex;
-    height: auto;
-    justify-content: center;
-    text-align: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .left-menu {
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .homeLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: auto;
-    width: auto;
-    margin: 1vh 1vw;
-  }
-
-  .homeImgLogo {
-    height: 10.5vh;
-  }
-
-  .gameLogo {
-    height: 10.5vh;
-  }
-
-  .logo {
-    display: flex;
-    height: auto;
-    width: auto;
-    margin: 1vh 1vw;
-    cursor: pointer;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    color: white;
-  }
-
-  .right-menu {
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .menu-item {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 1em !important;
-    font-weight: 700;
-    margin: 3vh 3vw;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
-  .xButton {
-    display: flex;
-    height: auto;
-    width: auto;
-    font-size: 2em !important;
-    font-weight: 900;
-    margin: 1vh 1vw;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
-  .gameList {
-    display: flex;
-    height: auto;
-    max-width: 100%;
-    justify-content: center;
-    text-align: center;
-    align-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-
-  .enterContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-
-  .categoryContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-
-  // .center {
-  //   display: flex;
-  //   justify-content: center;
-  //   margin: auto;
-  // }
-
-  .loginSignupLink {
-    font-weight: bolder;
-  }
-
-  // LEADERBOARD
-
-  table {
-    table-layout: fixed;
-  }
-
-  .leaderboard-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    text-shadow: 0 0 1em white;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  .leaderboard-right-menu {
-    display: flex;
-    height: 3vh;
-    margin: 1vh 1vw;
-    flex-direction: row;
-    justify-content: flex-end;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboardButton {
-    display: flex;
-    height: auto;
-    width: auto;
-    margin-right: 2vw;
-    font-size: 1em !important;
-    font-weight: 700;
-    padding: 0.5em 0.8em !important;
-    cursor: pointer;
-    justify-content: center;
-    background-color: transparent;
-    color: white;
-    text-shadow: 0 0 1em white;
-  }
-
-  .leaderboardPosition {
-    // display: flex;
-    // justify-content: space-evenly;
-  }
-
-  .leaderboard {
-    display: grid;
-    grid-template-rows: 5vh auto;
-    height: 55vh;
-    width: 95vw;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    align-items: flex-start;
-    margin-top: 2.5vh;
-    margin-bottom: 3vh;
-    border: 0.08em solid white;
-    border-radius: 0.5em;
-    background-color: black;
-    box-shadow: 0em 0em 3em white;
-    text-shadow: 0 0 1em white;
-    overflow-y: auto;
-  }
-
-  .leaderboardFilter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    cursor: pointer;
-    margin: 0vh 2vw;
-    // border-bottom: 0.08em solid white;
-    text-shadow: 0 0 1em white;
-  }
-
-  .activeLeaderboardFilter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    cursor: pointer;
-    margin: 0vh 2vw;
-    text-shadow: 0 0 1em white;
-    font-weight: bolder;
-  }
-
-  .center-leaderboardFilter {
-    display: flex;
-    height: auto;
-    margin: auto;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .leaderboardHeaders {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 92.5vw;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border-top: 0.08em solid transparent;
-    border-right: 0.08em solid transparent;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .leaderboardHeader1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-
-  .leaderboardHeadersRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 92.5vw;
-    position: fixed;
-    background-color: black;
-  }
-
-  .leaderboardEntry1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-  .leaderboardEntry2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-  }
-  .leaderboardEntry3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-  }
-  .leaderboardEntry4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-  }
-  .leaderboardEntry5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-  }
-
-  .leaderboardEntriesRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 92.5vw;
-  }
-
-  // .activeLeaderboardHeader {
-  //   width: 15%;
-  //   margin: auto;
-  //   // padding: 0.25em 0.5em;
-  //   font-weight: bolder;
-  // }
-
-  .leaderboardHeaders:hover {
-    cursor: pointer;
-  }
-
-  // .activeLeaderboardHeader:hover {
-  //   width: 15%;
-  //   margin: auto;
-  //   cursor: pointer;
-  // }
-
-  .leaderboard-body {
-  //   display: flex;
-  //   flex-direction: column;
-  //   width: 95vw;
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-
-  // SLIDER
-
-  .outerSliderContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: auto;
-    margin: 1vh 1vw;
-    border: 0.08em solid white;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .innerSliderContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-    margin: 2vh 2vw;
-    text-shadow: 0 0 1em white;
-  }
-
-  .innerSliderContainer span {
-    font-size: 1.25em;
-    font-weight: 700;
-  }
-
-  .slider {
-    display: flex;
-    justify-content: center;
-    width: 44vw;
-  }
-
-  // GAME COMPONENTS
-
-  .cardContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-content: center;
-    // align-items: center;
-    display: grid;
-    grid-template-rows: 38vh auto;
-    justify-items: center;
-  }
-
-  // FOOTER COMPONENTS
-
-  .links {
-    text-decoration: underline;
-  }
-
-  .footerLinks {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 71vh;
-    max-width: 95vw;
-    overflow: scroll;
-    margin-bottom: 4vh;
-    margin-left: auto;
-    margin-right: auto;
-    padding: auto;
-  }
-
-  .disclaimer {
-    text-align: center;
-    // margin-left: auto;
-    // margin-right: auto;
-    margin: auto;
-    font-size: 0.7em;
-    line-height: 1em;
-  }
-
-  .gameDisclaimer {
-    text-align: center;
-    margin-top: 5vh;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0.7em;
-    line-height: 1em;
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .disclaimerFooter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .scoreFooter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 10vh;
-    width: 35vw;
-    margin-bottom: 4vh;
-  }
-
-  .gameScore {
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.5em;
-    font-weight: 700;
-    text-shadow: 0 0 1em white;
-  }
-
-  .totalScore {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1em;
-    font-weight: 700;
-    color: #5dc428;
-    text-shadow: 0 0 1em black;
-  }
-
-  .h2-margins {
-    margin-top: 0.1em;
-    margin-bottom: 0.1em;
-  }
-
-  .p-margins {
-    margin-top: 0.1em;
-    margin-bottom: 1em;
-  }
-
-  // RESULTS
-
-  .imgLink {
-    height: 10vh;
-  }
-}
-
-
-
-// *******************************************************
-// IPAD
-// *******************************************************
-
-
-
-@media screen and (min-width: 768px) {
-  html {
-    box-sizing: border-box;
-    font-size: 2vh;
-  }
-
-  // APP CONTAINERS
-
-  .HomescreenContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-content: center;
-    display: grid;
-    grid-template-rows: 10vh 35vh 25vh 5vh;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .UserContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .MainContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-content: center;
-    display: grid;
-    grid-template-rows: 5vh 5vh 25vh 10vh 5vh 10vh 10vh 5vh;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 12.5vh;
-    max-width: 70vw;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .LeaderboardContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .GameContainer {
-    height: 70vh;
-    max-width: 70vw;
-    margin: auto;
-    display: grid;
-    grid-template-rows: 38vh 22vh 10vh;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 12.5vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .list {
-    display: flex;
-    height: auto;
-    justify-content: center;
-    text-align: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  // LEADERBOARD
-
-  table {
-    table-layout: fixed;
-  }
-
-  .leaderboard {
-    display: grid;
-    grid-template-rows: 5vh auto;
-    height: 55vh;
-    width: 70vw;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    align-items: flex-start;
-    margin-top: 2.5vh;
-    margin-bottom: 3vh;
-    border: 0.08em solid white;
-    border-radius: 0.5em;
-    background-color: black;
-    box-shadow: 0em 0em 3em white;
-    text-shadow: 0 0 1em white;
-    overflow-y: scroll;
-  }
-
-  .leaderboardHeaders {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 68.5vw;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border-top: 0.08em solid transparent;
-    border-right: 0.08em solid transparent;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .leaderboardHeadersRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 68.5vw;
-    position: fixed;
-    background-color: black;
-  }
-
-  .leaderboardHeader1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-
-  .leaderboardHeadersRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 68.5vw;
-    position: fixed;
-    background-color: black;
-  }
-
-  .leaderboardEntriesRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 68.5vw;
-  }
-
-  .leaderboardEntry1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-  .leaderboardEntry2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-  }
-  .leaderboardEntry3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-  }
-  .leaderboardEntry4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-  }
-  .leaderboardEntry5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-  }
-
-  // SLIDER
-
-  .slider {
-    display: flex;
-    justify-content: center;
-    width: 30vw;
-  }
-
-  // GAME COMPONENTS
-
-  // FOOTER COMPONENTS
-
-  .footerLinks {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 71vh;
-    max-width: 70vw;
-    overflow: scroll;
-    margin-bottom: 4vh;
-    margin-left: auto;
-    margin-right: auto;
-    padding: auto;
-  }
-
-  .h2-margins {
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
-  }
-
-  .p-margins {
-    margin-top: 0.3em;
-    margin-bottom: 1.3em;
-  }
-}
-
-
-
-// *******************************************************
-// LAPTOP
-// *******************************************************
-
-
-
-@media screen and (min-width: 1280px) {
-  html {
-    box-sizing: border-box;
-    font-size: 2vh;
-  }
-
-  .text--center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5vh;
-    margin-bottom: 0.5vh;
-    text-shadow: 0 0 1em white;
-  }
-
-  // APP CONTAINERS
-
-  .HomescreenContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-content: center;
-    display: grid;
-    grid-template-rows: 10vh 35vh 25vh 5vh;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .UserContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .MainContainer {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-content: center;
-    display: grid;
-    grid-template-rows: 5vh 5vh 25vh 10vh 5vh 10vh 10vh 5vh;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 12.5vh;
-    max-width: 70vw;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .LeaderboardContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    height: 75vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .GameContainer {
-    height: 70vh;
-    max-width: 70vw;
-    margin: auto;
-    display: grid;
-    grid-template-rows: 38vh 22vh 10vh;
-  }
-
-  .footerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 12.5vh;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .list {
-    display: flex;
-    height: auto;
-    justify-content: center;
-    text-align: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .enterContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-
-  .categoryContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-
-  // .center {
-  //   display: flex;
-  //   justify-content: center;
-  //   margin-top: 0.5vh;
-  //   margin-bottom: 1vh;
-  // }
-
-  // LEADERBOARD
-
-  table {
-    table-layout: fixed;
-  }
-
-  .leaderboard {
-    display: grid;
-    grid-template-rows: 5vh auto;
-    height: 55vh;
-    width: 70vw;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    align-items: flex-start;
-    margin-top: 2.5vh;
-    margin-bottom: 3vh;
-    border: 0.08em solid white;
-    border-radius: 0.5em;
-    background-color: black;
-    box-shadow: 0em 0em 3em white;
-    text-shadow: 0 0 1em white;
-    overflow-y: scroll;
-  }
-
-  .leaderboardHeaders {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 68.5vw;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border-top: 0.08em solid transparent;
-    border-right: 0.08em solid transparent;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .center-leaderboardFilter {
-    display: flex;
-    height: auto;
-    width: 35vw;
-    margin: auto;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .leaderboardHeaders {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 68.5vw;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    border-top: 0.08em solid transparent;
-    border-right: 0.08em solid transparent;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .leaderboardHeadersRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 68.5vw;
-    position: fixed;
-    background-color: black;
-  }
-
-  .leaderboardHeader1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-  .leaderboardHeader5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-  }
-
-  .leaderboardHeadersRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 68.5vw;
-    position: fixed;
-    background-color: black;
-  }
-
-  .leaderboardEntriesRow {
-    display: grid;
-    grid-template-columns: 15% 20% 24% 18% 23%;
-    width: 68.5vw;
-  }
-
-  .leaderboardEntry1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-  }
-  .leaderboardEntry2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-  }
-  .leaderboardEntry3 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-  }
-  .leaderboardEntry4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-  }
-  .leaderboardEntry5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-  }
-
-  // SLIDER
-
-  .outerSliderContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: auto;
-    margin-top: 2.5vh;
-    margin-left: 11vw;
-    margin-right: 11vw;
-    border: 0.08em solid white;
-    border-radius: 0.5em;
-    background-color: black;
-  }
-
-  .slider {
-    display: flex;
-    justify-content: center;
-    width: 29vw;
-  }
-
-  // GAME COMPONENTS
-
-  // FOOTER COMPONENTS
-
-  .footerLinks {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 71vh;
-    max-width: 70vw;
-    overflow: scroll;
-    margin-bottom: 4vh;
-    margin-left: auto;
-    margin-right: auto;
-    padding: auto;
-  }
-
-  .h2-margins {
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
-  }
-
-  .p-margins {
-    margin-top: 0.3em;
-    margin-bottom: 1.3em;
-  }
-}
-
-
-
-// *******************************************************
-// LAPTOP
-// *******************************************************
-
-
-
-@media screen and (min-width: 1440px) {
-  html {
-    box-sizing: border-box;
-    font-size: 2vh;
-  }
-
-  // SLIDER
-
-  .slider {
-    display: flex;
-    justify-content: center;
-    width: 28vw;
-  }
-}
-
-
-
-// *******************************************************
-// DESKTOP
-// *******************************************************
-
-
-
-@media screen and (min-width: 1600px) {
-  // SLIDER
-
-  .slider {
-    display: flex;
-    justify-content: center;
-    width: 29vw;
-  }
-}
-
-// *******************************************************
-// DESKTOP
-// *******************************************************
-
-@media screen and (min-width: 1920px) {
-  html {
-    box-sizing: border-box;
-    font-size: 2vh;
-  }
-
-  // SLIDER
-
-  .slider {
-    display: flex;
-    justify-content: center;
-    width: 29vw;
-  }
-}
-
-// .admin_input {
-//   color: black;
-// }
-
-// .adminRule:hover {
-//   cursor: pointer;
-// }
-
-// .adminRule {
-//   list-style-type: none;
-// }
