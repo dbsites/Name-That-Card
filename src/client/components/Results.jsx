@@ -11,6 +11,7 @@ const mapStateToProps = store => ({
   loggedInUser: store.userReducer.loggedInUser,
   selectedGame: store.gameListReducer.selectedGame,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
+  answeredQuestions: store.gameReducer.answeredQuestions,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -28,7 +29,9 @@ class Results extends Component {
     resetRenderScoreFooter();
   }
   render() {
-    const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn } = this.props;
+    const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn, answeredQuestions } = this.props;
+
+    console.log('answeredQuestions ', answeredQuestions)
 
     const gameResultInfo = {
       username: loggedInUser,
@@ -37,24 +40,32 @@ class Results extends Component {
       score: score,
     };
 
-    let joinLeaderboardMsg = <div className="text--center"><NavLink className="loginSignupLink" to="/login">Login</NavLink> to join the leaderboard!</div>;
+    let joinLeaderboardMsg = <div className="text--center resultsLoginPrompt"><NavLink className="loginSignupLink" to="/login">Login</NavLink> to join the leaderboard!</div>;
 
     if (isLoggedIn) {
       sendResult(gameResultInfo);
       joinLeaderboardMsg = '';
     }
 
-    let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Score 18/20 or higher and you could win a Jace, the Mind Sculptor!! Test your skills at www.namethatcard.com`;
+    const cardNames = [answeredQuestions[0].card_name, answeredQuestions[1].card_name, answeredQuestions[2].card_name].map((name)=> {
+      return name.split('').filter((char) => {
+        return char === ' ' ? '' : char;
+      }).join('');
+    })
 
-    const socialMediaHashtags = [`${selectedGame}`, 'namethatcard'];
+    console.log('cardnames ', cardNames)
+
+    let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Test your skills at www.namethatcard.com`;
+
+    const socialMediaHashtags = [`${selectedGame}`, 'namethatcard', `${cardNames[0]}`, `${cardNames[1]}`, `${cardNames[2]}`];
 
     let selectedGameRoute = `/gameMenu/${selectedGame}`
 
     return (
-      <div>
+      <div className="results-container">
         <h1 className="resultHeader--center">You got {score} points!</h1>
         <div className="result--center">
-          <h2 className="text--center">Score 18/20 or Better, then Share Below on Twitter or FB to Enter our Raffle!</h2>
+          <h2 className="text--center">Click Below to Share Your Results on Twitter or Facebook!</h2>
           <div className="socialmedia--center">
             <FacebookShareButton url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
               <FacebookIcon round={true} />

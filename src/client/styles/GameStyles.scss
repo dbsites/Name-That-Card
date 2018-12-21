@@ -3,11 +3,11 @@
 .gameListButtonStyle {
   display: flex;
   width: 43.5vw;
-  height: 6vh;
+  height: fit-content;
   line-height: 1.8em;
   font-size: 1.5em !important;
   font-weight: 700;
-  margin: 1vh 1vw;
+  margin: 3vh 10vw;
   padding: 0em 0em !important;
   border: 0.08em solid white;
   cursor: pointer;
@@ -240,6 +240,8 @@
 
 .card {
   display: flex;
+  margin-top: 2.8vh;
+  position: absolute;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -250,6 +252,7 @@
 
 .cardReveal {
   height: 38vh;
+  margin-top: 2.8vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -267,7 +270,7 @@
   align-content: center;
   text-align: center;
   // margin: auto;
-  margin-top: 2.5vh;
+  margin-top: 6vh;
   // margin-left: auto;
   // margin-right: auto;
   color: white;

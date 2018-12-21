@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount() {
@@ -35,6 +35,7 @@ class Signup extends Component {
     if (signUpInputUsername === '' || !signUpInputEmail.split('').includes('@') || !signUpInputEmail.split('').includes('.') || signUpInputPassword.length < 5) {
       submitFunc = setSignUpCredentialErrors;
     }
+    console.log(usernameErrorMsg)
 
   return (
     <div className="UserContainer">
@@ -45,22 +46,33 @@ class Signup extends Component {
             <span className="hidden">Username</span>
             <input id="signup_username" type="text" name="username" className="form__input" value={signUpInputUsername} placeholder="Username" onChange={updateSignUpUsername} required />
           </div>
-            <span>{usernameErrorMsg}</span> 
           <div className="form__field">
             <span className="hidden">Password</span>
             <input id="signup_password" type="password" name="password" className="form__input" value={signUpInputPassword} placeholder="Password" onChange={updateSignUpPassword} required />
           </div>
-            <span>{passwordErrorMsg}</span> 
           <div className="form__field">
             <span className="hidden">Email</span>
             <input id="signup_email" type="text" name="email" className="form__input" value={signUpInputEmail} placeholder="Email" onChange={updateSignUpEmail} required />
           </div>
-            <span>{emailErrorMsg}</span>
           <div className="form__field">
             <input type="button" onClick={() => submitFunc(signUpInfoObj)} value="Sign Up" />
           </div>
           <div>
-            {errorText}
+            <div className="error-text">
+              <span>{usernameErrorMsg}</span>
+            </div>
+            <div className="error-text">
+              <span>{passwordErrorMsg}</span>
+            </div>
+            <div className="error-text">
+              <span>{emailErrorMsg}</span>
+            </div>
+            <div className="error-text">
+              {errorText}
+            </div>
+          </div>
+          <div className="text--center">
+            <div >Already have an account? <NavLink className="loginSignupLink" to="/login"> Login.</NavLink></div>
           </div>
         </form>
       </div>

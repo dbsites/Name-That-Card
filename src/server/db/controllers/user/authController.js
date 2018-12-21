@@ -49,7 +49,7 @@ module.exports = {
         console.log('*** data ***', data)
         if (data[0]) {
           return res.send({
-            msg: 'email already exists',
+            msg: 'An account associated with this email address already exists',
             signupSuccess: false,
           });
         }
@@ -115,7 +115,7 @@ module.exports = {
         if (!data[0]) {
           return res.status(200).send({
             loginSuccess: false,
-            msg: 'Incorrect email account or password',
+            msg: 'Incorrect email address or password',
           })
         } else {
           bcrypt.compare(password, user.password, (error, resolve) => {
@@ -126,7 +126,7 @@ module.exports = {
             }
             return res.status(200).send({
               loginSuccess: false,
-              msg: 'Incorrect email account or password',
+              msg: 'Incorrect email address or password',
             });
           });
         }

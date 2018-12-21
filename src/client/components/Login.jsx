@@ -48,6 +48,9 @@ class Login extends Component {
               <span className="hidden">Password</span>
               <input id="login__password" type="password" name="password" className="form__input" value={loginInputPassword} placeholder="Password" onChange={updateLoginPassword} required />
             </div>
+            <div className="error-text">
+              {errorMsg}
+            </div>
             <div className="text--center">
               {forgotPassword}
             </div>
@@ -57,9 +60,6 @@ class Login extends Component {
           </form>
           <div className="text--center">
             <div className="">Don't have an account? <NavLink className="loginSignupLink" to="/signup"> Sign up.</NavLink></div>
-          </div>
-          <div className="text--center">
-            {errorMsg}
           </div>
         </div>
       </div>
