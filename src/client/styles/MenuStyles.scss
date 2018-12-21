@@ -147,7 +147,7 @@ p {
 }
 
 .error-text {
-  padding-left: 5vw;
+  padding-left: 15px;
   margin-left: auto;
   margin-right: auto;
   color: white;
@@ -513,7 +513,7 @@ table {
 
 .leaderboard {
   display: grid;
-  grid-template-rows: 5vh auto;
+  grid-template-rows: 5.5vh auto;
   height: 55vh;
   width: 95vw;
   flex-direction: row;
@@ -523,8 +523,8 @@ table {
   margin-top: 2.5vh;
   margin-bottom: 3vh;
   border: 0.08em solid white;
-  border-radius: 0.5em;
-  background-color: black;
+  // border-radius: 0.5em;
+  // background-color: black;
   box-shadow: 0em 0em 3em white;
   text-shadow: 0 0 1em white;
   overflow-y: scroll;
@@ -574,9 +574,9 @@ table {
 .leaderboardHeadersRow {
   display: grid;
   grid-template-columns: 15% 20% 24% 18% 23%;
-  width: 94.1vw;
+  width: 94vw;
   position: fixed;
-  border-radius: 6px 6px 0px 0px;
+  // border-radius: 6px 6px 0px 0px;
   background-color: black;
 }
 
