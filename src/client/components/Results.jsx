@@ -11,6 +11,7 @@ const mapStateToProps = store => ({
   loggedInUser: store.userReducer.loggedInUser,
   selectedGame: store.gameListReducer.selectedGame,
   selectedDifficulty: store.gameMenuReducer.selectedDifficulty,
+  answeredQuestions: store.gameReducer.answeredQuestions,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -28,7 +29,9 @@ class Results extends Component {
     resetRenderScoreFooter();
   }
   render() {
-    const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn } = this.props;
+    const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn, answeredQuestions } = this.props;
+
+    console.log('answeredQuestions ', answeredQuestions)
 
     const gameResultInfo = {
       username: loggedInUser,
@@ -44,9 +47,17 @@ class Results extends Component {
       joinLeaderboardMsg = '';
     }
 
+    const cardNames = [answeredQuestions[0].card_name, answeredQuestions[1].card_name, answeredQuestions[2].card_name].map((name)=> {
+      return name.split('').filter((char) => {
+        return char === ' ' ? '' : char;
+      }).join('');
+    })
+
+    console.log('cardnames ', cardNames)
+
     let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Test your skills at www.namethatcard.com`;
 
-    const socialMediaHashtags = [`${selectedGame}`, 'namethatcard'];
+    const socialMediaHashtags = [`${selectedGame}`, 'namethatcard', `${cardNames[0]}`, `${cardNames[1]}`, `${cardNames[2]}`];
 
     let selectedGameRoute = `/gameMenu/${selectedGame}`
 
