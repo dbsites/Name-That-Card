@@ -48,7 +48,7 @@ module.exports = {
         console.log('*** data ***', data)
         if (data[0]) {
           return res.send({
-            msg: 'email already exists',
+            msg: 'An account associated with this email address already exists',
             signupSuccess: false,
           });
         }
