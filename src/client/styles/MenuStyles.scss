@@ -142,8 +142,15 @@ p {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2.5vh;
+  margin-top: 5.5vh;
   text-shadow: 0 0 1em white;
+}
+
+.error-text {
+  padding-left: 5vw;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
 }
 
 .chooseCategories--text--center {
@@ -188,6 +195,10 @@ p {
   grid-row-start: 4;
 }
 
+.results-container {
+  margin-top: 12vh;
+}
+
 .result--center {
   text-align: center;
   margin-left: auto;
@@ -211,9 +222,10 @@ p {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2vh;
+  margin-top: 4vh;
   margin-bottom: 0vh;
   text-shadow: 0 0 1em white;
+  font-size: 1.6em;
 }
 
 .pick-a-game {
@@ -344,10 +356,12 @@ p {
 
 .homeImgLogo {
   height: 10.5vh;
+  margin-top: 1.4vh;
 }
 
 .gameLogo {
   height: 10.5vh;
+  margin-top: 1.7vh;
 }
 
 .logo {
@@ -360,6 +374,8 @@ p {
   align-items: center;
   align-content: center;
   color: white;
+  margin-top: 1.7vh;
+
 }
 
 .right-menu {
@@ -444,6 +460,10 @@ p {
 
 .loginSignupLink {
   font-weight: bolder;
+}
+
+.resultsLoginPrompt {
+  font-size: 1.5em;
 }
 
 // LEADERBOARD
