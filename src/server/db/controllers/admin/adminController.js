@@ -114,7 +114,7 @@ module.exports = {
         if (!data[0]) {
           return res.status(200).send({
             loginSuccess: false,
-            msg: 'Incorrect email account or password',
+            msg: 'Incorrect email address or password',
           })
         } else {
           bcrypt.compare(password, admin.password, (error, resolve) => {
