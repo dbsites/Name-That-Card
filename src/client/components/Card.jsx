@@ -18,13 +18,13 @@ class Card extends Component {
 
     if (cardInfo) {
       cardAnswers = cardInfo.allAnswers;
-      let imgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/CARDS/' + cardInfo.image;
+      let imgSrc = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/CARDS/' + cardInfo.image;
       let coverImgSrc;
       if (cardInfo.mask) {
-        coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.mask + '.png';
+        coverImgSrc = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/masks/' + selectedDifficulty.toLowerCase() + '_' + cardInfo.mask + '.png';
       } else {
-        coverImgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/CARDS/' + cardInfo.image;
-        imgSrc = 'https://s3-us-west-1.amazonaws.com/namethatcard/CARDS/' + cardInfo.image_after;
+        coverImgSrc = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/CARDS/' + cardInfo.image;
+        imgSrc = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/CARDS/' + cardInfo.image_after;
       }
       
       picture = <img className="card" src={imgSrc} alt="" />;
