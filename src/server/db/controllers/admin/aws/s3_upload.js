@@ -11,13 +11,13 @@ AWS.config.update({
 
 // Create S3 service object
 const s3 = new AWS.S3({
-  apiVersion: 'us-west-1',
+  apiVersion: 'us-west-2',
 });
 
 // call S3 to retrieve upload file to specified bucket
 const uploadParams = {
-  Bucket: 'namethatcard',
-  Key: 'AKIAI2LULRQZGXWUVSRA',
+  Bucket: 'elasticbeanstalk-us-west-2-295078398723',
+  Key: 'AKIAJQ5ISIP2LPCY5NLQ',
   Body: '',
 };
 

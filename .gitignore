@@ -9,3 +9,7 @@ yarn.lock
 webpack.config.old
 .env
 database.json
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
