@@ -1,6 +1,9 @@
 # ubuntu 16.04 with node 8.9.3
 FROM dbsites/ubuntu-namethatcard
 
+# Check node version
+RUN node -v
+
 # Install webpack dev server
 RUN npm install webpack -g
 
@@ -13,6 +16,7 @@ WORKDIR /usr/src/app
 # npm install into /usr/src/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json /usr/src/app/
+RUN npm rebuild node-sass
 RUN npm install
 
 # replace this with your application's default port
