@@ -30,7 +30,13 @@ const mapDispatchToProps = dispatch => ({
   resetGameSelection: () => {
     dispatch(gameConfigActions.resetGameSelection());
   },
-  successPlay: () => {
+  successPlay: (selectedGame) => {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Game',
+      eventAction: selectedGame
+    });
+
     dispatch(gameConfigActions.successPlay());
   },
   resetGameMenu: () => {
