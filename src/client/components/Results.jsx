@@ -28,6 +28,15 @@ class Results extends Component {
     const { resetRenderScoreFooter } = this.props;
     resetRenderScoreFooter();
   }
+
+  emitGoogleAnalyticShare(socialNetwork) {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Share',
+      eventAction: socialNetwork
+    });
+  }
+
   render() {
     const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn, answeredQuestions } = this.props;
 
@@ -67,10 +76,10 @@ class Results extends Component {
         <div className="result--center">
           <h2 className="text--center">Click Below to Share Your Results on Twitter or Facebook!</h2>
           <div className="socialmedia--center">
-            <FacebookShareButton url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
+            <FacebookShareButton beforeOnClick={() => this.emitGoogleAnalyticShare('Facebook')} url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
               <FacebookIcon round={true} />
             </FacebookShareButton>
-            <TwitterShareButton url={'https://www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
+            <TwitterShareButton beforeOnClick={() => this.emitGoogleAnalyticShare('Twitter')} url={'https://www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
               <TwitterIcon round={true} />
             </TwitterShareButton>
           </div>
