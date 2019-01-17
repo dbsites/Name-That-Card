@@ -40,8 +40,18 @@ export const submitSignUp = (signUpInfoObj) => {
       .then((data) => {
         if (data.signupSuccess) {
           dispatch(successfulSignUp());
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'Auth',
+            eventAction: 'Successful SignUp'
+          });
         } else {
           dispatch(failedSignUp(data.msg));
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'Auth',
+            eventAction: 'Failed SignUp'
+          });
         }
       })
       .catch((err) => {
@@ -96,8 +106,18 @@ export const submitLogin = (loginInfoObj) => {
         console.log('data***** ', data)
         if (data.loginSuccess) {
           dispatch(successfulLogin(data.username));
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'Auth',
+            eventAction: 'Successful Login'
+          });
         } else {
           dispatch(failedLogin(data.msg));
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'Auth',
+            eventAction: 'Failed Login'
+          });
         }
       })
       .catch((err) => {

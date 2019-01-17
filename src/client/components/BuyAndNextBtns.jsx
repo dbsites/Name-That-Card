@@ -16,6 +16,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(gamePlayActions.goToNext());
   },
   finishGame: () => {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Game',
+      eventAction: 'Finish game'
+    });
+
     dispatch(gamePlayActions.finishGame());
   },
 });
