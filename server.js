@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   next();
 });
-
+app.use('/favicon.ico', express.static(path.resolve(__dirname, './src/client/assets/favicon.ico')));
 // server static files from dist directory
 app.use(express.static(path.resolve(__dirname, './dist')));
 
