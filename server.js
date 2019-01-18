@@ -34,6 +34,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/favicon.ico', express.static(path.resolve(__dirname, './src/client/assets/favicon.ico')));
+app.use(‘/ntcwebpreview.jpg’, express.static(path.resolve(__dirname, ‘./src/client/assets/ntcwebpreview.jpg’)));
 // server static files from dist directory
 app.use(express.static(path.resolve(__dirname, './dist')));
 
