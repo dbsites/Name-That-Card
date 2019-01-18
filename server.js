@@ -24,7 +24,6 @@ const app = express();
 
 require('dotenv').config();
 
-
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use((req, res, next) => {
@@ -33,9 +32,15 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   next();
 });
+
+// eslint-disable-next-line max-len
+/* ======================================== Static Images ========================================== */
 app.use('/favicon.ico', express.static(path.resolve(__dirname, './src/client/assets/favicon.ico')));
-app.use(‘/ntcwebpreview.jpg’, express.static(path.resolve(__dirname, ‘./src/client/assets/ntcwebpreview.jpg’)));
+app.use('/ntcwebpreview.jpg', express.static(path.resolve(__dirname, './src/client/assets/ntcwebpreview.jpg')));
 // server static files from dist directory
+
+// eslint-disable-next-line max-len
+/* ======================================== Build Files ========================================== */
 app.use(express.static(path.resolve(__dirname, './dist')));
 
 // eslint-disable-next-line max-len
