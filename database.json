@@ -2,7 +2,7 @@
     "dev": {
         "driver": "pg",
         "host": "localhost",
-        "user": "namethatcardadmin",
+        "user": "dbates42",
         "password": "admin",
         "database": "namethatcard"
     },
@@ -10,7 +10,7 @@
     "postgres-db": {
         "driver": "pg",
         "host": "postgres-db",
-        "user": "namethatcardadmin",
+        "user": "dbates42",
         "password": "admin",
         "database": "namethatcard"
     },
@@ -18,7 +18,7 @@
     "postgres-db-test": {
         "driver": "pg",
         "host": "postgres-db-test",
-        "user": "namethatcardadmin",
+        "user": "dbates42",
         "password": "admin",
         "database": "namethatcard"
     },
