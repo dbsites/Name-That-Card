@@ -23,7 +23,7 @@ services:
   postgres-db-test:
     environment:
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_USER=namethatcardadmin
+      - POSTGRES_USER=dbates42
       - POSTGRES_DB=namethatcard
     image: dbsites/namethatcard-postgres
     container_name: namethatcard-test-postgres
