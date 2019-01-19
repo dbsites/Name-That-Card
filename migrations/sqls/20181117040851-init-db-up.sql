@@ -1,5 +1,5 @@
 --
--- Name: admin; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: admin; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE admin (
@@ -10,10 +10,10 @@ CREATE TABLE admin (
 );
 
 
-ALTER TABLE admin OWNER TO namethatcardadmin;
+ALTER TABLE admin OWNER TO dbates42;
 
 --
--- Name: adminSessions; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: adminSessions; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE "adminSessions" (
@@ -22,10 +22,10 @@ CREATE TABLE "adminSessions" (
 );
 
 
-ALTER TABLE "adminSessions" OWNER TO namethatcardadmin;
+ALTER TABLE "adminSessions" OWNER TO dbates42;
 
 --
--- Name: admin_admin_id_seq; Type: SEQUENCE; Schema: public; Owner: namethatcardadmin
+-- Name: admin_admin_id_seq; Type: SEQUENCE; Schema: public; Owner: dbates42
 --
 
 CREATE SEQUENCE admin_admin_id_seq
@@ -37,17 +37,17 @@ CREATE SEQUENCE admin_admin_id_seq
     CACHE 1;
 
 
-ALTER TABLE admin_admin_id_seq OWNER TO namethatcardadmin;
+ALTER TABLE admin_admin_id_seq OWNER TO dbates42;
 
 --
--- Name: admin_admin_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: namethatcardadmin
+-- Name: admin_admin_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dbates42
 --
 
 ALTER SEQUENCE admin_admin_id_seq OWNED BY admin.admin_id;
 
 
 --
--- Name: cards; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: cards; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE cards (
@@ -66,10 +66,10 @@ CREATE TABLE cards (
 );
 
 
-ALTER TABLE cards OWNER TO namethatcardadmin;
+ALTER TABLE cards OWNER TO dbates42;
 
 --
--- Name: game; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: game; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE game (
@@ -86,10 +86,10 @@ CREATE TABLE game (
 );
 
 
-ALTER TABLE game OWNER TO namethatcardadmin;
+ALTER TABLE game OWNER TO dbates42;
 
 --
--- Name: gama_n_game_id_seq; Type: SEQUENCE; Schema: public; Owner: namethatcardadmin
+-- Name: gama_n_game_id_seq; Type: SEQUENCE; Schema: public; Owner: dbates42
 --
 
 CREATE SEQUENCE gama_n_game_id_seq
@@ -101,17 +101,17 @@ CREATE SEQUENCE gama_n_game_id_seq
     CACHE 1;
 
 
-ALTER TABLE gama_n_game_id_seq OWNER TO namethatcardadmin;
+ALTER TABLE gama_n_game_id_seq OWNER TO dbates42;
 
 --
--- Name: gama_n_game_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: namethatcardadmin
+-- Name: gama_n_game_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dbates42
 --
 
 ALTER SEQUENCE gama_n_game_id_seq OWNED BY game.game_id;
 
 
 --
--- Name: game_card_cat_lookup; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: game_card_cat_lookup; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE game_card_cat_lookup (
@@ -121,10 +121,10 @@ CREATE TABLE game_card_cat_lookup (
 );
 
 
-ALTER TABLE game_card_cat_lookup OWNER TO namethatcardadmin;
+ALTER TABLE game_card_cat_lookup OWNER TO dbates42;
 
 --
--- Name: game_categories; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: game_categories; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE game_categories (
@@ -134,10 +134,10 @@ CREATE TABLE game_categories (
 );
 
 
-ALTER TABLE game_categories OWNER TO namethatcardadmin;
+ALTER TABLE game_categories OWNER TO dbates42;
 
 --
--- Name: game_rules; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: game_rules; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE game_rules (
@@ -149,10 +149,10 @@ CREATE TABLE game_rules (
 );
 
 
-ALTER TABLE game_rules OWNER TO namethatcardadmin;
+ALTER TABLE game_rules OWNER TO dbates42;
 
 --
--- Name: game_try; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: game_try; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE game_try (
@@ -165,10 +165,10 @@ CREATE TABLE game_try (
 );
 
 
-ALTER TABLE game_try OWNER TO namethatcardadmin;
+ALTER TABLE game_try OWNER TO dbates42;
 
 --
--- Name: player_history; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: player_history; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE player_history (
@@ -180,10 +180,10 @@ CREATE TABLE player_history (
 );
 
 
-ALTER TABLE player_history OWNER TO namethatcardadmin;
+ALTER TABLE player_history OWNER TO dbates42;
 
 --
--- Name: player_history_history_id_seq; Type: SEQUENCE; Schema: public; Owner: namethatcardadmin
+-- Name: player_history_history_id_seq; Type: SEQUENCE; Schema: public; Owner: dbates42
 --
 
 CREATE SEQUENCE player_history_history_id_seq
@@ -195,17 +195,17 @@ CREATE SEQUENCE player_history_history_id_seq
     CACHE 1;
 
 
-ALTER TABLE player_history_history_id_seq OWNER TO namethatcardadmin;
+ALTER TABLE player_history_history_id_seq OWNER TO dbates42;
 
 --
--- Name: player_history_history_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: namethatcardadmin
+-- Name: player_history_history_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dbates42
 --
 
 ALTER SEQUENCE player_history_history_id_seq OWNED BY player_history.history_id;
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: sessions; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE sessions (
@@ -214,10 +214,10 @@ CREATE TABLE sessions (
 );
 
 
-ALTER TABLE sessions OWNER TO namethatcardadmin;
+ALTER TABLE sessions OWNER TO dbates42;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: namethatcardadmin
+-- Name: users; Type: TABLE; Schema: public; Owner: dbates42
 --
 
 CREATE TABLE users (
@@ -228,10 +228,10 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO namethatcardadmin;
+ALTER TABLE users OWNER TO dbates42;
 
 --
--- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: namethatcardadmin
+-- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: dbates42
 --
 
 CREATE SEQUENCE users_user_id_seq
@@ -243,38 +243,38 @@ CREATE SEQUENCE users_user_id_seq
     CACHE 1;
 
 
-ALTER TABLE users_user_id_seq OWNER TO namethatcardadmin;
+ALTER TABLE users_user_id_seq OWNER TO dbates42;
 
 --
--- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: namethatcardadmin
+-- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dbates42
 --
 
 ALTER SEQUENCE users_user_id_seq OWNED BY users.user_id;
 
 
 --
--- Name: admin admin_id; Type: DEFAULT; Schema: public; Owner: namethatcardadmin
+-- Name: admin admin_id; Type: DEFAULT; Schema: public; Owner: dbates42
 --
 
 ALTER TABLE ONLY admin ALTER COLUMN admin_id SET DEFAULT nextval('admin_admin_id_seq'::regclass);
 
 
 --
--- Name: game game_id; Type: DEFAULT; Schema: public; Owner: namethatcardadmin
+-- Name: game game_id; Type: DEFAULT; Schema: public; Owner: dbates42
 --
 
 ALTER TABLE ONLY game ALTER COLUMN game_id SET DEFAULT nextval('gama_n_game_id_seq'::regclass);
 
 
 --
--- Name: player_history history_id; Type: DEFAULT; Schema: public; Owner: namethatcardadmin
+-- Name: player_history history_id; Type: DEFAULT; Schema: public; Owner: dbates42
 --
 
 ALTER TABLE ONLY player_history ALTER COLUMN history_id SET DEFAULT nextval('player_history_history_id_seq'::regclass);
 
 
 --
--- Name: users user_id; Type: DEFAULT; Schema: public; Owner: namethatcardadmin
+-- Name: users user_id; Type: DEFAULT; Schema: public; Owner: dbates42
 --
 
 ALTER TABLE ONLY users ALTER COLUMN user_id SET DEFAULT nextval('users_user_id_seq'::regclass);
