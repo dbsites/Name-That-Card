@@ -40,8 +40,6 @@ class Results extends Component {
   render() {
     const { score, sendResult, loggedInUser, selectedGame, selectedDifficulty, isLoggedIn, answeredQuestions } = this.props;
 
-    console.log('answeredQuestions ', answeredQuestions)
-
     const gameResultInfo = {
       username: loggedInUser,
       game: selectedGame,
@@ -49,7 +47,7 @@ class Results extends Component {
       score: score,
     };
 
-    let joinLeaderboardMsg = <div className="text--center resultsLoginPrompt"><NavLink className="loginSignupLink" to="/login">Login</NavLink> to join the leaderboard!</div>;
+    let joinLeaderboardMsg = <div className="text--center resultsLoginPrompt"><NavLink className="loginSignupLink hoverStyle" to="/login">Login</NavLink> to join the leaderboard!</div>;
 
     if (isLoggedIn) {
       sendResult(gameResultInfo);
@@ -61,8 +59,6 @@ class Results extends Component {
         return char === ' ' ? '' : char;
       }).join('');
     })
-
-    console.log('cardnames ', cardNames)
 
     let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Test your skills at www.namethatcard.com`;
 

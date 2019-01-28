@@ -2,7 +2,7 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
   categoryList: [],
-  selectedDifficulty: '',
+  selectedDifficulty: 'MEDIUM',
   selectedCategories: [],
   yearRange: [],
   selectedYearRange: [],
@@ -94,7 +94,7 @@ export default function (previousState = initialState, action) {
     case types.RESET_GAME_MENU: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.categoryList = [];
-      stateCopy.selectedDifficulty = '';
+      stateCopy.selectedDifficulty = 'MEDIUM';
       stateCopy.selectedCategories = [];
       stateCopy.yearRange = [];
       stateCopy.selectedYearRange = [];
@@ -139,7 +139,6 @@ export default function (previousState = initialState, action) {
     case types.RESET_RENDER_SCORE_FOOTER: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.renderScoreFooter = false;
-      console.log('score footer bool ', stateCopy.renderScoreFooter);
       return stateCopy;
     }
     default:

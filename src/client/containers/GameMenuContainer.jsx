@@ -111,7 +111,6 @@ class GameMenuContainer extends Component {
       }
     }
     
-
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
@@ -157,7 +156,7 @@ class GameMenuContainer extends Component {
       slider = <div className="outerSliderContainer"><RangeSlider updateMinMaxYears={updateMinMaxYears} maxYear={maxYear} minYear={minYear} /></div>;
     }
 
-    let loginPrompt = <span><NavLink className="loginSignupLink" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+    let loginPrompt = <span><NavLink className="loginSignupLink hoverStyle" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
     if(isLoggedIn) {
       loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
@@ -210,7 +209,7 @@ class GameMenuContainer extends Component {
         <div className="MenuContainer">
           <div className="leaderboard-menu">
             <div className="leaderboardButton">
-              <NavLink to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
+              <NavLink className="hoverStyle" to={"/leaderboard/" + selectedGame}>Leaderboard</NavLink>
             </div>
           </div>
           <h3 className="chooseCategories--text--center">CHOOSE CATEGORIES</h3>

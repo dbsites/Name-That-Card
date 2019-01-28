@@ -41,30 +41,30 @@ class Footer extends Component {
       disclaimer = '';
       gameDisclaimer =' ';
     } else if (window.location.pathname === '/') {
-      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
-      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
-      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      privacyPolicy = <span className="hoverStyle"><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className="hoverStyle"><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a className="hoverStyle" href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
       disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     } else if (window.location.pathname.slice(0,6) === '/reset') {
-      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
-      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
-      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      privacyPolicy = <span className="hoverStyle"><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className="hoverStyle"><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a className="hoverStyle" href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
       disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
       footerScore = '';
       gameDisclaimer =' '; 
     } else if (window.location.pathname === '/login' || window.location.pathname === '/signup') {
-      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
-      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
-      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      privacyPolicy = <span className="hoverStyle"><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className="hoverStyle"><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a className="hoverStyle" href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
       disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
       footerScore = '';
       gameDisclaimer =' ';
     } else {
-      privacyPolicy = <span className=""><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
-      termsOfService = <span className=""><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
-      contact = <span><a href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
+      privacyPolicy = <span className="hoverStyle"><NavLink to="/privacy-policy">Privacy Policy</NavLink></span>;
+      termsOfService = <span className="hoverStyle"><NavLink to="/terms-of-service">Terms of Service</NavLink></span>;
+      contact = <span><a className="hoverStyle" href="mailto:info@namethatcard.com" target="_top">Contact</a></span>;
       disclaimer = <span>Name that Card is unofficial Fan Content. Other products and/or company names, trademarks and logos referenced on this site may be trademarked or copyrighted by their respective owners. We have no affiliation with these companies or their owners, and our services are not endorsed by them.</span>;
       footerScore = '';
       gameDisclaimer =' ';
