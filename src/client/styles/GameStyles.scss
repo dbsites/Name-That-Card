@@ -243,19 +243,19 @@
 
 .card {
   display: flex;
-  margin-top: 2.8vh;
+  margin-top: 2.3vh;
   position: absolute;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   align-content: center;
-  height: 38vh;
+  height: 43vh;
   box-shadow: 0 0 2px #fff, 0 0 0 #fff, 0 0 16px #fff, 0 0 22px rgb(151, 151, 151), 0 0 36px rgb(101, 102, 102), 0 0 38px rgb(69, 69, 70), 0 0 26px rgb(69, 69, 70), 0 0 72px rgb(46, 46, 46);
 }
 
 .cardReveal {
-  height: 38vh;
-  margin-top: 2.8vh;
+  height: 43vh;
+  margin-top: 2.3vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -273,7 +273,7 @@
   align-content: center;
   text-align: center;
   // margin: auto;
-  margin-top: 6vh;
+  margin-top: 10vh;
   // margin-left: auto;
   // margin-right: auto;
   color: white;
@@ -298,7 +298,7 @@
   height: 7.5vh;
   width: 43.5vw;
   line-height: 1em;
-  font-size: 1.25em !important;
+  font-size: 1.35em !important;
   margin: 1vh 1vw;
   padding-top: 0.5em !important;
   // padding-left: 0.8em !important;
@@ -324,7 +324,7 @@
   height: 7.5vh;
   width: 43.5vw;
   line-height: 1em;
-  font-size: 1.25em !important;
+  font-size: 1.35em !important;
   margin: 1vh 1vw;
   // padding: 0.5em 0.8em !important;
   // border-right: 0.08em solid white;
@@ -347,7 +347,7 @@
   height: 7.5vh;
   width: 43.5vw;
   line-height: 1em;
-  font-size: 1.25em !important;
+  font-size: 1.35em !important;
   margin: 1vh 1vw;
   padding-top: 0.5em !important;
   // padding-left: 0.8em !important;
@@ -373,7 +373,7 @@
   height: 7.5vh;
   width: 43.5vw;
   line-height: 1em;
-  font-size: 1.25em !important;
+  font-size: 1.35em !important;
   margin: 1vh 1vw;
   // padding: 0.5em 0.8em !important;
   // border-left: 0.08em solid white;
@@ -387,9 +387,9 @@
   user-select: none;
 }
 
-// #answer4:hover {
-  //   background: radial-gradient(white, black);
-  // }
+// .answer4:hover {
+//   text-decoration: underline;
+// }
 
 #correctAnswer {
   color: green;
@@ -416,6 +416,7 @@
   justify-content: center;
   align-content: center;
   margin: auto;
+  margin-top: 5.75vh;
 }
 
 .gameButton {
