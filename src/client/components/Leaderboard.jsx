@@ -86,42 +86,42 @@ class Leaderboard extends Component {
       return <LeaderboardEntry numEntries={difficultyFilteredResults.length} key={i} entryContents={resultObj} rank={i} sortDirection={sortDirection} />;
     });
 
-    let all = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>;
-    let easy = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>;
-    let medium = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>;
-    let hard = <span className="leaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>;
+    let all = <span className="leaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>;
+    let easy = <span className="leaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>;
+    let medium = <span className="leaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>;
+    let hard = <span className="leaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>;
 
     // set dynamic leaderboard difficulty header styles
     if (leaderboardDifficulty === 'ALL') {
-      all = <span className="activeLeaderboardFilter" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>;
+      all = <span className="activeLeaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('ALL')}>ALL</span>;
     } else if (leaderboardDifficulty === 'EASY') {
-      easy = <span className="activeLeaderboardFilter" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>;
+      easy = <span className="activeLeaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('EASY')}>EASY</span>;
     } else if (leaderboardDifficulty === 'MEDIUM') {
-      medium = <span className="activeLeaderboardFilter" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>;
+      medium = <span className="activeLeaderboardFilter hoverStyle" onClick={() => changeLeaderboardDifficulty('MEDIUM')}>MEDIUM</span>;
     } else if (leaderboardDifficulty === 'HARD') {
       hard = <span className="activeLeaderboardFilter" onClick={() => changeLeaderboardDifficulty('HARD')}>HARD</span>;
     }
 
-    let player = <th className="leaderboardHeader2" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>;
-    let totalPts = <th className="leaderboardHeader3" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>;
-    let avg = <th className="leaderboardHeader4" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>;
-    let totalGames = <th className="leaderboardHeader5" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>;
+    let player = <th className="leaderboardHeader2 hoverStyle" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>;
+    let totalPts = <th className="leaderboardHeader3 hoverStyle" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>;
+    let avg = <th className="leaderboardHeader4 hoverStyle" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>;
+    let totalGames = <th className="leaderboardHeader5 hoverStyle" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>;
 
     // set dynamic leaderboard category header styles
     if (sortCategory === 'user') {
-      player = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>;
+      player = <th className="activeLeaderboardHeader hoverStyle" onClick={() => changeLeaderboardSortCategory('user')}>PLAYER</th>;
     } else if (sortCategory === 'sum') {
-      totalPts = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>;
+      totalPts = <th className="activeLeaderboardHeader hoverStyle" onClick={() => changeLeaderboardSortCategory('sum')}>TOTAL PTS</th>;
     } else if (sortCategory === 'avg') {
-      avg = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>;
+      avg = <th className="activeLeaderboardHeader hoverStyle" onClick={() => changeLeaderboardSortCategory('avg')}>AVG SCORE</th>;
     } else if (sortCategory === 'gamecount') {
-      totalGames = <th className="activeLeaderboardHeader" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>;
+      totalGames = <th className="activeLeaderboardHeader hoverStyle" onClick={() => changeLeaderboardSortCategory('gamecount')}>TOTAL GAMES</th>;
     }
     return (
       <div className="LeaderboardContainer">
         <h1 className="leaderboardTitle">LEADERBOARD</h1>
         <div className="leaderboard-right-menu">
-          <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>
+          <div className="xButton hoverStyle"><NavLink to={selectedGameRoute}>x</NavLink></div>
         </div>
         <div>
           <div className="center-leaderboardFilter">

@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 const Navigation = (props) => {
   const { isLoggedIn, loggedInUser, logout, selectedGame, questionNumber } = props;
   let logInOutButton = isLoggedIn
-  ? <div className="menu-item"><NavLink onClick={() => logout()} to="">Logout</NavLink></div>
-  : <div className="menu-item"><NavLink to="/login">Login</NavLink></div>;
+  ? <div className="menu-item hoverStyle"><NavLink onClick={() => logout()} to="">Logout</NavLink></div>
+  : <div className="menu-item hoverStyle"><NavLink to="/login">Login</NavLink></div>;
   
-  let about = <span className="menu-item"><NavLink to="/about">About</NavLink></span>;
+  let about = <span className="menu-item hoverStyle"><NavLink to="/about">About</NavLink></span>;
   
-  let homeBtn = <div className="menu-item"><NavLink to="/">Home</NavLink></div>;
+  let homeBtn = <div className="menu-item hoverStyle"><NavLink to="/">Home</NavLink></div>;
   
   let xBtn;
   
@@ -44,9 +44,9 @@ const Navigation = (props) => {
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Background/" + selectedGame + "Background.jpg')";
     const selectedGameRoute = `/gameMenu/${selectedGame}`
-    xBtn = <div className="xButton"><NavLink to={selectedGameRoute}>x</NavLink></div>;
+    xBtn = <div className="xButton hoverStyle"><NavLink to={selectedGameRoute}>x</NavLink></div>;
     if (questionNumber === 20) {
-      xBtn = <div className="xButton"><NavLink to='/'>x</NavLink></div>;
+      xBtn = <div className="xButton hoverStyle"><NavLink to='/'>x</NavLink></div>;
     }
   } else if (window.location.pathname === '/login' || window.location.pathname === '/signup') {
     about = '';

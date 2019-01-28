@@ -16,7 +16,7 @@ const About = (props) => {
         <p className="p-margins">If you correctly identify 18 out of each 20 cards presented to you, you will be presented with an opportunity to share your results on social media. A repopulated message will appear, which will include a unique identifier code. At the end of the month, we’ll randomly select one of these codes to determine a winner. You may enter as many times as you like, but only those who share their results, and the attached code, will be eligible for the drawing.</p>
     
         <h2 className="h2-margins">Who do I contact if I have questions, concerns, comments, or have spotted an error?</h2>
-        <p className="p-margins">We welcome your feedback! Please reach out to us at info@namethatcard.com</p>
+        <p className="p-margins">We welcome your feedback! Please reach out to us at <a href="mailto:info@namethatcard.com" target="_top">info@namethatcard.com</a></p>
       </div>)
     } else if (selectedGame === 'SPORTS') {
       content = (<div className="footerLinks">
@@ -31,7 +31,7 @@ const About = (props) => {
 
           <h2 className="h2-margins">Who do I contact if I have questions, concerns, comments, or have spotted an error?</h2>
 
-          <p className="p-margins">We welcome your feedback! Please reach out to us at info@namethatcard.com</p>
+          <p className="p-margins">We welcome your feedback! Please reach out to us at <a href="mailto:info@namethatcard.com" target="_top">info@namethatcard.com</a></p>
         </div>)
     }
 
