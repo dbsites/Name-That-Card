@@ -8,8 +8,6 @@ import * as gameConfigActions from '../actions/gameConfigActions';
 import * as gamePlayActions from '../actions/gamePlayActions';
 import * as leaderboardActions from '../actions/leaderboardActions';
 
-
-
 const mapStateToProps = store => ({
   categoryList: store.gameMenuReducer.categoryList,
   ableToStartGame: store.gameMenuReducer.ableToStartGame,
@@ -74,9 +72,8 @@ class GameMenuContainer extends Component {
     resetGameMenu();
     resetLeaderboardLoadingContent();
   }
-  
+
   render() {
-    
     const {
       categoryList,
       toggleGameCategory,
@@ -98,19 +95,19 @@ class GameMenuContainer extends Component {
       isLoggedIn,
       loggedInUser,
     } = this.props;
-    
+
     setYearsBool();
 
     const underscore = string => string.split('').map(char => char === ' ' ? '_' : char).join('');
     const removeUnderscore = string => string.split('').map(char => char === '_' ? ' ' : char).join('');
     const categories = [];
     let modCategoryList = categoryList.slice();
-    for(let i = 0; i < modCategoryList.length; i += 1) {
-      if(!modCategoryList[i].game_category) {
+    for (let i = 0; i < modCategoryList.length; i += 1) {
+      if (!modCategoryList[i].game_category) {
         modCategoryList.pop();
       }
     }
-    
+
     modCategoryList.forEach((gameCatObj, ind) => {
       const category = gameCatObj.game_category;
       if (selectedCategories.includes(underscore(category))) {
@@ -119,7 +116,7 @@ class GameMenuContainer extends Component {
         categories.push(<div className="listButtonStyle" onClick={() => toggleGameCategory(category)} key={ind}>{removeUnderscore(category).toUpperCase()}</div>);
       }
     });
-   
+
     if (ableToStartGame && startClicked) {
       resetGameInitiation();
       return <Redirect to={{ pathname: '/game' }} />;
@@ -158,8 +155,8 @@ class GameMenuContainer extends Component {
 
     let loginPrompt = <span><NavLink className="loginSignupLink hoverStyle" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
-    if(isLoggedIn) {
-      loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
+    if (isLoggedIn) {
+      loginPrompt = <span>Welcome, {loggedInUser}!</span>;
     }
 
     const spinningCircles =
