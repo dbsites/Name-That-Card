@@ -3,13 +3,13 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 class Login extends Component {
   componentDidMount() {
-    const { resetLoginInfo, resetLeaderboardLoadingContent, resetRenderScoreFooter, resetFooterBool } = this.props
+    const { resetLoginInfo, resetLeaderboardLoadingContent, resetRenderScoreFooter, resetFooterBool } = this.props;
     resetLoginInfo();
     resetLeaderboardLoadingContent();
     resetRenderScoreFooter();
     resetFooterBool();
   }
-  
+
   render() {
     const { updateLoginEmail, updateLoginPassword, submitLogin, isLoggedIn, loginInputEmail, loginInputPassword, loginError, loginErrorMsg, selectedGame, passwordReset } = this.props;
 
@@ -18,17 +18,17 @@ class Login extends Component {
       password: loginInputPassword,
     };
 
-    let errorMsg = ''
+    let errorMsg = '';
 
     if (isLoggedIn & selectedGame !== '') {
-      const selectedGameRoute = `/gameMenu/${selectedGame}`
+      const selectedGameRoute = `/gameMenu/${selectedGame}`;
       return <Redirect to={selectedGameRoute} />;
     } else if (isLoggedIn) {
-      return <Redirect to='/'/>;
+      return <Redirect to='/' />;
     }
 
     if (loginError) {
-      errorMsg = <span>{loginErrorMsg}</span>; 
+      errorMsg = <span>{loginErrorMsg}</span>;
     } else if (passwordReset) {
       errorMsg = <span>Your password has been successfully reset. Please login with your new password.</span>;
     }
@@ -64,7 +64,7 @@ class Login extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default Login;

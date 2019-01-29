@@ -10,9 +10,10 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 
 const RangeSlider = (props) => {
-  let {maxYear, minYear, updateMinMaxYears} = props;
+  let { maxYear, minYear, updateMinMaxYears } = props;
   maxYear = Number(maxYear);
   minYear = Number(minYear);
+
   return (
     <div className="innerSliderContainer">
       {/* <span id="text--center">Select Year Range</span> */}
@@ -21,7 +22,7 @@ const RangeSlider = (props) => {
       <Range className="slider" onChange={updateMinMaxYears} min={minYear} max={maxYear} defaultValue={[minYear, maxYear]} allowCross={false} tipFormatter={value => `${value}`} />
       <span>{maxYear}</span>
     </div>
-  )
+  );
 };
 
 export default RangeSlider;

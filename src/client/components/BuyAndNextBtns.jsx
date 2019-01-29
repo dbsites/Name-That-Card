@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
     ga('send', {
       hitType: 'event',
       eventCategory: 'Game',
-      eventAction: 'Finish game'
+      eventAction: 'Finish game',
     });
 
     dispatch(gamePlayActions.finishGame());
@@ -28,11 +28,11 @@ const mapDispatchToProps = dispatch => ({
 
 const BuyAndNextBtns = (props) => {
   const { ableToNext, cards, goToNext, finishGame, displayResults, selectedGame } = props;
-  
+
   const cardInfo = cards[0];
   let buttonText = 'NEXT';
   let clickFunc = goToNext;
-  
+
   let buyBtn;
   let ebayLink;
   if (cardInfo) {
@@ -54,8 +54,8 @@ const BuyAndNextBtns = (props) => {
   }
 
   if (displayResults) {
-    nextBtn ='';
-    buyBtn ='';
+    nextBtn = '';
+    buyBtn = '';
   }
 
   return (

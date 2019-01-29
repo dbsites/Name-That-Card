@@ -14,12 +14,14 @@ const AdminLogin = (props) => {
       <form>
         <div>
           <label>Username</label>
-          <input className="adminInput" placeholder="Username" value={adminUsername} onChange={updateAdminLoginUsername} required /> <br/>
+          <input className="adminInput" placeholder="Username" value={adminUsername} onChange={updateAdminLoginUsername} required /> 
         </div>
+        <br />
         <div>
           <label>Password</label>
-          <input type="Password" className="adminInput" placeholder="Password" value={adminPassword} onChange={updateAdminLoginPassword} required /> <br/>
+          <input type="Password" className="adminInput" placeholder="Password" value={adminPassword} onChange={updateAdminLoginPassword} required />
         </div>
+        <br />
         <div type="button" onClick={() => submitAdminLogin(adminInfo)}>Login</div>
       </form>
     </div>
