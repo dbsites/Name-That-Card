@@ -55,6 +55,7 @@ a {
 // a:hover {
 //   text-decoration: underline;
 // }
+
 input {
     border: 0;
     color: inherit;
@@ -249,12 +250,12 @@ p {
     margin: auto;
 }
 
-
 /*********************************************************
 ************************* MENU ***************************
 *********************************************************/
 
 // APP CONTAINERS
+
 .hoverStyle:hover {
     text-decoration: underline;
 }
@@ -369,7 +370,6 @@ p {
     height: auto;
     width: auto;
     margin: 1vh 1vw;
-    cursor: pointer;
     justify-content: flex-start;
     align-items: center;
     align-content: center;
@@ -466,6 +466,7 @@ p {
 }
 
 // LEADERBOARD
+
 table {
     table-layout: fixed;
 }
@@ -508,6 +509,7 @@ table {
 //   display: flex;
 //   justify-content: space-evenly;
 // }
+
 .leaderboard {
     display: grid;
     grid-template-rows: 5.5vh auto;
@@ -649,6 +651,7 @@ table {
 //   // padding: 0.25em 0.5em;
 //   font-weight: bolder;
 // }
+
 .leaderboardHeaders:hover {
     cursor: pointer;
 }
@@ -658,6 +661,7 @@ table {
 //   margin: auto;
 //   cursor: pointer;
 // }
+
 .leaderboard-body {
     grid-row-start: 2;
     grid-row-end: 3;
@@ -665,6 +669,7 @@ table {
 }
 
 // SLIDER
+
 .outerSliderContainer {
     display: flex;
     flex-direction: row;
@@ -701,6 +706,7 @@ table {
 }
 
 // GAME COMPONENTS
+
 .cardContainer {
     display: grid;
     grid-template-rows: 38vh auto;
@@ -708,6 +714,7 @@ table {
 }
 
 // FOOTER COMPONENTS
+
 .links {
     text-decoration: underline;
 }
@@ -806,18 +813,29 @@ table {
 }
 
 // RESULTS
+
 .imgLink {
     height: 10vh;
 }
+
+
+
 
 
 /*********************************************************
 ********************* MEDIA QUERIES **********************
 *********************************************************/
 
+
+
+
+
 // *******************************************************
 // IPHONE
 // *******************************************************
+
+
+
 @media screen and (min-width: 375px) {
     .leaderboardHeaders {
         font-size: 1em;
@@ -827,9 +845,14 @@ table {
     }
 }
 
+
+
 // *******************************************************
 // IPAD
 // *******************************************************
+
+
+
 @media screen and (min-width: 768px) {
     .HomescreenContainer {
         max-width: 70vw;
@@ -852,7 +875,9 @@ table {
     .footerContainer {
         max-width: 70vw;
     }
+
     // LEADERBOARD
+
     .leaderboard {
         width: 70vw;
     }
@@ -866,12 +891,17 @@ table {
     .leaderboardEntriesRow {
         width: 68.5vw;
     }
+
     // SLIDER
+
     .slider {
         width: 29vw;
     }
+
     // GAME COMPONENTS
+
     // FOOTER COMPONENTS
+    
     .footerLinks {
         max-width: 70vw;
     }
@@ -883,20 +913,29 @@ table {
         margin-top: 0.3em;
         margin-bottom: 1.3em;
     }
+
     // RESULTS
+
     .imgLink {
         height: 15vh;
     }
 }
 
+
+
 // *******************************************************
 // LAPTOP
 // *******************************************************
+
+
+
 @media screen and (min-width: 1280px) {
     .text--center {
         margin-bottom: 0.5vh;
     }
+
     // SLIDER
+
     .outerSliderContainer {
         margin-top: 2.5vh;
         margin-left: 11vw;
@@ -907,27 +946,46 @@ table {
     }
 }
 
+
+
 // *******************************************************
 // LAPTOP
 // *******************************************************
+
+
+
 @media screen and (min-width: 1440px) {
     // SLIDER
+
     .slider {
         width: 29vw;
     }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
+
+
+
 @media screen and (min-width: 1600px) {
     // SLIDER
+
     .slider {
         width: 29vw;
     }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
-@media screen and (min-width: 1920px) {}
+
+
+
+@media screen and (min-width: 1920px) {
+
+}
