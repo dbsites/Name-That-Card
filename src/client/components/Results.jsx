@@ -72,10 +72,10 @@ class Results extends Component {
         <div className="result--center">
           <h2 className="text--center">Click Below to Share Your Results on Twitter or Facebook!</h2>
           <div className="socialmedia--center">
-            <FacebookShareButton beforeOnClick={() => this.emitGoogleAnalyticShare('Facebook')} url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
+            <FacebookShareButton className="socialmedia-button" beforeOnClick={() => this.emitGoogleAnalyticShare('Facebook')} url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
               <FacebookIcon round={true} />
             </FacebookShareButton>
-            <TwitterShareButton beforeOnClick={() => this.emitGoogleAnalyticShare('Twitter')} url={'www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
+            <TwitterShareButton className="socialmedia-button" beforeOnClick={() => this.emitGoogleAnalyticShare('Twitter')} url={'www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
               <TwitterIcon round={true} />
             </TwitterShareButton>
           </div>
