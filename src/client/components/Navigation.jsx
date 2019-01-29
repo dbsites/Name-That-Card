@@ -4,20 +4,20 @@ import { NavLink } from 'react-router-dom';
 const Navigation = (props) => {
   const { isLoggedIn, loggedInUser, logout, selectedGame, questionNumber } = props;
   let logInOutButton = isLoggedIn
-  ? <div className="menu-item hoverStyle"><NavLink onClick={() => logout()} to="">Logout</NavLink></div>
-  : <div className="menu-item hoverStyle"><NavLink to="/login">Login</NavLink></div>;
-  
+    ? <div className="menu-item hoverStyle"><NavLink onClick={() => logout()} to="">Logout</NavLink></div>
+    : <div className="menu-item hoverStyle"><NavLink to="/login">Login</NavLink></div>;
+
   let about = <span className="menu-item hoverStyle"><NavLink to="/about">About</NavLink></span>;
-  
+
   let homeBtn = <div className="menu-item hoverStyle"><NavLink to="/">Home</NavLink></div>;
-  
+
   let xBtn;
-  
+
   let logoUrl = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Logos+%2B+Icons/' + selectedGame + 'LogoWhite.png';
-  
+
   let logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
-  let homeLogo = <div className="homeLogo"> <img className="homeImgLogo" src='https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Logos+%2B+Icons/GENERALIconWhite.png'></img> </div>; 
-  
+  let homeLogo = <div className="homeLogo"> <img className="homeImgLogo" src='https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Logos+%2B+Icons/GENERALIconWhite.png'></img> </div>;
+
   if (window.location.pathname === '/') {
     about = '';
     homeBtn = '';
@@ -28,7 +28,7 @@ const Navigation = (props) => {
     xBtn = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Background/" + selectedGame + "Background.jpg')";
-  } else if (window.location.pathname === '/privacy-policy' || window.location.pathname === '/terms-of-service' || window.location.pathname === '/forgot-pw' || window.location.pathname.slice(0,6) === '/reset') {
+  } else if (window.location.pathname === '/privacy-policy' || window.location.pathname === '/terms-of-service' || window.location.pathname === '/forgot-pw' || window.location.pathname.slice(0, 6) === '/reset') {
     about = '';
     xBtn = '';
     logo = '';
@@ -43,7 +43,7 @@ const Navigation = (props) => {
     homeBtn = '';
     homeLogo = '';
     document.body.style.backgroundImage = "url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Background/" + selectedGame + "Background.jpg')";
-    const selectedGameRoute = `/gameMenu/${selectedGame}`
+    const selectedGameRoute = `/gameMenu/${selectedGame}`;
     xBtn = <div className="xButton hoverStyle"><NavLink to={selectedGameRoute}>x</NavLink></div>;
     if (questionNumber === 20) {
       xBtn = <div className="xButton hoverStyle"><NavLink to='/'>x</NavLink></div>;
@@ -65,7 +65,8 @@ const Navigation = (props) => {
     logoUrl = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Logos+%2B+Icons/' + window.location.pathname.slice(13) + 'LogoWhite.png';
     logo = <div className="logo"> <img className="gameLogo" src={logoUrl}></img> </div>;
     document.body.style.backgroundImage = "url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/Background/" + window.location.pathname.slice(13) + "Background.jpg')";
-  } 
+  }
+
   return (
     <div className="navigation">
       <div className="left-menu">

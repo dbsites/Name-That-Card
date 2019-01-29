@@ -24,7 +24,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Leaderboard extends Component {
-
   componentDidMount() {
     const { resetLeaderboardConfig } = this.props;
     resetLeaderboardConfig();
@@ -41,8 +40,6 @@ class Leaderboard extends Component {
       }
     });
 
-    console.log('results ', difficultyFilteredResults)
-
     function sortResults(arr) {
       if (sortCategory === 'user') {
         if (sortDirection) {
@@ -58,7 +55,7 @@ class Leaderboard extends Component {
             if (x < y) { return -1; }
             if (x > y) { return 1; }
             return 0;
-          })
+          });
         }
         return arr.sort((a, b) => {
           if (a.user === null) {

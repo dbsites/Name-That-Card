@@ -1,5 +1,3 @@
-// leaderboard Actions
-
 import * as types from '../constants/actionTypes';
 
 export const changeLeaderboardDifficulty = difficulty => ({

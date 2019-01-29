@@ -30,6 +30,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(gamePlayActions.selectAnswer(answer));
   },
 });
+
 class GameContainer extends Component {
   componentDidMount() {
     const {
@@ -42,22 +43,20 @@ class GameContainer extends Component {
       selectedMaxYear,
       cards,
     } = this.props;
-    
+
     function getQueryString(arr) {
       let output = '';
       arr.forEach((category, index) => {
-        if(index === 0) {
+        if (index === 0) {
           output += "card_category like '%" + arr[index] + "%'";
         } else {
           output += " or card_category like '%" + arr[index] + "%'";
         }
-      })
+      });
       return output;
     }
 
-    const queryString = getQueryString(selectedCategories)
-    console.log('query string ', queryString)
-    console.log('selected cats ', selectedCategories)
+    const queryString = getQueryString(selectedCategories);
 
     const cardParameters = {
       game: selectedGame,
@@ -70,7 +69,6 @@ class GameContainer extends Component {
     if (cards.length === 0) {
       getCardsInfo(cardParameters);
     }
-
   }
 
   render() {
@@ -87,16 +85,15 @@ class GameContainer extends Component {
     };
 
     const { selectedGame, cards, selectAnswer, displayResults, selectedDifficulty, gameLoadingContent } = this.props;
-    console.log('cards ', cards)
- 
+
     const cardInfo = cards[0];
     const answers = [];
-  
+
     if (cardInfo) {
-      if(cardInfo.wrongAnswers) {
+      if (cardInfo.wrongAnswers) {
         cardInfo.wrongAnswers.forEach((answer) => {
           answers.push(answer.card_name);
-        })
+        });
       }
       answers.push(cardInfo.card_name);
       cardInfo.allAnswers = shuffledAnswers(answers);
@@ -139,7 +136,7 @@ class GameContainer extends Component {
       alignItems: 'center',
       fontSize: '2em',
       color: 'white',
-    }
+    };
 
     const backgroundStyle = {
       display: 'block',
@@ -148,7 +145,7 @@ class GameContainer extends Component {
       backgroundColor: 'black',
       opacity: 1,
       height: '100vh',
-    }
+    };
 
     return (
       <Loader show={gameLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>

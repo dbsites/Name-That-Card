@@ -41,7 +41,6 @@ export default function (previousState = initialState, action) {
       stateCopy.sortDirection = true;
       return stateCopy;
     }
-    
     default:
       return previousState;
   }

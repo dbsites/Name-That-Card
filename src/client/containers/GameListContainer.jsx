@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
     ga('send', {
       hitType: 'event',
       eventCategory: 'Game',
-      eventAction: selectedGame
+      eventAction: selectedGame,
     });
 
     dispatch(gameConfigActions.successPlay());
@@ -85,8 +85,8 @@ class GameListContainer extends Component {
 
     let loginPrompt = <span><NavLink className="loginSignupLink hoverStyle" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
-    if(isLoggedIn) {
-      loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
+    if (isLoggedIn) {
+      loginPrompt = <span>Welcome, {loggedInUser}!</span>;
     }
 
     const spinningCircles =
@@ -120,7 +120,7 @@ class GameListContainer extends Component {
       alignItems: 'center',
       fontSize: '2em',
       color: 'white',
-    }
+    };
 
     const backgroundStyle = {
       display: 'block',
@@ -129,7 +129,7 @@ class GameListContainer extends Component {
       backgroundColor: 'black',
       opacity: 1,
       height: '100vh',
-    }
+    };
 
     return (
       <Loader show={gameListLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>

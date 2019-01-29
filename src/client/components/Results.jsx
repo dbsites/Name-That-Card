@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(gamePlayActions.sendResult(gameInfo));
   },
   resetRenderScoreFooter: () => {
-    dispatch(gameConfigActions.resetRenderScoreFooter())
+    dispatch(gameConfigActions.resetRenderScoreFooter());
   },
 });
 
@@ -54,17 +54,17 @@ class Results extends Component {
       joinLeaderboardMsg = '';
     }
 
-    const cardNames = [answeredQuestions[0].card_name, answeredQuestions[1].card_name, answeredQuestions[2].card_name].map((name)=> {
+    const cardNames = [answeredQuestions[0].card_name, answeredQuestions[1].card_name, answeredQuestions[2].card_name].map((name) => {
       return name.split('').filter((char) => {
         return char === ' ' ? '' : char;
       }).join('');
-    })
+    });
 
-    let socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Test your skills at www.namethatcard.com`;
+    const socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Test your skills at www.namethatcard.com`;
 
     const socialMediaHashtags = [`${selectedGame}`, 'namethatcard', `${cardNames[0]}`, `${cardNames[1]}`, `${cardNames[2]}`];
 
-    let selectedGameRoute = `/gameMenu/${selectedGame}`
+    const selectedGameRoute = `/gameMenu/${selectedGame}`;
 
     return (
       <div className="results-container">
@@ -72,10 +72,10 @@ class Results extends Component {
         <div className="result--center">
           <h2 className="text--center">Click Below to Share Your Results on Twitter or Facebook!</h2>
           <div className="socialmedia--center">
-            <FacebookShareButton beforeOnClick={() => this.emitGoogleAnalyticShare('Facebook')} url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
+            <FacebookShareButton className="socialmedia-button" beforeOnClick={() => this.emitGoogleAnalyticShare('Facebook')} url={'https://www.namethatcard.com'} quote={socialMediaDialog} hashtag={'#namethatcard'}>
               <FacebookIcon round={true} />
             </FacebookShareButton>
-            <TwitterShareButton beforeOnClick={() => this.emitGoogleAnalyticShare('Twitter')} url={'https://www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
+            <TwitterShareButton className="socialmedia-button" beforeOnClick={() => this.emitGoogleAnalyticShare('Twitter')} url={'www.namethatcard.com'} title={socialMediaDialog} hashtags={socialMediaHashtags}>
               <TwitterIcon round={true} />
             </TwitterShareButton>
           </div>
@@ -89,7 +89,6 @@ class Results extends Component {
       </div>
     );
   }
-};
-
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);
