@@ -926,6 +926,26 @@ table {
 }
 
 
+// *******************************************************
+// MISC
+// *******************************************************
+
+
+
+@media screen and (min-width: 1024px) {
+    // SLIDER
+
+    .outerSliderContainer {
+        margin-top: 2.5vh;
+        margin-left: 11vw;
+        margin-right: 11vw;
+    }
+    .slider {
+        width: 29vw;
+    }
+}
+
+
 
 // *******************************************************
 // LAPTOP
