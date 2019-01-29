@@ -43,7 +43,6 @@ export const submitAdminLogin = (adminInfo) => {
   };
 };
 
-
 // admin form actions
 
 export const successfulGameSave = () => ({
@@ -55,7 +54,6 @@ export const resetAdminForm = () => ({
 });
 
 export const submitAdminForm = (formInfo) => {
-  console.log('formInfo in actions ', formInfo)
   return (dispatch) => {
     return fetch('/admin/submitForm', {
       method: 'POST',
