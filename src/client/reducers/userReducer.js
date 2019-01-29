@@ -44,7 +44,7 @@ export default function (previousState = initialState, action) {
     }
     case types.SUCCESSFUL_SIGNUP: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.loggedInUser = stateCopy.signUpInputUsername;     
+      stateCopy.loggedInUser = stateCopy.signUpInputUsername;
       stateCopy.isLoggedIn = true;
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
@@ -78,7 +78,7 @@ export default function (previousState = initialState, action) {
     }
     case types.SUCCESSFUL_LOGIN: {
       stateCopy = Object.assign({}, previousState);
-      stateCopy.loggedInUser = action.payload;    
+      stateCopy.loggedInUser = action.payload;
       stateCopy.isLoggedIn = true;
       stateCopy.signUpInputUsername = '';
       stateCopy.signUpInputPassword = '';
@@ -145,7 +145,7 @@ export default function (previousState = initialState, action) {
         stateCopy.usernameErrorMsg = '';
       }
       if (stateCopy.signUpInputPassword.length < 5) {
-        stateCopy.passwordErrorMsg = 'Password must be atleast five characters long';
+        stateCopy.passwordErrorMsg = 'Password must be at least five characters long';
       } else {
         stateCopy.passwordErrorMsg = '';
       }
@@ -186,9 +186,9 @@ export default function (previousState = initialState, action) {
     case types.SET_NEW_PASSWORD_ERRORS: {
       stateCopy = Object.assign({}, previousState);
       if (stateCopy.firstNewPassword !== stateCopy.secondNewPassword) {
-        stateCopy.newPasswordStatusMsg = 'Passwords must match'
+        stateCopy.newPasswordStatusMsg = 'Passwords must match';
       } else if (stateCopy.firstNewPassword.length < 5 || stateCopy.secondNewPassword.length < 5) {
-        stateCopy.newPasswordStatusMsg = 'Password must be atleast five characters long'
+        stateCopy.newPasswordStatusMsg = 'Password must be at least five characters long';
       }
       return stateCopy;
     }

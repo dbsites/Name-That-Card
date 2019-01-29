@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import leaderboardReducer from '../reducers/leaderboardReducer';
 import adminReducer from '../reducers/adminReducer';
 import gameListReducer from '../reducers/gameListReducer';

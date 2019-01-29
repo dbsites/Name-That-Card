@@ -83,7 +83,6 @@ export default function (previousState = initialState, action) {
     }
     case types.REMOVE_MEDIUM_RULE_CATEGORY: {
       stateCopy = Object.assign({}, previousState);
-      console.log('rule in reducer ', action.payload)
       const newMediumRules = stateCopy.mediumRules.slice();
       newMediumRules.splice(newMediumRules.indexOf(action.payload), 1);
       stateCopy.mediumRules = newMediumRules;
@@ -103,7 +102,6 @@ export default function (previousState = initialState, action) {
     }
     case types.REMOVE_RULE_FROM_CATEGORY: {
       stateCopy = Object.assign({}, previousState);
-      console.log('reducer ran ', action.payload.rule)
       if (action.payload.difficulty === 'medium') {
         const newRules = stateCopy.mediumRules.slice();
         newRules.splice(newRules.indexOf(action.payload.category), 1);
@@ -133,14 +131,13 @@ export default function (previousState = initialState, action) {
     case types.HANDLE_CSV_UPLOAD: {
       stateCopy = Object.assign({}, previousState);
       // const reader = new FileReader();
-      console.log(action.payload.target.value)
       stateCopy.csvData = action.payload.target.value;
       return stateCopy;
     }
     case types.SUCCESSFUL_GAME_SAVE: {
       stateCopy = Object.assign({}, previousState);
       stateCopy.adminIsLoggedIn = true;
-      stateCopyadminUsername = '';
+      stateCopy.adminUsername = '';
       stateCopy.adminPassword = '';
       stateCopy.newMediumRule = '';
       stateCopy.newHardRule = '';
@@ -150,16 +147,15 @@ export default function (previousState = initialState, action) {
       stateCopy.secondaryFont = '';
       stateCopy.gameIcon = '';
       stateCopy.gameSkin = '';
-      stateCopygameName = '';
+      stateCopy.gameName = '';
       stateCopy.csvData = '';
       stateCopy.gameSaveStatusMsg = 'The new game info was successfully saved to the database'
       return stateCopy;
     }
     case types.RESET_ADMIN_FORM: {
       stateCopy = Object.assign({}, previousState);
-      console.log('in reducer')
       stateCopy.adminIsLoggedIn = true;
-      stateCopyadminUsername = '';
+      stateCopy.adminUsername = '';
       stateCopy.adminPassword = '';
       stateCopy.newMediumRule = '';
       stateCopy.newHardRule = '';
@@ -169,7 +165,7 @@ export default function (previousState = initialState, action) {
       stateCopy.secondaryFont = '';
       stateCopy.gameIcon = '';
       stateCopy.gameSkin = '';
-      stateCopygameName = '';
+      stateCopy.gameName = '';
       stateCopy.csvData = '';
       stateCopy.gameSaveStatusMsg = '';
       return stateCopy;
