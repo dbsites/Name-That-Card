@@ -232,7 +232,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     font-size: 1.4em;
-    text-shadow: 0 0 1em white;
+    text-shadow: 0 0 0.9em black;
     grid-row-start: 1;
     grid-row-end: 2;
     text-align: center;
@@ -738,6 +738,8 @@ table {
     margin-bottom: 1vh;
     font-size: 0.7em;
     line-height: 1em;
+    background: black;
+    opacity: 0.75;
 }
 
 .gameDisclaimer {
@@ -745,6 +747,8 @@ table {
     margin-bottom: 1vh;
     font-size: 0.7em;
     line-height: 1em;
+    background: black;
+    opacity: 0.75;
 }
 
 .footer {
