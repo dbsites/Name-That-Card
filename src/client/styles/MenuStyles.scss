@@ -465,6 +465,15 @@ p {
     font-size: 1.5em;
 }
 
+.email {
+    text-decoration: underline;
+    // color: blue;
+}
+
+.email:hover {
+    cursor: pointer;
+}
+
 // LEADERBOARD
 
 table {
