@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
 
       <p className="p-margins">NameThatCard™ (“NameThatCard,” “We,” “Us,” “Our”) is committed to protecting the personal information You (“You,” or a “user”) share and/or store with Us. This Privacy Policy applies to transactions and activities and data gathered through the NameThatCard Website and interaction You may have with its related Social Media accounts.</p>
 
-      <p className="p-margins">For questions concerning this Privacy Policy, or Our use of Your personal information, cookies, or similar technologies, please contact us at <a href="mailto:info@namethatcard.com" target="_top">info@namethatcard.com</a>.</p>
+      <p className="p-margins">For questions concerning this Privacy Policy, or Our use of Your personal information, cookies, or similar technologies, please contact us at <a className="email" href="mailto:info@namethatcard.com" target="_top">info@namethatcard.com</a>.</p>
 
       <p className="p-margins">Our Services comprise, generally, a matching exercise whereby you identify an image and select a text-based option that best matches this image. This Privacy Policy does not address, and We are not responsible for, the privacy, information, or other practices of any third parties, including any third party which We recommend or refer You to, or any third party operating any website to which this Website contains a link. The inclusion of a link on this Website does not imply endorsement of the linked website by Us or by Our affiliates.</p>
 
