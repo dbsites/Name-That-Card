@@ -72,8 +72,9 @@ class GameListContainer extends Component {
 
     const games = gameList.map((gameObj, i) => {
       const game = gameObj.game_name;
+      const title = gameObj.title;
       return (
-        <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} game={game} />
+        <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} title={title} game={game} />
       );
     });
 
