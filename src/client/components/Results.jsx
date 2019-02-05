@@ -60,10 +60,21 @@ class Results extends Component {
       }).join('');
     });
 
-    const socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${selectedGame} Edition! Test your skills at www.namethatcard.com`;
+    let gameDisplayName = '';
+    if(selectedGame === 'MTG') {
+      gameDisplayName = 'Magic the Gathering';
+    } else {
+      gameDisplayName = 'Sports';
+    }
 
-    const socialMediaHashtags = [`${selectedGame}`, 'namethatcard', `${cardNames[0]}`, `${cardNames[1]}`, `${cardNames[2]}`];
+    const socialMediaDialog = `I scored ${score} out of 20 on @namethatcard : ${gameDisplayName} Edition! Test your skills at www.namethatcard.com`;
 
+    const socialMediaHashtags = ['NameThatCard', `${cardNames[0]}`, `${cardNames[1]}`, `${cardNames[2]}`];
+    if(selectedGame === 'SPORTS') {
+      socialMediaHashtags.push('NHL', 'NBA', 'MLB', 'NFL');
+    } else {
+      socialMediaHashtags.push('MagicTheGathering')
+    }
     const selectedGameRoute = `/gameMenu/${selectedGame}`;
 
     return (
