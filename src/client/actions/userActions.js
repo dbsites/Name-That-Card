@@ -89,7 +89,6 @@ export const resetSignUpInfo = () => ({
 });
 
 export const submitLogin = (loginInfoObj) => {
-  console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
     return fetch('/api/login', {
       method: 'POST',
@@ -195,7 +194,6 @@ export const emailFailedToSend = message => ({
 });
 
 export const sendResetPwEmail = (emailObj) => {
-  console.log('sendResetPwEmail in actions', emailObj);
   return (dispatch) => {
     return fetch('/api/forgot', {
       method: 'POST',

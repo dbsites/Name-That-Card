@@ -122,7 +122,6 @@ const App = (props) => {
   // if (!isLoggedIn) {
   //   checkAuth();
   // }
-  console.log('user ', loggedInUser);
   return (
     <BrowserRouter>
       <div>
