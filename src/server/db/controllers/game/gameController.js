@@ -6,8 +6,8 @@ const db = require('../util/postgres');
  */
 function minMax(game) {
   return db.any(`SELECT min(c.year) as minYear, max(c.year) maxYear 
-  FROM "game.dbo".cards c
-  JOIN "game.dbo".game g
+  FROM cards c
+  JOIN game g
     ON c.game_id = g.game_id
   where game_name = $1;`, [game]);
 }
@@ -21,14 +21,15 @@ function checkYears(game) {
   console.log('years check');
   return db.any(`
         SELECT years
-        FROM "game.dbo".game g
+        FROM game g
         WHERE game_name = $1;`, [game]);
 }
 
 module.exports = {
   gameList(req, res) {
     console.log('req.cookies in gameController --->', req.cookies);
-    db.query('SELECT game_name, background, font, game_icon, game_logo, years, title FROM "game.dbo".game')
+    db.query('SELECT game_name, background, font, game_icon, game_logo, years FROM game')
+
       .then((data) => { console.log('gamelist data', data)
         return res.json(data);
       })
@@ -40,7 +41,7 @@ module.exports = {
       game,
     } = req.params;
     console.log('game', game);
-    db.any('SELECT game_category FROM "game.dbo".game_categories where game_name =$1', [game])
+    db.any('SELECT game_category FROM game_categories where game_name =$1', [game])
       .then(async (data) => {
         res.locals.gameMenu = data;
         // eslint-disable-next-line no-return-await

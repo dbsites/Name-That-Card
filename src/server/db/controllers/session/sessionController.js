@@ -19,7 +19,7 @@ module.exports = {
       console.log('cookie exists for user');
 
       // If a matching session exists, set loginStatus to 'success'
-      db.one('SELECT user_id, ssid FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid])
+      db.one('SELECT user_id, ssid FROM sessions WHERE ssid = $1', [req.cookies.ssid])
         .then((session) => {
           console.log('*** session ***', session);
           if (req.cookies.ssid === session.ssid) {
@@ -55,10 +55,10 @@ module.exports = {
 
     // Send query to Postgres DB to add user to users
     // delete current session then create a new session
-    db.none('DELETE FROM "game.dbo".sessions WHERE user_id = $1', [res.locals.user.user_id])
+    db.none('DELETE FROM sessions WHERE user_id = $1', [res.locals.user.user_id])
       .then(() => {
         res.locals.ssid = uuidv4();
-        return db.none('INSERT INTO "game.dbo".sessions(user_id, ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
+        return db.none('INSERT INTO sessions(user_id, ssid) VALUES ($1, $2)', [res.locals.user.user_id, res.locals.ssid])
       })
       .then(() => {
         console.log('*** res.locals ***', res.locals)
@@ -74,7 +74,7 @@ module.exports = {
     console.log('You are in sessionController deleteSession');
     console.log('*** req.cookies ***', req.cookies);
 
-    db.none('DELETE FROM "game.dbo".sessions WHERE ssid = $1', [req.cookies.ssid]);
+    db.none('DELETE FROM sessions WHERE ssid = $1', [req.cookies.ssid]);
     return next();
   },
 
@@ -92,7 +92,7 @@ module.exports = {
       console.log('cookie exists for admin');
 
       // If a matching session exists, set loginStatus to 'success'
-      db.one('SELECT admin_id, ssid_sessions FROM "game.dbo".admin_sessions WHERE ssid_sessions = $1', [req.cookies.admin])
+      db.one('SELECT admin_id, ssid_sessions FROM admin_sessions WHERE ssid_sessions = $1', [req.cookies.admin])
         .then((session) => {
           console.log('*** session ***', session);
           if (req.cookies.admin === session.ssid_sessions) {
@@ -123,12 +123,12 @@ module.exports = {
     console.log('***res.locals in createAdminSession*****', res.locals);
 
     // Send query to Postgres DB to add user to users
-    db.none('DELETE FROM "game.dbo".admin_sessions WHERE admin_id = $1', [res.locals.admin.admin_id])
+    db.none('DELETE FROM admin_sessions WHERE admin_id = $1', [res.locals.admin.admin_id])
       .then(() => {
         console.log('***res.locals.admin.admin_id in createAdminSession*****', res.locals.admin.admin_id);
 
         res.locals.ssid_sessions = uuidv4();
-        return db.none('INSERT INTO "game.dbo".admin_sessions(admin_id, ssid_sessions) VALUES ($1, $2)', [res.locals.admin.admin_id, res.locals.ssid_sessions])
+        return db.none('INSERT INTO admin_sessions(admin_id, ssid_sessions) VALUES ($1, $2)', [res.locals.admin.admin_id, res.locals.ssid_sessions])
       })
       .then(() => {
         console.log('*** res.locals ***', res.locals)
@@ -144,7 +144,7 @@ module.exports = {
     console.log('You are in sessionController deleteAdminSession');
     console.log('*** req.cookies ***', req.cookies);
 
-    db.none('DELETE FROM "game.dbo".admin_sessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions]);
+    db.none('DELETE FROM admin_sessions WHERE ssid_sessions = $1', [req.cookies.ssid_sessions]);
     next();
   },
 };

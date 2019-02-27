@@ -30,7 +30,7 @@ module.exports = {
           category_c,
         } = data;
 
-        db.none(`INSERT INTO "game.dbo".cards (game_id, card_name, card_category, year, mask, image, image_after, ebay_link, category_a, category_b, category_c)
+        db.none(`INSERT INTO cards (game_id, card_name, card_category, year, mask, image, image_after, ebay_link, category_a, category_b, category_c)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10,$11)`, [Number(game_id), card_name, card_category, Number(year), mask, image, image_after, ebay_link, category_a, category_b, category_c])
           .catch(err => console.log('EEEERRRRRRRORRRRRR', err));
       })

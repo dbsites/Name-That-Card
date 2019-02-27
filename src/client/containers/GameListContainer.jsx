@@ -72,7 +72,8 @@ class GameListContainer extends Component {
 
     const games = gameList.map((gameObj, i) => {
       const game = gameObj.game_name;
-      const title = gameObj.title;
+      const title = gameObj.game_name;  // this was gameObj.title, but that field didn't exist
+
       return (
         <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} title={title} game={game} />
       );

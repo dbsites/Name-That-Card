@@ -17,7 +17,6 @@ services:
       - node_modules_test:/usr/src/app/node_modules
     depends_on:
       - postgres-db-test
-      - postgres-data-test
     command: ["./scripts/postgres-db/run-migrate.sh", "postgres-db-test", "${DATABASE_MIGRATIONS}", "test-coverage", "${DATABASE_TEST_SCOPES}"]
 
   postgres-db-test:
@@ -30,15 +29,6 @@ services:
     volumes:
       - test-db-volume:/var/lib/postgresql/data
       - ./scripts/postgres-db:/postgres-db
-    depends_on:
-      - postgres-data-test
-
-  postgres-data-test:
-    image: busybox
-    container_name: namethatcard-test-dbdata
-    volumes:
-      - test-db-volume:/var/lib/postgresql/data
-    command: tail -f /dev/null
 # shared volumes
 volumes:
   test-db-volume:

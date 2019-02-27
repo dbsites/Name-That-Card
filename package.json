@@ -13,8 +13,7 @@
         "dev-webpack": "webpack-dev-server --mode development --open",
         "dev-server": "nodemon server.js",
         "dev-start": "npm run dev-webpack & npm run dev-server",
-        "dev:hot": "nodemon ./server.js & webpack-dev-server --config ./webpack/dev.config.js",
-        "dev:hot-old": "NODE_ENV=development-hot nodemon ./server.js & NODE_ENV=development webpack-dev-server",
+        "dev:hot": "NODE_ENV=development nodemon ./server.js & webpack-dev-server --config ./webpack/dev.config.js --open --hot --inline --progress --colors --watch --content-base ./",
         "test": "echo \"-- add tests here NODE_ENV=test jest\"",
         "test-coverage": "echo \"-- add tests here NODE_ENV=test jest --coverage\"",
         "test-watch": "NODE_ENV=test jest --watch",
@@ -38,7 +37,7 @@
     "dependencies": {
         "async": "^2.6.1",
         "aws-sdk": "^2.355.0",
-        "bcrypt": "^3.0.2",
+        "bcrypt": "^3.0.4",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "cookie-parser": "^1.4.3",

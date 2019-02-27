@@ -17,7 +17,6 @@ services:
       - node_modules:/usr/src/app/node_modules
     depends_on:
       - postgres-db
-      - postgres-data
     command: ["./scripts/postgres-db/run-migrate.sh", "postgres-db", "${DATABASE_MIGRATIONS}", "dev", "${DATABASE_SCOPES}"]
 
   postgres-db:
@@ -30,14 +29,8 @@ services:
     volumes:
       - dev-db-volume:/var/lib/postgresql/data
       - ./scripts/postgres-db:/postgres-db
-    depends_on:
-      - postgres-data
-
-  postgres-data:
-    image: busybox
-    container_name: namethatcard-dev-dbdata
-    volumes:
-      - dev-db-volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 # shared volumes for development
 volumes:
