@@ -18,8 +18,8 @@ module.exports = {
     const adminInputs = [admin_username, password, email_address];
 
     const addNewAdmin = () => {
-      db.one(`INSERT INTO "game.dbo".admin("admin_username", "password", "email_address") VALUES($1, $2, $3);
-      SELECT * FROM "game.dbo".admin where email_address=$3`, adminInputs)
+      db.one(`INSERT INTO admin("admin_username", "password", "email_address") VALUES($1, $2, $3);
+      SELECT * FROM admin where email_address=$3`, adminInputs)
         .then((result) => {
           console.log('*** result ***', result);
           res.locals.admin = result;
@@ -43,7 +43,7 @@ module.exports = {
     console.log('*** req.body.email_address ***', req.body.email_address);
 
     const { email_address } = req.body;
-    db.any('SELECT * FROM "game.dbo".admin where email_address=$1', [email_address])
+    db.any('SELECT * FROM admin where email_address=$1', [email_address])
       .then((data) => {
         console.log('*** data ***', data)
         if (data[0]) {
@@ -64,7 +64,7 @@ module.exports = {
     console.log('*** req.body.admin_username ***', req.body.admin_username);
 
     const { admin_username } = req.body;
-    db.any('SELECT * FROM "game.dbo".admin where admin_username=$1', [admin_username])
+    db.any('SELECT * FROM admin where admin_username=$1', [admin_username])
       .then((data) => {
         if (data[0]) {
           return res.send({
@@ -88,8 +88,8 @@ module.exports = {
     const integer = Number(id);
 
     db.one(`SELECT admin_sessions.admin_id, admin.admin_username, admin_sessions.ssid_sessions
-    FROM "game.dbo".admin_sessions as admin_sessions
-    JOIN "game.dbo".admin as admin
+    FROM admin_sessions as admin_sessions
+    JOIN admin as admin
     ON admin.admin_id = admin_sessions.admin_id
     WHERE admin_sessions.admin_id = ${integer}`)
       .then((data) => {
@@ -106,7 +106,7 @@ module.exports = {
     console.log('*** req.body ***', req.body);
 
     const { admin_username, password } = req.body;
-    db.any('SELECT * FROM "game.dbo".admin WHERE admin_username=$1', [admin_username])
+    db.any('SELECT * FROM admin WHERE admin_username=$1', [admin_username])
       .then((data) => {
         console.log('*** data ***', data);
         const admin = data[0];

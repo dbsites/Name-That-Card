@@ -19,8 +19,8 @@ module.exports = {
     const userInputs = [username, password, email_address];
 
     const addNewUser = () => {
-      db.one(`INSERT INTO "game.dbo".users("username", "password", "email_address") VALUES($1, $2, $3);
-      SELECT * FROM "game.dbo".users where email_address=$3`, userInputs)
+      db.one(`INSERT INTO users("username", "password", "email_address") VALUES($1, $2, $3);
+      SELECT * FROM users where email_address=$3`, userInputs)
         .then((result) => {
           console.log('*** result ***', result);
           res.locals.user = result;
@@ -44,7 +44,7 @@ module.exports = {
     // console.log('*** req.body.email_address ***', req.body.email_address);
 
     const { email_address } = req.body;
-    db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
+    db.any('SELECT * FROM users where email_address=$1', [email_address])
       .then((data) => {
         console.log('*** data ***', data)
         if (data[0]) {
@@ -65,7 +65,7 @@ module.exports = {
     // console.log('*** req.body.username ***', req.body.username);
 
     const { username } = req.body;
-    db.any('SELECT * FROM "game.dbo".users where username=$1', [username])
+    db.any('SELECT * FROM users where username=$1', [username])
       .then((data) => {
         if (data[0]) {
           return res.send({
@@ -88,8 +88,8 @@ module.exports = {
     const integer = Number(id);
 
     db.one(`SELECT sessions.user_id, users.username, sessions.ssid
-    FROM "game.dbo".sessions as sessions
-    JOIN "game.dbo".users as users
+    FROM sessions as sessions
+    JOIN users as users
     ON users.user_id = sessions.user_id
     WHERE sessions.user_id = ${integer}`)
       .then((data) => {
@@ -107,7 +107,7 @@ module.exports = {
     // console.log('*** req.body ***', req.body);
 
     const { email_address, password } = req.body;
-    db.any('SELECT * FROM "game.dbo".users WHERE email_address=$1', [email_address])
+    db.any('SELECT * FROM users WHERE email_address=$1', [email_address])
       .then((data) => {
         console.log('*** data ***', data);
         const user = data[0];

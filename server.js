@@ -95,7 +95,7 @@ app.post('/api/forgot', (req, res, next) => {
     },
     (token, done) => {
       const { email_address } = req.body;
-      db.any('SELECT * FROM "game.dbo".users where email_address=$1', [email_address])
+      db.any('SELECT * FROM users where email_address=$1', [email_address])
         .then((data) => {
           console.log('we are here')
           console.log(data)
@@ -103,7 +103,7 @@ app.post('/api/forgot', (req, res, next) => {
             const resetPasswordToken = token;
             const resetPasswordExpires = Date.now() + 3600000;
             console.log('token ', resetPasswordToken)
-            db.none('UPDATE "game.dbo".users SET "resetPasswordToken"=$1, "resetPasswordExpires"=$2 WHERE email_address=$3', [resetPasswordToken, resetPasswordExpires, email_address])
+            db.none('UPDATE users SET "resetPasswordToken"=$1, "resetPasswordExpires"=$2 WHERE email_address=$3', [resetPasswordToken, resetPasswordExpires, email_address])
               .then((err) => {
                 console.log('*** added token and expiration ***');
                 //res.locals.user = result;
@@ -150,7 +150,7 @@ app.post('/api/reset/:token', (req, res, next) => {
   async.waterfall([
     (done) => {
       console.log('params token ', req.params.token)
-      db.any('SELECT * FROM "game.dbo".users where "resetPasswordToken"=$1', [req.params.token])
+      db.any('SELECT * FROM users where "resetPasswordToken"=$1', [req.params.token])
         .then((data) => {
           console.log('result ', data);
           if (data.length !== 0) {
@@ -165,7 +165,7 @@ app.post('/api/reset/:token', (req, res, next) => {
                   if (hashErr) {
                     return res.status(500).json({ message: 'Error: Could Not Encrypt Password', error: hashErr });
                   }
-                  db.none('UPDATE "game.dbo".users SET password=$1 WHERE "resetPasswordToken"=$2', [hashPass, req.params.token])
+                  db.none('UPDATE users SET password=$1 WHERE "resetPasswordToken"=$2', [hashPass, req.params.token])
                     .then((err) => {
                       if(err){
                         return res.json({successfulReset: false, msg: err});

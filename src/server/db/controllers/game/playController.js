@@ -9,8 +9,8 @@ const db = require('../util/postgres');
 function loadGameNoYears(game, query) {
   return db.many(`
                 SELECT c.*
-                FROM "game.dbo".cards c
-                  JOIN "game.dbo".game g 
+                FROM cards c
+                  JOIN game g 
                     ON g.game_id = c.game_id
                 WHERE g.game_name = $1 AND ($2:raw)  
                 ORDER BY RANDOM()
@@ -29,8 +29,8 @@ function loadGameNoYears(game, query) {
 function loadGameWithYears(game, query, startDate, endDate) {
   return db.many(`
                 SELECT c.*
-                FROM "game.dbo".cards c
-                  JOIN "game.dbo".game g 
+                FROM cards c
+                  JOIN game g 
                     ON g.game_id = c.game_id
                 WHERE g.game_name = $1 AND ($2:raw)  
                 AND year between $3 and $4
@@ -49,8 +49,8 @@ function loadGameWithYears(game, query, startDate, endDate) {
 function easyAnswers(id, name) {
   return db.many(`        
           SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'EASY' as answer
-          FROM "game.dbo".cards c
-            JOIN "game.dbo".cards c1
+          FROM cards c
+            JOIN cards c1
               ON c.card_category = c1.card_category 
               AND c1.card_id <> $1
               AND c1.card_name <> $2
@@ -69,8 +69,8 @@ function easyAnswers(id, name) {
 function mediumAnswers(id, name) {
   return db.many(`
           SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'MEDIUM' as answer
-          FROM "game.dbo".cards c
-          JOIN "game.dbo".cards c1
+          FROM cards c
+          JOIN cards c1
             ON c.card_category = c1.card_category 
             AND c.category_a = c1.category_a 
             AND c1.card_id <> $1
@@ -89,8 +89,8 @@ function mediumAnswers(id, name) {
 function hardAnswers(id, name) {
   return db.many(`
           SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'HARD' as answer
-          FROM "game.dbo".cards c
-          JOIN "game.dbo".cards c1
+          FROM cards c
+          JOIN cards c1
             ON c.card_category = c1.card_category 
               AND c.category_a = c1.category_a 
               AND c.category_b = c1.category_b
@@ -110,8 +110,8 @@ function hardAnswers(id, name) {
 function yearHardAnswers(id, name) {
   return db.many(`
           SELECT card_name FROM ( SELECT DISTINCT c1.card_name, 'HARD' as answer
-          FROM "game.dbo".cards c
-          JOIN "game.dbo".cards c1
+          FROM cards c
+          JOIN cards c1
             ON c.card_category = c1.card_category 
               AND c.category_a = c1.category_a 
               AND c1.year between  c.year - 3 and c.year +3
@@ -175,7 +175,7 @@ module.exports = {
       score,
     } = req.body;
     // save game score
-    db.none('INSERT INTO "game.dbo".player_history("user", "game", "difficulty_level", "score") VALUES($1,$2,$3,$4)', [username, game, level, score])
+    db.none('INSERT INTO player_history("user", "game", "difficulty_level", "score") VALUES($1,$2,$3,$4)', [username, game, level, score])
       .then(() => {
         res.send('score recorded');
       })
@@ -191,7 +191,7 @@ module.exports = {
 
     /** Aggregated scores by (user,game), (user, game, difficulty_level) */
     db.query(`SELECT "user", game, coalesce(difficulty_level, 'ALL') as difficulty_level, sum(score) sum, avg(score) avg, count (*) gamecount
-              FROM "game.dbo".player_history 
+              FROM player_history 
               WHERE "game" = $1
               GROUP BY GROUPING SETS (("user", game), ("user",game, difficulty_level));`,
     [game])
