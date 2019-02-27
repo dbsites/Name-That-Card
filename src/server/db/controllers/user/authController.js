@@ -10,17 +10,9 @@ module.exports = {
     // console.log('You are in authController createUser');
     // console.log('*** req.body ***', req.body);
 
-    const userInfo = req.body;
-    const {
-      username,
-      password,
-      email_address,
-    } = userInfo;
-    const userInputs = [username, password, email_address];
-
-    const addNewUser = () => {
+    const addNewUser = (hashedPassword) => {
       db.one(`INSERT INTO users("username", "password", "email_address") VALUES($1, $2, $3);
-      SELECT * FROM users where email_address=$3`, userInputs)
+      SELECT * FROM users where email_address=$3`, [req.body.username, hashedPassword, req.body.email_address])
         .then((result) => {
           console.log('*** result ***', result);
           res.locals.user = result;
@@ -30,11 +22,8 @@ module.exports = {
     };
 
     bcrypt.genSalt(SALT_WORK_FACTOR)
-      .then(salt => bcrypt.hash(password, salt))
-      .then((hash) => {
-        userInputs[1] = hash;
-      })
-      .then(() => addNewUser())
+      .then(salt => bcrypt.hash(req.body.password, salt))
+      .then(hash => addNewUser(hash))
       .catch(err => res.status(500).send(err));
   },
 
