@@ -30,15 +30,6 @@ services:
     volumes:
       - test-db-volume:/var/lib/postgresql/data
       - ./scripts/postgres-db:/postgres-db
-    depends_on:
-      - postgres-data-test
-
-  postgres-data-test:
-    image: busybox
-    container_name: namethatcard-test-dbdata
-    volumes:
-      - test-db-volume:/var/lib/postgresql/data
-    command: tail -f /dev/null
 # shared volumes
 volumes:
   test-db-volume:
