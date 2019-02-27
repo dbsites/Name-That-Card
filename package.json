@@ -37,7 +37,7 @@
     "dependencies": {
         "async": "^2.6.1",
         "aws-sdk": "^2.355.0",
-        "bcrypt": "^3.0.2",
+        "bcrypt": "^3.0.4",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "cookie-parser": "^1.4.3",
