@@ -19,7 +19,7 @@ if(process.env.NODE_ENV === 'production') {
     host: 'postgres-db',
     port: 5432,
     database: 'namethatcard',
-    user: 'dbates',
+    user: 'dbates42',
     password: 'admin',
   };
 
