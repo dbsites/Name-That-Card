@@ -105,7 +105,7 @@ const ToS = () => {
 
       <p className="p-margins">Should any part of these Terms be declared void or unenforceable, that term shall be severed from these Terms and such declaration shall have no effect on the enforceability of the remaining terms.</p>
 
-      <p className="p-margins">Correspondence regarding these Terms should be sent to info@NameThatCard.com.</p>
+      <p className="p-margins">Correspondence regarding these Terms should be sent to <a className="email" href="mailto:info@namethatcard.com" target="_top">info@namethatcard.com</a>.</p>
     </div>
   );
 };

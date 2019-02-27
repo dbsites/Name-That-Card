@@ -43,14 +43,14 @@ export const submitSignUp = (signUpInfoObj) => {
           ga('send', {
             hitType: 'event',
             eventCategory: 'Auth',
-            eventAction: 'Successful SignUp'
+            eventAction: 'Successful SignUp',
           });
         } else {
           dispatch(failedSignUp(data.msg));
           ga('send', {
             hitType: 'event',
             eventCategory: 'Auth',
-            eventAction: 'Failed SignUp'
+            eventAction: 'Failed SignUp',
           });
         }
       })
@@ -89,7 +89,6 @@ export const resetSignUpInfo = () => ({
 });
 
 export const submitLogin = (loginInfoObj) => {
-  console.log('loginInfoObj in actions', loginInfoObj);
   return (dispatch) => {
     return fetch('/api/login', {
       method: 'POST',
@@ -103,20 +102,19 @@ export const submitLogin = (loginInfoObj) => {
         return res.json();
       })
       .then((data) => {
-        console.log('data***** ', data)
         if (data.loginSuccess) {
           dispatch(successfulLogin(data.username));
           ga('send', {
             hitType: 'event',
             eventCategory: 'Auth',
-            eventAction: 'Successful Login'
+            eventAction: 'Successful Login',
           });
         } else {
           dispatch(failedLogin(data.msg));
           ga('send', {
             hitType: 'event',
             eventCategory: 'Auth',
-            eventAction: 'Failed Login'
+            eventAction: 'Failed Login',
           });
         }
       })
@@ -143,13 +141,12 @@ export const checkAuth = () => {
         return res.json();
       })
       .then((data) => {
-        console.log('data in checkAuth$$$$ ', data)
         if (data.loginSuccess) {
           dispatch(successfulAuthVerification(data));
         }
       })
       .catch((err) => {
-        console.log('eerrr ', err)
+        console.log(err);
       });
   };
 };
@@ -172,7 +169,7 @@ export const logout = () => {
         }
       })
       .catch((err) => {
-        console.log('eerrr ', err);
+        console.log(err);
       });
   };
 };
@@ -181,23 +178,22 @@ export const setSignUpCredentialErrors = () => ({
   type: types.SET_SIGNUP_CREDENTIAL_ERRORS,
 });
 
-export const updateForgotInputEmail = (event) => ({
+export const updateForgotInputEmail = event => ({
   type: types.UPDATE_FORGOT_INPUT_EMAIL,
   payload: event,
 });
 
-export const emailSuccessfullySent = (data) => ({
+export const emailSuccessfullySent = data => ({
   type: types.EMAIL_SUCCESSFULLY_SENT,
   payload: data,
 });
 
-export const emailFailedToSend = (message) => ({
+export const emailFailedToSend = message => ({
   type: types.EMAIL_FAILED_TO_SEND,
   payload: message,
 });
 
 export const sendResetPwEmail = (emailObj) => {
-  console.log('sendResetPwEmail in actions', emailObj);
   return (dispatch) => {
     return fetch('/api/forgot', {
       method: 'POST',
@@ -207,31 +203,28 @@ export const sendResetPwEmail = (emailObj) => {
       body: JSON.stringify(emailObj),
       credentials: 'include',
     })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      console.log('data***** ', data)
-      if (data.emailSuccess) {
-        console.log(('here 1'))
-        dispatch(emailSuccessfullySent(data));
-      } else {
-        console.log(('here 2'))
-        dispatch(emailFailedToSend(data));
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.emailSuccess) {
+          dispatch(emailSuccessfullySent(data));
+        } else {
+          dispatch(emailFailedToSend(data));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
-export const updateFirstNewPassword = (event) => ({
+export const updateFirstNewPassword = event => ({
   type: types.UPDATE_FIRST_NEW_PASSWORD,
   payload: event,
 });
 
-export const updateSecondNewPassword = (event) => ({
+export const updateSecondNewPassword = event => ({
   type: types.UPDATE_SECOND_NEW_PASSWORD,
   payload: event,
 });
@@ -244,14 +237,13 @@ export const passwordSuccessfullyReset = () => ({
   type: types.PASSWORD_SUCCESSFULLY_RESET,
 });
 
-export const failedPasswordReset = (message) => ({
+export const failedPasswordReset = message => ({
   type: types.FAILED_PASSWORD_RESET,
   payload: message,
 });
 
 export const resetPassword = (newPasswordObj) => {
   return (dispatch) => {
-    console.log('fetching')
     return fetch('/api/reset/' + newPasswordObj.user_token, {
       method: 'POST',
       headers: {
@@ -260,21 +252,19 @@ export const resetPassword = (newPasswordObj) => {
       body: JSON.stringify(newPasswordObj),
       credentials: 'include',
     })
-    .then((res) => {
-      console.log('here before')
-      return res.json();
-    })
-    .then((data) => {
-      console.log('reset pw data***** ', data)
-      if (data.successfulReset) {
-        dispatch(passwordSuccessfullyReset());
-      } else {
-        dispatch(failedPasswordReset(data.msg));
-      }
-    })
-    .catch((err) => {
-      console.log('error ', err);
-    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.successfulReset) {
+          dispatch(passwordSuccessfullyReset());
+        } else {
+          dispatch(failedPasswordReset(data.msg));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 

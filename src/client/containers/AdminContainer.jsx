@@ -85,7 +85,7 @@ const AdminContainer = (props) => {
       {renderItem}
     </div>
   );
-}
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminContainer);

@@ -9,12 +9,11 @@ const mapStateToProps = store => ({
 
 class Card extends Component {
   render() {
-    console.log('card rendered')
     const { cardInfo, selectAnswer, selectedDifficulty, flipped, ableToNext } = this.props;
 
     let picture = '';
     let coverImg = '';
-    let cardAnswers =[];
+    let cardAnswers = [];
 
     if (cardInfo) {
       cardAnswers = cardInfo.allAnswers;
@@ -26,7 +25,7 @@ class Card extends Component {
         coverImgSrc = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/CARDS/' + cardInfo.image;
         imgSrc = 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-295078398723/CARDS/' + cardInfo.image_after;
       }
-      
+
       picture = <img className="card" src={imgSrc} alt="" />;
       coverImg = <img className="cardReveal" src={coverImgSrc} alt="" />;
     }
@@ -36,9 +35,9 @@ class Card extends Component {
     let answer3 = <div className="answer3" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
     let answer4 = <div className="answer4" onClick={() => selectAnswer(cardAnswers[3])}>{cardAnswers[3]}</div>;
 
-    if(ableToNext) {
+    if (ableToNext) {
       coverImg = '';
-      if(cardInfo.card_name === cardAnswers[0]) {
+      if (cardInfo.card_name === cardAnswers[0]) {
         answer1 = <div className="answer1" id="correctAnswer" onClick={() => selectAnswer(cardAnswers[0])}>{cardAnswers[0]}</div>;
         answer2 = <div className="answer2" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[1])}>{cardAnswers[1]}</div>;
         answer3 = <div className="answer3" id="wrongAnswer" onClick={() => selectAnswer(cardAnswers[2])}>{cardAnswers[2]}</div>;
@@ -84,7 +83,7 @@ class Card extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default connect(mapStateToProps, null)(Card);

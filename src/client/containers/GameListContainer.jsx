@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
     ga('send', {
       hitType: 'event',
       eventCategory: 'Game',
-      eventAction: selectedGame
+      eventAction: selectedGame,
     });
 
     dispatch(gameConfigActions.successPlay());
@@ -72,8 +72,9 @@ class GameListContainer extends Component {
 
     const games = gameList.map((gameObj, i) => {
       const game = gameObj.game_name;
+      const title = gameObj.title;
       return (
-        <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} game={game} />
+        <GameType key={i} selectedGame={selectedGame} setSelectedGame={setSelectedGame} title={title} game={game} />
       );
     });
 
@@ -83,10 +84,10 @@ class GameListContainer extends Component {
       return <Redirect to={{ pathname: gameMenuRoute }} />;
     }
 
-    let loginPrompt = <span><NavLink className="loginSignupLink" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
+    let loginPrompt = <span><NavLink className="loginSignupLink hoverStyle" to="/login">Login</NavLink> to be able to join the leaderboard!</span>;
 
-    if(isLoggedIn) {
-      loginPrompt = <span>Welcome, {loggedInUser}!</span>;;
+    if (isLoggedIn) {
+      loginPrompt = <span>Welcome, {loggedInUser}!</span>;
     }
 
     const spinningCircles =
@@ -120,7 +121,7 @@ class GameListContainer extends Component {
       alignItems: 'center',
       fontSize: '2em',
       color: 'white',
-    }
+    };
 
     const backgroundStyle = {
       display: 'block',
@@ -129,12 +130,12 @@ class GameListContainer extends Component {
       backgroundColor: 'black',
       opacity: 1,
       height: '100vh',
-    }
+    };
 
     return (
       <Loader show={gameListLoadingContent} message={spinningCircles} foregroundStyle={foregroundStyle} backgroundStyle={backgroundStyle}>
         <div className="HomescreenContainer">
-          <h3 className="pick-a-game">PICK A GAME</h3>
+          <h3 className="pick-a-game">How well do you know your Athletes and Magic the Gathering cards? Pick a game below and find out!</h3>
           <div className="gameList">
             {games}
           </div>

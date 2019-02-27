@@ -55,6 +55,7 @@ a {
 // a:hover {
 //   text-decoration: underline;
 // }
+
 input {
     border: 0;
     color: inherit;
@@ -227,13 +228,14 @@ p {
 
 .pick-a-game {
     position: relative;
-    top: 5vh;
+    top: 2.5vh;
     margin-left: auto;
     margin-right: auto;
-    font-size: 2em;
-    text-shadow: 0 0 1em white;
+    font-size: 1.4em;
+    text-shadow: 0 0 0.9em black;
     grid-row-start: 1;
     grid-row-end: 2;
+    text-align: center;
 }
 
 .text--left {
@@ -248,12 +250,16 @@ p {
     margin: auto;
 }
 
-
 /*********************************************************
 ************************* MENU ***************************
 *********************************************************/
 
 // APP CONTAINERS
+
+.hoverStyle:hover {
+    text-decoration: underline;
+}
+
 .HomescreenContainer {
     display: grid;
     grid-template-rows: 10vh 35vh 25vh 5vh;
@@ -364,7 +370,6 @@ p {
     height: auto;
     width: auto;
     margin: 1vh 1vw;
-    cursor: pointer;
     justify-content: flex-start;
     align-items: center;
     align-content: center;
@@ -383,9 +388,9 @@ p {
     display: flex;
     // height: auto;
     width: auto;
-    font-size: 1em !important;
+    font-size: 1.2em !important;
     font-weight: 700;
-    margin: 3vh 3vw;
+    margin: 2.5vh 2vw;
     cursor: pointer;
     justify-content: center;
     align-items: center;
@@ -460,7 +465,17 @@ p {
     font-size: 1.5em;
 }
 
+.email {
+    text-decoration: underline;
+    // color: blue;
+}
+
+.email:hover {
+    cursor: pointer;
+}
+
 // LEADERBOARD
+
 table {
     table-layout: fixed;
 }
@@ -489,7 +504,7 @@ table {
     height: auto;
     width: auto;
     margin-right: 2vw;
-    font-size: 1em !important;
+    font-size: 1.2em !important;
     font-weight: 700;
     padding: 0.5em 0.8em !important;
     cursor: pointer;
@@ -503,6 +518,7 @@ table {
 //   display: flex;
 //   justify-content: space-evenly;
 // }
+
 .leaderboard {
     display: grid;
     grid-template-rows: 5.5vh auto;
@@ -644,6 +660,7 @@ table {
 //   // padding: 0.25em 0.5em;
 //   font-weight: bolder;
 // }
+
 .leaderboardHeaders:hover {
     cursor: pointer;
 }
@@ -653,6 +670,7 @@ table {
 //   margin: auto;
 //   cursor: pointer;
 // }
+
 .leaderboard-body {
     grid-row-start: 2;
     grid-row-end: 3;
@@ -660,6 +678,7 @@ table {
 }
 
 // SLIDER
+
 .outerSliderContainer {
     display: flex;
     flex-direction: row;
@@ -696,6 +715,7 @@ table {
 }
 
 // GAME COMPONENTS
+
 .cardContainer {
     display: grid;
     grid-template-rows: 38vh auto;
@@ -703,6 +723,7 @@ table {
 }
 
 // FOOTER COMPONENTS
+
 .links {
     text-decoration: underline;
 }
@@ -726,6 +747,8 @@ table {
     margin-bottom: 1vh;
     font-size: 0.7em;
     line-height: 1em;
+    background: black;
+    opacity: 0.75;
 }
 
 .gameDisclaimer {
@@ -733,6 +756,8 @@ table {
     margin-bottom: 1vh;
     font-size: 0.7em;
     line-height: 1em;
+    background: black;
+    opacity: 0.75;
 }
 
 .footer {
@@ -801,18 +826,29 @@ table {
 }
 
 // RESULTS
+
 .imgLink {
     height: 10vh;
 }
+
+
+
 
 
 /*********************************************************
 ********************* MEDIA QUERIES **********************
 *********************************************************/
 
+
+
+
+
 // *******************************************************
 // IPHONE
 // *******************************************************
+
+
+
 @media screen and (min-width: 375px) {
     .leaderboardHeaders {
         font-size: 1em;
@@ -822,9 +858,14 @@ table {
     }
 }
 
+
+
 // *******************************************************
 // IPAD
 // *******************************************************
+
+
+
 @media screen and (min-width: 768px) {
     .HomescreenContainer {
         max-width: 70vw;
@@ -847,7 +888,9 @@ table {
     .footerContainer {
         max-width: 70vw;
     }
+
     // LEADERBOARD
+
     .leaderboard {
         width: 70vw;
     }
@@ -861,12 +904,17 @@ table {
     .leaderboardEntriesRow {
         width: 68.5vw;
     }
+
     // SLIDER
+
     .slider {
         width: 29vw;
     }
+
     // GAME COMPONENTS
+
     // FOOTER COMPONENTS
+    
     .footerLinks {
         max-width: 70vw;
     }
@@ -878,20 +926,24 @@ table {
         margin-top: 0.3em;
         margin-bottom: 1.3em;
     }
+
     // RESULTS
+
     .imgLink {
         height: 15vh;
     }
 }
 
+
 // *******************************************************
-// LAPTOP
+// MISC
 // *******************************************************
-@media screen and (min-width: 1280px) {
-    .text--center {
-        margin-bottom: 0.5vh;
-    }
+
+
+
+@media screen and (min-width: 1024px) {
     // SLIDER
+
     .outerSliderContainer {
         margin-top: 2.5vh;
         margin-left: 11vw;
@@ -902,27 +954,71 @@ table {
     }
 }
 
+
+
 // *******************************************************
 // LAPTOP
 // *******************************************************
+
+
+
+@media screen and (min-width: 1280px) {
+    .text--center {
+        margin-bottom: 0.5vh;
+    }
+
+    // SLIDER
+
+    .outerSliderContainer {
+        margin-top: 2.5vh;
+        margin-left: 11vw;
+        margin-right: 11vw;
+    }
+    .slider {
+        width: 29vw;
+    }
+}
+
+
+
+// *******************************************************
+// LAPTOP
+// *******************************************************
+
+
+
 @media screen and (min-width: 1440px) {
     // SLIDER
+
     .slider {
         width: 29vw;
     }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
+
+
+
 @media screen and (min-width: 1600px) {
     // SLIDER
+
     .slider {
         width: 29vw;
     }
 }
 
+
+
 // *******************************************************
 // DESKTOP
 // *******************************************************
-@media screen and (min-width: 1920px) {}
+
+
+
+@media screen and (min-width: 1920px) {
+
+}

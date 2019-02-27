@@ -45,7 +45,7 @@ module.exports = {
     const { email_address } = req.body;
     db.any('SELECT * FROM admin where email_address=$1', [email_address])
       .then((data) => {
-        console.log('*** data ***', data)
+        console.log('*** data ***', data);
         if (data[0]) {
           return res.send({
             msg: 'An account associated with this email address already exists',
@@ -115,7 +115,7 @@ module.exports = {
           return res.status(200).send({
             loginSuccess: false,
             msg: 'Incorrect email address or password',
-          })
+          });
         } else {
           bcrypt.compare(password, admin.password, (error, resolve) => {
             if (resolve) {
@@ -132,5 +132,4 @@ module.exports = {
       })
       .catch(err => console.error(err));
   },
-
 };

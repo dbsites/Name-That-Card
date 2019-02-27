@@ -6,13 +6,14 @@ class Reset extends Component {
     const { resetNewPasswordInputs } = this.props;
     resetNewPasswordInputs();
   }
+
   render() {
     const { firstNewPassword, secondNewPassword, updateFirstNewPassword, updateSecondNewPassword, setNewPasswordErrors, newPasswordStatusMsg, resetPassword, resetNewPasswordInputs, passwordReset } = this.props;
     const token = window.location.pathname.slice(7);
     const newPasswordObj = {
       new_password: firstNewPassword,
       user_token: token,
-    }
+    };
 
     let submitPwFunc = resetPassword;
     if (firstNewPassword !== secondNewPassword || firstNewPassword.length < 5 || secondNewPassword.length < 5) {
@@ -47,7 +48,7 @@ class Reset extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default Reset;
