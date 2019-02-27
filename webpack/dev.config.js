@@ -24,6 +24,31 @@ module.exports = {
     publicPath: '/',                                      // Specify base path for all assets as root
   },
   devServer: {
+    // Required for Docker to work with dev server
+    host: '0.0.0.0',
+    port: 8080,
+    // match the output path
+    contentBase: path.resolve(__dirname, '../dist'),
+    //enable HMR on the devServer
+    hot: true,
+    //match the output 'publicPath'
+    publicPath: '/',
+    // fallback to root for other urls
+    historyApiFallback: true,
+
+    inline: true,
+
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    // proxy is required in order to make api calls to express server while using hot-reload webpack server
+    // routes api fetch requests from localhost:8080/api/* (webpack dev server) to localhost:3000/api/* (where our Express server is running)
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+    },
+  },
+ /* devServer: {
     compress: true,                                       // GZIP Compression
     contentBase: path.resolve(__dirname, '../dist'),      // Serve static content from ../dist
     historyApiFallback: true,                             // Redirect 404s back to /index.html
@@ -33,7 +58,7 @@ module.exports = {
       },
     },
     port: 8080,                                           // Specify PORT for requests
-  },
+  }, */
   devtool: 'source-map',
   module: {
     rules: [
