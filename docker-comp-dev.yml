@@ -32,6 +32,8 @@ services:
       - ./scripts/postgres-db:/postgres-db
     depends_on:
       - postgres-data
+    ports:
+      - "5432:5432"
 
   postgres-data:
     image: busybox
